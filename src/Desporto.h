@@ -10,19 +10,27 @@
 
 #include <string>
 #include <vector>
+#include "Data.h"
 
 using namespace std;
 
+struct Pontuacao{
+	string nome;
+	bool crescente; // se a pontuacao e crescente ou nao
+};
+
 class Desporto{
 	string nome;
-	vector<Modalidade> modalidades;
+	vector<Modalidade *> modalidades; // o stor tinha dito que era um conjunto de modalidades
+	Pontuacao pontuacao; //fiz uma struct, mas se for preciso ser classe depois mudasse
 public:
 
 };
 
 class Modalidade{
 	string name;
-	unsigned int duracao;
+	Hora duracao;
+	//Em vez de uma modalidade ter um conjunto de provas, acho melhor uma prova ter uma modalidade.
 public:
 
 };

@@ -15,7 +15,7 @@ using namespace std;
 
 class Equipa{
 	string name;
-	vector<Atleta> atletas;
+	vector<Atleta *> atletas;
 public:
 
 };
@@ -23,6 +23,7 @@ public:
 class Atleta{
 	string name;
 	int firstPlace, secondPLace, thirdPlace; //numero de primeiros lugares, segundos lugares e terceiros lugares, respectivamente.
+	vector<Prova *> provas;
 public:
 
 };

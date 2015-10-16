@@ -13,11 +13,14 @@
 #include "Desporto.h"
 #include "Equipa.h"
 #include "Prova.h"
+#include "Data.h"
 
 class Campeonato{
-	string nome;
-	vector<Desporto> desportos;
-	vector<Equipa> equipas;
+	string nome; // Necessario?
+	vector<Desporto *> desportos;
+	vector<Equipa* > equipas;
+	vector<Prova *> provas; //Conjunto das provas, tb funciona como calendario, se ordenamos
+	Data inicio; // data do inicio do campeonato, pode dar jeito
 public:
 
 };

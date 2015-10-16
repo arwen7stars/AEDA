@@ -12,18 +12,23 @@
 #include <vector>
 #include "Desporto.h"
 #include "Equipa.h"
+#include "Data.h"
 
 using namespace std;
 
 class Prova{
 	Modalidade modalidade;
-	vector<Atleta> atletas;
-	//Data inicio; ainda nao fiz o header file
+	Data data;
+	Hora inicio, fim;
+	vector<Atleta *> atletas;
 public:
 
 };
 
-
+class ProvaTerminada: public Prova{ //Quando uma prova ja terminou, transformamola num ProvaTerminada
+	vector<int> pontuacoes; //Vetor com as pontuacoes dos atletas, corresponde com o vector atletas
+public:
+};
 
 
 #endif /* SRC_PROVA_H_ */
