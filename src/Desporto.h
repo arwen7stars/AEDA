@@ -24,14 +24,23 @@ class Desporto{
 	vector<Modalidade *> modalidades; // o stor tinha dito que era um conjunto de modalidades
 	Pontuacao pontuacao; //fiz uma struct, mas se for preciso ser classe depois mudasse
 public:
-
+	Desporto(string n, string pont, bool cresc);
+	string getNome();
+	string getPontuacao();
+	bool isCrescente();
+	bool adicionaModalidade(Modalidade *);
 };
 
 class Modalidade{
 	string name;
 	Hora duracao;
+	Desporto* desporto;
 	//Em vez de uma modalidade ter um conjunto de provas, acho melhor uma prova ter uma modalidade.
 public:
+	Modalidade(string n, int h, int m);
+	string getNome();
+	Hora getDuracao();
+	Desporto* getDesporto();
 
 };
 

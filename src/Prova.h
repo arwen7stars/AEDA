@@ -17,12 +17,13 @@
 using namespace std;
 
 class Prova{
-	Modalidade modalidade;
-	Data data;
+	Modalidade* modalidade;
+	Data* data;
 	Hora inicio, fim;
 	vector<Atleta *> atletas;
 public:
-
+	Prova(Modalidade m, Data d, Hora i);
+	void adicionaAtleta(Atleta *);
 };
 
 class ProvaTerminada: public Prova{ //Quando uma prova ja terminou, transformamola num ProvaTerminada
