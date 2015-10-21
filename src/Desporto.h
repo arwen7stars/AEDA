@@ -14,6 +14,8 @@
 
 using namespace std;
 
+class Modalidade;
+
 struct Pontuacao{
 	string nome;
 	bool crescente; // se a pontuacao e crescente ou nao
@@ -24,23 +26,25 @@ class Desporto{
 	vector<Modalidade *> modalidades; // o stor tinha dito que era um conjunto de modalidades
 	Pontuacao pontuacao; //fiz uma struct, mas se for preciso ser classe depois mudasse
 public:
+	Desporto();
 	Desporto(string n, string pont, bool cresc);
-	string getNome();
-	string getPontuacao();
-	bool isCrescente();
-	bool adicionaModalidade(Modalidade *);
+	string getNome() const;
+	string getPontuacao() const;
+	bool isCrescente() const;
+	bool adicionaModalidade(Modalidade *m);
 };
 
 class Modalidade{
-	string name;
+	string nome;
 	Hora duracao;
 	Desporto* desporto;
 	//Em vez de uma modalidade ter um conjunto de provas, acho melhor uma prova ter uma modalidade.
 public:
-	Modalidade(string n, int h, int m);
-	string getNome();
-	Hora getDuracao();
-	Desporto* getDesporto();
+	Modalidade();
+	Modalidade(string n, int h, int m, Desporto sd);
+	string getNome() const;
+	Hora getDuracao() const;
+	Desporto* getDesporto() const;
 
 };
 

@@ -10,6 +10,8 @@
 
 using namespace std;
 
+class Hora;
+
 class Data{
 	int ano, dia, mes;
 public:
@@ -20,6 +22,7 @@ public:
 class Hora{
 	int horas, minutos;
 public:
+	Hora();
 	Hora(int h, int m);
 	Hora operator+ (const Hora & h) const; //Nao pode passar das 24h
 	bool operator< (const Hora & h) const;

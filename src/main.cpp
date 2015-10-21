@@ -8,19 +8,23 @@
 #include <vector>
 #include <iostream>
 #include "Lists.h"
+#include "Desporto.h"
 
 int main(){
-
-//	vector<int> fogo;
-//	fogo.push_back(0);
-//	fogo.push_back(1);
-//	fogo.push_back(2);
-//	int op = menu("Numeros", fogo);
-//	system("cls");
-//	cout << op;
-//	system("pause");
+	Desporto D;
+	D = Desporto("Atletismo", "Segundos", true);
+	cout << D.getNome() << endl;
+	cout << D.getPontuacao() << endl;
+	cout << D.isCrescente() << endl;
+	cout << endl;
 
 
+	Modalidade M;
+	M = Modalidade("Corrida de 100 Metros", 13, 35, D);
+	cout << M.getNome() << endl;
+	cout << M.getDesporto()->getNome() << endl;
+	_getch();
 	return 0;
 }
+
 
