@@ -15,8 +15,9 @@ class Hora;
 class Data{
 	int ano, dia, mes;
 public:
+	Data();
 	Data(int a, int m, int d);
-	bool operator== (const Hora & h) const;
+	bool operator== (const Data & data) const;
 };
 
 class Hora{

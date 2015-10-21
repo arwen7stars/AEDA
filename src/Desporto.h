@@ -41,7 +41,7 @@ class Modalidade{
 	//Em vez de uma modalidade ter um conjunto de provas, acho melhor uma prova ter uma modalidade.
 public:
 	Modalidade();
-	Modalidade(string n, int h, int m, Desporto sd);
+	Modalidade(string n, int h, int m, Desporto d);
 	string getNome() const;
 	Hora getDuracao() const;
 	Desporto* getDesporto() const;
