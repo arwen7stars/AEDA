@@ -10,26 +10,30 @@
 
 #include <string>
 #include <vector>
+#include "Prova.h"
 
 using namespace std;
+
+class Atleta;
 
 class Equipa{
 	string nome;
 	vector<Atleta *> atletas;
 public:
 	Equipa(string n);
-	string getNome();
-	bool adicionaAtleta(Atleta *);
+	string getNome() const;
+	bool adicionaAtleta(Atleta * a);
 };
 
 class Atleta{
 	string nome;
-	int firstPlace, secondPLace, thirdPlace; //numero de primeiros lugares, segundos lugares e terceiros lugares, respectivamente.
+	Equipa* equipa;
 	vector<Prova *> provas;
 public:
-	Atleta(string n);
-	string getNome();
-	bool adicionaProva(Prova *);
+	Atleta(string n, Equipa e);
+	string getNome() const;
+	Equipa* getEquipa() const;
+	bool adicionaProva(Prova * p);
 };
 
 

@@ -28,6 +28,11 @@ public:
 	Hora operator+ (const Hora & h) const; //Nao pode passar das 24h
 	bool operator< (const Hora & h) const;
 	bool operator> (const Hora & h) const;
+	class HoraInvalida{
+		public:
+		int horas, minutos;
+		HoraInvalida(int h, int m);
+	};
 };
 
 #endif /* SRC_DATA_H_ */

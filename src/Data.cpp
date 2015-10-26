@@ -42,6 +42,21 @@ Hora::Hora(int h, int m){
 	minutos = m;
 }
 
+Hora Hora::operator+ (const Hora & h) const{
+	int novoMinutos = minutos + h.minutos;
+	int novaHoras = horas + h.horas;
+	if (novoMinutos >= 60){
+		novoMinutos %= 60;
+		novaHoras++;
+	}
+
+	if (novoMinutos >= 24){
+		throw HoraInvalida(novaHoras, novoMinutos);
+	}
+	return Hora(novaHoras, novoMinutos);
+
+}
+
 bool Hora::operator< (const Hora & h) const{
 	if (horas < h.horas)
 		return true;
@@ -60,3 +75,7 @@ bool Hora::operator> (const Hora & h) const{
 		return false;
 }
 
+Hora::HoraInvalida::HoraInvalida(int h, int m){
+	horas = h;
+	minutos = m;
+}
