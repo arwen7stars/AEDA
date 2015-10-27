@@ -9,3 +9,5 @@ HHHHHH EEEEEE L      L      O    O
 H    H E      L      L      O    O
 H    H E      L      L      O    O
 H    H EEEEEE LLLLLL LLLLLL OOOOOO
+
+Importante: falta fazer Modalidade::menu()

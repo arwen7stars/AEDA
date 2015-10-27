@@ -11,6 +11,7 @@
 #include "Desporto.h"
 
 int main(){
+
 	Desporto D;
 	D = Desporto("Atletismo", "Segundos", true);
 	cout << D.getNome() << endl;
@@ -18,15 +19,8 @@ int main(){
 	cout << D.isCrescente() << endl;
 	cout << endl;
 
-
-	Modalidade M;
-	M = Modalidade("Corrida de 100 Metros", 13, 35, D);
-	cout << M.getNome() << endl;
-	cout << M.getDesporto()->getNome() << endl;
-	cout << endl;
-
-	Hora h1(13,30), h2(13,50), h3(20,00);
-	cout << (h1 < h2) << (h1 < h3) << (h3 > h2);
+	_getch();
+	D.menuModalidades();
 
 	_getch();
 	return 0;
