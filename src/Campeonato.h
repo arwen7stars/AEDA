@@ -25,7 +25,7 @@ class Campeonato{
 	vector<Prova> provasCampeonato;
 	Data inicio, fim; ///< Data do inicio e do fim do campeonato, pode dar jeito
 public:
-	Campeonato(string n, vector<Desporto *> d, vector<Equipa*> e, vector<Prova> p, Data i, Data f);
+	Campeonato(string n, Data i, Data f);
 	bool adicionaProvaCampeonato(Modalidade m, Data d, Hora i);
 };
 
