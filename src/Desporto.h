@@ -10,10 +10,9 @@
 
 #include <string>
 #include <vector>
+#include "Modalidade.h"
 
 using namespace std;
-
-class Modalidade;
 
 struct Pontuacao{
 	string nome;

@@ -22,10 +22,10 @@ class Campeonato{
 	string nome; ///< Nome do campeonato
 	vector<Desporto *> desportos; ///< Lista de Desportos/Modalidades
 	vector<Equipa* > equipas; ///< Lista de Equipas
-	vector<Prova> provas;
+	vector<Prova> provasCampeonato;
 	Data inicio; ///< Data do inicio do campeonato, pode dar jeito
 public:
-	bool adicionaProva(Modalidade m, Data d, Hora I);
+	bool adicionaProvaCampeonato(Modalidade m, Data d, Hora I);
 };
 
 
