@@ -9,3 +9,5 @@ Prova::Prova(Modalidade m, Data d, Hora i)
 	fim = i + m.getDuracao();
 
 }
+
+

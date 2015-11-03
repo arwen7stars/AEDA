@@ -11,7 +11,6 @@
 #include <string>
 #include <vector>
 #include "Desporto.h"
-#include "Equipa.h"
 #include "Data.h"
 
 using namespace std;
@@ -26,6 +25,10 @@ class Prova{
 public:
 	Prova(Modalidade m, Data d, Hora i);
 	void adicionaAtleta(Atleta * a);
+	bool Simultaneo(Prova p);
+	Hora getInicio() const;
+	Hora getFim() const;
+
 };
 
 class ProvaTerminada: public Prova{ //Quando uma prova ja terminou, transformamola num ProvaTerminada

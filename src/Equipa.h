@@ -10,8 +10,7 @@
 
 #include <string>
 #include <vector>
-
-class Prova;
+#include "Prova.h"
 
 using namespace std;
 
