@@ -10,7 +10,6 @@
 
 #include <string>
 #include <vector>
-#include "Data.h"
 
 using namespace std;
 
@@ -23,65 +22,57 @@ struct Pontuacao{
 
 class Desporto{
 	string nome;
-	//vector<Modalidade *> modalidades; // o stor tinha dito que era um conjunto de modalidades
-	virtual Pontuacao pontuacao = 0; //fiz uma struct, mas se for preciso ser classe depois mudasse
+	vector<Modalidade *> modalidades;
+	Pontuacao pontuacao;
 public:
 	Desporto();
-	Desporto(string n);
-	//string getNome() const;
-	//string getPontuacao() const;
-	//bool isCrescente() const;
-	//bool adicionaModalidade(Modalidade *m);
-};
-
-class Modalidade{
-	string nome;
-	Hora duracao;
-//	Desporto* desporto; ja nao e preciso, certo?
-//	//Em vez de uma modalidade ter um conjunto de provas, acho melhor uma prova ter uma modalidade.
-public:
-	Modalidade();
-	Modalidade(string n, int h, int m, Desporto d);
+	Desporto(string n, string pont, bool cresc);
 	string getNome() const;
-	Hora getDuracao() const;
-//	Desporto* getDesporto() const;
-};
-
-class Corrida{
-	vector<Modalidade *> modalidades;
-	Pontuacao pontuacao;
-public:
-	Corrida(){};
-	Corrida(Modalidade m, string pont, bool crec);
 	string getPontuacao() const;
 	bool isCrescente() const;
-};
-
-class Natacao{
-	vector<Modalidade *> modalidades;
-	Pontuacao pontuacao;
-public:
-	Natacao(){};
-	Natacao(Modalidade m, string pont, bool crec);
-	string getPontuacao() const;
-	bool isCrescente() const;
-};
-
-class Futebol{
-	vector<Modalidade *> modalidades;
-	Pontuacao pontuacao;
-public:
-	Futebol(){};
-	Futebol(Modalidade m, string pont, bool crec);
-	string getPontuacao() const;
-	bool isCrescente() const;
+	bool adicionaModalidade(Modalidade *m);
+	bool operator== (const Desporto & c) const;
+	friend ostream & operator<<(ostream & o, const Desporto & d);
 };
 
 
-
-//#endif /* SRC_DESPORTO_H_ */
+//class Corrida{
 //
+//public:
+//	Corrida(){};
+//	Corrida(string n, string pont);
+//};
 //
+//class Natacao{
+//
+//public:
+//	Natacao(){};
+//	Natacao(string n, string pont);
+//};
+//
+//class Futebol{
+//	int
+//public:
+//	Futebol(){};
+//	Futebol(string n, string pont);
+//};
+
+class DesportoEquipa: public Desporto{
+	int numeroAtletas;
+public:
+	DesportoEquipa(){};
+	DesportoEquipa(string n, string pont, bool cresc, int num);
+};
+
+class DesportoSolo: public Desporto{
+public:
+	DesportoSolo(){};
+	DesportoSolo(string n, string pont, bool cresc);
+};
+
+
+#endif /* SRC_DESPORTO_H_ */
+
 ///*
 // * Desporto.h
 // *

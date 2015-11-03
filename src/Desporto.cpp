@@ -19,79 +19,79 @@ using namespace std;
 ------------------------------------------------------------------------------
 */
 
- Desporto::Desporto(){}
-
- Desporto::Desporto(string n){nome =n;}
-
-Corrida::Corrida(Modalidade n, string pont, bool cresc){
-	modalidades.push_back(&n);
-	pontuacao.nome = pont;
-	pontuacao.crescente = cresc;
-}
-
-string Corrida::getPontuacao() const{
-	return pontuacao.nome;
-}
-
-bool Corrida::isCrescente() const{
-	return pontuacao.crescente;
-}
-
-Natacao::Natacao(Modalidade n, string pont, bool cresc){
-	modalidades.push_back(&n);
-	pontuacao.nome = pont;
-	pontuacao.crescente = cresc;
-}
-
-string Natacao::getPontuacao() const{
-	return pontuacao.nome;
-}
-
-bool Natacao::isCrescente() const{
-	return pontuacao.crescente;
-}
-
-Futebol::Futebol(Modalidade n, string pont, bool cresc){
-	modalidades.push_back(&n);
-	pontuacao.nome = pont;
-	pontuacao.crescente = cresc;
-}
-
-string Futebol::getPontuacao() const{
-	return pontuacao.nome;
-}
-
-bool Futebol::isCrescente() const{
-	return pontuacao.crescente;
-}
-
 //Desporto::Desporto(){}
 //
-//Desporto::Desporto(string n, string pont, bool cresc){
-//	nome = n;
+//Desporto::Desporto(string n){nome =n;}
+//
+//Corrida::Corrida(Modalidade n, string pont, bool cresc){
+//	modalidades.push_back(&n);
 //	pontuacao.nome = pont;
 //	pontuacao.crescente = cresc;
 //}
 //
-//string Desporto::getNome() const{
-//	return nome;
-//}
-//
-//string Desporto::getPontuacao() const{
+//string Corrida::getPontuacao() const{
 //	return pontuacao.nome;
 //}
 //
-//bool Desporto::isCrescente() const{
+//bool Corrida::isCrescente() const{
 //	return pontuacao.crescente;
 //}
 //
-//bool  Desporto::operator== (const Desporto & c) const{
-//	if (c.nome == nome)
-//		return true;
-//	else
-//		return false;
+//Natacao::Natacao(Modalidade n, string pont, bool cresc){
+//	modalidades.push_back(&n);
+//	pontuacao.nome = pont;
+//	pontuacao.crescente = cresc;
 //}
 //
+//string Natacao::getPontuacao() const{
+//	return pontuacao.nome;
+//}
+//
+//bool Natacao::isCrescente() const{
+//	return pontuacao.crescente;
+//}
+//
+//Futebol::Futebol(Modalidade n, string pont, bool cresc){
+//	modalidades.push_back(&n);
+//	pontuacao.nome = pont;
+//	pontuacao.crescente = cresc;
+//}
+//
+//string Futebol::getPontuacao() const{
+//	return pontuacao.nome;
+//}
+//
+//bool Futebol::isCrescente() const{
+//	return pontuacao.crescente;
+//}
+
+Desporto::Desporto(){}
+
+Desporto::Desporto(string n, string pont, bool cresc){
+	nome = n;
+	pontuacao.nome = pont;
+	pontuacao.crescente = cresc;
+}
+
+string Desporto::getNome() const{
+	return nome;
+}
+
+string Desporto::getPontuacao() const{
+	return pontuacao.nome;
+}
+
+bool Desporto::isCrescente() const{
+	return pontuacao.crescente;
+}
+
+bool  Desporto::operator== (const Desporto & c) const{
+	if (c.nome == nome)
+		return true;
+	else
+		return false;
+}
+
 //void Desporto::adicionaModalidade(){
 //	string n;
 //	int h, m;
@@ -114,12 +114,12 @@ bool Futebol::isCrescente() const{
 //		throw ModalidadeExiste(n);
 //	modalidades.push_back(mod);
 //}
-//
-//ostream & operator<<(ostream & o, const Desporto & d){
-//	o << d.getNome();
-//	return o;
-//}
-//
+
+ostream & operator<<(ostream & o, const Desporto & d){
+	o << d.getNome();
+	return o;
+}
+
 //ModalidadeExiste::ModalidadeExiste(){}
 //
 //ModalidadeExiste::ModalidadeExiste(string n){
@@ -155,46 +155,5 @@ bool Futebol::isCrescente() const{
 //	}
 //}
 
-/*
-------------------------------------------------------------------------------
-								Class Modalidade
-------------------------------------------------------------------------------
- */
 
-Modalidade::Modalidade(){}
 
-Modalidade::Modalidade(string n, int h, int m, Desporto *d){
-	nome = n;
-	duracao = Hora(h, m);
-	desporto = d;
-}
-
-string Modalidade::getNome() const{
-	return nome;
-}
-
-Hora Modalidade::getDuracao() const{
-	return duracao;
-}
-
-Desporto* Modalidade::getDesporto() const{
-	return desporto;
-}
-
-bool Modalidade::operator== (const Modalidade & c) const{
-	if (c.nome == nome)
-		return true;
-	else
-		return false;
-}
-
-void Modalidade::menu(){
-	system("cls");
-	cout << "Modalidade: " << nome << endl << endl;
-	_getch();
-}
-
-ostream & operator<<(ostream & o, const Modalidade & d){
-	o << d.getNome();
-	return o;
-}
