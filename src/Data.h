@@ -18,6 +18,7 @@ public:
 	Data();
 	Data(int a, int m, int d);
 	bool operator== (const Data & data) const;
+	bool operator< (const Data & data) const;
 };
 
 class Hora{

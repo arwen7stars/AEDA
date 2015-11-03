@@ -29,6 +29,22 @@ bool Data::operator== (const Data & data) const{
 		return false;
 }
 
+bool Data::operator< (const Data & data) const{
+	if (ano < data.ano)
+		return true;
+	else if (ano == data.ano)
+	{
+		if (mes < data.mes)
+			return true;
+		else if (mes == data.mes)
+		{
+			if (dia < data.dia)
+				return true;
+		}
+	}
+	return false;
+}
+
 /*
 ------------------------------------------------------------------------------
 								Class Hora

@@ -12,6 +12,7 @@
 #include <vector>
 #include "Desporto.h"
 #include "Data.h"
+#include "Modalidade.h"
 
 using namespace std;
 
@@ -28,6 +29,7 @@ public:
 	bool Simultaneo(Prova p);
 	Hora getInicio() const;
 	Hora getFim() const;
+	Data getData() const;
 
 };
 

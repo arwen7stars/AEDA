@@ -1,5 +1,4 @@
 #include "Prova.h"
-#include "Modalidade.h"
 
 Prova::Prova(Modalidade m, Data d, Hora i)
 {
@@ -10,4 +9,37 @@ Prova::Prova(Modalidade m, Data d, Hora i)
 
 }
 
+Hora Prova::getInicio() const
+{
+	return inicio;
+}
 
+Hora Prova::getFim() const
+{
+	return fim;
+}
+
+Data Prova::getData() const
+{
+	return *data;
+}
+
+bool Prova::Simultaneo(Prova p)
+{
+	if (p.getData() < *data || *data < p.getData())
+		return false;
+	else
+	{
+		if (p.getInicio() < inicio)
+			if (p.getFim() < inicio)
+				return false;
+
+		if (fim < p.getFim())
+			if (fim < p.getInicio())
+				return false;
+
+	}
+
+	return true;
+
+}
