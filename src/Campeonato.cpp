@@ -1,4 +1,5 @@
 #include "Campeonato.h"
+#include <iostream>
 
 using namespace std;
 
@@ -90,11 +91,12 @@ bool Campeonato::criaDesportosCampeonato(string nome_ficheiro)
 			c = true;
 		else if (crescente == 'D')
 			c = false;
-		else return false;
+		else {cout << "fim3";return false;}
 
 		if (elementos_equipa > 1)
 		{
 			DesportoEquipa de(desporto, tipo_de_pontuacao, c, elementos_equipa);
+			cout << de.getNome() << endl;
 			desportos.push_back(&de);
 		}
 		else if (elementos_equipa == 1)
@@ -102,8 +104,11 @@ bool Campeonato::criaDesportosCampeonato(string nome_ficheiro)
 			DesportoSolo ds(desporto, tipo_de_pontuacao, c);
 			desportos.push_back(&ds);
 		}
-		else return false;
+
+		else  {cout << "fim2";return false;}
 	}
+
+	cout << "fim1";
 
 	return true;
 }

@@ -1,0 +1,5 @@
+I/Corrida/Segundos/D
+I/Natação/Segundos/D
+E/Futebol/Golos/C
+E/Basketball/Pontos/C
+E/Futebol Americano/Golos/C
