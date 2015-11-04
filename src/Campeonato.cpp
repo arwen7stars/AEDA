@@ -157,9 +157,9 @@ void atribuiPontuacao(Prova pro, vector< float> pontos){
 //	rankingProva.push_back(pro.getAtletas()[segundo]);
 //	rankingProva.push_back(pro.getAtletas()[terceiro]);
 
-	pro.getAtletas()[primeiro].adicionaPontuacao(3);
-	pro.getAtletas()[segundo].adicionaPontuacao(2);
-	pro.getAtletas()[terceiro].adicionaPontuacao(1);
+	pro.getAtletas()[primeiro]->adicionaPontuacao(3);
+	pro.getAtletas()[segundo]->adicionaPontuacao(2);
+	pro.getAtletas()[terceiro]->adicionaPontuacao(1);
 
 
 }

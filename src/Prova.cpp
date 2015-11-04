@@ -25,10 +25,10 @@ Data Prova::getData() const
 }
 
 Modalidade Prova::getModalidade() const{
-	return modalidade;
+	return *modalidade;
 }
 
-vector<Atleta> Prova::getAtletas() const{
+vector<Atleta*> Prova::getAtletas() const{
 	return atletas;
 }
 
