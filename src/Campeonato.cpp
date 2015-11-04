@@ -107,3 +107,59 @@ bool Campeonato::criaDesportosCampeonato(string nome_ficheiro)
 
 	return true;
 }
+
+void atribuiPontuacao(Prova pro, vector< float> pontos){
+	int primeiro =-1;
+	int segundo = -1;
+	int terceiro = -1;
+	int menor = pontos[0];
+	int segundoMenor = pontos[1];
+	int terceiroMenor = pontos[2];
+	int maior = pontos[0];
+	int segundoMaior = pontos[1];
+	int terceiroMaior = pontos[2];
+
+	if (pro.getModalidade().getDesporto()->isCrescente()) {
+		for (unsigned int i = 0; i < pontos.size(); i++)
+			if (pontos[i] > maior) {
+				terceiroMaior = segundoMaior;
+				segundoMaior = maior;
+				maior = pontos[i];
+				terceiro = segundo;
+				segundo = primeiro;
+				primeiro = i;
+			} else if (pontos[i] > segundoMaior) {
+				terceiroMaior = segundoMaior;
+				segundoMaior = pontos[i];
+				terceiro = segundo;
+				segundo = i;
+			}
+	} else
+		for (unsigned int i = 0; i < pontos.size(); i++)
+			if (pontos[i] < menor) {
+				terceiroMenor = segundoMenor;
+				segundoMenor = menor;
+				menor = pontos[i];
+				terceiro = segundo;
+				segundo = primeiro;
+				primeiro = i;
+			} else if (pontos[i] < segundoMenor) {
+				terceiroMenor = segundoMenor;
+				segundoMenor = pontos[i];
+				terceiro = segundo;
+				segundo = i;
+			}
+
+// nao e preciso devolver nada
+//	vector<Atleta> rankingProva;
+//
+//	rankingProva.push_back(pro.getAtletas()[primeiro]);
+//	rankingProva.push_back(pro.getAtletas()[segundo]);
+//	rankingProva.push_back(pro.getAtletas()[terceiro]);
+
+	pro.getAtletas()[primeiro].adicionaPontuacao(3);
+	pro.getAtletas()[segundo].adicionaPontuacao(2);
+	pro.getAtletas()[terceiro].adicionaPontuacao(1);
+
+
+}

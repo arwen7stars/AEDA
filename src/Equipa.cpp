@@ -40,3 +40,7 @@ string Atleta::getNome() const{
 Equipa* Atleta::getEquipa() const{
 	return equipa;
 }
+
+void Atleta::adicionaPontuacao(int p){
+ pontos += p;
+}

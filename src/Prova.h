@@ -30,7 +30,8 @@ public:
 	Hora getInicio() const;
 	Hora getFim() const;
 	Data getData() const;
-
+	Modalidade getModalidade() const;
+	vector<Atleta> Prova::getAtletas() const;
 };
 
 class ProvaTerminada: public Prova{ //Quando uma prova ja terminou, transformamola num ProvaTerminada

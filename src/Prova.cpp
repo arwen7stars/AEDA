@@ -24,6 +24,14 @@ Data Prova::getData() const
 	return *data;
 }
 
+Modalidade Prova::getModalidade() const{
+	return modalidade;
+}
+
+vector<Atleta> Prova::getAtletas() const{
+	return atletas;
+}
+
 bool Prova::Simultaneo(Prova p)
 {
 	if (p.getData() < *data || *data < p.getData())

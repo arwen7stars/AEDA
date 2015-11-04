@@ -34,6 +34,7 @@ public:
 	string getNome() const;
 	Equipa* getEquipa() const;
 	bool adicionaProva(Prova * p);
+	void adicionaPontuacao(int p);
 };
 
 
