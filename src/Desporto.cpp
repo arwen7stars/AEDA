@@ -86,35 +86,39 @@ bool Desporto::isCrescente() const{
 	return pontuacao.crescente;
 }
 
+void Desporto::adicionaModalidade(){
+	string n;
+	int h, m;
+
+	system("cls");
+
+	cout << "Nome: ";
+	getline(cin, n);
+
+
+	cout << "Duracao(minutos): ";
+	cin >> m;
+	cin.ignore(10000,'\n');
+
+	h = m / 60;
+	m = m % 60;
+
+	Modalidade * mod = new Modalidade(n,h,m,this);
+	if (search(modalidades , *mod) != -1)
+		throw ModalidadeExiste(n);
+	modalidades.push_back(mod);
+}
+
+void Desporto::adicionaModalidade(Modalidade *m){
+	modalidades.push_back(m);
+}
+
 bool  Desporto::operator== (const Desporto & c) const{
 	if (c.nome == nome)
 		return true;
 	else
 		return false;
 }
-
-//void Desporto::adicionaModalidade(){
-//	string n;
-//	int h, m;
-//
-//	system("cls");
-//
-//	cout << "Nome: ";
-//	getline(cin, n);
-//
-//
-//	cout << "Duracao(minutos): ";
-//	cin >> m;
-//	cin.ignore(10000,'\n');
-//
-//	h = m / 60;
-//	m = m % 60;
-//
-//	Modalidade * mod = new Modalidade(n,h,m,this);
-//	if (search(modalidades , *mod) != -1)
-//		throw ModalidadeExiste(n);
-//	modalidades.push_back(mod);
-//}
 
 ostream & operator<<(ostream & o, const Desporto & d){
 	o << d.getNome();
@@ -132,29 +136,40 @@ ostream & operator<<(ostream & o, const Desporto & d){
 //}
 //
 //
-//void Desporto::menuModalidades(){
-//	bool exit = false;
-//	while (!exit){
-//		system("cls");
-//		cout << "Desporto: " << nome << endl << endl;
-//		int ch = fazMenu("Modalidades:", modalidades, "Nova Modalidade");
-//		if (ch == -1)
-//			exit = true;
-//		else if (ch < modalidades.size())
-//			modalidades[ch]->menu();
-//		else{
-//			try{
-//				adicionaModalidade();
-//			}
-//			catch (ModalidadeExiste mod){
-//				cout << "Modalidade \"" << mod.getNome() << "\" ja existe.";
-//				_getch();
-//			}
-//
-//		}
-//
-//	}
-//}
+void Desporto::menuModalidades(){
+	bool exit = false;
+	while (!exit){
+		system("cls");
+		cout << "Desporto: " << nome << endl << endl;
+		int ch = fazMenu("Modalidades:", modalidades, "Nova Modalidade");
+		if (ch == -1)
+			exit = true;
+		else if (ch < modalidades.size())
+			modalidades[ch]->menu();
+		else{
+			try{
+				adicionaModalidade();
+			}
+			catch (ModalidadeExiste mod){
+				cout << "Modalidade \"" << mod.getNome() << "\" ja existe.";
+				_getch();
+			}
+
+		}
+
+	}
+}
 
 
 
+DesportoEquipa::DesportoEquipa(string n, string pont, bool cresc, int num): Desporto(n,pont,cresc){
+	numeroAtletas = num;
+}
+
+int DesportoEquipa::getNumeroAtletas() const{
+	return numeroAtletas;
+}
+
+
+
+DesportoSolo::DesportoSolo(string n, string pont, bool cresc): Desporto(n,pont,cresc){};

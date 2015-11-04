@@ -24,6 +24,7 @@ class Modalidade{
 public:
 	Modalidade();
 	Modalidade(string n, int h, int m, Desporto *d);
+
 	string getNome() const;
 	Hora getDuracao() const;
 	Desporto* getDesporto() const;
