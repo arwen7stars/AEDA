@@ -10,6 +10,7 @@
 
 #include <string>
 #include <vector>
+#include <fstream>
 #include "Desporto.h"
 #include "Equipa.h"
 #include "Data.h"
@@ -27,6 +28,7 @@ class Campeonato{
 public:
 	Campeonato(string n, Data i, Data f);
 	bool adicionaProva(Modalidade m, Data d, Hora i);
+	bool criaDesportosCampeonato(string nome_ficheiro);
 };
 
 
