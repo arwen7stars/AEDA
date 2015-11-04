@@ -15,6 +15,7 @@
 
 Equipa::Equipa(string n){
 	nome = n;
+	pontos = 0;
 }
 
 string Equipa::getNome() const{
@@ -31,6 +32,7 @@ string Equipa::getNome() const{
 Atleta::Atleta(string n, Equipa e){
 	nome = n;
 	equipa = &e;
+	pontos = 0;
 }
 
 string Atleta::getNome() const{

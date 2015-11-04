@@ -19,6 +19,7 @@ class Atleta;
 class Equipa{
 	string nome;
 	vector<Atleta *> atletas;
+	int pontos;
 public:
 	Equipa(string n);
 	string getNome() const;
@@ -29,6 +30,7 @@ class Atleta{
 	string nome;
 	Equipa* equipa;
 	vector<Prova *> provas;
+	int pontos;
 public:
 	Atleta(string n, Equipa e);
 	string getNome() const;
