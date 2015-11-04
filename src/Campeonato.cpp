@@ -92,8 +92,6 @@ bool Campeonato::criaDesportosCampeonato(string nome_ficheiro)
 					desporto = desporto + extraido;
 			} while (extraido != "/");
 
-		cout << desporto << endl;
-
 		extraido = "";
 
 		in >> tipo_de_pontuacao;
@@ -118,10 +116,7 @@ bool Campeonato::criaDesportosCampeonato(string nome_ficheiro)
 			desportos.push_back(&ds);
 		}
 		else  return false;
-		cout << "sim?!?!?" << endl;
 	}
-
-	cout << "break" << endl;
 
 	in.close();
 
