@@ -3,6 +3,19 @@
 
 using namespace std;
 
+bool ficheiroExiste(const string &ficheiro)
+{
+	bool existe = false;
+	ifstream ficheiro_tab;
+	ficheiro_tab.open(ficheiro.c_str());		// abre o ficheiro...
+	if (ficheiro_tab.is_open())			// ... e verifica se a abertura do ficheiro foi bem-sucedida
+	{
+		existe = true;
+		ficheiro_tab.close();			// volta a fechar o ficheiro
+	}
+	return existe;
+}
+
 Campeonato::Campeonato(string n, Data i, Data f)
 {
 	nome = n;
@@ -52,51 +65,51 @@ bool Campeonato::criaDesportosCampeonato(string nome_ficheiro)
 {
 	int elementos_equipa;
 	char barra;
-	string desporto = "";
-	string tipo_de_pontuacao = "";
 	char crescente;
 	bool c;
 	ifstream in;
+
+	if (!ficheiroExiste(nome_ficheiro))
+		return false;
 
 	in.open(nome_ficheiro.c_str());
 
 	while (!in.eof())
 	{
+		string desporto = "";
+		string tipo_de_pontuacao = "";
+
 		in >> elementos_equipa;
 		in >> barra;
 
 		string extraido = "";
 
-		do
-		{
-			in >> extraido;
-			if (extraido != "/")
-				desporto = desporto + " " + extraido;
-		}
-		while (extraido != "/");
+		if (!in.eof())
+			do
+			{
+				in >> extraido;
+				if (extraido != "/")
+					desporto = desporto + extraido;
+			} while (extraido != "/");
+
+		cout << desporto << endl;
 
 		extraido = "";
 
-		do
-		{
-			in >> extraido;
-			if (extraido != "/")
-				tipo_de_pontuacao = tipo_de_pontuacao + " " + extraido;
-		}
-		while (extraido != "/");
-
+		in >> tipo_de_pontuacao;
+		in >> barra;
 		in >> crescente;
+
 
 		if (crescente == 'C')
 			c = true;
 		else if (crescente == 'D')
 			c = false;
-		else {cout << "fim3";return false;}
+		else return false;
 
 		if (elementos_equipa > 1)
 		{
 			DesportoEquipa de(desporto, tipo_de_pontuacao, c, elementos_equipa);
-			cout << de.getNome() << endl;
 			desportos.push_back(&de);
 		}
 		else if (elementos_equipa == 1)
@@ -104,11 +117,13 @@ bool Campeonato::criaDesportosCampeonato(string nome_ficheiro)
 			DesportoSolo ds(desporto, tipo_de_pontuacao, c);
 			desportos.push_back(&ds);
 		}
-
-		else  {cout << "fim2";return false;}
+		else  return false;
+		cout << "sim?!?!?" << endl;
 	}
 
-	cout << "fim1";
+	cout << "break" << endl;
+
+	in.close();
 
 	return true;
 }

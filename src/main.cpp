@@ -27,7 +27,6 @@ int main(){
 //	cout << M.getDesporto()->getNome() << endl;
 //	cout << endl;
 
-	cout << "ola wtf";
 
 	Data d1 (2015,11,1);
 	Data d2 (2015,11,10);
@@ -35,15 +34,15 @@ int main(){
 
 	Campeonato c ("Campeonato A", d1, d2);
 
-	if (c.criaDesportosCampeonato("Desportos.txt"))
-		cout<< "correu bem";
-	else cout << "correu mal";
-
+	if (c.criaDesportosCampeonato("C:\\Users\\Cláudia Marinho\\Desktop\\Projeto-Aeda\\src\\Desportos.txt"))
+		cout<< "correu bem\n";
+	else cout << "correu mal\n";
+/*
 	Hora h1(13,30), h2(13,50), h3(20,00);
 	cout << (h1 < h2) << (h1 < h3) << (h3 > h2);
+*/
 
-
-
+	cout << "Press any key to continue...";
 	_getch();
 	return 0;
 }
