@@ -6,6 +6,7 @@
  */
 
 #include "Desporto.h"
+#include "Modalidade.h"
 #include "Data.h"
 #include "Lists.h"
 #include <string>

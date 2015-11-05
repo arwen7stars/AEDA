@@ -10,7 +10,7 @@
 
 #include <string>
 #include <vector>
-#include "Modalidade.h"
+//#include "Modalidade.h"
 
 using namespace std;
 
@@ -18,6 +18,8 @@ struct Pontuacao{
 	string nome;
 	bool crescente; // se a pontuacao e crescente ou nao
 };
+
+class Modalidade;
 
 class Desporto{
 	string nome;

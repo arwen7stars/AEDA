@@ -105,7 +105,7 @@ void menu(){
 			C.menu();
 	}
 }
-
+}
 
 int main(){
 //	Desporto D;
