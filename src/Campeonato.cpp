@@ -128,6 +128,78 @@ bool Campeonato::criaDesportosCampeonato(string nome_ficheiro)
 	return true;
 }
 
+
+bool Campeonato::criaEquipasCampeonato(string nome_ficheiro)
+{
+	char barra;
+	char genero;
+	ifstream in;
+
+	if (!ficheiroExiste(nome_ficheiro))
+	{
+		cerr << "O ficheiro Equipas.txt nao existe!";
+		return false;
+	}
+
+	in.open(nome_ficheiro.c_str());
+
+	while (!in.eof())
+	{
+		string equipa = "";
+		string atleta = "";
+
+		string extraido = "";
+
+		if (!in.eof())
+			do
+			{
+				in >> extraido;
+				if (extraido != "/")
+					equipa = equipa + extraido;
+			} while (extraido != "/");
+
+		extraido = "";
+
+		if (!in.eof())
+			do
+			{
+				in >> extraido;
+				if (extraido != "/")
+					atleta = atleta + extraido;
+			} while (extraido != "/");
+
+		in >> genero;
+
+		Equipa * eq = new Equipa(equipa);
+		Atleta * at = new Atleta(atleta, *eq);
+		int indiceEquipa = -1;
+
+		for (unsigned int i = 0; i < equipas.size(); i++)
+		{
+			if (equipa == equipas[i]->getNome())
+				indiceEquipa = i;
+
+		}
+
+		if (indiceEquipa == -1)
+		{
+			equipas.push_back(eq);
+			(*equipas[equipas.size()-1]).adicionaAtleta(at);
+		}
+		else
+		{
+			equipas[indiceEquipa]->adicionaAtleta(at);
+		}
+
+	}
+
+		in.close();
+
+		return true;
+}
+
+
+
 void Campeonato::menuCriacao(){
 	bool exit = false;
 	while (!exit){

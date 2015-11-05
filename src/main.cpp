@@ -12,7 +12,6 @@
 #include "Desporto.h"
 #include "Data.h"
 #include "Campeonato.h"
-
 bool load(Campeonato c)
 {
 	bool suc_des;
@@ -25,17 +24,17 @@ bool load(Campeonato c)
 
 	string modalidades = "C:\\Users\\Cláudia Marinho\\Desktop\\Projeto-Aeda\\src\\Modalidades.txt";
 	ifstream in_mod;
-	char barra;
-	string desp = "";
-	string mod = "";
-	int horas;
-	int minutos;
 	vector<Desporto*> d = c.getDesportos();
 
 	in_mod.open(modalidades.c_str());
 
 	while (!in_mod.eof())
 	{
+		char barra;
+		string desp = "";
+		string mod = "";
+		int horas;
+		int minutos;
 		int indice = -1;
 
 		string extraido = "";
@@ -78,6 +77,7 @@ bool load(Campeonato c)
 	return true;
 
 }
+
 
 void menuNovoCampeonato(){}
 
