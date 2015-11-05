@@ -30,7 +30,6 @@ public:
 	Campeonato(string n, Data i, Data f);
 	bool adicionaProva(Prova p);
 	bool criaDesportosCampeonato(string nome_ficheiro);
-	bool criaEquipasCampeonato(string nome_ficheiro);
 	vector<Desporto *> getDesportos() const;
 	vector<Prova> getProvas() const;
 	bool isCriado() const {return criado;}
