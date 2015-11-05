@@ -11,10 +11,10 @@
 #include <string>
 #include <vector>
 #include "Data.h"
+#include "Desporto.h"
 
 using namespace std;
 
-class Desporto;
 
 class Modalidade: public Desporto{
 	string nome;

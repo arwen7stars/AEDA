@@ -24,6 +24,7 @@ class Campeonato{
 	vector<Desporto *> desportos; ///< Lista de Desportos/Modalidades
 	vector<Equipa* > equipas; ///< Lista de Equipas
 	vector<Prova> provas;
+	bool criado;
 	Data inicio, fim; ///< Data do inicio e do fim do campeonato, pode dar jeito
 public:
 	Campeonato(string n, Data i, Data f);
@@ -31,6 +32,22 @@ public:
 	bool criaDesportosCampeonato(string nome_ficheiro);
 	vector<Desporto *> getDesportos() const;
 	vector<Prova> getProvas() const;
+	bool isCriado() const {return criado;}
+
+	void menuCriacao();
+	void menuModalidades();
+	void menuEquipas();
+	void menuProvas();
+
+	void adicionaEquipa();
+	class EquipaExiste{
+			string nome;
+		public:
+			EquipaExiste(){};
+			EquipaExiste(string n) {nome = n;}
+			string getNome() const {return nome;}
+		};
+
 };
 
 void atribuiPontuacao(Prova pro, vector<float> pontos);

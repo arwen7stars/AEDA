@@ -22,6 +22,17 @@ string Equipa::getNome() const{
 	return nome;
 }
 
+bool Equipa::operator== (const Equipa & c) const{
+	if (c.nome == nome)
+		return true;
+	else
+		return false;
+}
+
+ostream & operator<<(ostream & o, const Equipa & d){
+	o << d.getNome();
+	return o;
+}
 
 /*
 ------------------------------------------------------------------------------

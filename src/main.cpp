@@ -79,10 +79,11 @@ bool load(Campeonato c)
 
 }
 
-
 void menuNovoCampeonato(){}
 
 Campeonato loadCampeonato(){
+	Data d1 (2015,11,1);
+	Data d2 (2015,11,10);
 	Campeonato c ("Campeonato A", d1, d2);
 	return c;
 }
@@ -102,10 +103,14 @@ void menu(){
 			menuNovoCampeonato();
 		else{
 			Campeonato C = loadCampeonato();
-			C.menu();
+//			if(C.isCriado())
+//				cout << "Ola";
+//			else
+				C.menuCriacao();
+		}
 	}
 }
-}
+
 
 int main(){
 //	Desporto D;
@@ -247,7 +252,7 @@ int main(){
 		cout << "nao foi adicionada!!!\n";
 	else cout << "correu mal :(\n";
 */
-
+	menu();
 	cout << "Press any key to continue...";
 	_getch();
 	return 0;

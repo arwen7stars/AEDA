@@ -1,5 +1,6 @@
 #include "Campeonato.h"
 #include <iostream>
+#include "Lists.h"
 
 using namespace std;
 
@@ -49,10 +50,10 @@ bool Campeonato::adicionaProva(Prova p)
 		else
 		{
 			if (provas.size() == 0)
-				{
+			{
 				provas.push_back(p);
 				return true;
-				}
+			}
 			else
 			{
 				for (unsigned int i = 0; i < provas.size(); i++)
@@ -115,16 +116,77 @@ bool Campeonato::criaDesportosCampeonato(string nome_ficheiro)
 		else return false;
 
 		if (elementos_equipa == 0)
-				return false;
-				else {
-					Desporto ds (desporto, tipo_de_pontuacao, c, elementos_equipa);
-					desportos.push_back(&ds);
-				}
+			return false;
+		else {
+			Desporto ds (desporto, tipo_de_pontuacao, c, elementos_equipa);
+			desportos.push_back(&ds);
+		}
 	}
 
 	in.close();
 
 	return true;
+}
+
+void Campeonato::menuCriacao(){
+	bool exit = false;
+	while (!exit){
+		system("cls");
+		vector<string> choices;
+		choices.push_back("Modalidades");
+		if(desportos.size() > 0){
+			choices.push_back("Equipas");
+			choices.push_back("Provas");
+		}
+		int ch = fazMenu("Campeonato Polidesportivo", choices);
+		if (ch == -1)
+			exit = true;
+//		else if (ch == 0)
+//			menuModalidades();
+		else if (ch == 1)
+			menuEquipas();
+//		else
+//			menuProvas();
+	}
+}
+
+void Campeonato::menuEquipas(){
+	bool exit = false;
+	while (!exit){
+		system("cls");
+		int ch = fazMenu("Equipas:", equipas, "Nova Equipa");
+		if (ch == -1)
+			exit = true;
+		else if (ch < equipas.size())
+			//equipas[ch]->menu();
+			equipas[ch]->getNome();
+		else{
+			try{
+				adicionaEquipa();
+			}
+			catch (EquipaExiste eq){
+				cout << "Equipa \"" << eq.getNome() << "\" ja existe.";
+				_getch();
+			}
+
+		}
+
+	}
+}
+
+void Campeonato::adicionaEquipa(){
+	string n;
+
+	system("cls");
+
+	cout << "Nome: ";
+	getline(cin, n);
+	cin.ignore(10000,'\n');
+
+	Equipa *eq = new Equipa(n);
+	if (search(equipas , *eq) != -1)
+		throw EquipaExiste(n);
+	equipas.push_back(eq);
 }
 
 void atribuiPontuacao(Prova pro, vector< float> pontos){
@@ -146,12 +208,12 @@ void atribuiPontuacao(Prova pro, vector< float> pontos){
 				primeiro = 0;
 		}
 
-// nao e preciso devolver nada
-//	vector<Atleta> rankingProva;
-//
-//	rankingProva.push_back(pro.getAtletas()[primeiro]);
-//	rankingProva.push_back(pro.getAtletas()[segundo]);
-//	rankingProva.push_back(pro.getAtletas()[terceiro]);
+		// nao e preciso devolver nada
+		//	vector<Atleta> rankingProva;
+		//
+		//	rankingProva.push_back(pro.getAtletas()[primeiro]);
+		//	rankingProva.push_back(pro.getAtletas()[segundo]);
+		//	rankingProva.push_back(pro.getAtletas()[terceiro]);
 
 	pro.getAtletas()[primeiro]->adicionaPontuacao(3);
 }

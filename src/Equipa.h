@@ -24,6 +24,9 @@ public:
 	Equipa(string n);
 	string getNome() const;
 	bool adicionaAtleta(Atleta * a);
+
+	bool operator== (const Equipa & c) const;
+	friend ostream & operator<<(ostream & o, const Equipa & d);
 };
 
 class Atleta{
