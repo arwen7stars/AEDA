@@ -27,8 +27,10 @@ class Campeonato{
 	Data inicio, fim; ///< Data do inicio e do fim do campeonato, pode dar jeito
 public:
 	Campeonato(string n, Data i, Data f);
-	bool adicionaProva(Modalidade m, Data d, Hora i);
+	bool adicionaProva(Prova p);
 	bool criaDesportosCampeonato(string nome_ficheiro);
+	vector<Desporto *> getDesportos() const;
+	vector<Prova> getProvas() const;
 };
 
 

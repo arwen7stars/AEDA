@@ -8,6 +8,7 @@
 #ifndef SRC_PROVA_H_
 #define SRC_PROVA_H_
 
+#include <iostream>
 #include <string>
 #include <vector>
 #include "Desporto.h"

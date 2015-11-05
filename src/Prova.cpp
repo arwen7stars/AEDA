@@ -41,13 +41,16 @@ bool Prova::Simultaneo(Prova p)
 		if (p.getInicio() < inicio)
 			if (p.getFim() < inicio)
 				return false;
-
 		if (fim < p.getFim())
 			if (fim < p.getInicio())
 				return false;
 
 	}
+	Desporto * d1 = modalidade->getDesporto();
+	Desporto * d2 = p.modalidade->getDesporto();
 
-	return true;
+	if (*d1 == *d2)
+		return true;
+	else return false;
 
 }

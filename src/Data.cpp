@@ -17,9 +17,43 @@ using namespace std;
 Data::Data(){}
 
 Data::Data(int a, int m, int d){
+	if (a < 0 || m < 0 || m > 12 || d < 0)
+		throw DataInvalida();
+
+	int diaMaximo = diasMes(a,m);
+
+	if (d > diaMaximo)
+		throw DataInvalida();
+
 	ano = a;
 	mes = m;
 	dia = d;
+}
+
+bool Data::scanAnoBissexto(int ano)
+{
+	bool anoBissexto = false;
+
+	if (ano % 4 == 0)
+		if (ano % 100 != 0 || ano % 400 == 0)
+			anoBissexto = true;
+
+	return anoBissexto;
+}
+
+int Data::diasMes(int ano, int mes)
+{
+	int dias;
+
+	if (mes == 1 || mes == 3 || mes == 5 || mes == 7 || mes == 8 || mes == 10 || mes == 12)
+		dias = 31;
+	else if (mes != 2)
+		dias = 30;
+	else if (scanAnoBissexto(ano))
+		dias = 29;
+	else dias = 28;
+
+	return dias;
 }
 
 bool Data::operator== (const Data & data) const{
@@ -66,7 +100,9 @@ Hora Hora::operator+ (const Hora & h) const{
 		novaHoras++;
 	}
 
-	if (novoMinutos >= 24){
+	// if (novosMinutos >= 24) -> Daqui fala a Claudia-sama, esta cena mandou-me uma hora invalida quando eu criei uma prova as 12:00
+	// com duracao de 1:30 e nao percebi porque, mas ao alterar 24 para 60, isto deu certo!
+	if (novoMinutos >= 60){
 		throw HoraInvalida(novaHoras, novoMinutos);
 	}
 	return Hora(novaHoras, novoMinutos);
@@ -89,6 +125,16 @@ bool Hora::operator> (const Hora & h) const{
 		return true;
 	else
 		return false;
+}
+
+int Hora::getHoras() const
+{
+	return horas;
+}
+
+int Hora::getMinutos() const
+{
+	return minutos;
 }
 
 Hora::HoraInvalida::HoraInvalida(int h, int m){

@@ -16,6 +16,16 @@ bool ficheiroExiste(const string &ficheiro)
 	return existe;
 }
 
+vector<Desporto *> Campeonato::getDesportos() const
+{
+	return desportos;
+}
+
+vector<Prova> Campeonato::getProvas() const
+{
+	return provas;
+}
+
 Campeonato::Campeonato(string n, Data i, Data f)
 {
 	nome = n;
@@ -23,19 +33,18 @@ Campeonato::Campeonato(string n, Data i, Data f)
 	fim = f;
 }
 
-bool Campeonato::adicionaProva(Modalidade m, Data d, Hora i)
+bool Campeonato::adicionaProva(Prova p)
 {
-	Prova p(m,d,i);
 
-	if (d < inicio || fim < d)
+	if (p.getData() < inicio || fim < p.getData())
 		return false;
 	else
 	{
 		Hora abertura(8,0);
 		Hora fecho(20,0);
-		Hora fimProva = i + m.getDuracao();
+		Hora fimProva = p.getInicio() + p.getModalidade().getDuracao();
 
-		if (i < abertura || fecho < fimProva)
+		if (p.getInicio() < abertura || fecho < fimProva)
 			return false;
 		else
 		{
@@ -175,6 +184,5 @@ void atribuiPontuacao(Prova pro, vector< float> pontos){
 	pro.getAtletas()[primeiro]->adicionaPontuacao(3);
 	pro.getAtletas()[segundo]->adicionaPontuacao(2);
 	pro.getAtletas()[terceiro]->adicionaPontuacao(1);
-
 
 }
