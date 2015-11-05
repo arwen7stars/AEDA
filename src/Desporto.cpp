@@ -68,11 +68,13 @@ using namespace std;
 
 Desporto::Desporto(){}
 
-Desporto::Desporto(string n, string pont, bool cresc){
+Desporto::Desporto(string n, string pont, bool cresc, int nAtletas){
 	nome = n;
 	pontuacao.nome = pont;
 	pontuacao.crescente = cresc;
+	numeroAtletas = nAtletas;
 }
+
 
 string Desporto::getNome() const{
 	return nome;
@@ -161,15 +163,15 @@ void Desporto::menuModalidades(){
 }
 
 
-
-DesportoEquipa::DesportoEquipa(string n, string pont, bool cresc, int num): Desporto(n,pont,cresc){
-	numeroAtletas = num;
-}
-
-int DesportoEquipa::getNumeroAtletas() const{
-	return numeroAtletas;
-}
-
-
-
-DesportoSolo::DesportoSolo(string n, string pont, bool cresc): Desporto(n,pont,cresc){};
+//
+//DesportoEquipa::DesportoEquipa(string n, string pont, bool cresc, int num): Desporto(n,pont,cresc){
+//	numeroAtletas = num;
+//}
+//
+//int DesportoEquipa::getNumeroAtletas() const{
+//	return numeroAtletas;
+//}
+//
+//
+//
+//DesportoSolo::DesportoSolo(string n, string pont, bool cresc): Desporto(n,pont,cresc){};

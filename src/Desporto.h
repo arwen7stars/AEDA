@@ -23,9 +23,10 @@ class Desporto{
 	string nome;
 	vector<Modalidade *> modalidades;
 	Pontuacao pontuacao;
+	int numeroAtletas;
 public:
 	Desporto();
-	Desporto(string n, string pont, bool cresc);
+	Desporto(string n, string pont, bool cresc, int nAtletas);
 
 	string getNome() const;
 	string getPontuacao() const;
@@ -49,19 +50,19 @@ public:
 };
 
 
-class DesportoEquipa: public Desporto{
-	int numeroAtletas;
-public:
-	DesportoEquipa(){}
-	DesportoEquipa(string n, string pont, bool cresc, int num);
-	int getNumeroAtletas() const;
-};
-
-class DesportoSolo: public Desporto{
-public:
-	DesportoSolo(){};
-	DesportoSolo(string n, string pont, bool cresc);
-};
+//class DesportoEquipa: public Desporto{
+//	int numeroAtletas;
+//public:
+//	DesportoEquipa(){}
+//	DesportoEquipa(string n, string pont, bool cresc, int num);
+//	int getNumeroAtletas() const;
+//};
+//
+//class DesportoSolo: public Desporto{
+//public:
+//	DesportoSolo(){};
+//	DesportoSolo(string n, string pont, bool cresc);
+//};
 
 
 #endif

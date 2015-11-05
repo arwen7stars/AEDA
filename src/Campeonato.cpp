@@ -114,17 +114,12 @@ bool Campeonato::criaDesportosCampeonato(string nome_ficheiro)
 			c = false;
 		else return false;
 
-		if (elementos_equipa > 1)
-		{
-			DesportoEquipa de(desporto, tipo_de_pontuacao, c, elementos_equipa);
-			desportos.push_back(&de);
-		}
-		else if (elementos_equipa == 1)
-		{
-			DesportoSolo ds(desporto, tipo_de_pontuacao, c);
-			desportos.push_back(&ds);
-		}
-		else  return false;
+		if (elementos_equipa == 0)
+				return false;
+				else {
+					Desporto ds (desporto, tipo_de_pontuacao, c, elementos_equipa);
+					desportos.push_back(&ds);
+				}
 	}
 
 	in.close();

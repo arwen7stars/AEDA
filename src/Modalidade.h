@@ -16,7 +16,7 @@ using namespace std;
 
 class Desporto;
 
-class Modalidade{
+class Modalidade: public Desporto{
 	string nome;
 	Hora duracao;
 	Desporto* desporto; //ja nao e preciso, certo? *Isto serve para quando tiveres a suar a modalidade ir buscar o desporto
