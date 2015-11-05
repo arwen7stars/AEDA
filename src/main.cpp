@@ -7,11 +7,77 @@
 
 #include <vector>
 #include <iostream>
+#include <fstream>
 #include "Lists.h"
 #include "Desporto.h"
 #include "Data.h"
 #include "Campeonato.h"
-#include "Prova.h"
+
+bool load(Campeonato c)
+{
+	bool suc_des;
+	string desportos = "C:\\Users\\Cláudia Marinho\\Desktop\\Projeto-Aeda\\src\\Desportos.txt";
+	suc_des = c.criaDesportosCampeonato(desportos);
+
+	if(suc_des)
+		return true;
+	else return false;
+
+	string modalidades = "C:\\Users\\Cláudia Marinho\\Desktop\\Projeto-Aeda\\src\\Modalidades.txt";
+	ifstream in_mod;
+	char barra;
+	string desp = "";
+	string mod = "";
+	int horas;
+	int minutos;
+	vector<Desporto*> d = c.getDesportos();
+
+	in_mod.open(modalidades.c_str());
+
+	while (!in_mod.eof())
+	{
+		int indice = -1;
+
+		string extraido = "";
+
+		if (!in_mod.eof())
+			do
+			{
+				in_mod >> extraido;
+				if (extraido != "/")
+					desp = desp + extraido;
+			} while (extraido != "/");
+
+		for (unsigned int i = 0; i < d.size(); i++)
+			if (d[i]->getNome() == desp)
+				indice = i;
+
+		if (indice == -1)
+			return false;
+
+		extraido = "";
+
+		if (!in_mod.eof())
+			do
+			{
+				in_mod >> extraido;
+				if (extraido != "/")
+					mod = mod + extraido;
+			} while (extraido != "/");
+
+		in_mod >> horas;
+		in_mod >> barra;
+		in_mod >> minutos;
+		if (!in_mod.eof())
+		{
+			Modalidade * m = new Modalidade(mod, horas, minutos, d[indice]);
+			d[indice]->adicionaModalidade(m);
+		}
+	}
+
+	return true;
+
+}
 
 int main(){
 //	Desporto D;
@@ -27,16 +93,12 @@ int main(){
 //	cout << M.getNome() << endl;
 //	cout << M.getDesporto()->getNome() << endl;
 //	cout << endl;
-
+/*
 	Data d1 (2015,11,1);
 	Data d2 (2015,11,10);
 
 	Campeonato c ("Campeonato A", d1, d2);
-	Equipa A ("A");
-	Equipa B ("B");
-Atleta a1 ("Rui", A);
-Atleta a2 ("Vitor", B);
-
+*/
 	/*
 	if (c.criaDesportosCampeonato("C:\\Users\\Cláudia Marinho\\Desktop\\Projeto-Aeda\\src\\Desportos.txt"))
 		cout<< "correu bem\n";
@@ -157,28 +219,6 @@ Atleta a2 ("Vitor", B);
 		cout << "nao foi adicionada!!!\n";
 	else cout << "correu mal :(\n";
 */
-
-	Desporto des ("natacao", "segundos", false);
-	Modalidade mod ("200m", 2, 30, &des);
-	Hora hor (12,0);
-
-	Prova pro (mod, d1, hor);
-	pro.adicionaAtleta(&a1);
-	pro.adicionaAtleta(&a2);
-
-	vector <float> vpontos;
-	float ptemp = 0;
-
-	for (unsigned int i = 0; i < pro.getAtletas().size(); i++)
-		{cout << "Pontuacao de " << pro.getAtletas()[i]->getNome() <<"?" << endl;
-		cin >> ptemp;
-		cout << endl;
-		vpontos.push_back(ptemp);
-		}
-
-	atribuiPontuacao(pro, vpontos);
-
-	cout << a1.getPontos();
 
 	cout << "Press any key to continue...";
 	_getch();
