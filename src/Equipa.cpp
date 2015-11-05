@@ -46,6 +46,7 @@ bool Equipa::adicionaAtleta(Atleta * a)
 	}
 
 	atletas.push_back(a);
+	return true;
 }
 
 
