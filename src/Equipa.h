@@ -27,6 +27,17 @@ public:
 
 	bool operator== (const Equipa & c) const;
 	friend ostream & operator<<(ostream & o, const Equipa & d);
+
+	void menu();
+
+	void adicionaAtleta();
+	class AtletaExiste{
+		string nome;
+	public:
+		AtletaExiste(){};
+		AtletaExiste(string n) {nome = n;}
+		string getNome() const {return nome;}
+	};
 };
 
 class Atleta{

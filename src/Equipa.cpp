@@ -34,6 +34,53 @@ ostream & operator<<(ostream & o, const Equipa & d){
 	return o;
 }
 
+//void Equipa::menu(){
+//	bool exit = false;
+//	while (!exit){
+//		system("cls");
+//		vector<string> choices;
+//		choices.push_back("Mudar Nome");
+//		choices.push_back("Adicionar Atleta");
+//		choices.push_back("Deletar Atleta");
+//		choices.push_back("Inscrever em Desporto");
+//		choices.push_back("Desinscrever em Desporto");
+//
+//		int ch = fazMenu(name, choices);
+//		if (ch == -1)
+//			exit = true;
+////		else if (ch == 0)
+////			menuModalidades();
+//		else if (ch == 1)
+//			menuEquipas();
+////		else
+////			menuProvas();
+//	}
+//}
+
+//void Equipa::menuEquipas(){
+//	bool exit = false;
+//	while (!exit){
+//		system("cls");
+//		int ch = fazMenu("Equipas:", equipas, "Nova Equipa");
+//		if (ch == -1)
+//			exit = true;
+//		else if (ch < equipas.size())
+//			//equipas[ch]->menu();
+//			equipas[ch]->getNome();
+//		else{
+//			try{
+//				adicionaEquipa();
+//			}
+//			catch (EquipaExiste eq){
+//				cout << "Equipa \"" << eq.getNome() << "\" ja existe.";
+//				_getch();
+//			}
+//
+//		}
+//
+//	}
+//}
+
 /*
 ------------------------------------------------------------------------------
 								Class Atleta
