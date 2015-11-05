@@ -33,6 +33,7 @@ public:
 	vector<Prova> getProvas() const;
 };
 
+void atribuiPontuacao(Prova pro, vector<float> pontos);
 
 
 #endif /* CAMPEONATO_H_ */

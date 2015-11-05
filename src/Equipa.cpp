@@ -46,3 +46,7 @@ Equipa* Atleta::getEquipa() const{
 void Atleta::adicionaPontuacao(int p){
  pontos += p;
 }
+
+int Atleta::getPontos() const{
+	return pontos;
+}

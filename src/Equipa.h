@@ -35,6 +35,7 @@ public:
 	Atleta(string n, Equipa e);
 	string getNome() const;
 	Equipa* getEquipa() const;
+	int getPontos() const;
 	bool adicionaProva(Prova * p);
 	void adicionaPontuacao(int p);
 };

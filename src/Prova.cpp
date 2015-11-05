@@ -54,3 +54,7 @@ bool Prova::Simultaneo(Prova p)
 	else return false;
 
 }
+
+void Prova::adicionaAtleta(Atleta * a){
+	atletas.push_back(a);
+}
