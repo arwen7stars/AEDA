@@ -30,6 +30,9 @@ template <class T>
 int fazMenu(string titulo, vector<T*> options);
 
 template <class T>
+int fazMenu(string titulo, vector<T> options);
+
+template <class T>
 int fazMenu(string titulo, vector<T*> options, string Op1);
 
 template <class T>
@@ -45,6 +48,46 @@ int fazMenu(string titulo, vector<T*> options){
 	int inicio = wherey();
 	for (int i = 0; i < options.size(); i++)
 		cout << "   " << (*options[i]) << endl;
+	gotoxy(0, inicio);
+	int op(0);
+
+	while (true)
+	{
+		gotoxy(0, inicio + op);
+		cout << "->";
+		gotoxy(0, inicio + op);
+
+		switch (_getch())
+		{
+		case KEY_ESC:
+			return -1;
+			break;
+		case KEY_UP:
+			if (op > 0)
+				op--;
+			break;
+		case KEY_DOWN:
+			if (op < options.size()-1)
+				op++;
+			break;
+		case KEY_ENTER:
+			return op;
+			break;
+		default:
+			break;
+		}
+
+		cout << "  ";
+
+	}
+}
+
+template <class T>
+int fazMenu(string titulo, vector<T> options){
+	cout << titulo << endl << endl;
+	int inicio = wherey();
+	for (int i = 0; i < options.size(); i++)
+		cout << "   " << (options[i]) << endl;
 	gotoxy(0, inicio);
 	int op(0);
 

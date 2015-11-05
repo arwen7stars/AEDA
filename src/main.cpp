@@ -79,6 +79,34 @@ bool load(Campeonato c)
 
 }
 
+
+void menuNovoCampeonato(){}
+
+Campeonato loadCampeonato(){
+	Campeonato c ("Campeonato A", d1, d2);
+	return c;
+}
+
+void menu(){
+	vector<string> choices;
+	choices.push_back("Novo Campeonato");
+	choices.push_back("Carregar Campeonato");
+
+	bool exit = false;
+	while (!exit){
+		system("cls");
+		int ch = fazMenu("Campeonato Polidesportivo", choices);
+		if (ch == -1)
+			exit = true;
+		else if (ch == 0)
+			menuNovoCampeonato();
+		else{
+			Campeonato C = loadCampeonato();
+			C.menu();
+	}
+}
+
+
 int main(){
 //	Desporto D;
 //	D = Desporto("Atletismo", "Segundos", true);
