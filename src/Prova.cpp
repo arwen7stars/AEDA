@@ -4,7 +4,7 @@
 Prova::Prova(Modalidade* m, Data d, Hora i)
 {
 	modalidade = m;
-	data = &d;
+	data = d;
 	inicio = i;
 	fim = i + m->getDuracao();
 
@@ -22,7 +22,7 @@ Hora Prova::getFim() const
 
 Data Prova::getData() const
 {
-	return *data;
+	return data;
 }
 
 Modalidade* Prova::getModalidade() const{
@@ -35,7 +35,7 @@ vector<Atleta*> Prova::getAtletas() const{
 
 bool Prova::Simultaneo(Prova p)
 {
-	if (p.getData() < *data || *data < p.getData())
+	if (p.getData() < data || data < p.getData())
 		return false;
 	else
 	{
@@ -61,7 +61,7 @@ void Prova::adicionaAtleta(Atleta * a){
 }
 
 ostream & operator<<(ostream & o, const Prova & p){
-	o << *p.data << " " << p.inicio << "-" << p.fim << p.modalidade->getNome();
+	o << p.data << " " << p.inicio << "-" << p.fim << p.modalidade->getNome();
 	return o;
 }
 

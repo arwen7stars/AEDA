@@ -24,7 +24,7 @@ class Equipa;
 class Prova{
 protected:
 	Modalidade* modalidade;
-	Data* data;
+	Data data;
 	Hora inicio, fim;
 	vector<Atleta *> atletas;
 public:

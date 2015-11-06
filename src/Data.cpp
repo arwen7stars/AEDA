@@ -141,8 +141,13 @@ bool Hora::operator> (const Hora & h) const{
 		return false;
 }
 
-ostream & operator<<(ostream & o, const Hora & h){
-	o << h.getHoras() << ":" << h.getMinutos();
+ostream & operator<<(ostream & o, const Hora & h) {
+	o << h.getHoras() << ":";
+	if (h.getMinutos() < 10)
+		o << "0" << h.getMinutos();
+	else
+		o << h.getMinutos();
+
 	return o;
 }
 

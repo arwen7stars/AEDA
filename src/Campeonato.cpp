@@ -559,6 +559,7 @@ void Campeonato::listaProvas() const{
 	insertionSort<Prova>(vprova);
 
 	for (unsigned int i = 0; i < provas.size(); i++)
-		cout << provas[i]->getData() << ": Prova de " << (*provas[i]->getModalidade())
+		cout << provas[i]->getData() << ": Prova de " << (*provas[i]->getModalidade()->getDesporto())
+		<< "("<<(*provas[i]->getModalidade())<<")"
 		<< " as " << provas[i]->getInicio() << endl;
 }
