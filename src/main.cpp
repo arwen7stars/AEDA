@@ -84,7 +84,9 @@ void menuNovoCampeonato(){}
 Campeonato loadCampeonato(){
 	Data d1 (2015,11,1);
 	Data d2 (2015,11,10);
-	Campeonato c ("Campeonato A", d1, d2);
+	Hora h1 (8,0);
+	Hora h2 (20,0);
+	Campeonato c ("Campeonato A", d1, d2,h1, h2);
 	return c;
 }
 

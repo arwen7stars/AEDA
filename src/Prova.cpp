@@ -1,11 +1,11 @@
 #include "Prova.h"
 
-Prova::Prova(Modalidade m, Data d, Hora i)
+Prova::Prova(Modalidade* m, Data d, Hora i)
 {
-	modalidade = &m;
+	modalidade = m;
 	data = &d;
 	inicio = i;
-	fim = i + m.getDuracao();
+	fim = i + m->getDuracao();
 
 }
 
@@ -58,3 +58,25 @@ bool Prova::Simultaneo(Prova p)
 void Prova::adicionaAtleta(Atleta * a){
 	atletas.push_back(a);
 }
+
+
+/*
+------------------------------------------------------------------------------
+						    Prova Terminada
+------------------------------------------------------------------------------
+*/
+
+ProvaTerminada::ProvaTerminada(Modalidade* m, Data d, Hora i):Prova(m,d,i){}
+
+Atleta* ProvaTerminada::getPrimeiro() const{
+	return atletas[0];
+}
+
+Atleta* ProvaTerminada::getSegundo() const{
+	return atletas[1];
+}
+
+Atleta*ProvaTerminada:: getTerceiro() const{
+	return atletas[2];
+}
+

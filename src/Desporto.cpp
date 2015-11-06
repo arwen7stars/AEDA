@@ -85,6 +85,9 @@ string Desporto::getPontuacao() const{
 	return pontuacao.nome;
 }
 
+vector<Modalidade *> Desporto::getModalidades() const{
+	return modalidades;
+}
 bool Desporto::isCrescente() const{
 	return pontuacao.crescente;
 }

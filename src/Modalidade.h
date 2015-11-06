@@ -11,12 +11,12 @@
 #include <string>
 #include <vector>
 #include "Data.h"
-#include "Desporto.h"
 
 using namespace std;
 
+class Desporto;
 
-class Modalidade: public Desporto{
+class Modalidade{
 	string nome;
 	Hora duracao;
 	Desporto* desporto; //ja nao e preciso, certo? *Isto serve para quando tiveres a suar a modalidade ir buscar o desporto

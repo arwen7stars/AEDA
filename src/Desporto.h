@@ -32,6 +32,7 @@ public:
 
 	string getNome() const;
 	string getPontuacao() const;
+	vector<Modalidade *> getModalidades() const;
 	bool isCrescente() const;
 
 	void adicionaModalidade();

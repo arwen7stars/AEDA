@@ -18,12 +18,12 @@ Data::Data(){}
 
 Data::Data(int a, int m, int d){
 	if (a < 0 || m < 0 || m > 12 || d < 0)
-		throw DataInvalida();
+		throw DataInvalida(a,m,d);
 
 	int diaMaximo = diasMes(a,m);
 
 	if (d > diaMaximo)
-		throw DataInvalida();
+		throw DataInvalida(a,m,d);
 
 	ano = a;
 	mes = m;
@@ -88,6 +88,8 @@ bool Data::operator< (const Data & data) const{
 Hora::Hora(){}
 
 Hora::Hora(int h, int m){
+	if (h > 23 || h < 0 || m > 59 || m < 0)
+		throw HoraInvalida(h,m);
 	horas = h;
 	minutos = m;
 }
@@ -135,9 +137,4 @@ int Hora::getHoras() const
 int Hora::getMinutos() const
 {
 	return minutos;
-}
-
-Hora::HoraInvalida::HoraInvalida(int h, int m){
-	horas = h;
-	minutos = m;
 }

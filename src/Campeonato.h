@@ -23,16 +23,17 @@ class Campeonato{
 	string nome; ///< Nome do campeonato
 	vector<Desporto *> desportos; ///< Lista de Desportos/Modalidades
 	vector<Equipa* > equipas; ///< Lista de Equipas
-	vector<Prova> provas;
+	vector<Prova *> provas;
 	bool criado;
-	Data inicio, fim; ///< Data do inicio e do fim do campeonato, pode dar jeito
+	Data inicio, fim;///< Data do inicio e do fim do campeonato, pode dar jeito
+	Hora abertura, fecho;
 public:
-	Campeonato(string n, Data i, Data f);
+	Campeonato(string n, Data i, Data f, Hora a, Hora fe);
 	bool adicionaProva(Prova p);
 	bool criaDesportosCampeonato(string nome_ficheiro);
 	bool criaEquipasCampeonato(string nome_ficheiro);
 	vector<Desporto *> getDesportos() const;
-	vector<Prova> getProvas() const;
+	vector<Prova* > getProvas() const;
 	bool isCriado() const {return criado;}
 
 	void menuCriacao();
@@ -49,6 +50,21 @@ public:
 			string getNome() const {return nome;}
 		};
 
+	void adicionaProva();
+	class DataInvalida{
+					Data data;
+				public:
+					DataInvalida(){};
+					DataInvalida(Data d) {data = d;}
+					Data getData() const {return data;}
+				};
+	class HoraInvalida{
+						Hora hora;
+					public:
+						HoraInvalida(){};
+						HoraInvalida(Hora h) {hora = h;}
+						Hora getHora() const {return hora;}
+					};
 };
 
 void atribuiPontuacao(Prova pro, vector<float> pontos);

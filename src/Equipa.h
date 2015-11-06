@@ -11,6 +11,7 @@
 #include <string>
 #include <vector>
 #include "Prova.h"
+#include "Desporto.h"
 
 using namespace std;
 
@@ -19,11 +20,13 @@ class Atleta;
 class Equipa{
 	string nome;
 	vector<Atleta *> atletas;
+	vector<Desporto *> desportos;
 	int pontos;
 public:
 	Equipa(string n);
 	string getNome() const;
 	bool adicionaAtleta(Atleta * a);
+	bool adicionaDesporto(Atleta * a);
 
 	bool operator== (const Equipa & c) const;
 	friend ostream & operator<<(ostream & o, const Equipa & d);

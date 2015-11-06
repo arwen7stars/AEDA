@@ -24,8 +24,13 @@ public:
 	bool scanAnoBissexto(int ano);
 	int diasMes(int ano, int mes);
 	class DataInvalida{
+		int ano, dia, mes;
 	public:
-		DataInvalida() {}
+		DataInvalida(){}
+		DataInvalida(int a, int m, int d) {ano = a;	mes = m; dia = d;}
+		int getAno() const{return ano;}
+		int getMes() const{return mes;}
+		int getDia() const{return dia;}
 	};
 };
 
@@ -40,9 +45,12 @@ public:
 	int getHoras() const;
 	int getMinutos() const;
 	class HoraInvalida{
-		public:
 		int horas, minutos;
-		HoraInvalida(int h, int m);
+	public:
+		HoraInvalida(){}
+		HoraInvalida(int h, int m){horas = h; minutos = m;}
+		int getHoras() const{return horas;}
+		int getMinutos() const{return minutos;}
 	};
 };
 

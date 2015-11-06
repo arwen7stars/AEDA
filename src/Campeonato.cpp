@@ -1,6 +1,7 @@
 #include "Campeonato.h"
 #include <iostream>
 #include "Lists.h"
+#include "Modalidade.h"
 
 using namespace std;
 
@@ -22,16 +23,17 @@ vector<Desporto *> Campeonato::getDesportos() const
 	return desportos;
 }
 
-vector<Prova> Campeonato::getProvas() const
+vector<Prova*> Campeonato::getProvas() const
 {
 	return provas;
 }
 
-Campeonato::Campeonato(string n, Data i, Data f)
-{
+Campeonato::Campeonato(string n, Data i, Data f, Hora a, Hora fe){
 	nome = n;
 	inicio = i;
 	fim = f;
+	abertura = a;
+	fecho = fe;
 }
 
 bool Campeonato::adicionaProva(Prova p)
@@ -51,14 +53,14 @@ bool Campeonato::adicionaProva(Prova p)
 		{
 			if (provas.size() == 0)
 			{
-				provas.push_back(p);
+				provas.push_back(&p);
 				return true;
 			}
 			else
 			{
 				for (unsigned int i = 0; i < provas.size(); i++)
 				{
-					bool simultaneo = provas[i].Simultaneo(p);
+					bool simultaneo = provas[i]->Simultaneo(p);
 
 					if (simultaneo)
 						return false;
@@ -67,7 +69,7 @@ bool Campeonato::adicionaProva(Prova p)
 		}
 	}
 
-	provas.push_back(p);
+	provas.push_back(&p);
 	return true;
 }
 
@@ -193,9 +195,9 @@ bool Campeonato::criaEquipasCampeonato(string nome_ficheiro)
 
 	}
 
-		in.close();
+	in.close();
 
-		return true;
+	return true;
 }
 
 
@@ -213,12 +215,12 @@ void Campeonato::menuCriacao(){
 		int ch = fazMenu("Campeonato Polidesportivo", choices);
 		if (ch == -1)
 			exit = true;
-//		else if (ch == 0)
-//			menuModalidades();
+		//		else if (ch == 0)
+		//			menuModalidades();
 		else if (ch == 1)
 			menuEquipas();
-//		else
-//			menuProvas();
+		//		else
+		//			menuProvas();
 	}
 }
 
@@ -261,6 +263,87 @@ void Campeonato::adicionaEquipa(){
 	equipas.push_back(eq);
 }
 
+void Campeonato::adicionaProva(){
+	system("cls");
+	int ch, ch2;
+	while(true){
+		ch = fazMenu("Desportoss:", desportos);
+		if (ch == -1)
+			return;
+		else{
+			ch2 = fazMenu("Modalidades:", desportos[ch]->getModalidades());
+			if (ch2 != -1)
+				break;
+		}
+	}
+
+	Modalidade* mod = desportos[ch]->getModalidades()[ch2];
+
+	int d, m, a, h, min;
+
+	cout << "Ano: ";
+	cin >> a;
+	cin.ignore(10000,'\n');
+
+	cout << "Mes: ";
+	cin >> m;
+	cin.ignore(10000,'\n');
+
+	cout << "Dia: ";
+	cin >> d;
+	cin.ignore(10000,'\n');
+
+	Data data;
+	while (true){
+		try{
+			data = Data(a,m,d);
+			if (data < inicio || fim < data)
+				throw Data::DataInvalida(a,m,d);
+			break;
+		}
+		catch (Data::DataInvalida D){
+			cout << "A data " << D.getDia() << "/" << D.getMes() << "/" << D.getAno() << "nao e valida.";
+			_getch();
+		}
+	}
+
+
+
+	cout << "Horas de Inicio: ";
+	cin >> a;
+	cin.ignore(10000,'\n');
+
+	cout << "Minutos: ";
+	cin >> a;
+	cin.ignore(10000,'\n');
+
+	Hora hora;
+	while (true){
+		try{
+			hora = Hora(h,min);
+			if (hora < abertura || fecho < hora+mod->getDuracao())
+				throw Hora::HoraInvalida(h,min);
+			break;
+		}
+		catch (Hora::HoraInvalida H){
+			cout << "A hora " << H.getHoras() << ":" << H.getMinutos() << "nao e valida.";
+			_getch();
+		}
+	}
+
+
+	Prova p(mod, data, hora);
+	for (unsigned int i = 0; i < provas.size(); i++){
+		if (provas[i]->Simultaneo(p)){
+			cout << "Ja existem provas do mesmo tipo de desporto para o horario marcado";
+			_getch();
+		}
+
+	}
+	provas.push_back(&p);
+
+}
+
 void atribuiPontuacao(Prova pro, vector< float> pontos){
 	int primeiro = -1;
 	int segundo = -1;
@@ -287,50 +370,50 @@ void atribuiPontuacao(Prova pro, vector< float> pontos){
 		//	rankingProva.push_back(pro.getAtletas()[segundo]);
 		//	rankingProva.push_back(pro.getAtletas()[terceiro]);
 
-	pro.getAtletas()[primeiro]->adicionaPontuacao(3);
-}
+		pro.getAtletas()[primeiro]->adicionaPontuacao(3);
+	}
 	else {
 		cout << "+2";
 		int terceiro = -1;
 
-			int menor = pontos[0];
-			int segundoMenor = pontos[1];
-			int terceiroMenor = pontos[2];
+		int menor = pontos[0];
+		int segundoMenor = pontos[1];
+		int terceiroMenor = pontos[2];
 
-			int maior = pontos[0];
-			int segundoMaior = pontos[1];
-			int terceiroMaior = pontos[2];
+		int maior = pontos[0];
+		int segundoMaior = pontos[1];
+		int terceiroMaior = pontos[2];
 
-			if (pro.getModalidade().getDesporto()->isCrescente()) {
-				for (unsigned int i = 0; i < pontos.size(); i++)
-					if (pontos[i] > maior) {
-						terceiroMaior = segundoMaior;
-						segundoMaior = maior;
-						maior = pontos[i];
-						terceiro = segundo;
-						segundo = primeiro;
-						primeiro = i;
-					} else if (pontos[i] > segundoMaior) {
-						terceiroMaior = segundoMaior;
-						segundoMaior = pontos[i];
-						terceiro = segundo;
-						segundo = i;
-					}
-			} else
-				for (unsigned int i = 0; i < pontos.size(); i++)
-					if (pontos[i] < menor) {
-						terceiroMenor = segundoMenor;
-						segundoMenor = menor;
-						menor = pontos[i];
-						terceiro = segundo;
-						segundo = primeiro;
-						primeiro = i;
-					} else if (pontos[i] < segundoMenor) {
-						terceiroMenor = segundoMenor;
-						segundoMenor = pontos[i];
-						terceiro = segundo;
-						segundo = i;
-					}
+		if (pro.getModalidade().getDesporto()->isCrescente()) {
+			for (unsigned int i = 0; i < pontos.size(); i++)
+				if (pontos[i] > maior) {
+					terceiroMaior = segundoMaior;
+					segundoMaior = maior;
+					maior = pontos[i];
+					terceiro = segundo;
+					segundo = primeiro;
+					primeiro = i;
+				} else if (pontos[i] > segundoMaior) {
+					terceiroMaior = segundoMaior;
+					segundoMaior = pontos[i];
+					terceiro = segundo;
+					segundo = i;
+				}
+		} else
+			for (unsigned int i = 0; i < pontos.size(); i++)
+				if (pontos[i] < menor) {
+					terceiroMenor = segundoMenor;
+					segundoMenor = menor;
+					menor = pontos[i];
+					terceiro = segundo;
+					segundo = primeiro;
+					primeiro = i;
+				} else if (pontos[i] < segundoMenor) {
+					terceiroMenor = segundoMenor;
+					segundoMenor = pontos[i];
+					terceiro = segundo;
+					segundo = i;
+				}
 
 		// nao e preciso devolver nada
 		//	vector<Atleta> rankingProva;
@@ -339,9 +422,9 @@ void atribuiPontuacao(Prova pro, vector< float> pontos){
 		//	rankingProva.push_back(pro.getAtletas()[segundo]);
 		//	rankingProva.push_back(pro.getAtletas()[terceiro]);
 
-			pro.getAtletas()[primeiro]->adicionaPontuacao(3);
-			pro.getAtletas()[segundo]->adicionaPontuacao(2);
-			pro.getAtletas()[terceiro]->adicionaPontuacao(1);
+		pro.getAtletas()[primeiro]->adicionaPontuacao(3);
+		pro.getAtletas()[segundo]->adicionaPontuacao(2);
+		pro.getAtletas()[terceiro]->adicionaPontuacao(1);
 
 	}
 }
