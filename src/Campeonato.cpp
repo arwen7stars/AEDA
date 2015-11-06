@@ -90,7 +90,7 @@ bool Campeonato::adicionaProva(Prova p)
 	return true;
 }
 
-bool Campeonato::criaDesportosCampeonato(string nome_ficheiro)
+bool Campeonato::loadDesportos(string nome_ficheiro)
 {
 	//int elementos_equipa;
 	string desporto;
@@ -112,6 +112,7 @@ bool Campeonato::criaDesportosCampeonato(string nome_ficheiro)
 		//in >> barra;
 
 		in >> desporto;
+
 		in >> barra;
 		in >> tipo_de_pontuacao;
 		in >> barra;
@@ -131,13 +132,11 @@ bool Campeonato::criaDesportosCampeonato(string nome_ficheiro)
 
 	in.close();
 
-
-
 	return true;
 }
 
 
-bool Campeonato::criaEquipasCampeonato(string nome_ficheiro)
+bool Campeonato::loadEquipas(string nome_ficheiro)
 {
 	ifstream in;
 
@@ -189,7 +188,48 @@ bool Campeonato::criaEquipasCampeonato(string nome_ficheiro)
 	return true;
 }
 
+bool Campeonato::loadModalidades(string nome_ficheiro)
+{
+	ifstream in_mod;
 
+	if(!ficheiroExiste(nome_ficheiro))
+		return false;
+
+	in_mod.open(nome_ficheiro.c_str());
+
+	while (!in_mod.eof())
+	{
+		char barra;
+		string desporto;
+		string modalidade;
+		int horas;
+		int minutos;
+		int indice = -1;
+
+		in_mod >> desporto;
+		in_mod >> barra;
+
+		for (unsigned int i = 0; i < desportos.size(); i++)
+			if (desportos[i]->getNome() == desporto)
+				indice = i;
+
+		if (indice == -1)
+			return false;
+
+		in_mod >> modalidade;
+		in_mod >> barra;
+
+		in_mod >> horas;
+		in_mod >> minutos;
+
+		if (!in_mod.eof())
+		{
+			Modalidade * m = new Modalidade(modalidade, horas, minutos, desportos[indice]);
+			desportos[indice]->adicionaModalidade(m);
+		}
+	}
+	return true;
+}
 
 void Campeonato::menuCriacao(){
 	bool exit = false;

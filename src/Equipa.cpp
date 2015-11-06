@@ -222,6 +222,11 @@ vector<Prova *> Atleta::getProvas() const{
 	return provas;
 }
 
+char Atleta::getGenero() const
+{
+	return genero;
+}
+
 void Atleta::adicionaPontuacao(int p){
 	pontos += p;
 }
@@ -265,7 +270,6 @@ ostream & operator<<(ostream & o, const Atleta & d){
 	o << d.getNome();
 	return o;
 }
-
 
 bool Atleta::operator <(const Atleta & a) const{
 	if (pontos > a.getPontos())

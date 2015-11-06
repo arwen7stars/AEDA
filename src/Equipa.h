@@ -56,11 +56,13 @@ class Atleta{
 	int pontos;
 public:
 	Atleta(string n, Equipa* e, char g);
+
 	string getNome() const;
 	Equipa* getEquipa() const;
 	int getPontos() const;
 	void setpontos(int p); //no fim nao precisamos disto, e para testar
 	vector<Prova *> getProvas() const;
+	char getGenero() const;
 	void adicionaProva(Prova * p);
 	void adicionaPontuacao(int p);
 
@@ -73,4 +75,3 @@ public:
 
 
 #endif /* SRC_EQUIPA_H_ */
-
