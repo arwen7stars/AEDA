@@ -29,11 +29,9 @@ Campeonato loadCampeonato(){
 	int fim_mes;
 	int fim_ano;
 
-	string abertura;
 	int h_abertura;
 	int m_abertura;
 
-	string fecho;
 	int h_fecho;
 	int m_fecho;
 
@@ -52,15 +50,11 @@ Campeonato loadCampeonato(){
 	in >> fim_ano;
 
 	in >> info;
-	in >> abertura;
+	in >> h_abertura;
+	in >> m_abertura;
 	in >> info;
-	in >> fecho;
-
-	h_abertura = string_to_int(abertura.substr(0,2));
-	m_abertura = string_to_int(abertura.substr(3,2));
-
-	h_fecho = string_to_int(fecho.substr(0,2));
-	m_fecho = string_to_int(fecho.substr(3,2));
+	in >> h_fecho;
+	in >> m_fecho;
 
 	Data d1 (ini_ano,ini_mes,ini_dia);
 	Data d2 (fim_ano,fim_mes,fim_dia);
@@ -73,7 +67,7 @@ Campeonato loadCampeonato(){
 
 bool loadModalidades(Campeonato c)
 {
-	string modalidades = "C:\\Users\\Cláudia Marinho\\Desktop\\Projeto-Aeda\\src\\Modalidades.txt";
+	string modalidades = "Modalidades.txt";
 	ifstream in_mod;
 	vector<Desporto*> d = c.getDesportos();
 
@@ -136,7 +130,7 @@ bool load()
 	Campeonato c = loadCampeonato();
 
 	bool suc_des;
-	string desportos = "C:\\Users\\Cláudia Marinho\\Desktop\\Projeto-Aeda\\src\\Desportos.txt";
+	string desportos = "Desportos.txt";
 	suc_des = c.criaDesportosCampeonato(desportos);
 
 	if(suc_des)
@@ -144,7 +138,7 @@ bool load()
 	else return false;
 
 	bool suc_eq;
-	string equipas = "C:\\Users\\Cláudia Marinho\\Desktop\\Projeto-Aeda\\src\\Atletas.txt";
+	string equipas = "Atletas.txt";
 	suc_eq = c.criaEquipasCampeonato(equipas);
 
 	if(suc_eq)
