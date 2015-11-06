@@ -5,19 +5,6 @@
 
 using namespace std;
 
-bool ficheiroExiste(const string &ficheiro)
-{
-	bool existe = false;
-	ifstream ficheiro_tab;
-	ficheiro_tab.open(ficheiro.c_str());		// abre o ficheiro...
-	if (ficheiro_tab.is_open())			// ... e verifica se a abertura do ficheiro foi bem-sucedida
-	{
-		existe = true;
-		ficheiro_tab.close();			// volta a fechar o ficheiro
-	}
-	return existe;
-}
-
 vector<Desporto *> Campeonato::getDesportos() const
 {
 	return desportos;
