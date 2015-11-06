@@ -76,6 +76,10 @@ public:
 		HoraInvalida(Hora h) {hora = h;}
 		Hora getHora() const {return hora;}
 	};
+
+	void adicionaDesporto(Desporto &d);
+	void listaDesportos() const;
+	void listaProvas() const;
 };
 
 void atribuiPontuacao(Prova pro, vector<float> pontos);

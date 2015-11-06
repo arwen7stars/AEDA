@@ -2,6 +2,7 @@
 #include <iostream>
 #include "Lists.h"
 #include "Modalidade.h"
+#include "insertionSort.h"
 
 using namespace std;
 
@@ -497,4 +498,38 @@ void atribuiPontuacao(Prova pro, vector< float> pontos){
 		pro.getAtletas()[terceiro]->adicionaPontuacao(1);
 
 	}
+}
+
+
+void Campeonato::adicionaDesporto(Desporto &d){
+	desportos.push_back(&d);
+}
+
+void Campeonato::listaDesportos() const{
+	vector<string> ndes;
+
+	cout << "Desportos no campeonato: " << endl;
+
+	for (unsigned int i = 0; i < desportos.size(); i++)
+		ndes.push_back(desportos[i]->getNome());
+
+	insertionSort<string>(ndes);
+
+	for (unsigned int j = 0; j < desportos.size(); j++)
+			cout << desportos[j]->getNome() << endl;
+}
+
+void Campeonato::listaProvas() const{
+	vector<Prova> vprova;
+
+	cout << "Provas no campeonato: " << endl;
+
+	for (unsigned int j = 0; j < provas.size();j++)
+		vprova.push_back(*provas[j]);
+
+	insertionSort<Prova>(vprova);
+
+	for (unsigned int i = 0; i < provas.size(); i++)
+		cout << provas[i]->getData() << ": Prova de " << (*provas[i]->getModalidade())
+		<< " as " << provas[i]->getInicio() << endl;
 }
