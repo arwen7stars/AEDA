@@ -39,8 +39,6 @@ public:
 	bool Simultaneo(Prova p);
 
 	friend ostream & operator<<(ostream & o, const Prova & p);
-
-	bool operator < (const Prova &p2) const;
 };
 
 class ProvaTerminada: public Prova{ //Quando uma prova ja terminou, transformamola num ProvaTerminada
