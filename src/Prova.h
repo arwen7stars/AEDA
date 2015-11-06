@@ -27,16 +27,17 @@ protected:
 	Data data;
 	Hora inicio, fim;
 	vector<Atleta *> atletas;
-	char genero;
+	bool genero;
 public:
 	Prova(){};
-	Prova(Modalidade* m, Data d, Hora i, char genero);
+	Prova(Modalidade* m, Data d, Hora i, bool g);
 
 	Hora getInicio() const;
 	Hora getFim() const;
 	Data getData() const;
 	Modalidade* getModalidade() const;
 	vector<Atleta*> getAtletas() const;
+	bool getGenero() const;
 
 	void adicionaAtleta(Atleta * a);
 	bool Simultaneo(Prova p);

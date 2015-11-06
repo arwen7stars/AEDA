@@ -174,14 +174,14 @@ bool Campeonato::criaEquipasCampeonato(string nome_ficheiro)
 
 		if (!in.eof())
 		{	if (indiceEquipa == -1)
-			{
-				equipas.push_back(eq);
-				(*equipas[equipas.size()-1]).adicionaAtleta(at);
-			}
-			else
-			{
-				equipas[indiceEquipa]->adicionaAtleta(at);
-			}
+		{
+			equipas.push_back(eq);
+			(*equipas[equipas.size()-1]).adicionaAtleta(at);
+		}
+		else
+		{
+			equipas[indiceEquipa]->adicionaAtleta(at);
+		}
 		}
 	}
 
@@ -335,10 +335,12 @@ void Campeonato::adicionaProva(){
 	system("cls");
 	int ch, ch2;
 	while(true){
+		system("cls");
 		ch = fazMenu("Desportos:", desportos);
 		if (ch == -1)
 			return;
 		else{
+			system("cls");
 			ch2 = fazMenu("Modalidades:", desportos[ch]->getModalidades());
 			if (ch2 != -1)
 				break;
@@ -348,7 +350,6 @@ void Campeonato::adicionaProva(){
 	Modalidade* mod = desportos[ch]->getModalidades()[ch2];
 
 	int d, m, a, h, min;
-	char g;
 	Data data;
 	Hora hora;
 	//Data---------------------
@@ -433,14 +434,13 @@ void Campeonato::adicionaProva(){
 		}
 	}
 
-	cout << "Genero (M ou F): ";
-	while (!(cin >> g) || (g != 'M' && g!= 'F'))
-	{
-		cin.clear();
-		cin.ignore(1000, '\n');
-		cout << "Genero invalido\n";
-		cout << "Genero (M ou F): ";
-	}
+	int g;
+	vector<string> choices;
+	choices.push_back("Masculino");
+	choices.push_back("Feminino");
+	g = fazMenu("Genero?", choices);
+	if (g == -1)
+		return;
 
 	Prova p(mod, data, hora,g);
 	for (unsigned int i = 0; i < provas.size(); i++){
@@ -540,6 +540,10 @@ void atribuiPontuacao(Prova pro, vector< float> pontos){
 }
 
 
+void Campeonato::adicionaEquipa(Equipa &eq){
+	equipas.push_back(&eq);
+}
+
 void Campeonato::adicionaDesporto(Desporto &d){
 	desportos.push_back(&d);
 }
@@ -570,34 +574,30 @@ void Campeonato::listaProvas() const{
 
 	for (unsigned int i = 0; i < provas.size(); i++)
 		cout << provas[i]->getData() << ": Prova de " << (*provas[i]->getModalidade()->getDesporto())
-				<< "("<<(*provas[i]->getModalidade())<<")"
-				<< " as " << provas[i]->getInicio() << endl;
+		<< "("<<(*provas[i]->getModalidade())<<")"
+		<< " as " << provas[i]->getInicio() << endl;
 }
 
-
-void Campeonato::adicionaEquipa(Equipa &eq){
-	equipas.push_back(&eq);
-}
 
 void Campeonato::listaAtletas() const{
-		vector<string> vat;
+	vector<string> vat;
 
-		cout << "Atletas no campeonato: " << endl;
+	cout << "Atletas no campeonato: " << endl;
 
-		for (unsigned int j = 0; j < equipas.size();j++)
-			for (unsigned int u = 0; u < equipas[j]->getAtletas().size(); u++)
+	for (unsigned int j = 0; j < equipas.size();j++)
+		for (unsigned int u = 0; u < equipas[j]->getAtletas().size(); u++)
 			vat.push_back(equipas[j]->getAtletas()[u]->getNome());
 
-		insertionSort<string>(vat);
+	insertionSort<string>(vat);
 
-		for (unsigned int i = 0; i < vat.size(); i++)
-			cout << vat[i] << endl;
+	for (unsigned int i = 0; i < vat.size(); i++)
+		cout << vat[i] << endl;
 }
 
 void Campeonato::listaAtletasEquipa() const{
-		//vector<string> vat;
+	//vector<string> vat;
 
-		cout << "Atletas no campeonato: " << endl;
+	cout << "Atletas no campeonato: " << endl;
 
 	for (unsigned int j = 0; j < equipas.size(); j++) {
 		vector<string> vat;
@@ -620,7 +620,7 @@ void Campeonato::listaAtletasColocacao() const {
 
 	for (unsigned int j = 0; j < equipas.size(); j++)
 		for (unsigned int u = 0; u  < equipas[j]->getAtletas().size(); u++)
-		vat.push_back((*equipas[j]->getAtletas()[u]));
+			vat.push_back((*equipas[j]->getAtletas()[u]));
 
 	insertionSort<Atleta>(vat);
 

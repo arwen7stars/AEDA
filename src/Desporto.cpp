@@ -170,8 +170,8 @@ void Desporto::menu(){
 			system("cls");
 			int ch2;
 			vector<string> choices2;
-			choices.push_back("Sim");
-			choices.push_back("Nao");
+			choices2.push_back("Sim");
+			choices2.push_back("Nao");
 			ch = fazMenu("A pontuacao e crescente? (Valores maiores sao melhores?)", choices2);
 			if (ch == -1)
 				continue;

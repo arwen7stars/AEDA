@@ -454,7 +454,7 @@ int main(){
 //	cout << c1.getAbertura() << endl;
 //	cout << c1.getFecho() << endl;
 
-	//menu();
+	menu();
 
 
 //
@@ -475,6 +475,7 @@ int main(){
 //a3.setpontos(4);
 //a4.setpontos(4);
 //	c.listaAtletasColocacao();
+
 	cout << "Press any key to continue...";
 	_getch();
 	return 0;

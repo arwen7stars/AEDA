@@ -59,49 +59,27 @@ bool Equipa::adicionaAtleta(Atleta * a)
 void Equipa::adicionaAtleta(){
 	system("cls");
 	string n;
-	char g;
 	cout << "Nome: ";
 	getline(cin, n);
+
+
 	cout << "Duracao(minutos): ";
 
-	while (!(cin >> g) || (g != 'M' && g!= 'F'))
-		{
-			cin.clear();
-			cin.ignore(1000, '\n');
-			cout << "Genero invalido\n";
-			cout << "Genero (M ou F): ";
-		}
+	int g;
+	vector<string> choices;
+	choices.push_back("Masculino");
+	choices.push_back("Feminino");
+	g = fazMenu("Genero?", choices);
+	if (g == -1)
+		return;
 
 	Atleta * A = new Atleta(n,this,g);
+
 	if (search(atletas , *A) != -1)
 		throw AtletaExiste(n);
 	atletas.push_back(A);
 }
 
-
-void Equipa::menuAtletas(){
-	bool exit = false;
-	while (!exit){
-		system("cls");
-		cout << "Equipa: " << nome << endl << endl;
-		int ch = fazMenu("Atletas:", atletas, "Novo Atleta");
-		if (ch == -1)
-			exit = true;
-		else if (ch < atletas.size())
-			atletas[ch]->menu();
-		else{
-			try{
-				adicionaAtleta();
-			}
-			catch (AtletaExiste a){
-				cout << "Atleta \"" << a.getNome() << "\" ja existe.";
-				_getch();
-			}
-
-		}
-
-	}
-}
 
 void Equipa::adicionarDesporto(vector<Desporto*> DespList){
 	bool exit = false;
@@ -140,6 +118,30 @@ void Equipa::retirarDesporto(){
 			desportos.erase(desportos.begin()+ch);
 			exit = true;
 		}
+	}
+}
+
+void Equipa::menuAtletas(){
+	bool exit = false;
+	while (!exit){
+		system("cls");
+		cout << "Equipa: " << nome << endl << endl;
+		int ch = fazMenu("Atletas:", atletas, "Novo Atleta");
+		if (ch == -1)
+			exit = true;
+		else if (ch < atletas.size())
+			atletas[ch]->menu();
+		else{
+			try{
+				adicionaAtleta();
+			}
+			catch (AtletaExiste a){
+				cout << "Atleta \"" << a.getNome() << "\" ja existe.";
+				_getch();
+			}
+
+		}
+
 	}
 }
 
@@ -203,7 +205,7 @@ void Equipa::menu(vector<Desporto*> DespList){
 ------------------------------------------------------------------------------
  */
 
-Atleta::Atleta(string n, Equipa* e, char g){
+Atleta::Atleta(string n, Equipa* e, bool g){
 	nome = n;
 	equipa = e;
 	pontos = 0;
@@ -220,6 +222,10 @@ Equipa* Atleta::getEquipa() const{
 
 vector<Prova *> Atleta::getProvas() const{
 	return provas;
+}
+
+bool  Atleta::getGenero() const{
+	return genero;
 }
 
 void Atleta::adicionaPontuacao(int p){
@@ -243,6 +249,11 @@ void Atleta::menu(){
 
 		cout << "Nome: " << nome << endl;
 		cout << "Equipa: " << equipa->getNome() << endl;
+		if (genero)
+			cout << "Genero: Feminino\n";
+		else
+			cout << "Genero: Masculino\n";
+
 		int ch = fazMenu("Opcoes", choices);
 		if (ch == -1)
 			exit = true;

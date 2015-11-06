@@ -52,15 +52,19 @@ class Atleta{
 	string nome;
 	Equipa* equipa;
 	vector<Prova *> provas;
-	char genero;
+	bool genero;
 	int pontos;
 public:
-	Atleta(string n, Equipa* e, char g);
+	Atleta(string n, Equipa* e, bool g);
+
 	string getNome() const;
 	Equipa* getEquipa() const;
 	int getPontos() const;
-	void setpontos(int p); //no fim nao precisamos disto, e para testar
 	vector<Prova *> getProvas() const;
+	bool getGenero() const;
+
+	void setpontos(int p); //no fim nao precisamos disto, e para testar
+
 	void adicionaProva(Prova * p);
 	void adicionaPontuacao(int p);
 

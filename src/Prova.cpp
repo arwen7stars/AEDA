@@ -1,7 +1,7 @@
 #include "Prova.h"
 #include "Lists.h"
 
-Prova::Prova(Modalidade* m, Data d, Hora i, char g)
+Prova::Prova(Modalidade* m, Data d, Hora i, bool g)
 {
 	modalidade = m;
 	data = d;
@@ -31,6 +31,10 @@ Modalidade* Prova::getModalidade() const{
 
 vector<Atleta*> Prova::getAtletas() const{
 	return atletas;
+}
+
+bool  Prova::getGenero() const{
+	return genero;
 }
 
 bool Prova::Simultaneo(Prova p)
