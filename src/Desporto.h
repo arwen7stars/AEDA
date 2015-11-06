@@ -35,14 +35,14 @@ public:
 	vector<Modalidade *> getModalidades() const;
 	bool isCrescente() const;
 
-	void adicionaModalidade();
-	void adicionaModalidade(Modalidade *m);
-
 	bool operator== (const Desporto & c) const;
 	friend ostream & operator<<(ostream & o, const Desporto & d);
 
+	void menu();
 	void menuModalidades();
 
+	void adicionaModalidade();
+	void adicionaModalidade(Modalidade *m);
 	class ModalidadeExiste{
 		string nome;
 	public:

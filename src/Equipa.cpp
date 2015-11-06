@@ -56,8 +56,7 @@ void Equipa::menu(){
 		system("cls");
 		vector<string> choices;
 		choices.push_back("Mudar Nome");
-		choices.push_back("Adicionar Atleta");
-		choices.push_back("Deletar Atleta");
+		choices.push_back("Alterar Atletas");
 		choices.push_back("Inscrever em Desporto");
 		choices.push_back("Desinscrever em Desporto");
 

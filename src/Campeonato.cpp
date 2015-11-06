@@ -239,8 +239,7 @@ void Campeonato::menuDesportos(){
 		if (ch == -1)
 			exit = true;
 		else if (ch < desportos.size())
-			//desportos[ch]->menu();
-			desportos[ch]->getNome();
+			desportos[ch]->menu();
 		else{
 			try{
 				adicionaDesporto();

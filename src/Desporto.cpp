@@ -101,16 +101,6 @@ void Desporto::adicionaModalidade(){
 	getline(cin, n);
 
 	int h, m;
-	//	do{
-	//		cin.clear();
-	//		cout << "Duracao(minutos): ";
-	//		cin >> m;
-	//		cin.ignore(10000,'\n');
-	//		if (cin.fail()){
-	//			cout << "Input invalido";
-	//		}
-	//	} while (cin.fail());
-
 	cout << "Duracao(minutos): ";
 	while (!(cin >> m))
 	{
@@ -146,17 +136,29 @@ ostream & operator<<(ostream & o, const Desporto & d){
 	return o;
 }
 
-//ModalidadeExiste::ModalidadeExiste(){}
-//
-//ModalidadeExiste::ModalidadeExiste(string n){
-//	nome = n;
-//}
-//
-//string ModalidadeExiste::getNome() const{
-//	return nome;
-//}
-//
-//
+
+void Desporto::menu(){
+	bool exit = false;
+	while (!exit){
+		system("cls");
+		vector<string> choices;
+		choices.push_back("Mudar Nome");
+		choices.push_back("Alterar Modalidades");
+
+		int ch = fazMenu(nome, choices);
+		if (ch == -1)
+			exit = true;
+		else if (ch == 0){
+			system("cls");
+			cout << "Novo nome: ";
+			getline(cin, nome);
+		}
+		else{
+			menuModalidades();
+		}
+	}
+}
+
 void Desporto::menuModalidades(){
 	bool exit = false;
 	while (!exit){
