@@ -19,7 +19,7 @@ using namespace std;
 ------------------------------------------------------------------------------
 								 Desportos
 ------------------------------------------------------------------------------
-*/
+ */
 
 //Desporto::Desporto(){}
 //
@@ -93,18 +93,33 @@ bool Desporto::isCrescente() const{
 }
 
 void Desporto::adicionaModalidade(){
-	string n;
-	int h, m;
-
 	system("cls");
 
+	cout << "Nova Modalidade de " << nome << "\n";
+	string n;
 	cout << "Nome: ";
 	getline(cin, n);
 
+	int h, m;
+	//	do{
+	//		cin.clear();
+	//		cout << "Duracao(minutos): ";
+	//		cin >> m;
+	//		cin.ignore(10000,'\n');
+	//		if (cin.fail()){
+	//			cout << "Input invalido";
+	//		}
+	//	} while (cin.fail());
 
 	cout << "Duracao(minutos): ";
-	cin >> m;
-	cin.ignore(10000,'\n');
+	while (!(cin >> m))
+	{
+		cin.clear();
+		cin.ignore(1000, '\n');
+		cout << "Input invalido!\n";
+		cout << "Duracao(minutos): ";
+	}
+	cin.ignore(1000, '\n');
 
 	h = m / 60;
 	m = m % 60;

@@ -24,8 +24,8 @@ Data Prova::getData() const
 	return *data;
 }
 
-Modalidade Prova::getModalidade() const{
-	return *modalidade;
+Modalidade* Prova::getModalidade() const{
+	return modalidade;
 }
 
 vector<Atleta*> Prova::getAtletas() const{
@@ -59,6 +59,10 @@ void Prova::adicionaAtleta(Atleta * a){
 	atletas.push_back(a);
 }
 
+ostream & operator<<(ostream & o, const Prova & p){
+	o << *p.data << " " << p.inicio << "-" << p.fim << p.modalidade->getNome();
+	return o;
+}
 
 /*
 ------------------------------------------------------------------------------

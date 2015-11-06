@@ -32,39 +32,49 @@ public:
 	bool adicionaProva(Prova p);
 	bool criaDesportosCampeonato(string nome_ficheiro);
 	bool criaEquipasCampeonato(string nome_ficheiro);
+
 	vector<Desporto *> getDesportos() const;
 	vector<Prova* > getProvas() const;
 	bool isCriado() const {return criado;}
 
 	void menuCriacao();
-	void menuModalidades();
+	void menuDesportos();
 	void menuEquipas();
 	void menuProvas();
 
+	void adicionaDesporto();
+	class DesportoExiste{
+		string nome;
+	public:
+		DesportoExiste(){};
+		DesportoExiste(string n) {nome = n;}
+		string getNome() const {return nome;}
+	};
+
 	void adicionaEquipa();
 	class EquipaExiste{
-			string nome;
-		public:
-			EquipaExiste(){};
-			EquipaExiste(string n) {nome = n;}
-			string getNome() const {return nome;}
-		};
+		string nome;
+	public:
+		EquipaExiste(){};
+		EquipaExiste(string n) {nome = n;}
+		string getNome() const {return nome;}
+	};
 
 	void adicionaProva();
 	class DataInvalida{
-					Data data;
-				public:
-					DataInvalida(){};
-					DataInvalida(Data d) {data = d;}
-					Data getData() const {return data;}
-				};
+		Data data;
+	public:
+		DataInvalida(){};
+		DataInvalida(Data d) {data = d;}
+		Data getData() const {return data;}
+	};
 	class HoraInvalida{
-						Hora hora;
-					public:
-						HoraInvalida(){};
-						HoraInvalida(Hora h) {hora = h;}
-						Hora getHora() const {return hora;}
-					};
+		Hora hora;
+	public:
+		HoraInvalida(){};
+		HoraInvalida(Hora h) {hora = h;}
+		Hora getHora() const {return hora;}
+	};
 };
 
 void atribuiPontuacao(Prova pro, vector<float> pontos);

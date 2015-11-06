@@ -19,10 +19,18 @@ class Data{
 public:
 	Data();
 	Data(int a, int m, int d);
+
+	friend ostream & operator<<(ostream & o, const Data & d);
 	bool operator== (const Data & data) const;
 	bool operator< (const Data & data) const;
+
 	bool scanAnoBissexto(int ano);
 	int diasMes(int ano, int mes);
+
+	int getAno() const;
+	int getMes() const;
+	int getDia() const;
+
 	class DataInvalida{
 		int ano, dia, mes;
 	public:
@@ -39,11 +47,15 @@ class Hora{
 public:
 	Hora();
 	Hora(int h, int m);
+
+	friend ostream & operator<<(ostream & o, const Hora & h);
 	Hora operator+ (const Hora & h) const; //Nao pode passar das 24h
 	bool operator< (const Hora & h) const;
 	bool operator> (const Hora & h) const;
+
 	int getHoras() const;
 	int getMinutos() const;
+
 	class HoraInvalida{
 		int horas, minutos;
 	public:

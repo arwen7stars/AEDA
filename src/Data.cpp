@@ -12,7 +12,7 @@ using namespace std;
 ------------------------------------------------------------------------------
 								Class Data
 ------------------------------------------------------------------------------
-*/
+ */
 
 Data::Data(){}
 
@@ -56,6 +56,13 @@ int Data::diasMes(int ano, int mes)
 	return dias;
 }
 
+int Data::getAno() const{return ano;}
+
+int Data::getMes() const{return mes;}
+
+int Data::getDia() const{return dia;}
+
+
 bool Data::operator== (const Data & data) const{
 	if (data.ano == ano && data.mes == mes && data.dia == dia)
 		return true;
@@ -79,11 +86,16 @@ bool Data::operator< (const Data & data) const{
 	return false;
 }
 
+ostream & operator<<(ostream & o, const Data & d){
+	o << d.getAno() << "/" << d.getMes() << "/" << d.getDia();
+	return o;
+}
+
 /*
 ------------------------------------------------------------------------------
 								Class Hora
 ------------------------------------------------------------------------------
-*/
+ */
 
 Hora::Hora(){}
 
@@ -128,6 +140,12 @@ bool Hora::operator> (const Hora & h) const{
 	else
 		return false;
 }
+
+ostream & operator<<(ostream & o, const Hora & h){
+	o << h.getHoras() << ":" << h.getMinutos();
+	return o;
+}
+
 
 int Hora::getHoras() const
 {

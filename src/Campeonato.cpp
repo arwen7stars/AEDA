@@ -45,7 +45,7 @@ bool Campeonato::adicionaProva(Prova p)
 	{
 		Hora abertura(8,0);
 		Hora fecho(20,0);
-		Hora fimProva = p.getInicio() + p.getModalidade().getDuracao();
+		Hora fimProva = p.getInicio() + p.getModalidade()->getDuracao();
 
 		if (p.getInicio() < abertura || fecho < fimProva)
 			return false;
@@ -207,20 +207,51 @@ void Campeonato::menuCriacao(){
 	while (!exit){
 		system("cls");
 		vector<string> choices;
-		choices.push_back("Modalidades");
+		choices.push_back("Desportos");
 		if(desportos.size() > 0){
 			choices.push_back("Equipas");
 			choices.push_back("Provas");
+			choices.push_back("Salvar");
+			choices.push_back("Terminar Planeamento");
 		}
-		int ch = fazMenu("Campeonato Polidesportivo", choices);
+
+		int ch = fazMenu("Campeonato Polidesportivo - Planeamento", choices);
 		if (ch == -1)
 			exit = true;
-		//		else if (ch == 0)
-		//			menuModalidades();
+		else if (ch == 0)
+			menuDesportos();
 		else if (ch == 1)
 			menuEquipas();
-		//		else
-		//			menuProvas();
+		else if (ch == 2)
+			menuProvas();
+//		else if (ch == 3)
+//			Salvar();
+//		else
+//			TerminarPlaneamento();
+	}
+}
+
+void Campeonato::menuDesportos(){
+	bool exit = false;
+	while (!exit){
+		system("cls");
+		int ch = fazMenu("Desportos:", desportos, "Novo Desporto");
+		if (ch == -1)
+			exit = true;
+		else if (ch < desportos.size())
+			//desportos[ch]->menu();
+			desportos[ch]->getNome();
+		else{
+			try{
+				adicionaDesporto();
+			}
+			catch (DesportoExiste d){
+				cout << "Desporto \"" << d.getNome() << "\" ja existe.";
+				_getch();
+			}
+
+		}
+
 	}
 }
 
@@ -232,8 +263,7 @@ void Campeonato::menuEquipas(){
 		if (ch == -1)
 			exit = true;
 		else if (ch < equipas.size())
-			//equipas[ch]->menu();
-			equipas[ch]->getNome();
+			equipas[ch]->menu();
 		else{
 			try{
 				adicionaEquipa();
@@ -242,17 +272,69 @@ void Campeonato::menuEquipas(){
 				cout << "Equipa \"" << eq.getNome() << "\" ja existe.";
 				_getch();
 			}
-
 		}
-
 	}
 }
 
-void Campeonato::adicionaEquipa(){
-	string n;
+void Campeonato::menuProvas(){
+	bool exit = false;
+	while (!exit){
+		system("cls");
+		int ch = fazMenu("Provas:", provas, "Nova Prova");
+		if (ch == -1)
+			exit = true;
+		else if (ch < provas.size())
+			//equipas[ch]->menu();
+			provas[ch]->getInicio();
+		else
+			adicionaProva();
+	}
+}
 
+void Campeonato::adicionaDesporto(){
 	system("cls");
 
+	cout << "Novo Desporto\n";
+
+	string n;
+	cout << "Nome: ";
+	getline(cin, n);
+//	cin.ignore(10000,'\n');
+
+	string p;
+	cout << "Tipo de pontuacao: ";
+	getline(cin, p);
+//	cin.ignore(10000,'\n');
+
+	int ch;
+	vector<string> choices;
+	choices.push_back("Yes");
+	choices.push_back("No");
+	ch = fazMenu("A pontuacao e crescente? (Valores maiores sao melhores?)", choices);
+	if (ch == -1)
+		return;
+
+	Desporto *d = new Desporto(n, p, ch, 1);
+	if (search(desportos , *d) != -1)
+		throw DesportoExiste(n);
+	while(true){
+		try{
+			d->adicionaModalidade();
+			break;
+		}
+		catch (Desporto::ModalidadeExiste m){
+			cout << "A modalidade " << m.getNome() << " ja existe.\n";
+		}
+	}
+	desportos.push_back(d);
+}
+
+void Campeonato::adicionaEquipa(){
+	system("cls");
+
+	cout << "Nova Equipa\n";
+
+	string n;
 	cout << "Nome: ";
 	getline(cin, n);
 	cin.ignore(10000,'\n');
@@ -267,7 +349,7 @@ void Campeonato::adicionaProva(){
 	system("cls");
 	int ch, ch2;
 	while(true){
-		ch = fazMenu("Desportoss:", desportos);
+		ch = fazMenu("Desportos:", desportos);
 		if (ch == -1)
 			return;
 		else{
@@ -284,6 +366,7 @@ void Campeonato::adicionaProva(){
 	cout << "Ano: ";
 	cin >> a;
 	cin.ignore(10000,'\n');
+
 
 	cout << "Mes: ";
 	cin >> m;
@@ -302,7 +385,8 @@ void Campeonato::adicionaProva(){
 			break;
 		}
 		catch (Data::DataInvalida D){
-			cout << "A data " << D.getDia() << "/" << D.getMes() << "/" << D.getAno() << "nao e valida.";
+			cout << "A data " << D.getDia() << "/" << D.getMes() << "/" << D.getAno() << " nao e valida.\n";
+			cout << "Datas validas sao desde " << inicio << " ate " << fim << ".\n";
 			_getch();
 		}
 	}
@@ -326,7 +410,8 @@ void Campeonato::adicionaProva(){
 			break;
 		}
 		catch (Hora::HoraInvalida H){
-			cout << "A hora " << H.getHoras() << ":" << H.getMinutos() << "nao e valida.";
+			cout << "A hora " << H.getHoras() << ":" << H.getMinutos() << "nao e valida.\n";
+			cout << "Datas validas sao desde " << abertura << " ate " << fecho << ".\n";
 			_getch();
 		}
 	}
@@ -335,7 +420,7 @@ void Campeonato::adicionaProva(){
 	Prova p(mod, data, hora);
 	for (unsigned int i = 0; i < provas.size(); i++){
 		if (provas[i]->Simultaneo(p)){
-			cout << "Ja existem provas do mesmo tipo de desporto para o horario marcado";
+			cout << "Ja existem provas do mesmo tipo de desporto para o horario marcado.\n";
 			_getch();
 		}
 
@@ -350,7 +435,7 @@ void atribuiPontuacao(Prova pro, vector< float> pontos){
 
 	if (pontos.size() < 3) {
 		cout <<"-2";
-		if (pro.getModalidade().getDesporto()->isCrescente())
+		if (pro.getModalidade()->getDesporto()->isCrescente())
 			if (pontos[0] > pontos[1])
 				primeiro = 0;
 			else
@@ -384,7 +469,7 @@ void atribuiPontuacao(Prova pro, vector< float> pontos){
 		int segundoMaior = pontos[1];
 		int terceiroMaior = pontos[2];
 
-		if (pro.getModalidade().getDesporto()->isCrescente()) {
+		if (pro.getModalidade()->getDesporto()->isCrescente()) {
 			for (unsigned int i = 0; i < pontos.size(); i++)
 				if (pontos[i] > maior) {
 					terceiroMaior = segundoMaior;

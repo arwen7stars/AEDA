@@ -6,7 +6,7 @@
  */
 
 #include "Equipa.h"
-
+#include "Lists.h"
 /*
 ------------------------------------------------------------------------------
 								Class Equipa
@@ -50,28 +50,31 @@ bool Equipa::adicionaAtleta(Atleta * a)
 }
 
 
-//void Equipa::menu(){
-//	bool exit = false;
-//	while (!exit){
-//		system("cls");
-//		vector<string> choices;
-//		choices.push_back("Mudar Nome");
-//		choices.push_back("Adicionar Atleta");
-//		choices.push_back("Deletar Atleta");
-//		choices.push_back("Inscrever em Desporto");
-//		choices.push_back("Desinscrever em Desporto");
-//
-//		int ch = fazMenu(name, choices);
-//		if (ch == -1)
-//			exit = true;
-////		else if (ch == 0)
-////			menuModalidades();
+void Equipa::menu(){
+	bool exit = false;
+	while (!exit){
+		system("cls");
+		vector<string> choices;
+		choices.push_back("Mudar Nome");
+		choices.push_back("Adicionar Atleta");
+		choices.push_back("Deletar Atleta");
+		choices.push_back("Inscrever em Desporto");
+		choices.push_back("Desinscrever em Desporto");
+
+		int ch = fazMenu(nome, choices);
+		if (ch == -1)
+			exit = true;
+		else if (ch == 0){
+			system("cls");
+			cout << "Novo nome: ";
+			getline(cin, nome);
+		}
 //		else if (ch == 1)
 //			menuEquipas();
-////		else
-////			menuProvas();
-//	}
-//}
+//		else
+//			menuProvas();
+	}
+}
 
 //void Equipa::menuEquipas(){
 //	bool exit = false;

@@ -32,11 +32,13 @@ public:
 	Hora getInicio() const;
 	Hora getFim() const;
 	Data getData() const;
-	Modalidade getModalidade() const;
+	Modalidade* getModalidade() const;
 	vector<Atleta*> getAtletas() const;
 
 	void adicionaAtleta(Atleta * a);
 	bool Simultaneo(Prova p);
+
+	friend ostream & operator<<(ostream & o, const Prova & p);
 };
 
 class ProvaTerminada: public Prova{ //Quando uma prova ja terminou, transformamola num ProvaTerminada
