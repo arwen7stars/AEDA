@@ -31,6 +31,7 @@ class Campeonato{
 public:
 	Campeonato(string n, Data i, Data f, Hora a, Hora fe);
 	bool adicionaProva(Prova p);
+
 	bool loadDesportos(string nome_ficheiro);
 	bool loadEquipas(string nome_ficheiro);
 	bool loadModalidades(string nome_ficheiro);
@@ -97,4 +98,3 @@ void atribuiPontuacao(Prova pro, vector<float> pontos);
 
 
 #endif /* CAMPEONATO_H_ */
-

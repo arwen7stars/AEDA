@@ -178,4 +178,12 @@ int string_to_int(string s);
 
 bool ficheiroExiste(const string &ficheiro);
 
+class FicheiroInexistente
+{
+	string nome;
+public:
+	FicheiroInexistente(string n) : nome(n) {}
+	string getNome() { return nome; }
+};
+
 #endif /* SRC_LISTS_H_ */

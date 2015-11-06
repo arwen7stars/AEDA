@@ -17,6 +17,11 @@ Campeonato loadCampeonato(){
 	ifstream in;
 	string campeonato = "Campeonato.txt";
 
+	if(!ficheiroExiste(campeonato))
+	{
+		throw FicheiroInexistente(campeonato);
+	}
+
 	in.open(campeonato.c_str());
 
 	string nome;
@@ -83,26 +88,33 @@ Campeonato load()
 	string desportos = "Desportos.txt";
 	suc_des = c.loadDesportos(desportos);
 
-	if(!suc_des)
-		cerr << "Erro ao abrir Desportos.txt\n";			// excecao ficheiro inexistente
+	if(!ficheiroExiste(desportos))
+	{
+			throw FicheiroInexistente(desportos);
+	}
 
 	bool suc_eq;
 	string equipas = "Atletas.txt";
 	suc_eq = c.loadEquipas(equipas);
 
-	if(!suc_eq)
-		cerr << "Erro ao abrir Atletas.txt\n";
+	if(!ficheiroExiste(equipas))
+	{
+		throw FicheiroInexistente(equipas);
+	}
 
 	bool suc_mod;
 	string modalidades = "Modalidades.txt";
 	suc_mod = c.loadModalidades(modalidades);
 
-	if(!suc_mod)
-		cerr << "Erro ao abrir Modalidades.txt\n";
+	if(!ficheiroExiste(modalidades))
+	{
+		throw FicheiroInexistente(modalidades);
+	}
 
 	return c;
 
 }
+
 
 
 void menuNovoCampeonato(){}
@@ -439,10 +451,6 @@ int main(){
 	//a3.setpontos(4);
 	//a4.setpontos(4);
 	//	c.listaAtletasColocacao();
-
-	menu();
-
-<<<<<<< HEAD
 //
 //	Equipa A ("A");
 //	Equipa B ("B");
@@ -461,9 +469,23 @@ int main(){
 //a3.setpontos(4);
 //a4.setpontos(4);
 //	c.listaAtletasColocacao();
+/*
+	 * 												NOTA IMPORTANTE
+	 */
+/*	Ao fazer load, usar isto para apanhar excecao
 
-=======
->>>>>>> origin/master
+
+	try
+	{
+		load();
+	} catch(FicheiroInexistente e)
+	{
+		cout << "Ficheiro " << e.getNome() << "inexistente";
+	}
+*/
+
+	menu();
+
 	cout << "Press any key to continue...";
 	_getch();
 	return 0;
