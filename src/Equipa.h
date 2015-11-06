@@ -35,6 +35,7 @@ public:
 	void menu(vector<Desporto*> DespList);
 	void menuAtletas();
 
+	void adicionaAtleta();
 	class AtletaExiste{
 		string nome;
 		public:
@@ -51,12 +52,17 @@ class Atleta{
 	vector<Prova *> provas;
 	int pontos;
 public:
-	Atleta(string n, Equipa e);
+	Atleta(string n, Equipa* e);
 	string getNome() const;
 	Equipa* getEquipa() const;
 	int getPontos() const;
 	bool adicionaProva(Prova * p);
 	void adicionaPontuacao(int p);
+
+	void menu();
+
+	bool operator== (const Atleta & c) const;
+	friend ostream & operator<<(ostream & o, const Atleta & d);
 };
 
 

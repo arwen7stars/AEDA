@@ -49,8 +49,40 @@ bool Equipa::adicionaAtleta(Atleta * a)
 	return true;
 }
 
-void Equipa::menuAtletas(){
+void Equipa::adicionaAtleta(){
+	system("cls");
+	string n;
+	cout << "Nome: ";
+	getline(cin, n);
 
+	Atleta * A = new Atleta(n,this);
+	if (search(atletas , *A) != -1)
+		throw AtletaExiste(n);
+	atletas.push_back(A);
+}
+
+void Equipa::menuAtletas(){
+	bool exit = false;
+	while (!exit){
+		system("cls");
+		cout << "Equipa: " << nome << endl << endl;
+		int ch = fazMenu("Atletas:", atletas, "Novo Atleta");
+		if (ch == -1)
+			exit = true;
+		else if (ch < atletas.size())
+			atletas[ch]->menu();
+		else{
+			try{
+				adicionaAtleta();
+			}
+			catch (AtletaExiste a){
+				cout << "Atleta \"" << a.getNome() << "\" ja existe.";
+				_getch();
+			}
+
+		}
+
+	}
 }
 
 void Equipa::adicionarDesporto(vector<Desporto*> DespList){
@@ -69,6 +101,7 @@ void Equipa::adicionarDesporto(vector<Desporto*> DespList){
 			else
 				desportos.push_back(DespList[ch]);
 		}
+		exit = true;
 	}
 }
 
@@ -152,9 +185,9 @@ void Equipa::menu(vector<Desporto*> DespList){
 ------------------------------------------------------------------------------
  */
 
-Atleta::Atleta(string n, Equipa e){
+Atleta::Atleta(string n, Equipa* e){
 	nome = n;
-	equipa = &e;
+	equipa = e;
 	pontos = 0;
 }
 
@@ -174,5 +207,34 @@ int Atleta::getPontos() const{
 	return pontos;
 }
 
+void Atleta::menu(){
+	bool exit = false;
+	while (!exit){
+		system("cls");
+		vector<string> choices;
+		choices.push_back("Mudar Nome");
 
+		cout << "Nome: " << nome << endl;
+		cout << "Equipa: " << equipa->getNome() << endl;
+		int ch = fazMenu("Opcoes", choices);
+		if (ch == -1)
+			exit = true;
+		else{
+			system("cls");
+			cout << "Novo nome: ";
+			getline(cin, nome);
+		}
+	}
+}
 
+bool Atleta::operator== (const Atleta & c) const{
+	if (c.nome == nome)
+		return true;
+	else
+		return false;
+}
+
+ostream & operator<<(ostream & o, const Atleta & d){
+	o << d.getNome();
+	return o;
+}

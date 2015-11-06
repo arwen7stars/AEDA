@@ -161,7 +161,7 @@ bool Campeonato::criaEquipasCampeonato(string nome_ficheiro)
 		in >> genero;
 
 		Equipa * eq = new Equipa(equipa);
-		Atleta * at = new Atleta(atleta, *eq);
+		Atleta * at = new Atleta(atleta, eq);
 		int indiceEquipa = -1;
 
 		for (unsigned int i = 0; i < equipas.size(); i++)
