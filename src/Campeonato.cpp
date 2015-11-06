@@ -573,3 +573,57 @@ void Campeonato::listaProvas() const{
 				<< "("<<(*provas[i]->getModalidade())<<")"
 				<< " as " << provas[i]->getInicio() << endl;
 }
+
+
+void Campeonato::adicionaEquipa(Equipa &eq){
+	equipas.push_back(&eq);
+}
+
+void Campeonato::listaAtletas() const{
+		vector<string> vat;
+
+		cout << "Atletas no campeonato: " << endl;
+
+		for (unsigned int j = 0; j < equipas.size();j++)
+			for (unsigned int u = 0; u < equipas[j]->getAtletas().size(); u++)
+			vat.push_back(equipas[j]->getAtletas()[u]->getNome());
+
+		insertionSort<string>(vat);
+
+		for (unsigned int i = 0; i < vat.size(); i++)
+			cout << vat[i] << endl;
+}
+
+void Campeonato::listaAtletasEquipa() const{
+		//vector<string> vat;
+
+		cout << "Atletas no campeonato: " << endl;
+
+	for (unsigned int j = 0; j < equipas.size(); j++) {
+		vector<string> vat;
+		cout << "Equipa " << equipas[j]->getNome() << ":" << endl;
+		for (unsigned int u = 0; u < equipas[j]->getAtletas().size(); u++)
+			vat.push_back(equipas[j]->getAtletas()[u]->getNome());
+
+		insertionSort<string>(vat);
+
+		for (unsigned int i = 0; i < vat.size(); i++)
+			cout << vat[i] << endl;
+	}
+
+}
+
+void Campeonato::listaAtletasColocacao() const {
+	vector<Atleta> vat;
+
+	cout << "Atletas no campeonato por colocacao: " << endl;
+
+	for (unsigned int j = 0; j < equipas.size(); j++)
+		for (unsigned int u = 0; u  < equipas[j]->getAtletas().size(); u++)
+		vat.push_back((*equipas[j]->getAtletas()[u]));
+
+	insertionSort<Atleta>(vat);
+
+	for (unsigned int i = 0; i < vat.size(); i++)
+		cout << vat[i] << "(" << vat[i].getPontos() << ")"<< endl;
+}

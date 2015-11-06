@@ -59,6 +59,7 @@ public:
 	string getNome() const;
 	Equipa* getEquipa() const;
 	int getPontos() const;
+	void setpontos(int p); //no fim nao precisamos disto, e para testar
 	vector<Prova *> getProvas() const;
 	void adicionaProva(Prova * p);
 	void adicionaPontuacao(int p);
@@ -67,6 +68,7 @@ public:
 
 	bool operator== (const Atleta & c) const;
 	friend ostream & operator<<(ostream & o, const Atleta & d);
+	bool operator <(const Atleta & a) const;
 };
 
 

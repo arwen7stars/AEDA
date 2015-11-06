@@ -78,6 +78,7 @@ void Equipa::adicionaAtleta(){
 	atletas.push_back(A);
 }
 
+
 void Equipa::menuAtletas(){
 	bool exit = false;
 	while (!exit){
@@ -263,4 +264,15 @@ bool Atleta::operator== (const Atleta & c) const{
 ostream & operator<<(ostream & o, const Atleta & d){
 	o << d.getNome();
 	return o;
+}
+
+
+bool Atleta::operator <(const Atleta & a) const{
+	if (pontos > a.getPontos())
+		return true;
+	else return false;
+}
+
+void Atleta::setpontos(int p){
+	pontos = p;
 }

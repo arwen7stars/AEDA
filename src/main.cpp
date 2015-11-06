@@ -416,45 +416,65 @@ int main(){
 */
 
 
-	Data d1 (2015,11,1);
-	Data d2 (2015,11,10);
-	Hora h1(8,00);
-	Hora h2(20,0);
-	Campeonato c ("Campeonato A", d1, d2, h1,h2);
-
-	if (c.criaDesportosCampeonato("Desportos.txt"))
-		cout<< "correu bem\n";
-	else cout << "correu mal\n";
-	cout << endl;
-
-	for(unsigned int i = 0; i < c.getDesportos().size();i++)
-	{
-		cout << c.getDesportos()[i]->getNome() << endl;
-	}
-	cout << endl;
-
-	if(c.criaEquipasCampeonato("Atletas.txt"))
-		cout<< "correu bem\n";
-	else cout << "correu mal\n";
-	cout << endl;
-
-	for(unsigned int i = 0; i < c.getDesportos().size();i++)
-	{
-		cout << c.getEquipas()[i]->getNome() << endl;
-		Equipa * eq = c.getEquipas()[i];
-		for(unsigned int j = 0; j < eq->getAtletas().size(); j++)
-			cout << eq->getAtletas()[j]->getNome() << endl;
-		cout << endl;
-	}
-
-	Campeonato c1 = loadCampeonato();
-	cout << "Nome campeonato: " << c1.getNome() << endl;
-	cout << c1.getInicio() << endl;
-	cout << c1.getFim() << endl;
-	cout << c1.getAbertura() << endl;
-	cout << c1.getFecho() << endl;
+//	Data d1 (2015,11,1);
+//	Data d2 (2015,11,10);
+//	Hora h1(8,00);
+//	Hora h2(20,0);
+//	Campeonato c ("Campeonato A", d1, d2, h1,h2);
+//
+//	if (c.criaDesportosCampeonato("Desportos.txt"))
+//		cout<< "correu bem\n";
+//	else cout << "correu mal\n";
+//	cout << endl;
+//
+//	for(unsigned int i = 0; i < c.getDesportos().size();i++)
+//	{
+//		cout << c.getDesportos()[i]->getNome() << endl;
+//	}
+//	cout << endl;
+//
+//	if(c.criaEquipasCampeonato("Atletas.txt"))
+//		cout<< "correu bem\n";
+//	else cout << "correu mal\n";
+//	cout << endl;
+//
+//	for(unsigned int i = 0; i < c.getDesportos().size();i++)
+//	{
+//		cout << c.getEquipas()[i]->getNome() << endl;
+//		Equipa * eq = c.getEquipas()[i];
+//		for(unsigned int j = 0; j < eq->getAtletas().size(); j++)
+//			cout << eq->getAtletas()[j]->getNome() << endl;
+//		cout << endl;
+//	}
+//
+//	Campeonato c1 = loadCampeonato();
+//	cout << "Nome campeonato: " << c1.getNome() << endl;
+//	cout << c1.getInicio() << endl;
+//	cout << c1.getFim() << endl;
+//	cout << c1.getAbertura() << endl;
+//	cout << c1.getFecho() << endl;
 
 	//menu();
+
+
+//
+//	Equipa A ("A");
+//	Equipa B ("B");
+//	Atleta a1 ("lui", &A, 'm');
+//	Atleta a2 ("panda", &B, 'm');
+//	Atleta a3 ("xtg", &A,'m');
+//	Atleta a4 ("coast", &B,'m');
+//	A.adicionaAtleta(&a1);
+//	A.adicionaAtleta(&a3);
+//	B.adicionaAtleta(&a2);
+//	B.adicionaAtleta(&a4);
+//	c.adicionaEquipa(A);
+//	c.adicionaEquipa(B);
+//a1.setpontos(1);
+//a2.setpontos(18);
+//a3.setpontos(4);
+//a4.setpontos(4);
+//	c.listaAtletasColocacao();
 	cout << "Press any key to continue...";
 	_getch();
 	return 0;

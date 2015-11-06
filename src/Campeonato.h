@@ -59,6 +59,7 @@ public:
 	};
 
 	void adicionaEquipa();
+	void adicionaEquipa(Equipa &eq);
 	class EquipaExiste{
 		string nome;
 	public:
@@ -86,6 +87,9 @@ public:
 	void adicionaDesporto(Desporto &d);
 	void listaDesportos() const;
 	void listaProvas() const;
+	void listaAtletas() const;
+	void listaAtletasEquipa() const;
+	void listaAtletasColocacao() const;
 };
 
 void atribuiPontuacao(Prova pro, vector<float> pontos);
