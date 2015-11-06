@@ -14,6 +14,7 @@
 #include "Desporto.h"
 #include "Equipa.h"
 #include "Data.h"
+#include "Lists.h"
 
 /*
  * Class Campeonato
