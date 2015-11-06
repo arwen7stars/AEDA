@@ -74,65 +74,6 @@ Campeonato loadCampeonato(){
 	return c;
 }
 
-bool loadModalidades(Campeonato &c)
-{
-	string modalidades = "Modalidades.txt";
-	ifstream in_mod;
-	vector<Desporto*> d = c.getDesportos();
-
-	if(!ficheiroExiste(modalidades))
-		return false;
-
-	in_mod.open(modalidades.c_str());
-
-	while (!in_mod.eof())
-	{
-		char barra;
-		string desp = "";
-		string mod = "";
-		int horas;
-		int minutos;
-		int indice = -1;
-
-		string extraido = "";
-
-		if (!in_mod.eof())
-			do
-			{
-				in_mod >> extraido;
-				if (extraido != "/")
-					desp = desp + extraido;
-			} while (extraido != "/");
-
-		for (unsigned int i = 0; i < d.size(); i++)
-			if (d[i]->getNome() == desp)
-				indice = i;
-
-		if (indice == -1)
-			return false;
-
-		extraido = "";
-
-		if (!in_mod.eof())
-			do
-			{
-				in_mod >> extraido;
-				if (extraido != "/")
-					mod = mod + extraido;
-			} while (extraido != "/");
-
-		in_mod >> horas;
-		in_mod >> barra;
-		in_mod >> minutos;
-		if (!in_mod.eof())
-		{
-			Modalidade * m = new Modalidade(mod, horas, minutos, d[indice]);
-			d[indice]->adicionaModalidade(m);
-		}
-	}
-	return true;
-}
-
 
 Campeonato load()
 {
@@ -140,23 +81,24 @@ Campeonato load()
 
 	bool suc_des;
 	string desportos = "Desportos.txt";
-	suc_des = c.criaDesportosCampeonato(desportos);
+	suc_des = c.loadDesportos(desportos);
 
 	if(!suc_des)
-		cerr << "Erro ao abrir Desportos.txt";			// excecao ficheiro inexistente
+		cerr << "Erro ao abrir Desportos.txt\n";			// excecao ficheiro inexistente
 
 	bool suc_eq;
 	string equipas = "Atletas.txt";
-	suc_eq = c.criaEquipasCampeonato(equipas);
+	suc_eq = c.loadEquipas(equipas);
 
 	if(!suc_eq)
-		cerr << "Erro ao abrir Atletas.txt";
+		cerr << "Erro ao abrir Atletas.txt\n";
 
 	bool suc_mod;
-	suc_mod = loadModalidades(c);
+	string modalidades = "Modalidades.txt";
+	suc_mod = c.loadModalidades(modalidades);
 
-	if(suc_mod)
-		cerr << "Erro ao abrir Modalidades.txt";
+	if(!suc_mod)
+		cerr << "Erro ao abrir Modalidades.txt\n";
 
 	return c;
 
@@ -220,6 +162,9 @@ int main(){
 	//Hora h1(13,30), h2(13,50), h3(20,00);
 	//cout << (h1 < h2) << (h1 < h3) << (h3 > h2);
 /*
+ * 												TESTE DE ADICIONA PROVA
+ *
+ *
 	Data dat1 (2015,11,1);
 	Hora h3 (13,30);
 
@@ -333,6 +278,9 @@ int main(){
 */
 	//menu();
 /*
+ * 												TESTE DA LISTA DE PROVAS
+ *
+ *
 	Desporto D;
 		D = Desporto("Atletismo", "Segundos", true,8);
 		cout << D.getNome() << endl;
@@ -414,49 +362,87 @@ int main(){
 		cout << endl;
 		c.listaProvas();
 */
+/*
+	Data d1 (2015,11,1);
+	Data d2 (2015,11,10);
+	Hora h1(8,00);
+	Hora h2(20,0);
+	Campeonato c ("Campeonato A", d1, d2, h1,h2);
+*/
+/*
+ * 															TESTE DE LOAD()
+ *
+ * Campeonato c = load();
 
+	cout << "Desportos.txt\n";
+	for(unsigned int i = 0; i < c.getDesportos().size();i++)
+	{
+		cout << c.getDesportos()[i]->getNome() << " ";
+		cout << c.getDesportos()[i]->getPontuacao() << " ";
+		cout << c.getDesportos()[i]->isCrescente() << endl;
+	}
+	cout << endl;
 
-//	Data d1 (2015,11,1);
-//	Data d2 (2015,11,10);
-//	Hora h1(8,00);
-//	Hora h2(20,0);
-//	Campeonato c ("Campeonato A", d1, d2, h1,h2);
-//
-//	if (c.criaDesportosCampeonato("Desportos.txt"))
-//		cout<< "correu bem\n";
-//	else cout << "correu mal\n";
-//	cout << endl;
-//
-//	for(unsigned int i = 0; i < c.getDesportos().size();i++)
-//	{
-//		cout << c.getDesportos()[i]->getNome() << endl;
-//	}
-//	cout << endl;
-//
-//	if(c.criaEquipasCampeonato("Atletas.txt"))
-//		cout<< "correu bem\n";
-//	else cout << "correu mal\n";
-//	cout << endl;
-//
-//	for(unsigned int i = 0; i < c.getDesportos().size();i++)
-//	{
-//		cout << c.getEquipas()[i]->getNome() << endl;
-//		Equipa * eq = c.getEquipas()[i];
-//		for(unsigned int j = 0; j < eq->getAtletas().size(); j++)
-//			cout << eq->getAtletas()[j]->getNome() << endl;
-//		cout << endl;
-//	}
-//
-//	Campeonato c1 = loadCampeonato();
-//	cout << "Nome campeonato: " << c1.getNome() << endl;
-//	cout << c1.getInicio() << endl;
-//	cout << c1.getFim() << endl;
-//	cout << c1.getAbertura() << endl;
-//	cout << c1.getFecho() << endl;
+	cout << "Atletas.txt\n";
+	for(unsigned int i = 0; i < c.getEquipas().size();i++)
+	{
+		cout << c.getEquipas()[i]->getNome() << endl;
+		Equipa * eq = c.getEquipas()[i];
+		for(unsigned int j = 0; j < eq->getAtletas().size(); j++)
+			{
+			cout << eq->getAtletas()[j]->getNome() << " ";
+			cout << eq->getAtletas()[j]->getGenero() << endl;
+			}
+		cout << endl;
+	}
+
+<<<<<<< HEAD
+	menu();
+=======
+	cout << "Campeonato.txt\n";
+	cout << "Nome campeonato: " << c.getNome() << endl;
+	cout << c.getInicio() << endl;
+	cout << c.getFim() << endl;
+	cout << c.getAbertura() << endl;
+	cout << c.getFecho() << endl;
+	cout << endl;
+>>>>>>> origin/master
+
+	cout << "Modalidades.txt\n";
+	for(unsigned int i = 0; i < c.getDesportos().size();i++)
+		{
+			cout << c.getDesportos()[i]->getNome() << endl;
+			Desporto * d = c.getDesportos()[i];
+			for(unsigned int j = 0; j < d->getModalidades().size(); j++)
+				{
+				cout << d->getModalidades()[j]->getNome() << " ";
+				cout << d->getModalidades()[j]->getDuracao() << endl;
+				}
+			cout << endl;
+		}
+*/
+	//										TESTE DE LISTA DE ATLETAS
+	//	Equipa A ("A");
+	//	Equipa B ("B");
+	//	Atleta a1 ("lui", &A, 'm');
+	//	Atleta a2 ("panda", &B, 'm');
+	//	Atleta a3 ("xtg", &A,'m');
+	//	Atleta a4 ("coast", &B,'m');
+	//	A.adicionaAtleta(&a1);
+	//	A.adicionaAtleta(&a3);
+	//	B.adicionaAtleta(&a2);
+	//	B.adicionaAtleta(&a4);
+	//	c.adicionaEquipa(A);
+	//	c.adicionaEquipa(B);
+	//a1.setpontos(1);
+	//a2.setpontos(18);
+	//a3.setpontos(4);
+	//a4.setpontos(4);
+	//	c.listaAtletasColocacao();
 
 	menu();
 
-
+<<<<<<< HEAD
 //
 //	Equipa A ("A");
 //	Equipa B ("B");
@@ -476,6 +462,8 @@ int main(){
 //a4.setpontos(4);
 //	c.listaAtletasColocacao();
 
+=======
+>>>>>>> origin/master
 	cout << "Press any key to continue...";
 	_getch();
 	return 0;

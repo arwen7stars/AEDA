@@ -224,7 +224,12 @@ vector<Prova *> Atleta::getProvas() const{
 	return provas;
 }
 
+<<<<<<< HEAD
 bool  Atleta::getGenero() const{
+=======
+char Atleta::getGenero() const
+{
+>>>>>>> origin/master
 	return genero;
 }
 
@@ -276,7 +281,6 @@ ostream & operator<<(ostream & o, const Atleta & d){
 	o << d.getNome();
 	return o;
 }
-
 
 bool Atleta::operator <(const Atleta & a) const{
 	if (pontos > a.getPontos())
