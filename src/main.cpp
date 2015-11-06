@@ -55,6 +55,15 @@ Campeonato loadCampeonato(){
 	in >> info;
 	in >> h_fecho;
 	in >> m_fecho;
+	try{
+		Data dat1 (ini_ano,ini_mes,ini_dia);
+		Data dat2 (fim_ano,fim_mes,fim_dia);
+	} catch(Data::DataInvalida d)
+	{
+		cout << "A data ";
+		cout << d.getDia() << "/" << d.getMes() << "/" << d.getAno();
+		cout << " nao e valida"<< endl;
+	}
 
 	Data d1 (ini_ano,ini_mes,ini_dia);
 	Data d2 (fim_ano,fim_mes,fim_dia);
@@ -65,7 +74,7 @@ Campeonato loadCampeonato(){
 	return c;
 }
 
-bool loadModalidades(Campeonato c)
+bool loadModalidades(Campeonato &c)
 {
 	string modalidades = "Modalidades.txt";
 	ifstream in_mod;
@@ -125,7 +134,7 @@ bool loadModalidades(Campeonato c)
 }
 
 
-bool load()
+Campeonato load()
 {
 	Campeonato c = loadCampeonato();
 
@@ -133,26 +142,23 @@ bool load()
 	string desportos = "Desportos.txt";
 	suc_des = c.criaDesportosCampeonato(desportos);
 
-	if(suc_des)
-		return true;
-	else return false;
+	if(!suc_des)
+		cerr << "Erro ao abrir Desportos.txt";			// excecao ficheiro inexistente
 
 	bool suc_eq;
 	string equipas = "Atletas.txt";
 	suc_eq = c.criaEquipasCampeonato(equipas);
 
-	if(suc_eq)
-		return true;
-	else return false;
+	if(!suc_eq)
+		cerr << "Erro ao abrir Atletas.txt";
 
 	bool suc_mod;
 	suc_mod = loadModalidades(c);
 
 	if(suc_mod)
-		return true;
-	else return false;
+		cerr << "Erro ao abrir Modalidades.txt";
 
-	return true;
+	return c;
 
 }
 
@@ -197,13 +203,13 @@ int main(){
 //	cout << M.getNome() << endl;
 //	cout << M.getDesporto()->getNome() << endl;
 //	cout << endl;
-
-//	Data d1 (2015,11,1);
-//	Data d2 (2015,11,10);
-//	Hora h1(8,0);
-//	Hora h2(20,0);
-//
-//	Campeonato c ("Campeonato A", d1, d2, h1,h2);
+/*
+	Data d1 (2015,11,1);
+	Data d2 (2015,11,10);
+	Hora h1(8,0);
+	Hora h2(20,0);
+	Campeonato c ("Campeonato A", d1, d2, h1,h2);
+	*/
 //
 //
 //	if (c.criaDesportosCampeonato("Desportos.txt"))
@@ -215,12 +221,12 @@ int main(){
 	//cout << (h1 < h2) << (h1 < h3) << (h3 > h2);
 /*
 	Data dat1 (2015,11,1);
-	Hora h1 (13,30);
+	Hora h3 (13,30);
 
-	Desporto des1("Futebol", "Golos", true);
+	Desporto des1("Futebol", "Golos", true,11);
 	Modalidade mod1("Final", 1,30, &des1);
 
-	Prova p1(mod1,dat1,h1);
+	Prova p1(&mod1,dat1,h1);
 
 	bool resultado1 = c.adicionaProva(p1);
 
@@ -230,10 +236,10 @@ int main(){
 
 	Data dat2(2015,11,11);
 
-	Desporto des2("FutebolAmericano", "Golos", true);
+	Desporto des2("FutebolAmericano", "Golos", true,11);
 	Modalidade mod2("Meia-Final", 1,30, &des2);
 
-	Prova p2(mod2,dat2,h1);
+	Prova p2(&mod2,dat2,h1);
 
 	bool resultado2 = c.adicionaProva(p2);
 
@@ -244,10 +250,10 @@ int main(){
 	Hora h4(8,30);
 	Data dat3(2015,10,31);
 
-	Desporto des3("Corrida", "Segundos", true);
+	Desporto des3("Corrida", "Segundos", true,1);
 	Modalidade mod3("400 metros", 1,30, &des3);
 
-	Prova p3(mod3,dat3,h4);
+	Prova p3(&mod3,dat3,h4);
 
 	bool resultado3 = c.adicionaProva(p3);
 
@@ -255,10 +261,10 @@ int main(){
 		cout << "nao foi adicionada, pois dia e antes do inicio do campeonato!\n";
 	else cout << "correu mal :(\n";
 
-	Desporto des4("Corrida", "Segundos", true);
+	Desporto des4("Corrida", "Segundos", true,1);
 	Modalidade mod4("500 metros", 1,30, &des4);
 
-	Prova p4(mod4,dat1,h1);
+	Prova p4(&mod4,dat1,h1);
 
 	bool resultado4 = c.adicionaProva(p4);
 
@@ -266,10 +272,10 @@ int main(){
 		cout << "foi adicionada, pois provas simultaneas mas de desportos diferentes!\n";
 	else cout << "correu mal :(\n";
 
-	Desporto des5("Corrida", "Segundos", true);
+	Desporto des5("Corrida", "Segundos", true,1);
 	Modalidade mod5("400 metros", 1,30, &des5);
 
-	Prova p5(mod5,dat1,h1);
+	Prova p5(&mod5,dat1,h1);
 
 	bool resultado5 = c.adicionaProva(p5);
 
@@ -277,11 +283,11 @@ int main(){
 		cout << "nao foi adicionada, pois provas simultaneas de desportos iguais!\n";
 	else cout << "correu mal :(\n";
 
-	Hora h5(12,00);
-	Desporto des6("Corrida", "Segundos", true);
+	Hora h5(9,30);
+	Desporto des6("Corrida", "Segundos", true,1);
 	Modalidade mod6("500 metros", 1,30, &des5);
 
-	Prova p6(mod6,dat1,h5);
+	Prova p6(&mod6,dat1,h5);
 
 	bool resultado6 = c.adicionaProva(p6);
 
@@ -290,10 +296,10 @@ int main(){
 	else cout << "correu mal :(\n";
 
 	Hora h6(11,59);
-	Desporto des7("Corrida", "Segundos", true);
+	Desporto des7("Corrida", "Segundos", true,1);
 	Modalidade mod7("500 metros", 1,30, &des7);
 
-	Prova p7(mod7,dat1,h6);
+	Prova p7(&mod7,dat1,h6);
 
 	bool resultado7 = c.adicionaProva(p7);
 
@@ -302,10 +308,10 @@ int main(){
 	else cout << "correu mal :(\n";
 
 	Hora h7(15,01);
-	Desporto des8("Corrida", "Segundos", true);
+	Desporto des8("Corrida", "Segundos", true,1);
 	Modalidade mod8("500 metros", 1,30, &des8);
 
-	Prova p8(mod8,dat1,h7);
+	Prova p8(&mod8,dat1,h7);
 
 	bool resultado8 = c.adicionaProva(p8);
 
@@ -314,15 +320,15 @@ int main(){
 	else cout << "correu mal :(\n";
 
 	Hora h8(14,00);
-	Desporto des9("Corrida", "Segundos", true);
+	Desporto des9("Corrida", "Segundos", true,1);
 	Modalidade mod9("800 metros", 0,30, &des9);
 
-	Prova p9(mod9,dat1,h8);
+	Prova p9(&mod9,dat1,h8);
 
 	bool resultado9 = c.adicionaProva(p9);
 
-	if (!resultado9)
-		cout << "nao foi adicionada!!!\n";
+	if (resultado9)
+		cout << "foi adicionada!!!\n";
 	else cout << "correu mal :(\n";
 */
 	//menu();
@@ -408,7 +414,47 @@ int main(){
 		cout << endl;
 		c.listaProvas();
 */
-	menu();
+
+
+	Data d1 (2015,11,1);
+	Data d2 (2015,11,10);
+	Hora h1(8,00);
+	Hora h2(20,0);
+	Campeonato c ("Campeonato A", d1, d2, h1,h2);
+
+	if (c.criaDesportosCampeonato("Desportos.txt"))
+		cout<< "correu bem\n";
+	else cout << "correu mal\n";
+	cout << endl;
+
+	for(unsigned int i = 0; i < c.getDesportos().size();i++)
+	{
+		cout << c.getDesportos()[i]->getNome() << endl;
+	}
+	cout << endl;
+
+	if(c.criaEquipasCampeonato("Atletas.txt"))
+		cout<< "correu bem\n";
+	else cout << "correu mal\n";
+	cout << endl;
+
+	for(unsigned int i = 0; i < c.getDesportos().size();i++)
+	{
+		cout << c.getEquipas()[i]->getNome() << endl;
+		Equipa * eq = c.getEquipas()[i];
+		for(unsigned int j = 0; j < eq->getAtletas().size(); j++)
+			cout << eq->getAtletas()[j]->getNome() << endl;
+		cout << endl;
+	}
+
+	Campeonato c1 = loadCampeonato();
+	cout << "Nome campeonato: " << c1.getNome() << endl;
+	cout << c1.getInicio() << endl;
+	cout << c1.getFim() << endl;
+	cout << c1.getAbertura() << endl;
+	cout << c1.getFecho() << endl;
+
+	//menu();
 	cout << "Press any key to continue...";
 	_getch();
 	return 0;

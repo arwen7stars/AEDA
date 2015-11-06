@@ -59,10 +59,20 @@ bool Equipa::adicionaAtleta(Atleta * a)
 void Equipa::adicionaAtleta(){
 	system("cls");
 	string n;
+	char g;
 	cout << "Nome: ";
 	getline(cin, n);
+	cout << "Duracao(minutos): ";
 
-	Atleta * A = new Atleta(n,this);
+	while (!(cin >> g) || (g != 'M' && g!= 'F'))
+		{
+			cin.clear();
+			cin.ignore(1000, '\n');
+			cout << "Genero invalido\n";
+			cout << "Genero (M ou F): ";
+		}
+
+	Atleta * A = new Atleta(n,this,g);
 	if (search(atletas , *A) != -1)
 		throw AtletaExiste(n);
 	atletas.push_back(A);
@@ -192,10 +202,11 @@ void Equipa::menu(vector<Desporto*> DespList){
 ------------------------------------------------------------------------------
  */
 
-Atleta::Atleta(string n, Equipa* e){
+Atleta::Atleta(string n, Equipa* e, char g){
 	nome = n;
 	equipa = e;
 	pontos = 0;
+	genero = g;
 }
 
 string Atleta::getNome() const{

@@ -161,3 +161,4 @@ int Hora::getMinutos() const
 {
 	return minutos;
 }
+

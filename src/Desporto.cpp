@@ -69,11 +69,11 @@ using namespace std;
 
 Desporto::Desporto(){}
 
-Desporto::Desporto(string n, string pont, bool cresc, int nAtletas){
+Desporto::Desporto(string n, string pont, bool cresc){
 	nome = n;
 	pontuacao.nome = pont;
 	pontuacao.crescente = cresc;
-	numeroAtletas = nAtletas;
+	//numeroAtletas = nAtletas;
 }
 
 
@@ -220,3 +220,4 @@ void Desporto::menuModalidades(){
 //
 //
 //DesportoSolo::DesportoSolo(string n, string pont, bool cresc): Desporto(n,pont,cresc){};
+

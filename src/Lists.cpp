@@ -52,3 +52,5 @@ bool ficheiroExiste(const string &ficheiro)
 }
 
 
+
+

@@ -6,6 +6,39 @@
 
 using namespace std;
 
+Campeonato::Campeonato(string n, Data i, Data f, Hora a, Hora fe){
+	nome = n;
+	inicio = i;
+	fim = f;
+	abertura = a;
+	fecho = fe;
+	criado = false;
+}
+
+string Campeonato::getNome() const
+{
+	return nome;
+}
+
+Data Campeonato::getInicio() const
+{
+	return inicio;
+}
+Data Campeonato::getFim() const
+{
+	return fim;
+}
+
+Hora Campeonato::getAbertura() const
+{
+	return abertura;
+}
+
+Hora Campeonato::getFecho() const
+{
+	return fecho;
+}
+
 vector<Desporto *> Campeonato::getDesportos() const
 {
 	return desportos;
@@ -16,17 +49,13 @@ vector<Prova*> Campeonato::getProvas() const
 	return provas;
 }
 
-Campeonato::Campeonato(string n, Data i, Data f, Hora a, Hora fe){
-	nome = n;
-	inicio = i;
-	fim = f;
-	abertura = a;
-	fecho = fe;
+vector<Equipa*> Campeonato::getEquipas() const
+{
+	return equipas;
 }
 
 bool Campeonato::adicionaProva(Prova p)
 {
-
 	if (p.getData() < inicio || fim < p.getData())
 		return false;
 	else
@@ -63,7 +92,9 @@ bool Campeonato::adicionaProva(Prova p)
 
 bool Campeonato::criaDesportosCampeonato(string nome_ficheiro)
 {
-	int elementos_equipa;
+	//int elementos_equipa;
+	string desporto;
+	string tipo_de_pontuacao;
 	char barra;
 	char crescente;
 	bool c;
@@ -76,28 +107,15 @@ bool Campeonato::criaDesportosCampeonato(string nome_ficheiro)
 
 	while (!in.eof())
 	{
-		string desporto = "";
-		string tipo_de_pontuacao = "";
 
-		in >> elementos_equipa;
+		//in >> elementos_equipa;
+		//in >> barra;
+
+		in >> desporto;
 		in >> barra;
-
-		string extraido = "";
-
-		if (!in.eof())
-			do
-			{
-				in >> extraido;
-				if (extraido != "/")
-					desporto = desporto + extraido;
-			} while (extraido != "/");
-
-		extraido = "";
-
 		in >> tipo_de_pontuacao;
 		in >> barra;
 		in >> crescente;
-
 
 		if (crescente == 'C')
 			c = true;
@@ -105,15 +123,15 @@ bool Campeonato::criaDesportosCampeonato(string nome_ficheiro)
 			c = false;
 		else return false;
 
-		if (elementos_equipa == 0)
-			return false;
-		else {
-			Desporto ds (desporto, tipo_de_pontuacao, c, elementos_equipa);
-			desportos.push_back(&ds);
-		}
+		Desporto * ds = new Desporto(desporto, tipo_de_pontuacao, c);
+
+		if (!in.eof())
+			desportos.push_back(ds);
 	}
 
 	in.close();
+
+
 
 	return true;
 }
@@ -121,8 +139,6 @@ bool Campeonato::criaDesportosCampeonato(string nome_ficheiro)
 
 bool Campeonato::criaEquipasCampeonato(string nome_ficheiro)
 {
-	char barra;
-	char genero;
 	ifstream in;
 
 	if (!ficheiroExiste(nome_ficheiro))
@@ -135,56 +151,41 @@ bool Campeonato::criaEquipasCampeonato(string nome_ficheiro)
 
 	while (!in.eof())
 	{
-		string equipa = "";
-		string atleta = "";
+		string equipa;
+		string atleta;
+		char genero;
+		char barra;
 
-		string extraido = "";
-
-		if (!in.eof())
-			do
-			{
-				in >> extraido;
-				if (extraido != "/")
-					equipa = equipa + extraido;
-			} while (extraido != "/");
-
-		extraido = "";
-
-		if (!in.eof())
-			do
-			{
-				in >> extraido;
-				if (extraido != "/")
-					atleta = atleta + extraido;
-			} while (extraido != "/");
-
+		in >> equipa;
+		in >> barra;
+		in >> atleta;
+		in >> barra;
 		in >> genero;
 
 		Equipa * eq = new Equipa(equipa);
-		Atleta * at = new Atleta(atleta, eq);
+		Atleta * at = new Atleta(atleta, eq, genero);
 		int indiceEquipa = -1;
 
 		for (unsigned int i = 0; i < equipas.size(); i++)
 		{
 			if (equipa == equipas[i]->getNome())
 				indiceEquipa = i;
-
 		}
 
-		if (indiceEquipa == -1)
-		{
-			equipas.push_back(eq);
-			(*equipas[equipas.size()-1]).adicionaAtleta(at);
+		if (!in.eof())
+		{	if (indiceEquipa == -1)
+			{
+				equipas.push_back(eq);
+				(*equipas[equipas.size()-1]).adicionaAtleta(at);
+			}
+			else
+			{
+				equipas[indiceEquipa]->adicionaAtleta(at);
+			}
 		}
-		else
-		{
-			equipas[indiceEquipa]->adicionaAtleta(at);
-		}
-
 	}
 
 	in.close();
-
 	return true;
 }
 
@@ -300,7 +301,7 @@ void Campeonato::adicionaDesporto(){
 	if (ch == -1)
 		return;
 
-	Desporto *d = new Desporto(n, p, !ch, 1);
+	Desporto *d = new Desporto(n, p, !ch);
 	if (search(desportos , *d) != -1)
 		throw DesportoExiste(n);
 	while(true){
@@ -347,6 +348,7 @@ void Campeonato::adicionaProva(){
 	Modalidade* mod = desportos[ch]->getModalidades()[ch2];
 
 	int d, m, a, h, min;
+	char g;
 	Data data;
 	Hora hora;
 	//Data---------------------
@@ -431,8 +433,16 @@ void Campeonato::adicionaProva(){
 		}
 	}
 
+	cout << "Genero (M ou F): ";
+	while (!(cin >> g) || (g != 'M' && g!= 'F'))
+	{
+		cin.clear();
+		cin.ignore(1000, '\n');
+		cout << "Genero invalido\n";
+		cout << "Genero (M ou F): ";
+	}
 
-	Prova p(mod, data, hora);
+	Prova p(mod, data, hora,g);
 	for (unsigned int i = 0; i < provas.size(); i++){
 		if (provas[i]->Simultaneo(p)){
 			cout << "Ja existem provas do mesmo tipo de desporto para o horario marcado.\n";
@@ -560,6 +570,6 @@ void Campeonato::listaProvas() const{
 
 	for (unsigned int i = 0; i < provas.size(); i++)
 		cout << provas[i]->getData() << ": Prova de " << (*provas[i]->getModalidade()->getDesporto())
-		<< "("<<(*provas[i]->getModalidade())<<")"
-		<< " as " << provas[i]->getInicio() << endl;
+				<< "("<<(*provas[i]->getModalidade())<<")"
+				<< " as " << provas[i]->getInicio() << endl;
 }

@@ -27,9 +27,10 @@ protected:
 	Data data;
 	Hora inicio, fim;
 	vector<Atleta *> atletas;
+	char genero;
 public:
 	Prova(){};
-	Prova(Modalidade* m, Data d, Hora i);
+	Prova(Modalidade* m, Data d, Hora i, char genero);
 
 	Hora getInicio() const;
 	Hora getFim() const;
@@ -52,7 +53,7 @@ public:
 class ProvaTerminada: public Prova{ //Quando uma prova ja terminou, transformamola num ProvaTerminada
 	vector<int> pontuacoes; //Vetor com as pontuacoes dos atletas, corresponde com o vector atletas
 public:
-	ProvaTerminada(Modalidade* m, Data d, Hora i);
+	ProvaTerminada(Modalidade* m, Data d, Hora i, char g);
 	Atleta* getPrimeiro() const;
 	Atleta* getSegundo() const;
 	Atleta* getTerceiro() const;

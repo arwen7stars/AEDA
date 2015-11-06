@@ -34,8 +34,14 @@ public:
 	bool criaDesportosCampeonato(string nome_ficheiro);
 	bool criaEquipasCampeonato(string nome_ficheiro);
 
+	string getNome() const;
+	Data getInicio() const;
+	Data getFim() const;
+	Hora getAbertura() const;
+	Hora getFecho() const;
 	vector<Desporto *> getDesportos() const;
 	vector<Prova* > getProvas() const;
+	vector<Equipa*> getEquipas() const;
 	bool isCriado() const {return criado;}
 
 	void menuCriacao();
@@ -86,3 +92,4 @@ void atribuiPontuacao(Prova pro, vector<float> pontos);
 
 
 #endif /* CAMPEONATO_H_ */
+

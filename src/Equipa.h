@@ -52,9 +52,10 @@ class Atleta{
 	string nome;
 	Equipa* equipa;
 	vector<Prova *> provas;
+	char genero;
 	int pontos;
 public:
-	Atleta(string n, Equipa* e);
+	Atleta(string n, Equipa* e, char g);
 	string getNome() const;
 	Equipa* getEquipa() const;
 	int getPontos() const;
@@ -70,3 +71,4 @@ public:
 
 
 #endif /* SRC_EQUIPA_H_ */
+

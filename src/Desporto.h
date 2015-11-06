@@ -25,10 +25,10 @@ class Desporto{
 	string nome;
 	vector<Modalidade *> modalidades;
 	Pontuacao pontuacao;
-	int numeroAtletas;
+	//int numeroAtletas;
 public:
 	Desporto();
-	Desporto(string n, string pont, bool cresc, int nAtletas);
+	Desporto(string n, string pont, bool cresc);
 
 	string getNome() const;
 	string getPontuacao() const;

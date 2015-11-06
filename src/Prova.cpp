@@ -1,13 +1,13 @@
 #include "Prova.h"
 #include "Lists.h"
 
-Prova::Prova(Modalidade* m, Data d, Hora i)
+Prova::Prova(Modalidade* m, Data d, Hora i, char g)
 {
 	modalidade = m;
 	data = d;
 	inicio = i;
 	fim = i + m->getDuracao();
-
+	genero = g;
 }
 
 Hora Prova::getInicio() const
@@ -162,7 +162,7 @@ void Prova::menu(vector<Equipa*> TeamList, vector<Desporto*> DespList){
 ------------------------------------------------------------------------------
  */
 
-ProvaTerminada::ProvaTerminada(Modalidade* m, Data d, Hora i):Prova(m,d,i){}
+ProvaTerminada::ProvaTerminada(Modalidade* m, Data d, Hora i, char g):Prova(m,d,i,g){}
 
 Atleta* ProvaTerminada::getPrimeiro() const{
 	return atletas[0];
@@ -175,4 +175,5 @@ Atleta* ProvaTerminada::getSegundo() const{
 Atleta*ProvaTerminada:: getTerceiro() const{
 	return atletas[2];
 }
+
 
