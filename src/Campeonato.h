@@ -43,6 +43,7 @@ public:
 	void menuProvas();
 
 	void adicionaDesporto();
+	void adicionaDesporto(Desporto &d);
 	class DesportoExiste{
 		string nome;
 	public:
@@ -75,6 +76,9 @@ public:
 		HoraInvalida(Hora h) {hora = h;}
 		Hora getHora() const {return hora;}
 	};
+
+	void listaDesportos() const;
+	void listaProvas() const;
 };
 
 void atribuiPontuacao(Prova pro, vector<float> pontos);

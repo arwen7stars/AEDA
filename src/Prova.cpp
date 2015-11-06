@@ -64,6 +64,12 @@ ostream & operator<<(ostream & o, const Prova & p){
 	return o;
 }
 
+bool Prova::operator < (const Prova &p2) const{
+	if (getData()< p2.getData())
+		return true;
+	return false;
+}
+
 /*
 ------------------------------------------------------------------------------
 						    Prova Terminada
