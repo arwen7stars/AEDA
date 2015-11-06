@@ -16,6 +16,8 @@
 #include <stdio.h>
 #include <conio.h>
 #include <windows.h>
+#include <fstream>
+#include <sstream>
 #define KEY_UP 72
 #define KEY_DOWN 80
 #define KEY_ENTER 13
@@ -171,4 +173,9 @@ int search(const vector<T*> &v, T x)
            return i;
     return -1;
 }
+
+int string_to_int(string s);
+
+bool ficheiroExiste(const string &ficheiro);
+
 #endif /* SRC_LISTS_H_ */

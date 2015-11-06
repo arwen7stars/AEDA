@@ -82,6 +82,24 @@ bool load(Campeonato c)
 void menuNovoCampeonato(){}
 
 Campeonato loadCampeonato(){
+	ifstream in;
+	string campeonato = "C:\\Users\\Cláudia Marinho\\Desktop\\Projeto-Aeda\\src\\Campeonato.txt";
+
+	in.open(campeonato.c_str());
+
+	string nome;
+
+	int ini_dia;
+	int ini_mes;
+	int ini_ano;
+
+	int fim_dia;
+	int fim_mes;
+	int fim_ano;
+
+
+
+
 	Data d1 (2015,11,1);
 	Data d2 (2015,11,10);
 	Hora h1 (8,0);
