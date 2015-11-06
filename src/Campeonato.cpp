@@ -231,6 +231,155 @@ bool Campeonato::loadModalidades(string nome_ficheiro)
 	return true;
 }
 
+void Campeonato::menuApagar(){
+	bool exit = false;
+	int ch, ch2, ch3;
+
+	system("cls");
+	vector<string> choices;
+	choices.push_back("Desportos");
+	choices.push_back("Modalidades");
+	choices.push_back("Equipas");
+	choices.push_back("Atletas");
+	choices.push_back("Provas");
+	while (!exit){
+		ch = fazMenu("Campeonato Polidesportivo - Planeamento", choices);
+		if (ch == -1)
+			exit = true;
+		else if(ch == 0){
+			bool exit2 = false;
+			while (!exit2){
+				system("cls");
+				ch2 = fazMenu("Desportos:", desportos);
+				if (ch2 == -1){
+					exit2 = true;
+					continue;
+				}
+
+				for (int i = 0; i < equipas.size(); i++)
+					for (int j = 0; j < equipas[i]->getDesportos().size(); i++)
+						if (equipas[i]->getDesportos()[j] == desportos[ch2]){
+							system("cls");
+							cout << "Ainda existem equipas subscritas a este desporto.";
+							_getch();
+							return;
+						}
+
+				if (desportos[ch2]->getModalidades().size() != 0){
+					system("cls");
+					cout << "Ainda existem modalidades neste desporto.";
+					_getch();
+					return;
+				}
+
+				desportos.erase(desportos.begin()+ch2);
+				return;
+			}
+		}
+
+		else if(ch == 1){
+			bool exit2 = false;
+			while (!exit2){
+				system("cls");
+				ch2 = fazMenu("Desportos:", desportos);
+				if (ch2 == -1){
+					exit2 = true;
+					continue;
+				}
+				bool exit3 = false;
+				while (!exit3){
+					system("cls");
+					ch3 = fazMenu("Modalidades:", desportos[ch2]->getModalidades());
+					if (ch3 == -1){
+						exit3 = true;
+						continue;
+					}
+					for (int i = 0; i < provas.size(); i++)
+						if (provas[i]->getModalidade() == desportos[ch2]->getModalidades()[ch3]){
+							system("cls");
+							cout << "Ainda existem provas desta modalidade.";
+							_getch();
+							return;
+						}
+					desportos[ch2]->getModalidades().erase(desportos[ch2]->getModalidades().begin()+ch3);
+					return;
+				}
+			}
+		}
+
+		else if(ch == 2){
+			bool exit2 = false;
+			while (!exit2){
+				system("cls");
+				ch2 = fazMenu("Equipas:", equipas);
+				if (ch2 == -1){
+					exit2 = true;
+					continue;
+				}
+				if (equipas[ch2]->getAtletas().size() != 0){
+					system("cls");
+					cout << "Ainda existem atletas desta equipa.";
+					_getch();
+					return;
+				}
+
+				equipas.erase(equipas.begin()+ch2);
+				return;
+			}
+		}
+
+		else if(ch == 3){
+			bool exit2 = false;
+			while (!exit2){
+				system("cls");
+				ch2 = fazMenu("Equipas:", equipas);
+				if (ch2 == -1){
+					exit2 = true;
+					continue;
+				}
+				bool exit3 = false;
+				while (!exit3){
+					system("cls");
+					ch3 = fazMenu("Atletas:", equipas[ch2]->getAtletas());
+					if (ch3 == -1){
+						exit3 = true;
+						continue;
+					}
+					if (equipas[ch2]->getAtletas()[ch3]->getProvas().size() != 0){
+						system("cls");
+						cout << "Este atleta ainda esta inscrito em provas.";
+						_getch();
+						return;
+					}
+					equipas[ch2]->getAtletas().erase(equipas[ch2]->getAtletas().begin()+ch3);
+					return;
+				}
+			}
+		}
+
+		else{
+			bool exit2 = false;
+			while (!exit2){
+				system("cls");
+				ch2 = fazMenu("Provas:", provas);
+				if (ch2 == -1){
+					exit2 = true;
+					continue;
+				}
+				if (provas[ch2]->getAtletas().size() != 0){
+					system("cls");
+					cout << "Esta prova ainda tem atletas.";
+					_getch();
+					return;
+				}
+				provas.erase(provas.begin()+ch2);
+				return;
+			}
+		}
+
+	}
+}
+
 void Campeonato::menuCriacao(){
 	bool exit = false;
 	while (!exit){
@@ -240,6 +389,7 @@ void Campeonato::menuCriacao(){
 		if(desportos.size() > 0){
 			choices.push_back("Equipas");
 			choices.push_back("Provas");
+			choices.push_back("Apagar");
 			choices.push_back("Salvar");
 			choices.push_back("Terminar Planeamento");
 		}
@@ -253,7 +403,9 @@ void Campeonato::menuCriacao(){
 			menuEquipas();
 		else if (ch == 2)
 			menuProvas();
-		//		else if (ch == 3)
+		else if (ch == 3)
+			menuApagar();
+		//		else if (ch == 4)
 		//			Salvar();
 		//		else
 		//			TerminarPlaneamento();
@@ -482,6 +634,7 @@ void Campeonato::adicionaProva(){
 	if (g == -1)
 		return;
 
+
 	Prova p(mod, data, hora,g);
 	for (unsigned int i = 0; i < provas.size(); i++){
 		if (provas[i]->Simultaneo(p)){
@@ -490,6 +643,8 @@ void Campeonato::adicionaProva(){
 		}
 
 	}
+
+
 	provas.push_back(&p);
 
 }

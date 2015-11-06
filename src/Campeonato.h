@@ -46,6 +46,7 @@ public:
 	vector<Equipa*> getEquipas() const;
 	bool isCriado() const {return criado;}
 
+	void menuApagar();
 	void menuCriacao();
 	void menuDesportos();
 	void menuEquipas();

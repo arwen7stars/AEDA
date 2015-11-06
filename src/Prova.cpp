@@ -65,7 +65,7 @@ void Prova::adicionaAtleta(Atleta * a){
 }
 
 ostream & operator<<(ostream & o, const Prova & p){
-	o << p.data << " " << p.inicio << "-" << p.fim << p.modalidade->getNome();
+	o << p.data << " " << p.inicio << "-" << p.fim << "  "<< p.modalidade->getNome();
 	return o;
 }
 
