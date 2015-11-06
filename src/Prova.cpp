@@ -1,4 +1,5 @@
 #include "Prova.h"
+#include "Lists.h"
 
 Prova::Prova(Modalidade* m, Data d, Hora i)
 {
@@ -71,11 +72,95 @@ bool Prova::operator < (const Prova &p2) const{
 	return false;
 }
 
+void Prova::adicionarAtleta(vector<Equipa*> TeamList, vector<Desporto*> DespList){
+	bool exit = false;
+	while (!exit){
+		system("cls");
+		int ch = fazMenu("Selecionar Equipa:", TeamList);
+		if (ch == -1)
+			exit = true;
+		else{
+			if (search(TeamList[ch]->getDesportos(), *modalidade->getDesporto()) == -1){
+				cout << "A equipa " << TeamList[ch]->getNome() << " nao esta inscrita no desporto " << modalidade->getDesporto()->getNome() << ".\n";
+				_getch();
+			}
+			else{
+				bool exit2 = false;
+				while (!exit2){
+					system("cls");
+					int ch2 = fazMenu("Selecionar Atleta:", TeamList[ch]->getAtletas());
+					if (ch == -1)
+						exit2 = true;
+					else{
+						if (search(atletas, *TeamList[ch]->getAtletas()[ch2]) == -1){
+							atletas.push_back(TeamList[ch]->getAtletas()[ch2]);
+							TeamList[ch]->getAtletas()[ch2]->adicionaProva(this);
+						}
+						else{
+							cout << "O atleta " << TeamList[ch]->getAtletas()[ch2]->getNome() << "ja esta inscrito.\n";
+							_getch();
+						}
+
+					}
+				}
+			}
+			exit = true;
+		}
+	}
+}
+
+void Prova::retirarAtleta(){
+	system("cls");
+	if (atletas.size() == 0){
+		cout << "Nao existem atletas inscritos.";
+		_getch();
+		return;
+	}
+	bool exit = false;
+	while (!exit){
+		system("cls");
+		int ch = fazMenu("Selecionar Atletas:", atletas);
+		if (ch == -1)
+			exit = true;
+		else{
+			for (int i = 0; i < atletas[ch]->getProvas().size();i++){
+				if (atletas[ch]->getProvas()[i]==this){
+					atletas[ch]->getProvas().erase(atletas[ch]->getProvas().begin() + i);
+					break;
+				}
+			}
+//			int i = search(atletas[ch]->getProvas(), *this);
+//			atletas[ch]->getProvas().erase(atletas[ch]->getProvas().begin() + i);
+			atletas.erase(atletas.begin()+ch);
+			exit = true;
+		}
+	}
+}
+
+void Prova::menu(vector<Equipa*> TeamList, vector<Desporto*> DespList){
+	bool exit = false;
+	while (!exit){
+		system("cls");
+		vector<string> choices;
+		choices.push_back("Alterar Atletas");
+		choices.push_back("Retirar Atletas");
+
+		cout << *this;
+		cout << endl;
+		int ch = fazMenu("Opcoes", choices);
+		if (ch == -1)
+			exit = true;
+		else if (ch == 0)
+			adicionarAtleta(TeamList, DespList);
+		else
+			retirarAtleta();
+	}
+}
 /*
 ------------------------------------------------------------------------------
 						    Prova Terminada
 ------------------------------------------------------------------------------
-*/
+ */
 
 ProvaTerminada::ProvaTerminada(Modalidade* m, Data d, Hora i):Prova(m,d,i){}
 

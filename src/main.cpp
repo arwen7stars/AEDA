@@ -15,7 +15,7 @@
 
 Campeonato loadCampeonato(){
 	ifstream in;
-	string campeonato = "C:\\Users\\Cláudia Marinho\\Desktop\\Projeto-Aeda\\src\\Campeonato.txt";
+	string campeonato = "Campeonato.txt";
 
 	in.open(campeonato.c_str());
 
@@ -198,17 +198,17 @@ int main(){
 //	cout << M.getDesporto()->getNome() << endl;
 //	cout << endl;
 
-	Data d1 (2015,11,1);
-	Data d2 (2015,11,10);
-	Hora h1(8,0);
-	Hora h2(20,0);
-
-	Campeonato c ("Campeonato A", d1, d2, h1,h2);
-
-
-	if (c.criaDesportosCampeonato("Desportos.txt"))
-		cout<< "correu bem\n";
-	else cout << "correu mal\n";
+//	Data d1 (2015,11,1);
+//	Data d2 (2015,11,10);
+//	Hora h1(8,0);
+//	Hora h2(20,0);
+//
+//	Campeonato c ("Campeonato A", d1, d2, h1,h2);
+//
+//
+//	if (c.criaDesportosCampeonato("Desportos.txt"))
+//		cout<< "correu bem\n";
+//	else cout << "correu mal\n";
 
 
 	//Hora h1(13,30), h2(13,50), h3(20,00);
@@ -408,7 +408,7 @@ int main(){
 		cout << endl;
 		c.listaProvas();
 */
-
+	menu();
 	cout << "Press any key to continue...";
 	_getch();
 	return 0;

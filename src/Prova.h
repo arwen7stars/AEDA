@@ -14,10 +14,12 @@
 #include "Desporto.h"
 #include "Data.h"
 #include "Modalidade.h"
+#include "Equipa.h"
 
 using namespace std;
 
 class Atleta;
+class Equipa;
 
 class Prova{
 protected:
@@ -37,6 +39,10 @@ public:
 
 	void adicionaAtleta(Atleta * a);
 	bool Simultaneo(Prova p);
+
+	void adicionarAtleta(vector<Equipa*> TeamList, vector<Desporto*> DespList);
+	void retirarAtleta();
+	void menu(vector<Equipa*> TeamList, vector<Desporto*> DespList);
 
 	friend ostream & operator<<(ostream & o, const Prova & p);
 

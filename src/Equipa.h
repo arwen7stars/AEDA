@@ -16,15 +16,17 @@
 using namespace std;
 
 class Atleta;
+class Prova;
 
 class Equipa{
 	string nome;
 	vector<Atleta *> atletas;
 	vector<Desporto *> desportos;
-	int pontos;
 public:
 	Equipa(string n);
 	string getNome() const;
+	vector<Atleta *> getAtletas() const;
+	vector<Desporto *> getDesportos() const;
 	bool adicionaAtleta(Atleta * a);
 
 	bool operator== (const Equipa & c) const;
@@ -56,7 +58,8 @@ public:
 	string getNome() const;
 	Equipa* getEquipa() const;
 	int getPontos() const;
-	bool adicionaProva(Prova * p);
+	vector<Prova *> getProvas() const;
+	void adicionaProva(Prova * p);
 	void adicionaPontuacao(int p);
 
 	void menu();

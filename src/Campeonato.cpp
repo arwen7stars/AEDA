@@ -212,10 +212,10 @@ void Campeonato::menuCriacao(){
 			menuEquipas();
 		else if (ch == 2)
 			menuProvas();
-//		else if (ch == 3)
-//			Salvar();
-//		else
-//			TerminarPlaneamento();
+		//		else if (ch == 3)
+		//			Salvar();
+		//		else
+		//			TerminarPlaneamento();
 	}
 }
 
@@ -271,8 +271,7 @@ void Campeonato::menuProvas(){
 		if (ch == -1)
 			exit = true;
 		else if (ch < provas.size())
-			//equipas[ch]->menu();
-			provas[ch]->getInicio();
+			provas[ch]->menu(equipas, desportos);
 		else
 			adicionaProva();
 	}
@@ -286,12 +285,12 @@ void Campeonato::adicionaDesporto(){
 	string n;
 	cout << "Nome: ";
 	getline(cin, n);
-//	cin.ignore(10000,'\n');
+	//	cin.ignore(10000,'\n');
 
 	string p;
 	cout << "Tipo de pontuacao: ";
 	getline(cin, p);
-//	cin.ignore(10000,'\n');
+	//	cin.ignore(10000,'\n');
 
 	int ch;
 	vector<string> choices;
@@ -348,22 +347,39 @@ void Campeonato::adicionaProva(){
 	Modalidade* mod = desportos[ch]->getModalidades()[ch2];
 
 	int d, m, a, h, min;
-
-	cout << "Ano: ";
-	cin >> a;
-	cin.ignore(10000,'\n');
-
-
-	cout << "Mes: ";
-	cin >> m;
-	cin.ignore(10000,'\n');
-
-	cout << "Dia: ";
-	cin >> d;
-	cin.ignore(10000,'\n');
-
 	Data data;
+	Hora hora;
+	//Data---------------------
 	while (true){
+		system("cls");
+
+		cout << "Ano: ";
+		while (!(cin >> a)){
+			cin.clear();
+			cin.ignore(1000, '\n');
+			cout << "Input invalido!\n";
+			cout << "Ano: ";
+		}
+		cin.ignore(1000, '\n');
+
+		cout << "Mes: ";
+		while (!(cin >> m)){
+			cin.clear();
+			cin.ignore(1000, '\n');
+			cout << "Input invalido!\n";
+			cout << "Mes: ";
+		}
+		cin.ignore(1000, '\n');
+
+		cout << "Dia: ";
+		while (!(cin >> d)){
+			cin.clear();
+			cin.ignore(1000, '\n');
+			cout << "Input invalido!\n";
+			cout << "Dia: ";
+		}
+		cin.ignore(1000, '\n');
+
 		try{
 			data = Data(a,m,d);
 			if (data < inicio || fim < data)
@@ -379,16 +395,29 @@ void Campeonato::adicionaProva(){
 
 
 
-	cout << "Horas de Inicio: ";
-	cin >> a;
-	cin.ignore(10000,'\n');
-
-	cout << "Minutos: ";
-	cin >> a;
-	cin.ignore(10000,'\n');
-
-	Hora hora;
 	while (true){
+		system("cls");
+		cout << "Horas de Inicio: ";
+		while (!(cin >> h))
+		{
+			cin.clear();
+			cin.ignore(1000, '\n');
+			cout << "Input invalido!\n";
+			cout << "Horas de Inicio: ";
+		}
+		cin.ignore(1000, '\n');
+
+		cout << "Minutos: ";
+		while (!(cin >> min))
+		{
+			cin.clear();
+			cin.ignore(1000, '\n');
+			cout << "Input invalido!\n";
+			cout << "Minutos: ";
+		}
+		cin.ignore(1000, '\n');
+
+
 		try{
 			hora = Hora(h,min);
 			if (hora < abertura || fecho < hora+mod->getDuracao())
@@ -516,7 +545,7 @@ void Campeonato::listaDesportos() const{
 	insertionSort<string>(ndes);
 
 	for (unsigned int j = 0; j < desportos.size(); j++)
-			cout << desportos[j]->getNome() << endl;
+		cout << desportos[j]->getNome() << endl;
 }
 
 void Campeonato::listaProvas() const{

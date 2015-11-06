@@ -15,11 +15,18 @@
 
 Equipa::Equipa(string n){
 	nome = n;
-	pontos = 0;
 }
 
 string Equipa::getNome() const{
 	return nome;
+}
+
+vector<Atleta *> Equipa::getAtletas() const{
+	return atletas;
+}
+
+vector<Desporto *> Equipa::getDesportos() const{
+	return desportos;
 }
 
 bool Equipa::operator== (const Equipa & c) const{
@@ -199,8 +206,16 @@ Equipa* Atleta::getEquipa() const{
 	return equipa;
 }
 
+vector<Prova *> Atleta::getProvas() const{
+	return provas;
+}
+
 void Atleta::adicionaPontuacao(int p){
 	pontos += p;
+}
+
+void Atleta::adicionaProva(Prova * p){
+	provas.push_back(p);
 }
 
 int Atleta::getPontos() const{
