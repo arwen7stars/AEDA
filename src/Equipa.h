@@ -55,24 +55,18 @@ class Atleta{
 	bool genero;
 	int pontos;
 public:
-<<<<<<< HEAD
 	Atleta(string n, Equipa* e, bool g);
-=======
-	Atleta(string n, Equipa* e, char g);
->>>>>>> origin/master
+
 
 	string getNome() const;
 	Equipa* getEquipa() const;
 	int getPontos() const;
 	vector<Prova *> getProvas() const;
-<<<<<<< HEAD
+
 	bool getGenero() const;
 
 	void setpontos(int p); //no fim nao precisamos disto, e para testar
 
-=======
-	char getGenero() const;
->>>>>>> origin/master
 	void adicionaProva(Prova * p);
 	void adicionaPontuacao(int p);
 

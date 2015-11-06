@@ -224,12 +224,8 @@ vector<Prova *> Atleta::getProvas() const{
 	return provas;
 }
 
-<<<<<<< HEAD
+
 bool  Atleta::getGenero() const{
-=======
-char Atleta::getGenero() const
-{
->>>>>>> origin/master
 	return genero;
 }
 
