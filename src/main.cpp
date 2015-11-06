@@ -97,14 +97,45 @@ Campeonato loadCampeonato(){
 	int fim_mes;
 	int fim_ano;
 
+	string abertura;
+	int h_abertura;
+	int m_abertura;
 
+	string fecho;
+	int h_fecho;
+	int m_fecho;
 
+	string info;
 
-	Data d1 (2015,11,1);
-	Data d2 (2015,11,10);
-	Hora h1 (8,0);
-	Hora h2 (20,0);
-	Campeonato c ("Campeonato A", d1, d2,h1, h2);
+	getline(in,nome);
+
+	in >> info;
+	in >> ini_dia;
+	in >> ini_mes;
+	in >> ini_ano;
+
+	in >> info;
+	in >> fim_dia;
+	in >> fim_mes;
+	in >> fim_ano;
+
+	in >> info;
+	in >> abertura;
+	in >> info;
+	in >> fecho;
+
+	h_abertura = string_to_int(abertura.substr(0,2));
+	m_abertura = string_to_int(abertura.substr(3,2));
+
+	h_fecho = string_to_int(fecho.substr(0,2));
+	m_fecho = string_to_int(fecho.substr(3,2));
+
+	Data d1 (ini_ano,ini_mes,ini_dia);
+	Data d2 (fim_ano,fim_mes,fim_dia);
+	Hora h1 (h_abertura,m_abertura);
+	Hora h2 (h_fecho,m_fecho);
+
+	Campeonato c (nome, d1, d2,h1, h2);
 	return c;
 }
 
