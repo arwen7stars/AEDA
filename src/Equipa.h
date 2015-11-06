@@ -26,12 +26,14 @@ public:
 	Equipa(string n);
 	string getNome() const;
 	bool adicionaAtleta(Atleta * a);
-	bool adicionaDesporto(Atleta * a);
 
 	bool operator== (const Equipa & c) const;
 	friend ostream & operator<<(ostream & o, const Equipa & d);
 
-	void menu();
+	void adicionarDesporto(vector<Desporto*> DespList);
+	void retirarDesporto();
+	void menu(vector<Desporto*> DespList);
+	void menuAtletas();
 
 	class AtletaExiste{
 		string nome;

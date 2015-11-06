@@ -47,9 +47,24 @@ bool Modalidade::operator== (const Modalidade & c) const{
 }
 
 void Modalidade::menu(){
-	system("cls");
-	cout << "Modalidade: " << nome << endl << endl;
-	_getch();
+	bool exit = false;
+	while (!exit){
+		system("cls");
+		vector<string> choices;
+		choices.push_back("Mudar Nome");
+
+		cout << "Nome: " << nome << endl;
+		cout << "Duracao: " << duracao << endl;
+		int ch = fazMenu("Opcoes: ", choices);
+		if (ch == -1)
+			exit = true;
+		else{
+			system("cls");
+			cout << "Novo nome: ";
+			getline(cin, nome);
+		}
+
+	}
 }
 
 ostream & operator<<(ostream & o, const Modalidade & d){

@@ -44,7 +44,7 @@ int search(const vector<T*> &v, T x);
 //Menu implementation
 template <class T>
 int fazMenu(string titulo, vector<T*> options){
-	cout << titulo << endl << endl;
+	cout << titulo << endl;
 	int inicio = wherey();
 	for (int i = 0; i < options.size(); i++)
 		cout << "   " << (*options[i]) << endl;
@@ -84,7 +84,7 @@ int fazMenu(string titulo, vector<T*> options){
 
 template <class T>
 int fazMenu(string titulo, vector<T> options){
-	cout << titulo << endl << endl;
+	cout << titulo << endl;
 	int inicio = wherey();
 	for (int i = 0; i < options.size(); i++)
 		cout << "   " << (options[i]) << endl;
@@ -124,7 +124,7 @@ int fazMenu(string titulo, vector<T> options){
 
 template <class T>
 int fazMenu(string titulo, vector<T*> options, string Op1){
-	cout << titulo << endl << endl;
+	cout << titulo << endl;
 	int inicio = wherey();
 	for (int i = 0; i < options.size(); i++)
 		cout << "   " << (*options[i]) << endl;

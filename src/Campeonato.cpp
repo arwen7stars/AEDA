@@ -262,7 +262,7 @@ void Campeonato::menuEquipas(){
 		if (ch == -1)
 			exit = true;
 		else if (ch < equipas.size())
-			equipas[ch]->menu();
+			equipas[ch]->menu(desportos);
 		else{
 			try{
 				adicionaEquipa();
@@ -307,13 +307,13 @@ void Campeonato::adicionaDesporto(){
 
 	int ch;
 	vector<string> choices;
-	choices.push_back("Yes");
-	choices.push_back("No");
+	choices.push_back("Sim");
+	choices.push_back("Nao");
 	ch = fazMenu("A pontuacao e crescente? (Valores maiores sao melhores?)", choices);
 	if (ch == -1)
 		return;
 
-	Desporto *d = new Desporto(n, p, ch, 1);
+	Desporto *d = new Desporto(n, p, !ch, 1);
 	if (search(desportos , *d) != -1)
 		throw DesportoExiste(n);
 	while(true){
@@ -336,7 +336,6 @@ void Campeonato::adicionaEquipa(){
 	string n;
 	cout << "Nome: ";
 	getline(cin, n);
-	cin.ignore(10000,'\n');
 
 	Equipa *eq = new Equipa(n);
 	if (search(equipas , *eq) != -1)

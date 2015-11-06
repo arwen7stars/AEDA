@@ -143,15 +143,39 @@ void Desporto::menu(){
 		system("cls");
 		vector<string> choices;
 		choices.push_back("Mudar Nome");
+		choices.push_back("Mudar Tipo de Pontuacao");
+		choices.push_back("Mudar Hierarquia da Pontuacao");
 		choices.push_back("Alterar Modalidades");
 
-		int ch = fazMenu(nome, choices);
+		cout << "Nome: " << nome << endl;
+		cout << "Pontuacao: " << pontuacao.nome;
+		if (pontuacao.crescente)
+			cout << "(Crescente)\n";
+		else
+			cout << "(Decrescente)\n";
+		int ch = fazMenu("Opcoes: ", choices);
 		if (ch == -1)
 			exit = true;
 		else if (ch == 0){
 			system("cls");
 			cout << "Novo nome: ";
 			getline(cin, nome);
+		}
+		else if (ch == 1){
+			system("cls");
+			cout << "Novo nome de pontuacao: ";
+			getline(cin, pontuacao.nome);
+		}
+		else if (ch == 2){
+			system("cls");
+			int ch2;
+			vector<string> choices2;
+			choices.push_back("Sim");
+			choices.push_back("Nao");
+			ch = fazMenu("A pontuacao e crescente? (Valores maiores sao melhores?)", choices2);
+			if (ch == -1)
+				continue;
+			pontuacao.crescente=!ch;
 		}
 		else{
 			menuModalidades();
