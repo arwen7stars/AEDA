@@ -188,6 +188,18 @@ public:
 	string getNome() { return nome; }
 };
 
+class CaraterInvalido{
+public:
+	char c;
+	CaraterInvalido(char ch) {c = ch;}
+	char getChar()
+	{
+		return c;
+	}
+
+};
+
+
 class ExcecoesLoadProva{
 public:
 	virtual string getMessage() const = 0;

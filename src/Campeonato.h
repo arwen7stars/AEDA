@@ -30,11 +30,12 @@ class Campeonato{
 	Hora abertura, fecho;
 public:
 	Campeonato(string n, Data i, Data f, Hora a, Hora fe);
+	void adicionaEquipa(Equipa * eq);
 	bool adicionaProva(Prova &p);
 
-	bool loadDesportos(string nome_ficheiro);
+	void loadDesportos(string nome_ficheiro);
 	void loadEquipas(string nome_ficheiro);
-	bool loadModalidades(string nome_ficheiro);
+	void loadModalidades(string nome_ficheiro);
 	void loadProvas(string nome_ficheiro);
 
 	void updateDesportos(string nome_ficheiro);

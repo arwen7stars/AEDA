@@ -82,7 +82,6 @@ Campeonato load()
 {
 	Campeonato c = loadCampeonato();
 
-	bool suc_des;
 	string desportos = "Desportos.txt";
 
 	if(!ficheiroExiste(desportos))
@@ -90,7 +89,13 @@ Campeonato load()
 				throw FicheiroInexistente(desportos);
 		}
 
-	suc_des = c.loadDesportos(desportos);
+	try{
+	c.loadDesportos(desportos);
+	}
+	catch(CaraterInvalido &e)
+	{
+		cout << "O carater " << e.getChar() << " e invalido!\n";
+	}
 
 	string equipas = "Equipas.txt";
 
@@ -106,8 +111,6 @@ Campeonato load()
 		cout << "A equipa " << e.getNome() << " nao existe!\n";
 	}
 
-
-	bool suc_mod;
 	string modalidades = "Modalidades.txt";
 
 	if(!ficheiroExiste(modalidades))
@@ -115,7 +118,12 @@ Campeonato load()
 		throw FicheiroInexistente(modalidades);
 	}
 
-	suc_mod = c.loadModalidades(modalidades);
+	try{
+	c.loadModalidades(modalidades);
+	} catch(Desporto::DesportoInexistente e)
+	{
+		cout << "O desporto " << e.getNome() << " nao existe!\n";
+	}
 
 	string provas = "Provas.txt";
 
@@ -567,7 +575,7 @@ int main(){
 */
 
 	Campeonato c = load();
-/*
+
 	cout << "Provas.txt\n";
 	cout << endl << "Vetor de provas de campeonato\n" << endl;
 	for(unsigned int i = 0; i < c.getProvas().size();i++)
@@ -592,8 +600,8 @@ int main(){
 		cout << endl;
 	}
 	cout << endl;
-*/
 
+	cout << "Vetor de atletas de cada equipa\n" << endl;
 	for (unsigned int i = 0; i < c.getEquipas().size(); i++)
 	{
 		cout << c.getEquipas()[i]->getNome() << endl;
@@ -615,6 +623,12 @@ int main(){
 			cout << eq->getDesportos()[j]->getNome() << endl;
 		}
 		cout << endl;
+	}
+
+	cout << endl << "Vetor de desportos\n" << endl;
+	for(unsigned int i = 0; i < c.getDesportos().size(); i++)
+	{
+		cout << c.getDesportos()[i]->getNome() << endl;
 	}
 
 

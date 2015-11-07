@@ -94,7 +94,20 @@ bool Campeonato::adicionaProva(Prova &p)
 	return true;
 }
 
-bool Campeonato::loadDesportos(string nome_ficheiro)
+void Campeonato::adicionaEquipa(Equipa * eq)
+{
+	int indice = -1;
+	for(unsigned int i = 0; i < equipas.size(); i++)
+	{
+		if (eq->getNome() == equipas[i]->getNome())
+			indice = i;
+	}
+	if(indice == -1)
+		equipas.push_back(eq);
+
+}
+
+void Campeonato::loadDesportos(string nome_ficheiro)
 {
 	//int elementos_equipa;
 	string desporto;
@@ -104,9 +117,6 @@ bool Campeonato::loadDesportos(string nome_ficheiro)
 	bool c;
 	ifstream in;
 
-	if (!ficheiroExiste(nome_ficheiro))
-		return false;
-
 	in.open(nome_ficheiro.c_str());
 
 	while (!in.eof())
@@ -115,28 +125,27 @@ bool Campeonato::loadDesportos(string nome_ficheiro)
 		//in >> elementos_equipa;
 		//in >> barra;
 
-		in >> desporto;
+		getline(in, desporto);
 
-		in >> barra;
 		in >> tipo_de_pontuacao;
 		in >> barra;
 		in >> crescente;
+
+		in.ignore(1000, '\n');
+		in.ignore(1000, '\n');
 
 		if (crescente == 'C')
 			c = true;
 		else if (crescente == 'D')
 			c = false;
-		else return false;
+		else throw CaraterInvalido(crescente);
 
 		Desporto * ds = new Desporto(desporto, tipo_de_pontuacao, c);
 
-		if (!in.eof())
-			desportos.push_back(ds);
+		desportos.push_back(ds);
 	}
 
 	in.close();
-
-	return true;
 }
 
 
@@ -150,13 +159,18 @@ void Campeonato::loadEquipas(string nome_ficheiro)
 
 	while (!in.eof())
 	{
-		string eq, at;
-		char genero, barra;
+		string eq, str,at;
+		char genero;
 		bool g;
 
 		if (k == 0)
 		{
-			in >> eq;
+			int c = in.peek();
+
+			if (c == '\n')
+				in.ignore(1000,'\n');
+
+			getline(in, eq);
 		}
 		else
 		{
@@ -165,7 +179,7 @@ void Campeonato::loadEquipas(string nome_ficheiro)
 		k++;
 
 		Equipa * equipa = new Equipa(eq);
-		equipas.push_back(equipa);
+		adicionaEquipa(equipa);
 
 		extraido = "";
 
@@ -174,9 +188,14 @@ void Campeonato::loadEquipas(string nome_ficheiro)
 				in >> extraido;
 				if (extraido == "-")
 				{
-					in >> at;
-					in >> barra;
-					in >> genero;
+					int c = in.peek();
+					if (c == '\n')
+						in.ignore(1000,'\n');
+
+					getline(in, str);
+					genero = str[str.size()-1];
+					at = str.substr(1,str.size()-2);
+
 
 					if (genero == 'M')
 						g= true;
@@ -205,7 +224,7 @@ void Campeonato::loadEquipas(string nome_ficheiro)
 	in.close();
 }
 
-bool Campeonato::loadModalidades(string nome_ficheiro)
+void Campeonato::loadModalidades(string nome_ficheiro)
 {
 	ifstream in_mod;
 
@@ -229,8 +248,7 @@ bool Campeonato::loadModalidades(string nome_ficheiro)
 
 		if (indice == -1)
 			{
-			cerr << "Desporto " << desporto << " nao existe\n";
-			return false;
+			throw Desporto::DesportoInexistente(desporto);
 			}
 
 		in_mod >> modalidade;
@@ -244,7 +262,6 @@ bool Campeonato::loadModalidades(string nome_ficheiro)
 
 	}
 	in_mod.close();
-	return true;
 }
 
 void Campeonato::loadProvas(string nome_ficheiro)

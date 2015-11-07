@@ -50,6 +50,14 @@ public:
 		ModalidadeExiste(string n) {nome = n;}
 		string getNome() const {return nome;}
 	};
+
+	class DesportoInexistente{
+		string nome;
+	public:
+		DesportoInexistente() {}
+		DesportoInexistente(string n) { nome = n;}
+		string getNome() const { return nome;}
+	};
 };
 
 
