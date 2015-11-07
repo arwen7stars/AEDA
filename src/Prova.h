@@ -30,7 +30,7 @@ protected:
 	bool genero;
 public:
 	Prova(){};
-	Prova(Modalidade* m, Data d, Hora i, bool g);
+	Prova(Modalidade* m, Data d, Hora i, char g);
 
 	Hora getInicio() const;
 	Hora getFim() const;

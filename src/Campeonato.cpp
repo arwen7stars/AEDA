@@ -299,13 +299,8 @@ bool Campeonato::loadProvas(string nome_ficheiro)
 		Hora h(horas,minutos);
 
 		Prova * p = new Prova(desportos[i_desporto]->getModalidades()[i_modalidade], d, h, genero);
-		bool suc = adicionaProva(*p);
-
-		if (!suc)
-			return false;
 
 		extraido = " ";
-
 
 		if (!in_pro.eof())
 			do{
@@ -314,19 +309,24 @@ bool Campeonato::loadProvas(string nome_ficheiro)
 				{
 					in_pro >> at;
 
-				for(unsigned int i = 0; i < equipas.size();i++)
-				{
-					for(unsigned int j = 0; j < equipas[i]->getAtletas().size();j++)
+					for(unsigned int i = 0; i < equipas.size();i++)
 					{
-						if (at == equipas[i]->getAtletas()[j]->getNome())
+						for(unsigned int j = 0; j < equipas[i]->getAtletas().size();j++)
 						{
-							equipas[i]->getAtletas()[j]->adicionaProva(p);
+							if (at == equipas[i]->getAtletas()[j]->getNome())
+							{
+								equipas[i]->getAtletas()[j]->adicionaProva(p);
+								p->adicionaAtleta(equipas[i]->getAtletas()[j]);
+							}
 						}
 					}
 				}
-				}
 			} while(extraido == "-" && !in_pro.eof());
 
+		bool suc = adicionaProva(*p);
+
+		if (!suc)
+			return false;
 	}
 
 

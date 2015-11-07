@@ -1,13 +1,15 @@
 #include "Prova.h"
 #include "Lists.h"
 
-Prova::Prova(Modalidade* m, Data d, Hora i, bool g)
+Prova::Prova(Modalidade* m, Data d, Hora i, char g)
 {
 	modalidade = m;
 	data = d;
 	inicio = i;
 	fim = i + m->getDuracao();
-	genero = g;
+	if (g == 'M')
+		genero = true;
+	else genero = false;
 }
 
 Hora Prova::getInicio() const
@@ -61,7 +63,13 @@ bool Prova::Simultaneo(Prova p)
 }
 
 void Prova::adicionaAtleta(Atleta * a){
-	atletas.push_back(a);
+	int indice = -1;
+
+	for (unsigned int i = 0; i < atletas.size(); i++)
+		if (a->getNome() == atletas[i]->getNome())
+			indice = i;
+	if (indice == -1)
+		atletas.push_back(a);
 }
 
 ostream & operator<<(ostream & o, const Prova & p){

@@ -133,7 +133,7 @@ void menu(){
 		else if (ch == 0)
 			menuNovoCampeonato();
 		else{
-			Campeonato C = loadCampeonato();
+			Campeonato C = load();
 //			if(C.isCriado())
 //				cout << "Ola";
 //			else
@@ -405,9 +405,8 @@ int main(){
 		cout << endl;
 	}
 
-<<<<<<< HEAD
 	menu();
-=======
+
 	cout << "Campeonato.txt\n";
 	cout << "Nome campeonato: " << c.getNome() << endl;
 	cout << c.getInicio() << endl;
@@ -415,7 +414,6 @@ int main(){
 	cout << c.getAbertura() << endl;
 	cout << c.getFecho() << endl;
 	cout << endl;
->>>>>>> origin/master
 
 	cout << "Modalidades.txt\n";
 	for(unsigned int i = 0; i < c.getDesportos().size();i++)
@@ -480,14 +478,59 @@ int main(){
 		cout << "Ficheiro " << e.getNome() << "inexistente";
 	}
 */
-
-	//menu();
+	/*
 	Campeonato c = load();
 
-	bool s = c.loadProvas("Provas.txt");
-	if (s)
-		cout << "yey";
+	c.loadProvas("Provas.txt");
 
+
+	cout << "Provas.txt\n";
+
+	for(unsigned int i = 0; i < c.getProvas().size();i++)
+		{
+			cout << c.getProvas()[i]->getModalidade()->getNome() << endl;
+			cout << c.getProvas()[i]->getData() << endl;
+			cout << c.getProvas()[i]->getInicio() << endl;
+			if (c.getProvas()[i]->getGenero())
+				cout << "M" << endl;
+			else cout << "F" << endl;
+			cout << endl;
+		}
+		cout << endl;
+
+	for(unsigned int i = 0; i < c.getProvas().size();i++)
+	{
+		cout << c.getProvas()[i]->getModalidade()->getNome() << endl;
+		for(unsigned int j = 0; j < c.getProvas()[i]->getAtletas().size(); j++)
+		{
+			cout << c.getProvas()[i]->getAtletas()[j]->getNome() << endl;
+		}
+		cout << endl;
+	}
+	cout << endl;
+
+	cout << "Atletas.txt\n";
+		for(unsigned int i = 0; i < c.getEquipas().size();i++)
+		{
+			cout << c.getEquipas()[i]->getNome() << endl;
+			Equipa * eq = c.getEquipas()[i];
+			cout << endl;
+			for(unsigned int j = 0; j < eq->getAtletas().size(); j++)
+				{
+				Atleta * at = eq->getAtletas()[j];
+				cout << at->getNome() << endl;
+
+				for(unsigned int k = 0; k < at->getProvas().size(); k++)
+				{
+					cout << at->getProvas()[k]->getModalidade()->getNome() << endl;
+				}
+				cout << endl;
+				}
+			cout << endl;
+		}
+	*/
+
+	menu();
 	cout << "Press any key to continue...";
 	_getch();
 	return 0;

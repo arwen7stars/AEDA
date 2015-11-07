@@ -27,6 +27,7 @@ public:
 	string getNome() const;
 	vector<Atleta *> getAtletas() const;
 	vector<Desporto *> getDesportos() const;
+
 	bool adicionaAtleta(Atleta * a);
 
 	bool operator== (const Equipa & c) const;
