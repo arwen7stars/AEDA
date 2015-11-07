@@ -37,6 +37,8 @@ public:
 	bool loadModalidades(string nome_ficheiro);
 	bool loadProvas(string nome_ficheiro);
 
+	void updateDesportos(string nome_ficheiro);
+
 	string getNome() const;
 	Data getInicio() const;
 	Data getFim() const;

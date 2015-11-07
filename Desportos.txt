@@ -1,5 +1,2 @@
-1 / Corrida / Segundos / D
-1 / Natação / Segundos / D
-11 / Futebol / Golos / C
-7 / Basketball / Pontos / C
-11 / Futebol Americano / Golos / C
+Artes_Marciais / Pontos / C
+Artes_Marciais / Pontos / C

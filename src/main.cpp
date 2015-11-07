@@ -86,36 +86,47 @@ Campeonato load()
 
 	bool suc_des;
 	string desportos = "Desportos.txt";
-	suc_des = c.loadDesportos(desportos);
 
 	if(!ficheiroExiste(desportos))
-	{
-			throw FicheiroInexistente(desportos);
-	}
+		{
+				throw FicheiroInexistente(desportos);
+		}
+
+	suc_des = c.loadDesportos(desportos);
 
 	bool suc_eq;
 	string equipas = "Atletas.txt";
-	suc_eq = c.loadEquipas(equipas);
 
 	if(!ficheiroExiste(equipas))
 	{
 		throw FicheiroInexistente(equipas);
 	}
 
+	suc_eq = c.loadEquipas(equipas);
+
 	bool suc_mod;
 	string modalidades = "Modalidades.txt";
-	suc_mod = c.loadModalidades(modalidades);
 
 	if(!ficheiroExiste(modalidades))
 	{
 		throw FicheiroInexistente(modalidades);
 	}
 
+	suc_mod = c.loadModalidades(modalidades);
+
+	bool suc_pro;
+	string provas = "Provas.txt";
+
+	if(!ficheiroExiste(provas))
+	{
+		throw FicheiroInexistente(provas);
+	}
+
+	suc_pro = c.loadProvas(provas);
+
 	return c;
 
 }
-
-
 
 void menuNovoCampeonato(){}
 
@@ -478,7 +489,7 @@ int main(){
 		cout << "Ficheiro " << e.getNome() << "inexistente";
 	}
 */
-	/*
+/*
 	Campeonato c = load();
 
 	c.loadProvas("Provas.txt");
@@ -529,8 +540,13 @@ int main(){
 			cout << endl;
 		}
 	*/
-
-	menu();
+/*
+	Campeonato c = load();
+	Desporto d("Artes_Marciais", "Pontos", true);
+	c.adicionaDesporto(d);
+	c.updateDesportos("Desportos.txt");
+*/
+	//menu();
 	cout << "Press any key to continue...";
 	_getch();
 	return 0;

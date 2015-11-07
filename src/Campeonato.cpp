@@ -217,7 +217,7 @@ bool Campeonato::loadModalidades(string nome_ficheiro)
 
 		if (indice == -1)
 			{
-			cerr << "Desporto inexistente. Nao e possivel criar modalidade!\n";
+			cerr << "Desporto " << desporto << " nao existe\n";
 			return false;
 			}
 
@@ -282,8 +282,7 @@ bool Campeonato::loadProvas(string nome_ficheiro)
 
 		if (i_modalidade == -1)
 		{
-			cout << "Modalidade inexistente " << mod << endl;
-			cerr << "Modalidade inexistente. Nao e possivel criar prova!\n";
+			cout << "A modalidade "<< mod << " nao existe" << endl;
 			return false;
 		}
 
@@ -328,10 +327,23 @@ bool Campeonato::loadProvas(string nome_ficheiro)
 		if (!suc)
 			return false;
 	}
-
-
-
 	return true;
+}
+
+void Campeonato::updateDesportos(string nome_ficheiro)
+{
+	ofstream out;
+
+	out.open(nome_ficheiro.c_str());
+
+	for(unsigned int i = 0; i < desportos.size(); i++)
+	{
+		out << desportos[i]->getNome() << " / ";
+		out << desportos[i]->getPontuacao() << " / ";
+		if (desportos[i]->isCrescente())
+			out << "C" << endl;
+		else out << "D" << endl;
+	}
 }
 
 void Campeonato::menuApagar(){
