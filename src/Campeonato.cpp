@@ -54,18 +54,19 @@ vector<Equipa*> Campeonato::getEquipas() const
 	return equipas;
 }
 
-bool Campeonato::adicionaProva(Prova p)
+bool Campeonato::adicionaProva(Prova &p)
 {
+
 	if (p.getData() < inicio || fim < p.getData())
 		return false;
 	else
 	{
-		Hora abertura(8,0);
-		Hora fecho(20,0);
 		Hora fimProva = p.getInicio() + p.getModalidade()->getDuracao();
 
 		if (p.getInicio() < abertura || fecho < fimProva)
+		{
 			return false;
+		}
 		else
 		{
 			if (provas.size() == 0)
@@ -87,6 +88,7 @@ bool Campeonato::adicionaProva(Prova p)
 	}
 
 	provas.push_back(&p);
+
 	return true;
 }
 
@@ -214,7 +216,10 @@ bool Campeonato::loadModalidades(string nome_ficheiro)
 				indice = i;
 
 		if (indice == -1)
+			{
+			cerr << "Desporto inexistente. Nao e possivel criar modalidade!\n";
 			return false;
+			}
 
 		in_mod >> modalidade;
 		in_mod >> barra;
@@ -222,12 +227,110 @@ bool Campeonato::loadModalidades(string nome_ficheiro)
 		in_mod >> horas;
 		in_mod >> minutos;
 
-		if (!in_mod.eof())
-		{
-			Modalidade * m = new Modalidade(modalidade, horas, minutos, desportos[indice]);
-			desportos[indice]->adicionaModalidade(m);
-		}
+		Modalidade * m = new Modalidade(modalidade, horas, minutos, desportos[indice]);
+		desportos[indice]->adicionaModalidade(m);
+
 	}
+	in_mod.close();
+	return true;
+}
+
+bool Campeonato::loadProvas(string nome_ficheiro)
+{
+	ifstream in_pro;
+	unsigned int k = 0;
+	string extraido = " ";
+
+	if(!ficheiroExiste(nome_ficheiro))
+		return false;
+
+	in_pro.open(nome_ficheiro.c_str());
+
+	while(!in_pro.eof())
+	{
+		string mod, at;
+		int dia, mes, ano, horas, minutos;
+		char genero, barra;
+
+		int i_desporto = -1;
+		int i_modalidade = -1;
+
+		if (k == 0)
+			{
+			in_pro >> mod;
+			}
+		else
+			{
+			mod = extraido;
+			}
+
+		in_pro >> barra;
+		k++;
+
+
+		for (unsigned int i = 0; i < desportos.size(); i++)
+		{
+			for(unsigned int j = 0; j < desportos[i]->getModalidades().size(); j++)
+			{
+				if (mod == desportos[i]->getModalidades()[j]->getNome())
+				{
+					i_desporto = i;
+					i_modalidade = j;
+				}
+			}
+		}
+
+		if (i_modalidade == -1)
+		{
+			cout << "Modalidade inexistente " << mod << endl;
+			cerr << "Modalidade inexistente. Nao e possivel criar prova!\n";
+			return false;
+		}
+
+		in_pro >> dia >> mes >> ano;
+		in_pro >> barra;
+		in_pro >> horas >> minutos;
+		in_pro >> barra;
+		in_pro >> genero;
+
+
+
+		Data d(ano,mes,dia);
+		Hora h(horas,minutos);
+
+		Prova * p = new Prova(desportos[i_desporto]->getModalidades()[i_modalidade], d, h, genero);
+		bool suc = adicionaProva(*p);
+
+		if (!suc)
+			return false;
+
+		extraido = " ";
+
+
+		if (!in_pro.eof())
+			do{
+				in_pro >> extraido;
+				if (extraido == "-")
+				{
+					in_pro >> at;
+
+				for(unsigned int i = 0; i < equipas.size();i++)
+				{
+					for(unsigned int j = 0; j < equipas[i]->getAtletas().size();j++)
+					{
+						if (at == equipas[i]->getAtletas()[j]->getNome())
+						{
+							equipas[i]->getAtletas()[j]->adicionaProva(p);
+						}
+					}
+				}
+				}
+			} while(extraido == "-" && !in_pro.eof());
+
+	}
+
+
+
 	return true;
 }
 

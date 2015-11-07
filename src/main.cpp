@@ -481,7 +481,12 @@ int main(){
 	}
 */
 
-	menu();
+	//menu();
+	Campeonato c = load();
+
+	bool s = c.loadProvas("Provas.txt");
+	if (s)
+		cout << "yey";
 
 	cout << "Press any key to continue...";
 	_getch();
