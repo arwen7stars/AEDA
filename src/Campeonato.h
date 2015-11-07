@@ -99,6 +99,8 @@ public:
 	void listaAtletas() const;
 	void listaAtletasEquipa() const;
 	void listaAtletasColocacao() const;
+	void listaAtletasDesporto() const;
+	void listaEquipasColocacao() const ;
 };
 
 void atribuiPontuacao(Prova pro, vector<float> pontos);

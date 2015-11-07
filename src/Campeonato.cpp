@@ -1050,3 +1050,58 @@ void Campeonato::listaAtletasColocacao() const {
 	for (unsigned int i = 0; i < vat.size(); i++)
 		cout << vat[i] << "(" << vat[i].getPontos() << ")"<< endl;
 }
+
+void Campeonato::listaAtletasDesporto() const {
+	vector<Atleta> vat;
+
+	for (unsigned int j = 0; j < equipas.size(); j++)
+		for (unsigned int u = 0; u < equipas[j]->getAtletas().size(); u++)
+			vat.push_back((*equipas[j]->getAtletas()[u]));
+
+	cout << "Atletas no campeonato: " << endl << endl;
+
+	for (unsigned int j = 0; j < desportos.size(); j++) {
+		vector<Atleta> vatd;
+
+		for (unsigned int u = 0; u < vat.size(); u++) //percorre os atletas
+			for (unsigned int a = 0;
+					a < vat[u].getEquipa()->getDesportos().size(); a++) //percorre os seus desportos
+				if (desportos[j]->getNome()
+						== vat[u].getEquipa()->getDesportos()[a]->getNome()) //desporto = desporto do a atleta
+					vatd.push_back(vat[u]);
+
+		if (vatd.size() == 0)
+			cout <<endl << "Nao ha atletas  em " << desportos[j]->getNome() <<endl;
+		else {
+			insertionSort<Atleta>(vatd);
+			cout <<endl<< "Atletas em " << desportos[j]->getNome() << ":" << endl << endl;
+			for (unsigned int i = 0; i < vatd.size(); i++)
+				cout << vatd[i] << endl;
+		}
+	}
+}
+
+void Campeonato::listaEquipasColocacao() const {
+	vector<pair<int, string> > peq (equipas.size(), make_pair(0, ""));
+	vector<int> peqb (equipas.size());
+
+	for (unsigned int i = 0; i < equipas.size(); i++) {
+
+		peq[i].second = equipas[i]->getNome();
+		for (unsigned int j = 0; j < equipas[i]->getAtletas().size(); j++) {
+
+			peq[i].first += equipas[i]->getAtletas()[j]->getPontos();
+			peqb[i] += equipas[i]->getAtletas()[j]->getPontos();
+		}
+	}
+	insertionSort<int>(peqb);
+
+	cout << "Ranking de Equipas :" << endl << endl;
+
+	for (unsigned int a = 0; a < peq.size(); a++)
+
+		for (unsigned int b = 0; b < peqb.size(); b++)
+			if (peqb[b] == peq[a].first)
+				cout<< peq[b].second << endl;
+
+}
