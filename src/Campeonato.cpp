@@ -194,7 +194,7 @@ void Campeonato::loadEquipas(string nome_ficheiro)
 
 					getline(in, str);
 					genero = str[str.size()-1];
-					at = str.substr(1,str.size()-2);
+					at = str.substr(1,str.size()-3);
 
 
 					if (genero == 'M')
@@ -226,21 +226,19 @@ void Campeonato::loadEquipas(string nome_ficheiro)
 
 void Campeonato::loadModalidades(string nome_ficheiro)
 {
-	ifstream in_mod;
+	ifstream in;
 
-	in_mod.open(nome_ficheiro.c_str());
+	in.open(nome_ficheiro.c_str());
 
-	while (!in_mod.eof())
+	while (!in.eof())
 	{
-		char barra;
 		string desporto;
 		string modalidade;
 		int horas;
 		int minutos;
 		int indice = -1;
 
-		in_mod >> desporto;
-		in_mod >> barra;
+		getline (in, desporto);
 
 		for (unsigned int i = 0; i < desportos.size(); i++)
 			if (desportos[i]->getNome() == desporto)
@@ -251,30 +249,37 @@ void Campeonato::loadModalidades(string nome_ficheiro)
 			throw Desporto::DesportoInexistente(desporto);
 			}
 
-		in_mod >> modalidade;
-		in_mod >> barra;
+		getline(in, modalidade);
 
-		in_mod >> horas;
-		in_mod >> minutos;
+		char c = in.peek();
+
+		if (c == '\n')
+			in.ignore(1000,'\n');
+
+		in >> horas;
+		in >> minutos;
+
+		in.ignore(1000,'\n');
+		in.ignore(1000,'\n');
 
 		Modalidade * m = new Modalidade(modalidade, horas, minutos, desportos[indice]);
 		desportos[indice]->adicionaModalidade(m);
 
 	}
-	in_mod.close();
+	in.close();
 }
 
 void Campeonato::loadProvas(string nome_ficheiro)
 {
-	ifstream in_pro;
+	ifstream in;
 	unsigned int k = 0;
 	string extraido = " ";
 
-	in_pro.open(nome_ficheiro.c_str());
+	in.open(nome_ficheiro.c_str());
 
-	while(!in_pro.eof())
+	while(!in.eof())
 	{
-		string mod, at;
+		string mod, at, str;
 		int dia, mes, ano, horas, minutos;
 		char genero, barra;
 
@@ -283,14 +288,28 @@ void Campeonato::loadProvas(string nome_ficheiro)
 
 		if (k == 0)
 			{
-			in_pro >> mod;
+			int c = in.peek();
+
+			if (c == '\n')
+				in.ignore(1000,'\n');
+
+			getline(in, mod);
 			}
 		else
 			{
 			mod = extraido;
+
+			int c = in.peek();
+
+			if (c == '\n')
+				in.ignore(1000,'\n');
+			else
+				{
+				getline(in,str);
+				mod = mod + str;
+				}
 			}
 
-		in_pro >> barra;
 		k++;
 
 
@@ -311,11 +330,11 @@ void Campeonato::loadProvas(string nome_ficheiro)
 			throw Modalidade::ModalidadeInexistente(mod);
 		}
 
-		in_pro >> dia >> mes >> ano;
-		in_pro >> barra;
-		in_pro >> horas >> minutos;
-		in_pro >> barra;
-		in_pro >> genero;
+		in >> dia >> mes >> ano;
+		in >> barra;
+		in >> horas >> minutos;
+		in >> barra;
+		in >> genero;
 
 		Data d(ano,mes,dia);
 		Hora h(horas,minutos);
@@ -324,18 +343,25 @@ void Campeonato::loadProvas(string nome_ficheiro)
 
 		extraido = " ";
 
-		if (!in_pro.eof())
+		if (!in.eof())
 			do{
-				in_pro >> extraido;
+				in >> extraido;
 				if (extraido == "-")
 				{
-					in_pro >> at;
+					int c = in.peek();
+
+					if (c == '\n')
+						in.ignore(1000,'\n');
+
+					getline(in, at);
+					at = at.substr(1,at.size()-1);
 
 					for(unsigned int i = 0; i < equipas.size();i++)
 					{
 						for(unsigned int j = 0; j < equipas[i]->getAtletas().size();j++)
 						{
-							if (at == equipas[i]->getAtletas()[j]->getNome())
+
+							if (comparar_strings(at,equipas[i]->getAtletas()[j]->getNome()))
 							{
 								equipas[i]->getAtletas()[j]->adicionaProva(p);
 								p->adicionaAtleta(equipas[i]->getAtletas()[j]);
@@ -345,7 +371,7 @@ void Campeonato::loadProvas(string nome_ficheiro)
 						}
 					}
 				}
-			} while(extraido == "-" && !in_pro.eof());
+			} while(extraido == "-" && !in.eof());
 
 		adicionaProva(*p);
 	}

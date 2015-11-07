@@ -174,6 +174,10 @@ int search(const vector<T*> &v, T x)
     return -1;
 }
 
+
+
+bool comparar_strings(string s1, string s2);
+
 int string_to_int(string s);
 
 string int_to_string(int i);
@@ -198,7 +202,6 @@ public:
 	}
 
 };
-
 
 class ExcecoesLoadProva{
 public:

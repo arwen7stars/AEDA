@@ -577,7 +577,7 @@ int main(){
 	Campeonato c = load();
 
 	cout << "Provas.txt\n";
-	cout << endl << "Vetor de provas de campeonato\n" << endl;
+	/*cout << endl << "Vetor de provas de campeonato\n" << endl;
 	for(unsigned int i = 0; i < c.getProvas().size();i++)
 	{
 		cout << c.getProvas()[i]->getModalidade()->getNome() << endl;
@@ -588,6 +588,7 @@ int main(){
 		else cout << "F" << endl;
 		cout << endl;
 	}
+*/
 	cout << endl;
 	cout << endl << "Vetor de atletas para cada prova do campeonato\n" << endl;
 	for(unsigned int i = 0; i < c.getProvas().size();i++)
@@ -612,6 +613,8 @@ int main(){
 		cout << endl;
 	}
 
+
+
 	cout << endl << "Vetor de desportos para cada equipa do campeonato\n" << endl;
 	for(unsigned int i = 0; i < c.getEquipas().size();i++)
 	{
@@ -625,6 +628,7 @@ int main(){
 		cout << endl;
 	}
 
+	/*
 	cout << endl << "Vetor de desportos\n" << endl;
 	for(unsigned int i = 0; i < c.getDesportos().size(); i++)
 	{
@@ -639,8 +643,16 @@ int main(){
 	*/
 
 	//menu();
+/*
+	for(unsigned int i = 0; i < c.getDesportos().size(); i++)
+	{
+		cout << c.getDesportos()[i]->getNome() << endl;
 
-
+		for(unsigned int j = 0; j < c.getDesportos()[i]->getModalidades().size(); j++)
+			cout << c.getDesportos()[i]->getModalidades()[j]->getNome() << endl;
+		cout << endl;
+	}
+*/
 	cout << "Press any key to continue...";
 	_getch();
 	return 0;

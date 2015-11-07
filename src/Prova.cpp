@@ -66,8 +66,11 @@ void Prova::adicionaAtleta(Atleta * a){
 	int indice = -1;
 
 	for (unsigned int i = 0; i < atletas.size(); i++)
+		{
 		if (a->getNome() == atletas[i]->getNome())
 			indice = i;
+		}
+
 	if (indice == -1)
 		atletas.push_back(a);
 }
