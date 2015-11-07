@@ -32,7 +32,7 @@ public:
 	int getMes() const;
 	int getDia() const;
 
-	class DataInvalida : public ExcecoesLoadProva {
+	class DataInvalida : public ExcecoesLoadProva{
 		int ano, dia, mes;
 	public:
 		DataInvalida(){}

@@ -58,7 +58,9 @@ bool Campeonato::adicionaProva(Prova &p)
 {
 
 	if (p.getData() < inicio || fim < p.getData())
+	{
 		throw Data::DataInvalida(p.getData().getAno(), p.getData().getMes(), p.getData().getDia());
+	}
 	else
 	{
 		Hora fimProva = p.getInicio() + p.getModalidade()->getDuracao();

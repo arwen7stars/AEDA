@@ -127,7 +127,7 @@ Campeonato load()
 		c.loadProvas(provas);
 	} catch(ExcecoesLoadProva &e)
 	{
-		e.getMessage();
+		cout << e.getMessage();
 	}
 
 	return c;
