@@ -242,7 +242,7 @@ void Campeonato::loadModalidades(string nome_ficheiro)
 
 	while (!in.eof())
 	{
-		string desporto;
+		string desporto, d;
 		string modalidade;
 		int horas;
 		int minutos;
@@ -251,7 +251,7 @@ void Campeonato::loadModalidades(string nome_ficheiro)
 		getline (in, desporto);
 
 		for (unsigned int i = 0; i < desportos.size(); i++)
-			if (desportos[i]->getNome() == desporto)
+			if (comparar_strings(desportos[i]->getNome(), desporto))
 				indice = i;
 
 		if (indice == -1)
@@ -327,7 +327,7 @@ void Campeonato::loadProvas(string nome_ficheiro)
 		{
 			for(unsigned int j = 0; j < desportos[i]->getModalidades().size(); j++)
 			{
-				if (mod == desportos[i]->getModalidades()[j]->getNome())
+				if (comparar_strings(mod,desportos[i]->getModalidades()[j]->getNome()))
 				{
 					i_desporto = i;
 					i_modalidade = j;
@@ -429,6 +429,9 @@ void Campeonato::updateModalidades(string nome_ficheiro)
 	ofstream out;
 	out.open(nome_ficheiro.c_str());
 
+	if(!ficheiroExiste(nome_ficheiro))
+		throw FicheiroInexistente(nome_ficheiro);
+
 	for(unsigned int i = 0; i < desportos.size();i++)
 	{
 		for(unsigned int j = 0; j < desportos[i]->getModalidades().size(); j++)
@@ -436,7 +439,7 @@ void Campeonato::updateModalidades(string nome_ficheiro)
 			out << desportos[i]->getNome() << endl;
 			out << desportos[i]->getModalidades()[j]->getNome() << endl;
 			out << desportos[i]->getModalidades()[j]->getDuracao().getHoras() << " ";
-			out << desportos[i]->getModalidades()[j]->getDuracao().getMinutos() << endl;
+			out << desportos[i]->getModalidades()[j]->getDuracao().getMinutos() << endl << endl;
 		}
 		out << endl;
 	}
@@ -959,7 +962,13 @@ void Campeonato::adicionaEquipa(Equipa &eq){
 }
 
 void Campeonato::adicionaDesporto(Desporto &d){
-	desportos.push_back(&d);
+	int indice = -1;
+	for(unsigned int i = 0; i < desportos.size(); i++)
+		if (desportos[i]->getNome() == d.getNome())
+			indice = i;
+
+	if (indice == -1)
+		desportos.push_back(&d);
 }
 
 void Campeonato::listaDesportos() const{

@@ -174,6 +174,7 @@ int search(const vector<T*> &v, T x)
     return -1;
 }
 
+string remove_spaces(string input);
 
 bool comparar_strings(string s1, string s2);
 

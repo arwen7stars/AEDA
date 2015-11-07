@@ -30,10 +30,16 @@ int wherey()
    return csbi.dwCursorPosition.Y;
 }
 
-
+string remove_spaces(string input)
+{
+  input.erase(std::remove(input.begin(),input.end(),' '),input.end());
+  return input;
+}
 
 bool comparar_strings(string s1, string s2)
 {
+	s1 = remove_spaces(s1);
+	s2 = remove_spaces(s2);
 
 	for(unsigned int i = 0; i < s1.size(); i++)
 		s1[i] = toupper(s1[i]);
