@@ -65,9 +65,7 @@ Campeonato loadCampeonato(){
 		Data dat2 (fim_ano,fim_mes,fim_dia);
 	} catch(Data::DataInvalida d)
 	{
-		cout << "A data ";
-		cout << d.getDia() << "/" << d.getMes() << "/" << d.getAno();
-		cout << " nao e valida"<< endl;
+		cout << d.getMessage();
 	}
 
 	Data d1 (ini_ano,ini_mes,ini_dia);
@@ -94,15 +92,19 @@ Campeonato load()
 
 	suc_des = c.loadDesportos(desportos);
 
-	bool suc_eq;
 	string equipas = "Equipas.txt";
 
 	if(!ficheiroExiste(equipas))
 	{
 		throw FicheiroInexistente(equipas);
 	}
+	try {
+		c.loadEquipas(equipas);
+	} catch (Equipa::EquipaInexistente &e)
+	{
+		cout << "A equipa " << e.getNome() << " nao existe!\n";
+	}
 
-	suc_eq = c.loadEquipas(equipas);
 
 	bool suc_mod;
 	string modalidades = "Modalidades.txt";
@@ -114,7 +116,6 @@ Campeonato load()
 
 	suc_mod = c.loadModalidades(modalidades);
 
-	bool suc_pro;
 	string provas = "Provas.txt";
 
 	if(!ficheiroExiste(provas))
@@ -122,7 +123,12 @@ Campeonato load()
 		throw FicheiroInexistente(provas);
 	}
 
-	suc_pro = c.loadProvas(provas);
+	try {
+		c.loadProvas(provas);
+	} catch(ExcecoesLoadProva &e)
+	{
+		e.getMessage();
+	}
 
 	return c;
 

@@ -38,6 +38,13 @@ instr >> n;
 return n;
 }
 
+string int_to_string(int n)
+{
+ostringstream outstr;
+outstr << n;
+return outstr.str(); //convert stringstream into string
+}
+
 bool ficheiroExiste(const string &ficheiro)
 {
 	bool existe = false;

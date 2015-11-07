@@ -176,6 +176,8 @@ int search(const vector<T*> &v, T x)
 
 int string_to_int(string s);
 
+string int_to_string(int i);
+
 bool ficheiroExiste(const string &ficheiro);
 
 class FicheiroInexistente
@@ -184,6 +186,12 @@ class FicheiroInexistente
 public:
 	FicheiroInexistente(string n) : nome(n) {}
 	string getNome() { return nome; }
+};
+
+class ExcecoesLoadProva{
+public:
+	virtual string getMessage() const = 0;
+	virtual ~ExcecoesLoadProva() {}
 };
 
 #endif /* SRC_LISTS_H_ */

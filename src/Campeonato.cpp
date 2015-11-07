@@ -58,14 +58,14 @@ bool Campeonato::adicionaProva(Prova &p)
 {
 
 	if (p.getData() < inicio || fim < p.getData())
-		return false;
+		throw Data::DataInvalida(p.getData().getAno(), p.getData().getMes(), p.getData().getDia());
 	else
 	{
 		Hora fimProva = p.getInicio() + p.getModalidade()->getDuracao();
 
 		if (p.getInicio() < abertura || fecho < fimProva)
 		{
-			return false;
+			throw Hora::HoraInvalida(p.getInicio().getHoras(), p.getInicio().getMinutos());
 		}
 		else
 		{
@@ -81,7 +81,7 @@ bool Campeonato::adicionaProva(Prova &p)
 					bool simultaneo = provas[i]->Simultaneo(p);
 
 					if (simultaneo)
-						return false;
+						throw Prova::ProvasSimultaneas(p.getModalidade()->getNome(), provas[i]->getModalidade()->getNome());
 				}
 			}
 		}
@@ -138,17 +138,11 @@ bool Campeonato::loadDesportos(string nome_ficheiro)
 }
 
 
-bool Campeonato::loadEquipas(string nome_ficheiro)
+void Campeonato::loadEquipas(string nome_ficheiro)
 {
 	ifstream in;
 	unsigned int k = 0;
 	string extraido = " ";
-
-	if (!ficheiroExiste(nome_ficheiro))
-	{
-		cerr << "O ficheiro Equipas.txt nao existe!";
-		return false;
-	}
 
 	in.open(nome_ficheiro.c_str());
 
@@ -190,6 +184,9 @@ bool Campeonato::loadEquipas(string nome_ficheiro)
 						if (eq == equipas[i]->getNome())
 							indiceEquipa = i;
 					}
+					if (indiceEquipa == -1)
+						throw Equipa::EquipaInexistente(eq);
+
 					if (!in.eof())
 						equipas[indiceEquipa]->adicionaAtleta(atleta);
 				}
@@ -198,15 +195,11 @@ bool Campeonato::loadEquipas(string nome_ficheiro)
 	}
 
 	in.close();
-	return true;
 }
 
 bool Campeonato::loadModalidades(string nome_ficheiro)
 {
 	ifstream in_mod;
-
-	if(!ficheiroExiste(nome_ficheiro))
-		return false;
 
 	in_mod.open(nome_ficheiro.c_str());
 
@@ -246,14 +239,11 @@ bool Campeonato::loadModalidades(string nome_ficheiro)
 	return true;
 }
 
-bool Campeonato::loadProvas(string nome_ficheiro)
+void Campeonato::loadProvas(string nome_ficheiro)
 {
 	ifstream in_pro;
 	unsigned int k = 0;
 	string extraido = " ";
-
-	if(!ficheiroExiste(nome_ficheiro))
-		return false;
 
 	in_pro.open(nome_ficheiro.c_str());
 
@@ -293,8 +283,7 @@ bool Campeonato::loadProvas(string nome_ficheiro)
 
 		if (i_modalidade == -1)
 		{
-			cout << "A modalidade "<< mod << " nao existe" << endl;
-			return false;
+			throw Modalidade::ModalidadeInexistente(mod);
 		}
 
 		in_pro >> dia >> mes >> ano;
@@ -331,12 +320,8 @@ bool Campeonato::loadProvas(string nome_ficheiro)
 				}
 			} while(extraido == "-" && !in_pro.eof());
 
-		bool suc = adicionaProva(*p);
-
-		if (!suc)
-			return false;
+		adicionaProva(*p);
 	}
-	return true;
 }
 
 void Campeonato::updateDesportos(string nome_ficheiro)
@@ -725,7 +710,7 @@ void Campeonato::adicionaProva(){
 			break;
 		}
 		catch (Data::DataInvalida D){
-			cout << "A data " << D.getDia() << "/" << D.getMes() << "/" << D.getAno() << " nao e valida.\n";
+			cout << D.getMessage();
 			cout << "Datas validas sao desde " << inicio << " ate " << fim << ".\n";
 			_getch();
 		}
@@ -763,7 +748,7 @@ void Campeonato::adicionaProva(){
 			break;
 		}
 		catch (Hora::HoraInvalida H){
-			cout << "A hora " << H.getHoras() << ":" << H.getMinutos() << "nao e valida.\n";
+			cout << H.getMessage();
 			cout << "Datas validas sao desde " << abertura << " ate " << fecho << ".\n";
 			_getch();
 		}

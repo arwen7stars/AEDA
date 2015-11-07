@@ -33,6 +33,17 @@ public:
 	friend ostream & operator<<(ostream & o, const Modalidade & d);
 
 	void menu();
+
+	class ModalidadeInexistente : public ExcecoesLoadProva{
+		string nome;
+	public:
+		ModalidadeInexistente() {}
+		ModalidadeInexistente(string n) : nome(n) {}
+		string getMessage() const{
+			string message = "A modalidade " + nome + " nao existe!\n";
+			return message;
+		}
+	};
 };
 
 

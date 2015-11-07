@@ -46,6 +46,14 @@ public:
 		AtletaExiste(string n) {nome = n;}
 		string getNome() const {return nome;}
 	};
+
+	class EquipaInexistente{
+		string nome;
+	public:
+		EquipaInexistente() {}
+		EquipaInexistente(string n) { nome = n;}
+		string getNome() const {return nome;}
+	};
 };
 
 

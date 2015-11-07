@@ -49,6 +49,17 @@ public:
 	friend ostream & operator<<(ostream & o, const Prova & p);
 
 	bool operator < (const Prova &p2) const;
+
+	class ProvasSimultaneas : public ExcecoesLoadProva {
+		string mod1, mod2;
+	public:
+		ProvasSimultaneas() {}
+		ProvasSimultaneas(string m1, string m2) : mod1(m1), mod2(m2) {}
+		string getMessage() const{
+			string m = "Provas " + mod1 + " e " + mod2 + " simultaneas\n";
+			return m;
+		}
+	};
 };
 
 class ProvaTerminada: public Prova{ //Quando uma prova ja terminou, transformamola num ProvaTerminada

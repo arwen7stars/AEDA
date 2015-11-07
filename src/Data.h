@@ -9,6 +9,7 @@
 #define SRC_DATA_H_
 
 #include <iostream>
+#include "Lists.h"
 
 using namespace std;
 
@@ -31,14 +32,19 @@ public:
 	int getMes() const;
 	int getDia() const;
 
-	class DataInvalida{
+	class DataInvalida : public ExcecoesLoadProva {
 		int ano, dia, mes;
 	public:
 		DataInvalida(){}
 		DataInvalida(int a, int m, int d) {ano = a;	mes = m; dia = d;}
-		int getAno() const{return ano;}
-		int getMes() const{return mes;}
-		int getDia() const{return dia;}
+		string getMessage() const
+		{
+			string d = int_to_string(dia);
+			string m = int_to_string(mes);
+			string a = int_to_string(ano);
+			string message = "A data " + d + "/" + m + "/" + a + " e invalida!\n";
+			return message;
+		}
 	};
 };
 
@@ -56,13 +62,17 @@ public:
 	int getHoras() const;
 	int getMinutos() const;
 
-	class HoraInvalida{
+	class HoraInvalida : public ExcecoesLoadProva {
 		int horas, minutos;
 	public:
 		HoraInvalida(){}
 		HoraInvalida(int h, int m){horas = h; minutos = m;}
-		int getHoras() const{return horas;}
-		int getMinutos() const{return minutos;}
+		string getMessage() const{
+			string h = int_to_string(horas);
+			string m = int_to_string(minutos);
+			string message = "A hora " + h + ":" + m + " e invalida!\n";
+			return message;
+		}
 	};
 };
 
