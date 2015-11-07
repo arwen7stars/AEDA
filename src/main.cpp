@@ -98,6 +98,7 @@ Campeonato load()
 	{
 		throw FicheiroInexistente(equipas);
 	}
+
 	try {
 		c.loadEquipas(equipas);
 	} catch (Equipa::EquipaInexistente &e)
@@ -545,7 +546,7 @@ int main(){
 				}
 			cout << endl;
 		}
-	*/
+
 /*
 	cout << "Equipas.txt\n";
 		for(unsigned int i = 0; i < c.getEquipas().size();i++)
@@ -566,12 +567,66 @@ int main(){
 */
 
 	Campeonato c = load();
+/*
+	cout << "Provas.txt\n";
+	cout << endl << "Vetor de provas de campeonato\n" << endl;
+	for(unsigned int i = 0; i < c.getProvas().size();i++)
+	{
+		cout << c.getProvas()[i]->getModalidade()->getNome() << endl;
+		cout << c.getProvas()[i]->getData() << endl;
+		cout << c.getProvas()[i]->getInicio() << endl;
+		if (c.getProvas()[i]->getGenero())
+			cout << "M" << endl;
+		else cout << "F" << endl;
+		cout << endl;
+	}
+	cout << endl;
+	cout << endl << "Vetor de atletas para cada prova do campeonato\n" << endl;
+	for(unsigned int i = 0; i < c.getProvas().size();i++)
+	{
+		cout << c.getProvas()[i]->getModalidade()->getNome() << endl;
+		for(unsigned int j = 0; j < c.getProvas()[i]->getAtletas().size(); j++)
+		{
+			cout << c.getProvas()[i]->getAtletas()[j]->getNome() << endl;
+		}
+		cout << endl;
+	}
+	cout << endl;
+*/
 
+	for (unsigned int i = 0; i < c.getEquipas().size(); i++)
+	{
+		cout << c.getEquipas()[i]->getNome() << endl;
+		for (unsigned int j = 0; j < c.getEquipas()[i]->getAtletas().size(); j++)
+		{
+			cout << c.getEquipas()[i]->getAtletas()[j]->getNome() << endl;;
+		}
+		cout << endl;
+	}
+
+	cout << endl << "Vetor de desportos para cada equipa do campeonato\n" << endl;
+	for(unsigned int i = 0; i < c.getEquipas().size();i++)
+	{
+		cout << c.getEquipas()[i]->getNome() << endl;
+		Equipa * eq = c.getEquipas()[i];
+
+		for(unsigned int j = 0; j < eq->getDesportos().size(); j++)
+		{
+			cout << eq->getDesportos()[j]->getNome() << endl;
+		}
+		cout << endl;
+	}
+
+
+/*
 	Equipa e("Finlandia");
 	c.adicionaEquipa(e);
 	c.updateEquipas("Equipas.txt");
+	*/
 
 	//menu();
+
+
 	cout << "Press any key to continue...";
 	_getch();
 	return 0;

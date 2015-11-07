@@ -29,6 +29,7 @@ public:
 	vector<Desporto *> getDesportos() const;
 
 	bool adicionaAtleta(Atleta * a);
+	void adicionaDesporto(Desporto * d);
 
 	bool operator== (const Equipa & c) const;
 	friend ostream & operator<<(ostream & o, const Equipa & d);

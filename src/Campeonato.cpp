@@ -152,6 +152,7 @@ void Campeonato::loadEquipas(string nome_ficheiro)
 	{
 		string eq, at;
 		char genero, barra;
+		bool g;
 
 		if (k == 0)
 		{
@@ -177,7 +178,12 @@ void Campeonato::loadEquipas(string nome_ficheiro)
 					in >> barra;
 					in >> genero;
 
-					Atleta * atleta = new Atleta(at, equipa, genero);
+					if (genero == 'M')
+						g= true;
+					else g = false;
+
+
+					Atleta * atleta = new Atleta(at, equipa, g);
 
 					int indiceEquipa = -1;
 
@@ -316,7 +322,9 @@ void Campeonato::loadProvas(string nome_ficheiro)
 							{
 								equipas[i]->getAtletas()[j]->adicionaProva(p);
 								p->adicionaAtleta(equipas[i]->getAtletas()[j]);
+								equipas[i]->adicionaDesporto(desportos[i_desporto]);
 							}
+
 						}
 					}
 				}

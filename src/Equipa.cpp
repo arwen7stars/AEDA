@@ -56,12 +56,27 @@ bool Equipa::adicionaAtleta(Atleta * a)
 	return true;
 }
 
+void Equipa::adicionaDesporto(Desporto * d)
+{
+	int indice = -1;
+
+	for(unsigned int i = 0; i < desportos.size(); i++)
+		if (d->getNome() == desportos[i]->getNome())
+		{
+			indice = i;
+		}
+
+	if (indice == -1)
+	{
+		desportos.push_back(d);
+	}
+}
+
 void Equipa::adicionaAtleta(){
 	system("cls");
 	string n;
 	cout << "Nome: ";
 	getline(cin, n);
-
 
 	cout << "Duracao(minutos): ";
 
