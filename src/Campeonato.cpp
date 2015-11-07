@@ -175,6 +175,16 @@ void Campeonato::loadEquipas(string nome_ficheiro)
 		else
 		{
 			eq = extraido;
+
+			int c = in.peek();
+
+			if (c == '\n')
+				in.ignore(1000,'\n');
+			else
+			{
+				getline(in,str);
+				eq = eq + str;
+			}
 		}
 		k++;
 
@@ -375,6 +385,7 @@ void Campeonato::loadProvas(string nome_ficheiro)
 
 		adicionaProva(*p);
 	}
+
 }
 
 void Campeonato::updateDesportos(string nome_ficheiro)
@@ -385,11 +396,12 @@ void Campeonato::updateDesportos(string nome_ficheiro)
 
 	for(unsigned int i = 0; i < desportos.size(); i++)
 	{
-		out << desportos[i]->getNome() << " / ";
+		out << desportos[i]->getNome() << endl;
 		out << desportos[i]->getPontuacao() << " / ";
 		if (desportos[i]->isCrescente())
 			out << "C" << endl;
 		else out << "D" << endl;
+		out << endl;
 	}
 }
 
@@ -403,10 +415,28 @@ void Campeonato::updateEquipas(string nome_ficheiro)
 		out << equipas[i]->getNome() << endl;
 		for(unsigned int j = 0; j < equipas[i]->getAtletas().size(); j++)
 		{
-			out << "- " << equipas[i]->getAtletas()[j]->getNome() << " / ";
+			out << "- " << equipas[i]->getAtletas()[j]->getNome() << " ";
 			if (equipas[i]->getAtletas()[j]->getGenero())
 				out << "M" << endl;
 			else out << "F" << endl;
+		}
+		out << endl;
+	}
+}
+
+void Campeonato::updateModalidades(string nome_ficheiro)
+{
+	ofstream out;
+	out.open(nome_ficheiro.c_str());
+
+	for(unsigned int i = 0; i < desportos.size();i++)
+	{
+		for(unsigned int j = 0; j < desportos[i]->getModalidades().size(); j++)
+		{
+			out << desportos[i]->getNome() << endl;
+			out << desportos[i]->getModalidades()[j]->getNome() << endl;
+			out << desportos[i]->getModalidades()[j]->getDuracao().getHoras() << " ";
+			out << desportos[i]->getModalidades()[j]->getDuracao().getMinutos() << endl;
 		}
 		out << endl;
 	}
@@ -917,7 +947,15 @@ void atribuiPontuacao(Prova pro, vector< float> pontos){
 
 
 void Campeonato::adicionaEquipa(Equipa &eq){
-	equipas.push_back(&eq);
+	int indice = -1;
+	for(unsigned int i = 0; i < equipas.size(); i++)
+	{
+		if (equipas[i]->getNome() == eq.getNome())
+			indice = i;
+	}
+
+	if (indice == -1)
+		equipas.push_back(&eq);
 }
 
 void Campeonato::adicionaDesporto(Desporto &d){

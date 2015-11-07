@@ -574,10 +574,11 @@ int main(){
 	c.updateDesportos("Desportos.txt");
 
 */
-	Campeonato c = load();
-/*
+
 	//cout << "Provas.txt\n";
-	cout << endl << "Vetor de provas de campeonato\n" << endl;
+
+	Campeonato c = load();
+	/*cout << endl << "Vetor de provas de campeonato\n" << endl;
 	for(unsigned int i = 0; i < c.getProvas().size();i++)
 	{
 		cout << c.getProvas()[i]->getModalidade()->getNome() << endl;
@@ -618,8 +619,8 @@ int main(){
 		cout << endl;
 	}
 
-
-
+*/
+/*
 	cout << endl << "Vetor de desportos para cada equipa do campeonato\n" << endl;
 	for(unsigned int i = 0; i < c.getEquipas().size();i++)
 	{
@@ -628,12 +629,13 @@ int main(){
 
 		for(unsigned int j = 0; j < eq->getDesportos().size(); j++)
 		{
+			cout << c.getEquipas()[i]->getDesportos().size() << endl;
 			cout << eq->getDesportos()[j]->getNome() << endl;
 		}
 		cout << endl;
 	}
 */
-	cout << endl << "Vetor de modalidades de equipas\n" << endl;
+	/*cout << endl << "Vetor de modalidades de equipas\n" << endl;
 		for(unsigned int i = 0; i < c.getEquipas().size();i++)
 		{
 			cout << "eq: " << c.getEquipas()[i]->getNome() << endl;
@@ -652,17 +654,10 @@ int main(){
 			cout << endl;
 
 		}
-
-
-/*
-	Equipa e("Finlandia");
-	c.adicionaEquipa(e);
-	c.updateEquipas("Equipas.txt");
-	*/
-
+*/
 
 	//menu();
-
+/*
 	for(unsigned int i = 0; i < c.getDesportos().size(); i++)
 	{
 		cout << c.getDesportos()[i]->getNome() << endl;
@@ -671,8 +666,21 @@ int main(){
 			cout << c.getDesportos()[i]->getModalidades()[j]->getNome() << endl;
 		cout << endl;
 	}
+*/
 
+	//Campeonato c = load();
+/*
+	Equipa e("Finlandia");
+	Atleta gui("Teemu Mantysaari", &e, true);
+	Atleta voc("Jaari Maenpaa", &e, true);
+	c.adicionaEquipa(e);
+	c.updateEquipas("Equipas.txt");
 
+	Desporto d("Artes Marciais", "Pontos", true);
+	c.adicionaDesporto(d);
+	c.updateDesportos("Desportos.txt");
+
+*/
 	cout << "Press any key to continue...";
 	_getch();
 	return 0;
