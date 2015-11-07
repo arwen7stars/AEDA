@@ -38,6 +38,7 @@ public:
 	bool loadProvas(string nome_ficheiro);
 
 	void updateDesportos(string nome_ficheiro);
+	void updateEquipas(string nome_ficheiro);
 
 	string getNome() const;
 	Data getInicio() const;

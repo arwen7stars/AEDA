@@ -141,6 +141,8 @@ bool Campeonato::loadDesportos(string nome_ficheiro)
 bool Campeonato::loadEquipas(string nome_ficheiro)
 {
 	ifstream in;
+	unsigned int k = 0;
+	string extraido = " ";
 
 	if (!ficheiroExiste(nome_ficheiro))
 	{
@@ -152,38 +154,47 @@ bool Campeonato::loadEquipas(string nome_ficheiro)
 
 	while (!in.eof())
 	{
-		string equipa;
-		string atleta;
-		char genero;
-		char barra;
+		string eq, at;
+		char genero, barra;
 
-		in >> equipa;
-		in >> barra;
-		in >> atleta;
-		in >> barra;
-		in >> genero;
-
-		Equipa * eq = new Equipa(equipa);
-		Atleta * at = new Atleta(atleta, eq, genero);
-		int indiceEquipa = -1;
-
-		for (unsigned int i = 0; i < equipas.size(); i++)
+		if (k == 0)
 		{
-			if (equipa == equipas[i]->getNome())
-				indiceEquipa = i;
-		}
-
-		if (!in.eof())
-		{	if (indiceEquipa == -1)
-		{
-			equipas.push_back(eq);
-			(*equipas[equipas.size()-1]).adicionaAtleta(at);
+			in >> eq;
 		}
 		else
 		{
-			equipas[indiceEquipa]->adicionaAtleta(at);
+			eq = extraido;
 		}
-		}
+		k++;
+
+		Equipa * equipa = new Equipa(eq);
+		equipas.push_back(equipa);
+
+		extraido = "";
+
+		if (!in.eof())
+			do{
+				in >> extraido;
+				if (extraido == "-")
+				{
+					in >> at;
+					in >> barra;
+					in >> genero;
+
+					Atleta * atleta = new Atleta(at, equipa, genero);
+
+					int indiceEquipa = -1;
+
+					for (unsigned int i = 0; i < equipas.size(); i++)
+					{
+						if (eq == equipas[i]->getNome())
+							indiceEquipa = i;
+					}
+					if (!in.eof())
+						equipas[indiceEquipa]->adicionaAtleta(atleta);
+				}
+					} while(extraido == "-" && !in.eof());
+
 	}
 
 	in.close();
@@ -292,8 +303,6 @@ bool Campeonato::loadProvas(string nome_ficheiro)
 		in_pro >> barra;
 		in_pro >> genero;
 
-
-
 		Data d(ano,mes,dia);
 		Hora h(horas,minutos);
 
@@ -343,6 +352,25 @@ void Campeonato::updateDesportos(string nome_ficheiro)
 		if (desportos[i]->isCrescente())
 			out << "C" << endl;
 		else out << "D" << endl;
+	}
+}
+
+void Campeonato::updateEquipas(string nome_ficheiro)
+{
+	ofstream out;
+	out.open(nome_ficheiro.c_str());
+
+	for(unsigned int i = 0; i < equipas.size();i++)
+	{
+		out << equipas[i]->getNome() << endl;
+		for(unsigned int j = 0; j < equipas[i]->getAtletas().size(); j++)
+		{
+			out << "- " << equipas[i]->getAtletas()[j]->getNome() << " / ";
+			if (equipas[i]->getAtletas()[j]->getGenero())
+				out << "M" << endl;
+			else out << "F" << endl;
+		}
+		out << endl;
 	}
 }
 

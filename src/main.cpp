@@ -95,7 +95,7 @@ Campeonato load()
 	suc_des = c.loadDesportos(desportos);
 
 	bool suc_eq;
-	string equipas = "Atletas.txt";
+	string equipas = "Equipas.txt";
 
 	if(!ficheiroExiste(equipas))
 	{
@@ -541,11 +541,30 @@ int main(){
 		}
 	*/
 /*
-	Campeonato c = load();
-	Desporto d("Artes_Marciais", "Pontos", true);
+	cout << "Equipas.txt\n";
+		for(unsigned int i = 0; i < c.getEquipas().size();i++)
+		{
+			cout << c.getEquipas()[i]->getNome() << endl;
+			Equipa * eq = c.getEquipas()[i];
+			for(unsigned int j = 0; j < eq->getAtletas().size(); j++)
+				{
+				cout << eq->getAtletas()[j]->getNome() << " ";
+				cout << eq->getAtletas()[j]->getGenero() << endl;
+				}
+			cout << endl;
+		}
+*/
+/*	Desporto d("Artes_Marciais", "Pontos", true);
 	c.adicionaDesporto(d);
 	c.updateDesportos("Desportos.txt");
 */
+
+	Campeonato c = load();
+
+	Equipa e("Finlandia");
+	c.adicionaEquipa(e);
+	c.updateEquipas("Equipas.txt");
+
 	//menu();
 	cout << "Press any key to continue...";
 	_getch();
