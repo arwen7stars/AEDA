@@ -175,7 +175,6 @@ int search(const vector<T*> &v, T x)
 }
 
 
-
 bool comparar_strings(string s1, string s2);
 
 int string_to_int(string s);

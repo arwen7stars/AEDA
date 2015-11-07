@@ -239,6 +239,10 @@ vector<Prova *> Atleta::getProvas() const{
 	return provas;
 }
 
+vector<Modalidade *> Atleta::getModalidades() const{
+	return modalidades;
+}
+
 
 bool  Atleta::getGenero() const{
 	return genero;
@@ -250,6 +254,18 @@ void Atleta::adicionaPontuacao(int p){
 
 void Atleta::adicionaProva(Prova * p){
 	provas.push_back(p);
+}
+
+void Atleta::adicionaModalidade(Modalidade * m)
+{
+	int indice = -1;
+
+	for(unsigned int i = 0; i < modalidades.size(); i++)
+		if( m->getNome() == modalidades[i]->getNome())
+			indice = i;
+
+	if (indice == -1)
+		modalidades.push_back(m);
 }
 
 int Atleta::getPontos() const{

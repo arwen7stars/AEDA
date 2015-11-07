@@ -360,12 +360,12 @@ void Campeonato::loadProvas(string nome_ficheiro)
 					{
 						for(unsigned int j = 0; j < equipas[i]->getAtletas().size();j++)
 						{
-
 							if (comparar_strings(at,equipas[i]->getAtletas()[j]->getNome()))
 							{
 								equipas[i]->getAtletas()[j]->adicionaProva(p);
 								p->adicionaAtleta(equipas[i]->getAtletas()[j]);
 								equipas[i]->adicionaDesporto(desportos[i_desporto]);
+								equipas[i]->getAtletas()[j]->adicionaModalidade(desportos[i_desporto]->getModalidades()[i_modalidade]);
 							}
 
 						}

@@ -62,22 +62,24 @@ class Atleta{
 	string nome;
 	Equipa* equipa;
 	vector<Prova *> provas;
+	vector<Modalidade *> modalidades;
 	bool genero;
 	int pontos;
 public:
 	Atleta(string n, Equipa* e, bool g);
 
-
 	string getNome() const;
 	Equipa* getEquipa() const;
 	int getPontos() const;
 	vector<Prova *> getProvas() const;
+	vector<Modalidade *> getModalidades() const;
 
 	bool getGenero() const;
 
 	void setpontos(int p); //no fim nao precisamos disto, e para testar
 
 	void adicionaProva(Prova * p);
+	void adicionaModalidade(Modalidade * m);
 	void adicionaPontuacao(int p);
 
 	void menu();

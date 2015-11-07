@@ -555,7 +555,7 @@ int main(){
 			cout << endl;
 		}
 
-/*
+
 	cout << "Equipas.txt\n";
 		for(unsigned int i = 0; i < c.getEquipas().size();i++)
 		{
@@ -568,16 +568,16 @@ int main(){
 				}
 			cout << endl;
 		}
-*/
-/*	Desporto d("Artes_Marciais", "Pontos", true);
+
+	Desporto d("Artes_Marciais", "Pontos", true);
 	c.adicionaDesporto(d);
 	c.updateDesportos("Desportos.txt");
+
 */
-
 	Campeonato c = load();
-
-	cout << "Provas.txt\n";
-	/*cout << endl << "Vetor de provas de campeonato\n" << endl;
+/*
+	//cout << "Provas.txt\n";
+	cout << endl << "Vetor de provas de campeonato\n" << endl;
 	for(unsigned int i = 0; i < c.getProvas().size();i++)
 	{
 		cout << c.getProvas()[i]->getModalidade()->getNome() << endl;
@@ -588,7 +588,7 @@ int main(){
 		else cout << "F" << endl;
 		cout << endl;
 	}
-*/
+
 	cout << endl;
 	cout << endl << "Vetor de atletas para cada prova do campeonato\n" << endl;
 	for(unsigned int i = 0; i < c.getProvas().size();i++)
@@ -602,13 +602,18 @@ int main(){
 	}
 	cout << endl;
 
-	cout << "Vetor de atletas de cada equipa\n" << endl;
+	cout << "Vetor de provas de cada atleta do campeonato\n" << endl;
 	for (unsigned int i = 0; i < c.getEquipas().size(); i++)
 	{
 		cout << c.getEquipas()[i]->getNome() << endl;
 		for (unsigned int j = 0; j < c.getEquipas()[i]->getAtletas().size(); j++)
 		{
-			cout << c.getEquipas()[i]->getAtletas()[j]->getNome() << endl;;
+			cout << c.getEquipas()[i]->getAtletas()[j]->getNome() << endl;
+			for(unsigned int k = 0; k < c.getEquipas()[i]->getAtletas()[j]->getProvas().size(); k++)
+			{
+				cout << c.getEquipas()[i]->getAtletas()[j]->getProvas()[k]->getModalidade()->getNome() << endl;
+			}
+			cout << endl;
 		}
 		cout << endl;
 	}
@@ -627,13 +632,26 @@ int main(){
 		}
 		cout << endl;
 	}
+*/
+	cout << endl << "Vetor de modalidades de equipas\n" << endl;
+		for(unsigned int i = 0; i < c.getEquipas().size();i++)
+		{
+			cout << "eq: " << c.getEquipas()[i]->getNome() << endl;
+			Equipa * eq = c.getEquipas()[i];
 
-	/*
-	cout << endl << "Vetor de desportos\n" << endl;
-	for(unsigned int i = 0; i < c.getDesportos().size(); i++)
-	{
-		cout << c.getDesportos()[i]->getNome() << endl;
-	}
+			for(unsigned int j = 0; j < eq->getAtletas().size(); j++)
+			{
+				cout << " at: " << eq->getAtletas()[j]->getNome() << endl;
+				//cout << eq->getAtletas()[j]->getModalidades().size() << endl;
+				for(unsigned int k = 0; k < eq->getAtletas()[j]->getModalidades().size(); k++)
+				{
+					cout << "mod: " << eq->getAtletas()[j]->getModalidades()[k]->getNome() << endl;
+				}
+				cout << endl;
+			}
+			cout << endl;
+
+		}
 
 
 /*
@@ -642,8 +660,9 @@ int main(){
 	c.updateEquipas("Equipas.txt");
 	*/
 
+
 	//menu();
-/*
+
 	for(unsigned int i = 0; i < c.getDesportos().size(); i++)
 	{
 		cout << c.getDesportos()[i]->getNome() << endl;
@@ -652,7 +671,8 @@ int main(){
 			cout << c.getDesportos()[i]->getModalidades()[j]->getNome() << endl;
 		cout << endl;
 	}
-*/
+
+
 	cout << "Press any key to continue...";
 	_getch();
 	return 0;
