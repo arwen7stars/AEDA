@@ -121,7 +121,6 @@ void Campeonato::loadDesportos(string nome_ficheiro)
 
 	while (!in.eof())
 	{
-
 		//in >> elementos_equipa;
 		//in >> barra;
 
@@ -142,7 +141,8 @@ void Campeonato::loadDesportos(string nome_ficheiro)
 
 		Desporto * ds = new Desporto(desporto, tipo_de_pontuacao, c);
 
-		desportos.push_back(ds);
+		if (desporto != "")
+			desportos.push_back(ds);
 	}
 
 	in.close();
@@ -189,7 +189,9 @@ void Campeonato::loadEquipas(string nome_ficheiro)
 		k++;
 
 		Equipa * equipa = new Equipa(eq);
-		adicionaEquipa(equipa);
+
+		if (eq != "")
+			adicionaEquipa(equipa);
 
 		extraido = "";
 
@@ -211,7 +213,6 @@ void Campeonato::loadEquipas(string nome_ficheiro)
 						g= true;
 					else g = false;
 
-
 					Atleta * atleta = new Atleta(at, equipa, g);
 
 					int indiceEquipa = -1;
@@ -221,14 +222,13 @@ void Campeonato::loadEquipas(string nome_ficheiro)
 						if (eq == equipas[i]->getNome())
 							indiceEquipa = i;
 					}
-					if (indiceEquipa == -1)
+					if (indiceEquipa == -1 && eq != "")
 						throw Equipa::EquipaInexistente(eq);
 
-					if (!in.eof())
+					if (eq != "")
 						equipas[indiceEquipa]->adicionaAtleta(atleta);
 				}
 					} while(extraido == "-" && !in.eof());
-
 	}
 
 	in.close();
@@ -250,16 +250,19 @@ void Campeonato::loadModalidades(string nome_ficheiro)
 
 		getline (in, desporto);
 
+		desporto = tirar_espacos_fim(desporto);
+
 		for (unsigned int i = 0; i < desportos.size(); i++)
 			if (comparar_strings(desportos[i]->getNome(), desporto))
 				indice = i;
 
-		if (indice == -1)
+		if (indice == -1 && desporto != "")
 			{
 			throw Desporto::DesportoInexistente(desporto);
 			}
 
 		getline(in, modalidade);
+		modalidade = tirar_espacos_fim(modalidade);
 
 		char c = in.peek();
 
@@ -273,7 +276,8 @@ void Campeonato::loadModalidades(string nome_ficheiro)
 		in.ignore(1000,'\n');
 
 		Modalidade * m = new Modalidade(modalidade, horas, minutos, desportos[indice]);
-		desportos[indice]->adicionaModalidade(m);
+		if (desporto != "")
+			desportos[indice]->adicionaModalidade(m);
 
 	}
 	in.close();
@@ -320,6 +324,8 @@ void Campeonato::loadProvas(string nome_ficheiro)
 				}
 			}
 
+		mod = tirar_espacos_fim(mod);
+
 		k++;
 
 
@@ -335,7 +341,7 @@ void Campeonato::loadProvas(string nome_ficheiro)
 			}
 		}
 
-		if (i_modalidade == -1)
+		if (i_modalidade == -1 && mod != "")
 		{
 			throw Modalidade::ModalidadeInexistente(mod);
 		}
@@ -370,7 +376,7 @@ void Campeonato::loadProvas(string nome_ficheiro)
 					{
 						for(unsigned int j = 0; j < equipas[i]->getAtletas().size();j++)
 						{
-							if (comparar_strings(at,equipas[i]->getAtletas()[j]->getNome()))
+							if (comparar_strings(at,equipas[i]->getAtletas()[j]->getNome()) && at != "")
 							{
 								equipas[i]->getAtletas()[j]->adicionaProva(p);
 								p->adicionaAtleta(equipas[i]->getAtletas()[j]);
@@ -439,9 +445,9 @@ void Campeonato::updateModalidades(string nome_ficheiro)
 			out << desportos[i]->getNome() << endl;
 			out << desportos[i]->getModalidades()[j]->getNome() << endl;
 			out << desportos[i]->getModalidades()[j]->getDuracao().getHoras() << " ";
-			out << desportos[i]->getModalidades()[j]->getDuracao().getMinutos() << endl << endl;
+			out << desportos[i]->getModalidades()[j]->getDuracao().getMinutos() << endl;
+			out << endl;
 		}
-		out << endl;
 	}
 }
 

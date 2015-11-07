@@ -13,6 +13,7 @@
 #include <string>
 #include <vector>
 #include <iostream>
+#include <algorithm>
 #include <stdio.h>
 #include <conio.h>
 #include <windows.h>
@@ -174,11 +175,12 @@ int search(const vector<T*> &v, T x)
     return -1;
 }
 
-string remove_spaces(string input);
+inline string &tirar_espacos_fim(string &s) {
+	s.erase(find_if(s.rbegin(), s.rend(), not1(ptr_fun<int, int>(isspace))).base(), s.end());
+	return s;
+}
 
 bool comparar_strings(string s1, string s2);
-
-int string_to_int(string s);
 
 string int_to_string(int i);
 

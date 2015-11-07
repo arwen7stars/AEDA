@@ -121,7 +121,15 @@ void Desporto::adicionaModalidade(){
 }
 
 void Desporto::adicionaModalidade(Modalidade *m){
-	modalidades.push_back(m);
+
+	int indice = -1;
+
+	for(unsigned int i = 0; i < modalidades.size(); i++)
+		if (modalidades[i]->getNome() == m->getNome())
+			indice = i;
+
+	if (indice == -1)
+		modalidades.push_back(m);
 }
 
 bool  Desporto::operator== (const Desporto & c) const{

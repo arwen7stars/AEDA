@@ -38,8 +38,6 @@ string remove_spaces(string input)
 
 bool comparar_strings(string s1, string s2)
 {
-	s1 = remove_spaces(s1);
-	s2 = remove_spaces(s2);
 
 	for(unsigned int i = 0; i < s1.size(); i++)
 		s1[i] = toupper(s1[i]);
@@ -52,20 +50,11 @@ bool comparar_strings(string s1, string s2)
 	else return false;
 }
 
-
-int string_to_int(string s)
-{
-istringstream instr(s);
-int n;
-instr >> n;
-return n;
-}
-
 string int_to_string(int n)
 {
 ostringstream outstr;
 outstr << n;
-return outstr.str(); //convert stringstream into string
+return outstr.str();
 }
 
 bool ficheiroExiste(const string &ficheiro)

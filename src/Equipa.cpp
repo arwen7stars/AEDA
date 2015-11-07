@@ -47,7 +47,6 @@ bool Equipa::adicionaAtleta(Atleta * a)
 	{
 		if (a->getNome() == atletas[i]->getNome())
 		{
-			cerr << "Atleta com o nome " << a->getNome() << "ja existe na equipa " << nome << endl;
 			return false;
 		}
 	}
