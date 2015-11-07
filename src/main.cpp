@@ -669,18 +669,21 @@ int main(){
 */
 
 	//Campeonato c = load();
-/*
+
 	Equipa e("Finlandia");
-	Atleta gui("Teemu Mantysaari", &e, true);
+	Atleta * gui = new Atleta("Teemu Mantysaari", &e, true);
 	Atleta voc("Jaari Maenpaa", &e, true);
 	c.adicionaEquipa(e);
+	c.getEquipas()[c.getEquipas().size()-1]->adicionaAtleta(gui);
+	c.getEquipas()[c.getEquipas().size()-1]->adicionaAtleta(&voc);
+
 	c.updateEquipas("Equipas.txt");
 
 	Desporto d("Artes Marciais", "Pontos", true);
 	c.adicionaDesporto(d);
 	c.updateDesportos("Desportos.txt");
 
-*/
+
 	cout << "Press any key to continue...";
 	_getch();
 	return 0;
