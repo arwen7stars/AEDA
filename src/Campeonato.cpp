@@ -1111,3 +1111,57 @@ void Campeonato::listaEquipasColocacao() const {
 				cout<< peq[b].second << endl;
 
 }
+
+void Campeonato::listaAtletasModalidade() const{
+//	vector< pair <string, string> > vam; // first = nome atleta sec= nome modalidade
+//
+//	for (unsigned int j = 0; j < equipas.size(); j++)
+//		for (unsigned int u = 0; u < equipas[j]->getAtletas().size(); u++)
+//			vat.push_back(make_pair(*equipas[j]->getAtletas()[u])),equipas[j].getAtletas()[u].getModalidade); //vetor com todos atletas
+//
+//	cout << "Atletas no campeonato: " << endl << vat.size();
+//
+//
+//	for (unsigned int a = 0; a < desportos.size(); a++) {
+//		for (unsigned int b = 0; b < desportos[a]->getModalidades().size();b++)
+//			{vector <Atleta> vat;
+//			for (unsigned int c=0;c< desportos[a]->getModalidades()[b].getAtletas().size();c++)
+//				vat.push_back( desportos[a]->getModalidades()[b]->getAtletas()[c])
+//
+//			}
+
+	vector<Atleta> vat;
+
+	for (unsigned int j = 0; j < equipas.size(); j++)
+		for (unsigned int u = 0; u < equipas[j]->getAtletas().size(); u++)
+			vat.push_back((*equipas[j]->getAtletas()[u]));
+
+
+	for (unsigned int j = 0; j < desportos.size(); j++) {
+		vector<Atleta> vatm;
+		for (unsigned int w = 0; w < desportos[j]->getModalidades().size(); w++) //percorre as modalidades todas
+				{
+			for (unsigned int u = 0; u < vat.size(); u++) //percorre os atletas
+				for (unsigned int b = 0; b < vat[u].getModalidades().size();
+						b++) // percorre modalidades dos atletas
+						{
+					if (desportos[j]->getModalidades()[w]->getNome()
+							== vat[u].getModalidades()[b]->getNome())
+						vatm.push_back(vat[u]);
+				}
+
+			if (vatm.size() == 0)
+				cout << endl << "Nao ha atletas  em "
+						<< desportos[j]->getModalidades()[w]->getNome() << endl;
+			else {
+				insertionSort<Atleta>(vatm);
+				cout << endl << "Atletas em "
+						<< desportos[j]->getModalidades()[w]->getNome() << " ("
+						<< desportos[j]->getNome() << ") " << ":" << endl
+						<< endl;
+				for (unsigned int i = 0; i < vatm.size(); i++)
+					cout << vatm[i] << endl;
+			}
+		}
+	}
+}
