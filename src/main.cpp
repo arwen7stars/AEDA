@@ -573,7 +573,7 @@ int main(){
 
 	//cout << "Provas.txt\n";
 
-	Campeonato c = load();
+	//Campeonato c = load();
 	/*cout << endl << "Vetor de provas de campeonato\n" << endl;
 	for(unsigned int i = 0; i < c.getProvas().size();i++)
 	{
@@ -616,7 +616,7 @@ int main(){
 	}
 
 */
-
+/*
 	cout << endl << "Vetor de desportos para cada equipa do campeonato\n" << endl;
 	for(unsigned int i = 0; i < c.getEquipas().size();i++)
 	{
@@ -629,7 +629,7 @@ int main(){
 		}
 		cout << endl;
 	}
-
+*/
 	/*cout << endl << "Vetor de modalidades de equipas\n" << endl;
 		for(unsigned int i = 0; i < c.getEquipas().size();i++)
 		{
@@ -687,6 +687,27 @@ int main(){
 	c.updateDesportos("Desportos.txt");
 	*/
 
+	//menu();
+/*
+	Campeonato c = load();
+	Equipa e("Finlandia");
+	Atleta * gui = new Atleta("Teemu Mantysaari", &e, true);
+	Atleta voc("Jaari Maenpaa", &e, true);
+
+	Data dat(2015,12,15);
+	Hora h(13,0);
+	Desporto d("Artes Marciais", "Pontos", true);
+	Modalidade m("Anything Goes Martial Arts", 1, 30, &d);
+	Prova p(&m, dat, h, false);
+
+	c.adicionaDesporto(d);
+	c.getDesportos()[c.getDesportos().size()-1]->adicionaModalidade(&m);
+	c.adicionaProva(p);
+	c.getProvas()[c.getProvas().size()-1]->adicionaAtleta(gui);
+	c.updateDesportos("Desportos.txt");
+	c.updateModalidades("Modalidades.txt");
+	c.updateProvas("Provas.txt");
+*/
 	cout << "Press any key to continue...";
 	_getch();
 	return 0;

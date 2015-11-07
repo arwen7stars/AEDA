@@ -31,7 +31,8 @@ class Campeonato{
 public:
 	Campeonato(string n, Data i, Data f, Hora a, Hora fe);
 	void adicionaEquipa(Equipa * eq);
-	bool adicionaProva(Prova &p);
+	void adicionaProva(Prova &p);
+	void adicionaDesporto(Desporto &d);
 
 	void loadDesportos(string nome_ficheiro);
 	void loadEquipas(string nome_ficheiro);
@@ -41,6 +42,7 @@ public:
 	void updateDesportos(string nome_ficheiro);
 	void updateEquipas(string nome_ficheiro);
 	void updateModalidades(string nome_ficheiro);
+	void updateProvas(string nome_ficheiro);
 
 	string getNome() const;
 	Data getInicio() const;
@@ -93,7 +95,6 @@ public:
 		Hora getHora() const {return hora;}
 	};
 
-	void adicionaDesporto(Desporto &d);
 	void listaDesportos() const;
 	void listaProvas() const;
 	void listaAtletas() const;

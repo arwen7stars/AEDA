@@ -54,9 +54,10 @@ vector<Equipa*> Campeonato::getEquipas() const
 	return equipas;
 }
 
-bool Campeonato::adicionaProva(Prova &p)
+void Campeonato::adicionaProva(Prova &p)
 {
 
+	bool tamanho_zero = false;
 	if (p.getData() < inicio || fim < p.getData())
 	{
 		throw Data::DataInvalida(p.getData().getAno(), p.getData().getMes(), p.getData().getDia());
@@ -73,8 +74,8 @@ bool Campeonato::adicionaProva(Prova &p)
 		{
 			if (provas.size() == 0)
 			{
+				tamanho_zero = true;
 				provas.push_back(&p);
-				return true;
 			}
 			else
 			{
@@ -89,9 +90,9 @@ bool Campeonato::adicionaProva(Prova &p)
 		}
 	}
 
-	provas.push_back(&p);
+	if (!tamanho_zero)
+		provas.push_back(&p);
 
-	return true;
 }
 
 void Campeonato::adicionaEquipa(Equipa * eq)
@@ -194,8 +195,9 @@ void Campeonato::loadEquipas(string nome_ficheiro)
 			adicionaEquipa(equipa);
 
 		extraido = "";
+		int c = in.peek();
 
-		if (!in.eof())
+		if (!in.eof() && c != '\n')
 			do{
 				in >> extraido;
 				if (extraido == "-")
@@ -328,7 +330,6 @@ void Campeonato::loadProvas(string nome_ficheiro)
 
 		k++;
 
-
 		for (unsigned int i = 0; i < desportos.size(); i++)
 		{
 			for(unsigned int j = 0; j < desportos[i]->getModalidades().size(); j++)
@@ -391,7 +392,6 @@ void Campeonato::loadProvas(string nome_ficheiro)
 
 		adicionaProva(*p);
 	}
-
 }
 
 void Campeonato::updateDesportos(string nome_ficheiro)
@@ -399,6 +399,9 @@ void Campeonato::updateDesportos(string nome_ficheiro)
 	ofstream out;
 
 	out.open(nome_ficheiro.c_str());
+
+	if(!ficheiroExiste(nome_ficheiro))
+		throw FicheiroInexistente(nome_ficheiro);
 
 	for(unsigned int i = 0; i < desportos.size(); i++)
 	{
@@ -415,6 +418,9 @@ void Campeonato::updateEquipas(string nome_ficheiro)
 {
 	ofstream out;
 	out.open(nome_ficheiro.c_str());
+
+	if(!ficheiroExiste(nome_ficheiro))
+		throw FicheiroInexistente(nome_ficheiro);
 
 	for(unsigned int i = 0; i < equipas.size();i++)
 	{
@@ -450,6 +456,36 @@ void Campeonato::updateModalidades(string nome_ficheiro)
 		}
 	}
 }
+
+void Campeonato::updateProvas(string nome_ficheiro)
+{
+	ofstream out;
+	out.open(nome_ficheiro.c_str());
+
+	if(!ficheiroExiste(nome_ficheiro))
+		throw FicheiroInexistente(nome_ficheiro);
+
+	for(unsigned int i = 0; i < provas.size(); i++)
+	{
+		out << provas[i]->getModalidade()->getNome() << endl;
+		out << provas[i]->getData().getDia() << " ";
+		out << provas[i]->getData().getMes() << " ";
+		out << provas[i]->getData().getAno() << " / ";
+		out << provas[i]->getInicio().getHoras() << " ";
+		out << provas[i]->getInicio().getMinutos() << " / ";
+		if (provas[i]->getGenero())
+			out << "M" << endl;
+		else out << "F" << endl;
+
+		for(unsigned int j = 0; j < provas[i]->getAtletas().size(); j++)
+		{
+			out << "- " << provas[i]->getAtletas()[j]->getNome() << endl;
+		}
+		out << endl;
+	}
+}
+
+
 
 void Campeonato::menuApagar(){
 	bool exit = false;
