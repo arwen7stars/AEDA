@@ -1483,8 +1483,7 @@ void Campeonato::adicionaProva(){
 
 }
 
-void atribuiPontuacao(ProvaTerminada &pro, vector<float> pontos) {
-//ordena o vetor atletas por pontuacao e faz pushback das pontuacoes ordenadas no pontuacoes da provaTerminada
+void atribuiPontuacao(ProvaTerminada &pro, vector<float> pontos) {//ordena o vetor atletas por pontuacao e faz pushback das pontuacoes ordenadas no pontuacoes da provaTerminada
 	//e faz push:_back dos atletas ordenados tb
 
 	for (unsigned int i = 0; i < pontos.size() - 1; i++)
@@ -1495,7 +1494,8 @@ void atribuiPontuacao(ProvaTerminada &pro, vector<float> pontos) {
 			}
 		}
 
-	if (pro.getAtletas().size() < 2) {
+	if(pro.getModalidade()->getDesporto()->isCrescente())
+			{if (pro.getAtletas().size() < 2) {
 		cout << pro.getAtletas().size();
 		pro.getAtletas()[0]->adicionaPontuacao(3);
 	} else {
@@ -1505,8 +1505,19 @@ void atribuiPontuacao(ProvaTerminada &pro, vector<float> pontos) {
 
 	}
 
-	for (unsigned int k = 0; k < pontos.size(); k++)
-		pro.getPontuacoes().push_back(pontos[k]);
+		for (unsigned int k = 0; k < pontos.size(); k++)
+			pro.getPontuacoes().push_back(pontos[k]);
+	} else {
+		if (pro.getAtletas().size() < 2) {
+			cout << pro.getAtletas().size();
+			pro.getAtletas()[pro.getAtletas().size() - 1]->adicionaPontuacao(3);
+		} else {
+			pro.getAtletas()[pro.getAtletas().size() - 1]->adicionaPontuacao(3);
+			pro.getAtletas()[pro.getAtletas().size() - 2]->adicionaPontuacao(2);
+			pro.getAtletas()[pro.getAtletas().size() - 3]->adicionaPontuacao(1);
+
+		}
+	}
 }
 
 
