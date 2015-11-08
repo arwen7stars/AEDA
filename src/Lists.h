@@ -25,19 +25,80 @@
 #define KEY_ESC 27
 using namespace std;
 
+/**
+ * Poe o cursor na linha y da consola, na posicao x.
+ *
+ * @param x - Localicacao do cursor na Consola na horizontal.
+ * @param y - Localicacao do cursor na Consola na vertical.
+ */
 void gotoxy(int x, int y);
 
+/**
+ *
+ * @return Localicacao do cursor na Consola na vertical (linha).
+ */
 int wherey();
 
+/**
+ * Imprime "titulo". De seguide, imprime todos os objectos apontados por options.
+ *
+ * Constroi uma seta que aponta para o primeiro objecto.
+ * As seguintes teclas sao aceites como input:
+ * Up - Sobe na lista.
+ * Down - Desce na lista.
+ * Esc - Sai da lista.
+ * Enter - Sei da lista returnando o indice do objecto atual de options.
+ *
+ * @param titulo
+ * @param options
+ * @return -1 se for pressionado ESC, indice do objecto selecionado se for pressionado ENTER
+ */
 template <class T>
 int fazMenu(string titulo, vector<T*> options);
 
+/**
+ * Imprime "titulo". De seguide, imprime todos os objectos de options.
+ *
+ * Constroi uma seta que aponta para o primeiro objecto.
+ * As seguintes teclas sao aceites como input:
+ * Up - Sobe na lista.
+ * Down - Desce na lista.
+ * Esc - Sai da lista.
+ * Enter - Sei da lista returnando o indice do objecto atual de options.
+ *
+ * @param titulo
+ * @param options
+ * @return -1 se for pressionado ESC, indice do objecto selecionado se for pressionado ENTER
+ */
 template <class T>
 int fazMenu(string titulo, vector<T> options);
 
+/**
+ * /**
+ * Imprime "titulo". De seguide, imprime todos os objectos apontados por options. Depois, ainda imprime Op1.
+ *
+ * Constroi uma seta que aponta para o primeiro objecto.
+ * As seguintes teclas sao aceites como input:
+ * Up - Sobe na lista.
+ * Down - Desce na lista.
+ * Esc - Sai da lista.
+ * Enter - Sei da lista returnando o indice do objecto atual. (Tamanho de options se a seta estiver em Op1)
+ *
+ * @param titulo
+ * @param options
+ * @param Op1
+ * @return -1 se for pressionado ESC, indice do objecto selecionado se for pressionado ENTER
+ */
 template <class T>
 int fazMenu(string titulo, vector<T*> options, string Op1);
 
+/**
+ * Procura no vector v, um apontador para um objecto que seja igual a x, e retorna o seu indice.
+ *
+ * @param v
+ * @param x
+ * @return -1 se nao encontrar nenhum, ou indice do elemento se encontrar.
+ */
 template <class T>
 int search(const vector<T*> &v, T x);
 
@@ -190,17 +251,7 @@ class FicheiroInexistente
 {
 	string nome;
 public:
-	FicheiroInexistente() {}
 	FicheiroInexistente(string n) : nome(n) {}
-	string getNome() { return nome; }
-};
-
-class LoadFail
-{
-	string nome;
-public:
-	LoadFail() {}
-	LoadFail(string n) : nome(n) {}
 	string getNome() { return nome; }
 };
 
