@@ -140,6 +140,9 @@ public:
  * @param nome_ficheiro - nome do ficheiro de provas
 	 */
 	void updateProvas(string nome_ficheiro);
+
+	void update();
+
 /**Apaga a modalidade de nome n do vetor de desportos, modalidades e modalidades de atletas
  *
  * @param n - nome da modalidade
@@ -174,6 +177,13 @@ public:
 	void menuDesportos();
 	void menuEquipas();
 	void menuProvas();
+	void menuListas();
+	void menuListasDesportos();
+	void menuListasModalidades();
+	void menuListasEquipas();
+	void menuListasAtletas();
+	void menuListasProvas();
+	void Salvar();
 /**Adiciona desporto ao vetor desportos do campeonato
  *
  * Lanca excepcao DesportoExiste se o desporto ja existir no vetor.

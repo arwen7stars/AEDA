@@ -60,11 +60,13 @@ Campeonato loadCampeonato(){
 	in >> info;
 	in >> h_fecho;
 	in >> m_fecho;
+
 	try{
 		Data dat1 (ini_ano,ini_mes,ini_dia);
 		Data dat2 (fim_ano,fim_mes,fim_dia);
 	} catch(Data::DataInvalida d)
 	{
+		system("cls");
 		cout << d.getMessage();
 	}
 
@@ -80,66 +82,82 @@ Campeonato loadCampeonato(){
 
 Campeonato load()
 {
+	try{
+	loadCampeonato();
+	} catch(FicheiroInexistente e)
+	{
+		cout << "O ficheiro " << e.getNome()<< " nao existe.\n";
+	}
 	Campeonato c = loadCampeonato();
 
 	string desportos = "Desportos.txt";
+	string equipas = "Equipas.txt";
+	string modalidades = "Modalidades.txt";
+	string provas = "Provas.txt";
 
 	if(!ficheiroExiste(desportos))
-		{
-				throw FicheiroInexistente(desportos);
-		}
-
-	try{
-	c.loadDesportos(desportos);
-	}
-	catch(CaraterInvalido &e)
 	{
-		cout << "O carater " << e.getChar() << " e invalido!\n";
+		throw FicheiroInexistente(desportos);
 	}
-
-	string equipas = "Equipas.txt";
-
-	if(!ficheiroExiste(equipas))
+	else if(!ficheiroExiste(equipas))
 	{
 		throw FicheiroInexistente(equipas);
 	}
-
-	try {
-		c.loadEquipas(equipas);
-	} catch (Equipa::EquipaInexistente &e)
-	{
-		cout << "A equipa " << e.getNome() << " nao existe!\n";
-	}
-
-	string modalidades = "Modalidades.txt";
-
-	if(!ficheiroExiste(modalidades))
+	else if(!ficheiroExiste(modalidades))
 	{
 		throw FicheiroInexistente(modalidades);
-	}
-
-	try{
-	c.loadModalidades(modalidades);
-	} catch(Hora::HoraInvalida e)
-	{
-		cout << e.getMessage();
-	}
-	catch(Desporto::DesportoInexistente e)
-	{
-		cout << e.getMessage();
-	}
-
-	string provas = "Provas.txt";
-
-	if(!ficheiroExiste(provas))
+	} else if(!ficheiroExiste(provas))
 	{
 		throw FicheiroInexistente(provas);
 	}
 
+	try{
+		bool suc = c.loadDesportos(desportos);
+
+		if (!suc)
+			throw LoadFail(desportos);
+	}
+	catch(CaraterInvalido &e)
+	{
+		cout << "Ocorreu um erro ao fazer load do ficheiro Desportos.txt" << endl;
+		cout << "O carater " << e.getChar() << " e invalido!\n";
+	}
+
 	try {
-		c.loadProvas(provas);
+		bool suc = c.loadEquipas(equipas);
+
+		if (!suc)
+			throw LoadFail(equipas);
+	} catch (Equipa::EquipaInexistente &e)
+	{
+		system("cls");
+		cout << "A equipa " << e.getNome() << " nao existe!\n";
+	}
+
+	try{
+		bool suc = c.loadModalidades(modalidades);
+
+		if (!suc)
+			throw LoadFail(modalidades);
+	} catch(Hora::HoraInvalida e)
+	{
+		system("cls");
+		cout << e.getMessage();
+	}
+	catch(Desporto::DesportoInexistente e)
+	{
+		system("cls");
+		cout << e.getMessage();
+	}
+
+	try {
+		bool suc = c.loadProvas(provas);
+
+		if (!suc)
+			throw LoadFail(provas);
 	} catch(LoadProvasFail &e)
 	{
+		system("cls");
 		cout << e.getMessage();
 	}
 

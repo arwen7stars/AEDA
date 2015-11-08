@@ -161,7 +161,7 @@ bool Campeonato::loadDesportos(string nome_ficheiro)
 			c = true;
 		else if (crescente == 'D')
 			c = false;
-		else return false;;
+		else throw CaraterInvalido(crescente);
 
 		Desporto * ds = new Desporto(desporto, tipo_de_pontuacao, c);
 
@@ -309,6 +309,7 @@ bool Campeonato::loadModalidades(string nome_ficheiro)
 
 	}
 	in.close();
+	return true;
 }
 
 bool Campeonato::loadProvas(string nome_ficheiro)
@@ -419,6 +420,7 @@ bool Campeonato::loadProvas(string nome_ficheiro)
 
 		adicionaProva(*p);
 	}
+	return true;
 }
 
 void Campeonato::updateDesportos(string nome_ficheiro)
@@ -511,6 +513,19 @@ void Campeonato::updateProvas(string nome_ficheiro)
 		out << endl;
 	}
 }
+
+void Campeonato::update(){
+	string desportos = "Desportos.txt";
+	string equipas = "Equipas.txt";
+	string modalidades = "Modalidades.txt";
+	string provas = "Provas.txt";
+
+	updateDesportos(desportos);
+	updateEquipas(equipas);
+	updateModalidades(modalidades);
+	updateProvas(provas);
+
+}
 /*
 void Campeonato::apagaDesporto(string n)
 {
@@ -577,6 +592,101 @@ void Campeonato::apagaModalidade(string n)
 		}
 	}
 }
+
+
+void Campeonato::menuCriacao(){
+	bool exit = false;
+	while (!exit){
+		system("cls");
+		vector<string> choices;
+		choices.push_back("Desportos");
+		if(desportos.size() > 0){
+			choices.push_back("Equipas");
+			choices.push_back("Provas");
+			choices.push_back("Listas");
+			choices.push_back("Apagar");
+			choices.push_back("Salvar");
+			choices.push_back("Terminar Planeamento");
+		}
+
+		int ch = fazMenu("Campeonato Polidesportivo - Planeamento", choices);
+		if (ch == -1)
+			exit = true;
+		else if (ch == 0)
+			menuDesportos();
+		else if (ch == 1)
+			menuEquipas();
+		else if (ch == 2)
+			menuProvas();
+		else if (ch == 3)
+			menuListas();
+		else if (ch == 4)
+			menuApagar();
+		else if (ch == 5)
+			Salvar();
+		//		else
+		//			TerminarPlaneamento();
+	}
+}
+
+void Campeonato::menuDesportos(){
+	bool exit = false;
+	while (!exit){
+		system("cls");
+		int ch = fazMenu("Desportos:", desportos, "Novo Desporto");
+		if (ch == -1)
+			exit = true;
+		else if (ch < desportos.size())
+			desportos[ch]->menu();
+		else{
+			try{
+				adicionaDesporto();
+			}
+			catch (DesportoExiste d){
+				cout << "Desporto \"" << d.getNome() << "\" ja existe.";
+				_getch();
+			}
+
+		}
+
+	}
+}
+
+void Campeonato::menuEquipas(){
+	bool exit = false;
+	while (!exit){
+		system("cls");
+		int ch = fazMenu("Equipas:", equipas, "Nova Equipa");
+		if (ch == -1)
+			exit = true;
+		else if (ch < equipas.size())
+			equipas[ch]->menu(desportos);
+		else{
+			try{
+				adicionaEquipa();
+			}
+			catch (EquipaExiste eq){
+				cout << "Equipa \"" << eq.getNome() << "\" ja existe.";
+				_getch();
+			}
+		}
+	}
+}
+
+void Campeonato::menuProvas(){
+	bool exit = false;
+	while (!exit){
+		system("cls");
+		int ch = fazMenu("Provas:", provas, "Nova Prova");
+		if (ch == -1)
+			exit = true;
+		else if (ch < provas.size())
+			provas[ch]->menu(equipas, desportos);
+		else
+			adicionaProva();
+	}
+}
+
 
 void Campeonato::menuApagar(){
 	bool exit = false;
@@ -839,94 +949,221 @@ void Campeonato::menuApagar(){
 	}
 }
 
-void Campeonato::menuCriacao(){
+void Campeonato::Salvar() {
+	update();
+	system("cls");
+	cout << "Ficheiros atualizados.";
+	_getch();
+	return;
+}
+
+
+void Campeonato::menuListas(){
 	bool exit = false;
 	while (!exit){
 		system("cls");
 		vector<string> choices;
 		choices.push_back("Desportos");
-		if(desportos.size() > 0){
-			choices.push_back("Equipas");
-			choices.push_back("Provas");
-			choices.push_back("Apagar");
-			choices.push_back("Salvar");
-			choices.push_back("Terminar Planeamento");
-		}
+		choices.push_back("Modalidades");
+		choices.push_back("Equipas");
+		choices.push_back("Atletas");
+		choices.push_back("Provas");
 
-		int ch = fazMenu("Campeonato Polidesportivo - Planeamento", choices);
+		int ch = fazMenu("Listas:", choices);
 		if (ch == -1)
 			exit = true;
-		else if (ch == 0)
-			menuDesportos();
-		else if (ch == 1)
-			menuEquipas();
+		else if(ch == 0)
+		{
+			menuListasDesportos();
+		}
+		else if(ch == 1)
+		{
+			menuListasModalidades();
+		}
 		else if (ch == 2)
-			menuProvas();
+		{
+			menuListasEquipas();
+		}
 		else if (ch == 3)
-			menuApagar();
-		//		else if (ch == 4)
-		//			Salvar();
-		//		else
-		//			TerminarPlaneamento();
-	}
-}
-
-void Campeonato::menuDesportos(){
-	bool exit = false;
-	while (!exit){
-		system("cls");
-		int ch = fazMenu("Desportos:", desportos, "Novo Desporto");
-		if (ch == -1)
-			exit = true;
-		else if (ch < desportos.size())
-			desportos[ch]->menu();
-		else{
-			try{
-				adicionaDesporto();
-			}
-			catch (DesportoExiste d){
-				cout << "Desporto \"" << d.getNome() << "\" ja existe.";
-				_getch();
-			}
-
+		{
+			menuListasAtletas();
 		}
-
-	}
-}
-
-void Campeonato::menuEquipas(){
-	bool exit = false;
-	while (!exit){
-		system("cls");
-		int ch = fazMenu("Equipas:", equipas, "Nova Equipa");
-		if (ch == -1)
-			exit = true;
-		else if (ch < equipas.size())
-			equipas[ch]->menu(desportos);
-		else{
-			try{
-				adicionaEquipa();
-			}
-			catch (EquipaExiste eq){
-				cout << "Equipa \"" << eq.getNome() << "\" ja existe.";
-				_getch();
-			}
+		else if (ch == 4)
+		{
+			menuListasProvas();
 		}
 	}
 }
 
-void Campeonato::menuProvas(){
-	bool exit = false;
-	while (!exit){
+void Campeonato::menuListasDesportos()
+{
+	bool exit1 = false;
+	while (!exit1){
 		system("cls");
-		int ch = fazMenu("Provas:", provas, "Nova Prova");
+		vector<string> choices;
+		choices.push_back("Nome");
+
+		int ch = fazMenu("Listagem de Desportos por:", choices);
 		if (ch == -1)
-			exit = true;
-		else if (ch < provas.size())
-			provas[ch]->menu(equipas, desportos);
-		else
-			adicionaProva();
+			exit1 = true;
+		else {
+			system("cls");
+			listaDesportos();
+			_getch();
+			return;
+		}
 	}
+}
+
+void Campeonato::menuListasModalidades()
+{
+	bool exit1 = false;
+	while (!exit1){
+		system("cls");
+		vector<string> choices;
+		choices.push_back("Nome");
+
+		int ch = fazMenu("Listagem de Modalidades por:", choices);
+		if (ch == -1)
+			exit1 = true;
+		else {
+			system("cls");
+			vector<string> nomes;
+
+			for(unsigned int i = 0; i < desportos.size(); i++)
+				for(unsigned int j = 0; j < desportos[i]->getModalidades().size(); j++)
+					nomes.push_back(desportos[i]->getModalidades()[j]->getNome());
+
+			insertionSort<string>(nomes);
+
+			for(unsigned int i = 0; i < nomes.size(); i++)
+				cout << nomes[i] << endl;
+
+			_getch();
+			return;
+		}
+	}
+}
+
+void Campeonato::menuListasEquipas(){
+	bool exit1 = false;
+	while (!exit1){
+		system("cls");
+		vector<string> choices;
+		choices.push_back("Nome");
+		choices.push_back("Colocacao");
+
+		int ch = fazMenu("Listagem de Equipas por:", choices);
+		if (ch == -1)
+			exit1 = true;
+		else if (ch == 0)
+		{
+			system("cls");
+			vector<string> nomes;
+
+			for(unsigned int i = 0; i < equipas.size(); i++)
+				nomes.push_back(equipas[i]->getNome());
+			insertionSort<string>(nomes);
+
+			for(unsigned int i = 0; i < nomes.size(); i++)
+				cout << nomes[i] << endl;
+			_getch();
+			return;
+		}
+		else {
+			system("cls");
+			if (criado)
+				listaEquipasColocacao();
+			else {
+				cout << "O campeonato ainda nao foi realizado.\n";
+			}
+			_getch();
+			return;
+		}
+	}
+}
+
+void Campeonato::menuListasAtletas()
+{
+	bool exit1 = false;
+	while (!exit1){
+		system("cls");
+		vector<string> choices;
+		choices.push_back("Nome");
+		choices.push_back("Colocacao");
+		choices.push_back("Desporto");
+		choices.push_back("Modalidade");
+
+		int ch = fazMenu("Listagem de Atletas por:", choices);
+		if (ch == -1)
+			exit1 = true;
+		else if (ch == 0)
+		{
+			system("cls");
+			listaAtletas();
+			_getch();
+			return;
+		}
+		else if (ch == 1){
+			system("cls");
+
+			if (criado)
+				listaAtletasColocacao();
+			else {
+				cout << "O campeonato ainda nao foi realizado.\n";
+			}
+
+			_getch();
+			return;
+		}
+		else if (ch == 2)
+		{
+			system("cls");
+			listaAtletasEquipa();
+			_getch();
+			return;
+		}
+		else if (ch == 3)
+		{
+			system("cls");
+			listaAtletasDesporto();
+			_getch();
+			return;
+		}
+		else {
+			system("cls");
+			listaAtletasModalidade();
+			_getch();
+			return;
+		}
+	}
+}
+
+void Campeonato::menuListasProvas(){
+	bool exit1 = false;
+		while (!exit1){
+			system("cls");
+			vector<string> choices;
+			choices.push_back("Por Realizar");
+			choices.push_back("Realizadas");
+
+			int ch = fazMenu("Listagem de Provas:", choices);
+			if (ch == -1)
+				exit1 = true;
+			else if (ch == 0)
+			{
+				system("cls");
+				listaProvasNaoRealizadas();
+				_getch();
+				return;
+			}
+			else {
+				system("cls");
+				listaProvasRealizadas();
+				_getch();
+				return;
+			}
+		}
 }
 
 void Campeonato::adicionaDesporto(){
@@ -1260,7 +1497,7 @@ void Campeonato::listaAtletasDesporto() const {
 		for (unsigned int u = 0; u < equipas[j]->getAtletas().size(); u++)
 			vat.push_back((*equipas[j]->getAtletas()[u]));
 
-	cout << "Atletas no campeonato: " << endl << endl;
+	cout << "Atletas no campeonato: " << endl;
 
 	for (unsigned int j = 0; j < desportos.size(); j++) {
 		vector<Atleta> vatd;
@@ -1273,7 +1510,7 @@ void Campeonato::listaAtletasDesporto() const {
 					vatd.push_back(vat[u]);
 
 		if (vatd.size() == 0)
-			cout <<endl << "Nao ha atletas  em " << desportos[j]->getNome() <<endl;
+			cout <<endl << "Nao ha atletas em " << desportos[j]->getNome() <<endl;
 		else {
 			insertionSort<Atleta>(vatd);
 			cout <<endl<< "Atletas em " << desportos[j]->getNome() << ":" << endl << endl;
