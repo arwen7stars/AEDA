@@ -46,6 +46,7 @@ public:
 	void updateProvas(string nome_ficheiro);
 
 	void apagaDesporto(string n);
+	void apagaModalidade(string n);
 
 	string getNome() const;
 	Data getInicio() const;

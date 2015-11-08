@@ -545,6 +545,56 @@ void Campeonato::apagaDesporto(string n)
 
 }
 
+void Campeonato::apagaModalidade(string n)
+{
+	for (unsigned int i = 0; i < desportos.size(); i++)
+	{
+		for(unsigned int j = 0; j < desportos[i]->getModalidades().size();j++)
+		{
+			if (desportos[i]->getModalidades()[j]->getNome() == n)
+			{
+				desportos[i]->apagaModalidade(j);
+				j--;
+			}
+		}
+	}
+
+
+	for(unsigned int i = 0; i < provas.size(); i++)
+	{
+		if(provas[i]->getModalidade()->getNome() == n)
+		{
+			provas.erase(provas.begin()+i);
+			i--;
+		}
+	}
+
+	for(unsigned int i = 0; i < equipas.size(); i++)
+	{
+		for(unsigned int j= 0; j < equipas[i]->getDesportos().size(); j++)
+		{
+			for(unsigned int k = 0; k < equipas[i]->getDesportos()[j]->getModalidades().size(); k++)
+			if (n == equipas[i]->getDesportos()[j]->getModalidades()[k]->getNome())
+			{
+				equipas[i]->apagaModalidade(j,k);
+				k--;
+			}
+		}
+
+		for(unsigned int j = 0; j < equipas[i]->getAtletas().size(); j++)
+		{
+			for(unsigned int k = 0; k < equipas[i]->getAtletas()[j]->getModalidades().size(); k++)
+			{
+				if (equipas[i]->getAtletas()[j]->getModalidades()[k]->getNome() == n)
+				{
+					equipas[i]->apagaModalidade(j,k);
+					k--;
+				}
+			}
+		}
+	}
+}
+
 
 void Campeonato::menuApagar(){
 	bool exit = false;
