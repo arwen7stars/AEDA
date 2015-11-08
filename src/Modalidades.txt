@@ -1,7 +1,32 @@
-Corrida / 100 metros / 1 / 0
-Corrida / 200 metros / 2 / 0
-Corrida / Longa Distancia / 4 / 30
-Natacao / Estilo Livre 50m / 2 / 0
-Futebol / Semi-Finais / 2 / 15
-Natacao / Mariposa 100m / 3 / 15
-Futebol / Finais / 2 / 15
+Corrida
+100 metros
+1 0
+
+Corrida
+200 metros
+2 0
+
+Corrida
+Longa Distancia
+4 30
+
+Natacao
+Estilo Livre 50m
+2 0
+
+Natacao
+Mariposa 100m
+3 15
+
+Futebol
+Semi-Finais
+2 15
+
+Futebol
+Finais
+2 15
+
+Artes Marciais
+Anything Goes Martial Arts
+1 30
+
