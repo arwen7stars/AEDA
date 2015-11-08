@@ -140,9 +140,6 @@ public:
  * @param nome_ficheiro - nome do ficheiro de provas
 	 */
 	void updateProvas(string nome_ficheiro);
-
-	void update();
-
 /**Apaga a modalidade de nome n do vetor de desportos, modalidades e modalidades de atletas
  *
  * @param n - nome da modalidade
@@ -174,16 +171,21 @@ public:
 		 *
 		 */
 	void menuCriacao();
+	/**Menu na interface para alterar atributos de um Desporto
+	 *
+	 * Mostra opcoes por onde escolher o que alterar, entre os atributos de um Desporto (modalidades, tipo de pontuacao, etc)
+	 */
 	void menuDesportos();
+	/**Menu na interface para alterar atributos de uma Equipa
+	 *
+	 * Mostra opcoes por onde escolher o que alterar, entre os atributos de uma Equipa (atletas, provas, etc)
+	 */
 	void menuEquipas();
+	/**Menu na interface para alterar atributos de uma Equipa
+		 *
+		 * Mostra opcoes por onde escolher o que alterar, entre os atributos de uma Prova (data, hora, etc)
+		 */
 	void menuProvas();
-	void menuListas();
-	void menuListasDesportos();
-	void menuListasModalidades();
-	void menuListasEquipas();
-	void menuListasAtletas();
-	void menuListasProvas();
-	void Salvar();
 /**Adiciona desporto ao vetor desportos do campeonato
  *
  * Lanca excepcao DesportoExiste se o desporto ja existir no vetor.
@@ -204,7 +206,7 @@ public:
 		DesportoExiste(){};
 		/** Construtor DesportoExiste
 				 *
-				 * @param n - nome do desporto que ja existe
+				 * @param n - nome do desporto que causou a excecao
 				 */
 		DesportoExiste(string n) {nome = n;}
 		string getNome() const {return nome;}
@@ -226,7 +228,7 @@ public:
 		EquipaExiste(){};
 		/** Construtor EquipaExiste
 						 *
-						 * @param n - nome da equipa que ja existe
+						 * @param n - nome da equipa que causou a excecao
 						 */
 		EquipaExiste(string n) {nome = n;}
 		string getNome() const {return nome;}
@@ -247,7 +249,7 @@ public:
 		DataInvalida(){};
 		/** Construtor DataInvalida
 						 *
-						 * @param d - Data que ja existe
+						 * @param d - Data que causou a excecao
 						 */
 		DataInvalida(Data d) {data = d;}
 		Data getData() const {return data;}
@@ -266,24 +268,68 @@ public:
 		HoraInvalida(){};
 		/** Construtor HoraInvalida
 							 *
-							 * @param h - Hora que ja existe
+							 * @param h - Hora que causou a excecao
 							 */
 		HoraInvalida(Hora h) {hora = h;}
 		Hora getHora() const {return hora;}
 	};
-
+/**Converte Prova para ProvaTerminada
+ *
+ * Cria uma ProvaTerminada, chama atribuiPontuacoes e setAtletas, retira a Prova p do vetor provas e adiciona-lhe
+ * a nova ProvaTerminada
+ *
+ * @param p - prova agora realizada
+ * @param pontuacoes - vetor com as pontuacoes dos atletas, pela ordem que estao em Proa p
+ * @return true se conseguiu adicionar, false se a p nao existir em provas
+ */
 	bool realizaProva(Prova & p, vector <float> pontuacoes);
+	/**Lista no terminal os desportos no vetor desportos por ordem alfabetica
+	 *
+	 */
 	void listaDesportos() const;
+	/**Lista no terminal as ProvasTerminadas no vetor provas por ordem cronologica
+		 *
+		 */
 	void listaProvasNaoRealizadas() const;
+	/**Lista no terminal as Provas no vetor provas por ordem cronologica
+	 *
+	 */
 	void listaProvasRealizadas() const;
+	/**Lista no terminal os atletas no vetor equipas por ordem alfabetica
+		 *
+		 */
 	void listaAtletas() const;
+	/**Lista no terminal os atletas no vetor equipas por ordem alfabetica, divididos por Equipas
+		 *
+		 */
 	void listaAtletasEquipa() const;
+	/**Lista no terminal os atletas no vetor equipas por ordem decrescente de colocacao
+		 *
+		 */
 	void listaAtletasColocacao() const;
+	/**Lista no terminal os atletas no vetor equipas por ordem alfabetica, divididos por Desporto
+		 *
+		 */
 	void listaAtletasDesporto() const;
+	/**Lista no terminal os atletas no vetor equipas por ordem alfabetica, divididos por Modalidade
+		 *
+		 */
 	void listaAtletasModalidade() const;
+	/**Lista no terminal as equipas no vetor equipas por ordem decrescente de colocacao
+		 *
+		 */
 	void listaEquipasColocacao() const ;
 };
 
+/**Atribui pontos aos atletas que venceram a Prova
+ *
+ * Ordena o vetor atleta da ProvaTerminada
+ * Da 3 pontos ao atleta em 1o lugar, 2 pontos ao atleta em 2o lugar e 1 ponto ao atleta em 3o lugar
+ * Preenche o vetor pontuacoes da ProvaTerminada com os resultados dos atletas, pela ordem do ranking
+ *
+ * @param pro - prova agora realizada
+ * @param pontos - resultados da prova, em posicoes correspondentes a cada atleta
+ */
 void atribuiPontuacao(Prova pro, vector<float> pontos);
 
 
