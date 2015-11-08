@@ -59,6 +59,13 @@ public:
 	 * @return true se o nome de c e desta modalidade forem iguais, false caso contrario.
 	 */
 	bool operator== (const Modalidade & c) const;
+	/**
+	 * imprime o nome da modalidade
+	 *
+	 * @param o - stream de output
+	 * @param d - uma modalidade
+	 * @return o
+	 */
 	friend ostream & operator<<(ostream & o, const Modalidade & d);
 
 	/**

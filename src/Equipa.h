@@ -308,18 +308,18 @@ public:
 	void menu();
 
 	/**
-		 *
-		 * @param c - uma equipa
-		 * @return true se o nome de c e desta equipa forem iguais, false caso contrario.
-		 */
+	 *
+	 * @param c - uma equipa
+	 * @return true se o nome de c e desta equipa forem iguais, false caso contrario.
+	 */
 	bool operator== (const Atleta & c) const;
 	/**
-		 * imprime o nome da equipa
-		 *
-		 * @param o - stream de output
-		 * @param d - um atleta
-		 * @return o
-		 */
+	 * imprime o nome da equipa
+	 *
+	 * @param o - stream de output
+	 * @param d - um atleta
+	 * @return o
+	 */
 	friend ostream & operator<<(ostream & o, const Atleta & d);
 
 	/**
