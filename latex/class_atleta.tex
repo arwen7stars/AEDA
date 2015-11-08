@@ -1,0 +1,372 @@
+\hypertarget{class_atleta}{}\section{Atleta Class Reference}
+\label{class_atleta}\index{Atleta@{Atleta}}
+
+
+{\ttfamily \#include $<$Equipa.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_atleta_a055b02bad1b7615536e583e1f3708ec3}{Atleta} (string n, \hyperlink{class_equipa}{Equipa} $\ast$e, bool g)
+\item 
+string \hyperlink{class_atleta_a0f5be5cd0b18f224a7a5281216fc1bfd}{get\+Nome} () const 
+\item 
+\hyperlink{class_equipa}{Equipa} $\ast$ \hyperlink{class_atleta_a5abede47b955764c546dcd78683d4c1e}{get\+Equipa} () const 
+\item 
+int \hyperlink{class_atleta_ad10e9d537836304fbe44ce3e23533e2d}{get\+Pontos} () const 
+\item 
+vector$<$ \hyperlink{class_prova}{Prova} $\ast$ $>$ \hyperlink{class_atleta_a4d87755e5d458d4a2c5d53015669ad21}{get\+Provas} () const 
+\item 
+vector$<$ \hyperlink{class_modalidade}{Modalidade} $\ast$ $>$ \hyperlink{class_atleta_a4e4a08618d388c914705e4552bee3f00}{get\+Modalidades} () const 
+\item 
+bool \hyperlink{class_atleta_a85f10fa37fcc45860745893c95dc0b34}{get\+Genero} () const 
+\item 
+void \hyperlink{class_atleta_a8556e86a2cae3eeafb3d97e6c283241f}{set\+Genero} (bool g)
+\item 
+void \hyperlink{class_atleta_a35fcdb190f9b6b5100fba23cc98e5304}{set\+Nome} (string n)
+\item 
+void \hyperlink{class_atleta_a410bd5f21959b99444ed4c0f736cdacc}{set\+Equipa} (\hyperlink{class_equipa}{Equipa} \&eq)
+\item 
+void \hyperlink{class_atleta_ae70dd68db249f3828ee53c15df67a201}{set\+Provas} (vector$<$ \hyperlink{class_prova}{Prova} $\ast$ $>$ p)
+\item 
+void \hyperlink{class_atleta_adbaffac5f1bf0eedf090cb0a91734bd5}{set\+Modalidades} (vector$<$ \hyperlink{class_modalidade}{Modalidade} $\ast$ $>$ m)
+\item 
+void \hyperlink{class_atleta_a9af09149a6b3c22ca514154b4a29b7f3}{setpontos} (int p)
+\item 
+void \hyperlink{class_atleta_a7a4bee73158d8ee13b4812eb96decb61}{adiciona\+Prova} (\hyperlink{class_prova}{Prova} $\ast$p)
+\item 
+void \hyperlink{class_atleta_a036b7b9cdf087a63e601b4e3a9f5552f}{adiciona\+Modalidade} (\hyperlink{class_modalidade}{Modalidade} $\ast$m)
+\item 
+void \hyperlink{class_atleta_af143bde354ddd015eeaaf7ea819887fd}{adiciona\+Pontuacao} (int p)
+\item 
+void \hyperlink{class_atleta_a72dcf8a7a26d47eb5f39e876cb9537bd}{apaga\+Modalidade} (int indice)
+\item 
+void \hyperlink{class_atleta_aeefa19a643057d8688448aeafadc3dcb}{apaga\+Prova} (int indice)
+\item 
+void \hyperlink{class_atleta_a24b4c70d5e08a875612c8e234fa4ab44}{menu} ()
+\item 
+bool \hyperlink{class_atleta_a2c2de5e4a0f9963dd9c1a6507b593aed}{operator==} (const \hyperlink{class_atleta}{Atleta} \&c) const 
+\item 
+bool \hyperlink{class_atleta_a86b4c8fda3582aab61d9796bc5bdced3}{operator$<$} (const \hyperlink{class_atleta}{Atleta} \&a) const 
+\item 
+\hyperlink{class_atleta}{Atleta} \& \hyperlink{class_atleta_aea00de3983e444705d4f06702b344413}{operator=} (const \hyperlink{class_atleta}{Atleta} \&a)
+\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+ostream \& \hyperlink{class_atleta_a49ef3d4a229ab0e44df89ff6bf7f0e61}{operator$<$$<$} (ostream \&o, const \hyperlink{class_atleta}{Atleta} \&d)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Class \hyperlink{class_equipa}{Equipa}
+
+Representa um atleta de uma equipa 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_atleta_a055b02bad1b7615536e583e1f3708ec3}{}\index{Atleta@{Atleta}!Atleta@{Atleta}}
+\index{Atleta@{Atleta}!Atleta@{Atleta}}
+\subsubsection[{Atleta(string n, Equipa $\ast$e, bool g)}]{\setlength{\rightskip}{0pt plus 5cm}Atleta\+::\+Atleta (
+\begin{DoxyParamCaption}
+\item[{string}]{n, }
+\item[{{\bf Equipa} $\ast$}]{e, }
+\item[{bool}]{g}
+\end{DoxyParamCaption}
+)}\label{class_atleta_a055b02bad1b7615536e583e1f3708ec3}
+Inicializa os atributos
+
+
+\begin{DoxyParams}{Parameters}
+{\em n} & -\/ nome do atleta \\
+\hline
+{\em e} & -\/ equipa \\
+\hline
+{\em g} & -\/ genero (true feminino, false masculino) \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_atleta_a036b7b9cdf087a63e601b4e3a9f5552f}{}\index{Atleta@{Atleta}!adiciona\+Modalidade@{adiciona\+Modalidade}}
+\index{adiciona\+Modalidade@{adiciona\+Modalidade}!Atleta@{Atleta}}
+\subsubsection[{adiciona\+Modalidade(\+Modalidade $\ast$m)}]{\setlength{\rightskip}{0pt plus 5cm}void Atleta\+::adiciona\+Modalidade (
+\begin{DoxyParamCaption}
+\item[{{\bf Modalidade} $\ast$}]{m}
+\end{DoxyParamCaption}
+)}\label{class_atleta_a036b7b9cdf087a63e601b4e3a9f5552f}
+Adiciona m ao vetor modalidades 
+\begin{DoxyParams}{Parameters}
+{\em m} & -\/ uma modalidade \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_atleta_af143bde354ddd015eeaaf7ea819887fd}{}\index{Atleta@{Atleta}!adiciona\+Pontuacao@{adiciona\+Pontuacao}}
+\index{adiciona\+Pontuacao@{adiciona\+Pontuacao}!Atleta@{Atleta}}
+\subsubsection[{adiciona\+Pontuacao(int p)}]{\setlength{\rightskip}{0pt plus 5cm}void Atleta\+::adiciona\+Pontuacao (
+\begin{DoxyParamCaption}
+\item[{int}]{p}
+\end{DoxyParamCaption}
+)}\label{class_atleta_af143bde354ddd015eeaaf7ea819887fd}
+Adiciona p a pontos 
+\begin{DoxyParams}{Parameters}
+{\em p} & -\/ um numero de pontos \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_atleta_a7a4bee73158d8ee13b4812eb96decb61}{}\index{Atleta@{Atleta}!adiciona\+Prova@{adiciona\+Prova}}
+\index{adiciona\+Prova@{adiciona\+Prova}!Atleta@{Atleta}}
+\subsubsection[{adiciona\+Prova(\+Prova $\ast$p)}]{\setlength{\rightskip}{0pt plus 5cm}void Atleta\+::adiciona\+Prova (
+\begin{DoxyParamCaption}
+\item[{{\bf Prova} $\ast$}]{p}
+\end{DoxyParamCaption}
+)}\label{class_atleta_a7a4bee73158d8ee13b4812eb96decb61}
+Adiciona p ao vetor provas 
+\begin{DoxyParams}{Parameters}
+{\em p} & -\/ uma prova \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_atleta_a72dcf8a7a26d47eb5f39e876cb9537bd}{}\index{Atleta@{Atleta}!apaga\+Modalidade@{apaga\+Modalidade}}
+\index{apaga\+Modalidade@{apaga\+Modalidade}!Atleta@{Atleta}}
+\subsubsection[{apaga\+Modalidade(int indice)}]{\setlength{\rightskip}{0pt plus 5cm}void Atleta\+::apaga\+Modalidade (
+\begin{DoxyParamCaption}
+\item[{int}]{indice}
+\end{DoxyParamCaption}
+)}\label{class_atleta_a72dcf8a7a26d47eb5f39e876cb9537bd}
+Apaga a modalidade de indice indice em modalidades 
+\begin{DoxyParams}{Parameters}
+{\em indice} & -\/ indice da modalidade \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_atleta_aeefa19a643057d8688448aeafadc3dcb}{}\index{Atleta@{Atleta}!apaga\+Prova@{apaga\+Prova}}
+\index{apaga\+Prova@{apaga\+Prova}!Atleta@{Atleta}}
+\subsubsection[{apaga\+Prova(int indice)}]{\setlength{\rightskip}{0pt plus 5cm}void Atleta\+::apaga\+Prova (
+\begin{DoxyParamCaption}
+\item[{int}]{indice}
+\end{DoxyParamCaption}
+)}\label{class_atleta_aeefa19a643057d8688448aeafadc3dcb}
+Apaga a prova de indice indice em prova 
+\begin{DoxyParams}{Parameters}
+{\em indice} & -\/ indice da prova \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_atleta_a5abede47b955764c546dcd78683d4c1e}{}\index{Atleta@{Atleta}!get\+Equipa@{get\+Equipa}}
+\index{get\+Equipa@{get\+Equipa}!Atleta@{Atleta}}
+\subsubsection[{get\+Equipa() const }]{\setlength{\rightskip}{0pt plus 5cm}{\bf Equipa} $\ast$ Atleta\+::get\+Equipa (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\label{class_atleta_a5abede47b955764c546dcd78683d4c1e}
+\begin{DoxyReturn}{Returns}
+equipa 
+\end{DoxyReturn}
+\hypertarget{class_atleta_a85f10fa37fcc45860745893c95dc0b34}{}\index{Atleta@{Atleta}!get\+Genero@{get\+Genero}}
+\index{get\+Genero@{get\+Genero}!Atleta@{Atleta}}
+\subsubsection[{get\+Genero() const }]{\setlength{\rightskip}{0pt plus 5cm}bool Atleta\+::get\+Genero (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\label{class_atleta_a85f10fa37fcc45860745893c95dc0b34}
+\begin{DoxyReturn}{Returns}
+genero 
+\end{DoxyReturn}
+\hypertarget{class_atleta_a4e4a08618d388c914705e4552bee3f00}{}\index{Atleta@{Atleta}!get\+Modalidades@{get\+Modalidades}}
+\index{get\+Modalidades@{get\+Modalidades}!Atleta@{Atleta}}
+\subsubsection[{get\+Modalidades() const }]{\setlength{\rightskip}{0pt plus 5cm}vector$<$ {\bf Modalidade} $\ast$ $>$ Atleta\+::get\+Modalidades (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\label{class_atleta_a4e4a08618d388c914705e4552bee3f00}
+\begin{DoxyReturn}{Returns}
+modalidades 
+\end{DoxyReturn}
+\hypertarget{class_atleta_a0f5be5cd0b18f224a7a5281216fc1bfd}{}\index{Atleta@{Atleta}!get\+Nome@{get\+Nome}}
+\index{get\+Nome@{get\+Nome}!Atleta@{Atleta}}
+\subsubsection[{get\+Nome() const }]{\setlength{\rightskip}{0pt plus 5cm}string Atleta\+::get\+Nome (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\label{class_atleta_a0f5be5cd0b18f224a7a5281216fc1bfd}
+\begin{DoxyReturn}{Returns}
+nome 
+\end{DoxyReturn}
+\hypertarget{class_atleta_ad10e9d537836304fbe44ce3e23533e2d}{}\index{Atleta@{Atleta}!get\+Pontos@{get\+Pontos}}
+\index{get\+Pontos@{get\+Pontos}!Atleta@{Atleta}}
+\subsubsection[{get\+Pontos() const }]{\setlength{\rightskip}{0pt plus 5cm}int Atleta\+::get\+Pontos (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\label{class_atleta_ad10e9d537836304fbe44ce3e23533e2d}
+\begin{DoxyReturn}{Returns}
+pontos 
+\end{DoxyReturn}
+\hypertarget{class_atleta_a4d87755e5d458d4a2c5d53015669ad21}{}\index{Atleta@{Atleta}!get\+Provas@{get\+Provas}}
+\index{get\+Provas@{get\+Provas}!Atleta@{Atleta}}
+\subsubsection[{get\+Provas() const }]{\setlength{\rightskip}{0pt plus 5cm}vector$<$ {\bf Prova} $\ast$ $>$ Atleta\+::get\+Provas (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\label{class_atleta_a4d87755e5d458d4a2c5d53015669ad21}
+\begin{DoxyReturn}{Returns}
+provas 
+\end{DoxyReturn}
+\hypertarget{class_atleta_a24b4c70d5e08a875612c8e234fa4ab44}{}\index{Atleta@{Atleta}!menu@{menu}}
+\index{menu@{menu}!Atleta@{Atleta}}
+\subsubsection[{menu()}]{\setlength{\rightskip}{0pt plus 5cm}void Atleta\+::menu (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_atleta_a24b4c70d5e08a875612c8e234fa4ab44}
+Menu de Interface de uma modalidade
+
+Mostra a seguinte opcao\+: (Alterar Nome) \hypertarget{class_atleta_a86b4c8fda3582aab61d9796bc5bdced3}{}\index{Atleta@{Atleta}!operator$<$@{operator$<$}}
+\index{operator$<$@{operator$<$}!Atleta@{Atleta}}
+\subsubsection[{operator$<$(const Atleta \&a) const }]{\setlength{\rightskip}{0pt plus 5cm}bool Atleta\+::operator$<$ (
+\begin{DoxyParamCaption}
+\item[{const {\bf Atleta} \&}]{a}
+\end{DoxyParamCaption}
+) const}\label{class_atleta_a86b4c8fda3582aab61d9796bc5bdced3}
+
+\begin{DoxyParams}{Parameters}
+{\em a} & -\/ um atleta \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true se os pontos de a forem maiores que o atleta em causa 
+\end{DoxyReturn}
+\hypertarget{class_atleta_aea00de3983e444705d4f06702b344413}{}\index{Atleta@{Atleta}!operator=@{operator=}}
+\index{operator=@{operator=}!Atleta@{Atleta}}
+\subsubsection[{operator=(const Atleta \&a)}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Atleta} \& Atleta\+::operator= (
+\begin{DoxyParamCaption}
+\item[{const {\bf Atleta} \&}]{a}
+\end{DoxyParamCaption}
+)}\label{class_atleta_aea00de3983e444705d4f06702b344413}
+
+\begin{DoxyParams}{Parameters}
+{\em a} & -\/ um atleta igual a \char`\"{}a\char`\"{} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\hypertarget{class_atleta_a2c2de5e4a0f9963dd9c1a6507b593aed}{}\index{Atleta@{Atleta}!operator==@{operator==}}
+\index{operator==@{operator==}!Atleta@{Atleta}}
+\subsubsection[{operator==(const Atleta \&c) const }]{\setlength{\rightskip}{0pt plus 5cm}bool Atleta\+::operator== (
+\begin{DoxyParamCaption}
+\item[{const {\bf Atleta} \&}]{c}
+\end{DoxyParamCaption}
+) const}\label{class_atleta_a2c2de5e4a0f9963dd9c1a6507b593aed}
+
+\begin{DoxyParams}{Parameters}
+{\em c} & -\/ uma equipa \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true se o nome de c e desta equipa forem iguais, false caso contrario. 
+\end{DoxyReturn}
+\hypertarget{class_atleta_a410bd5f21959b99444ed4c0f736cdacc}{}\index{Atleta@{Atleta}!set\+Equipa@{set\+Equipa}}
+\index{set\+Equipa@{set\+Equipa}!Atleta@{Atleta}}
+\subsubsection[{set\+Equipa(\+Equipa \&eq)}]{\setlength{\rightskip}{0pt plus 5cm}void Atleta\+::set\+Equipa (
+\begin{DoxyParamCaption}
+\item[{{\bf Equipa} \&}]{eq}
+\end{DoxyParamCaption}
+)}\label{class_atleta_a410bd5f21959b99444ed4c0f736cdacc}
+Muda equipa para eq 
+\begin{DoxyParams}{Parameters}
+{\em eq} & -\/ uma equipa \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_atleta_a8556e86a2cae3eeafb3d97e6c283241f}{}\index{Atleta@{Atleta}!set\+Genero@{set\+Genero}}
+\index{set\+Genero@{set\+Genero}!Atleta@{Atleta}}
+\subsubsection[{set\+Genero(bool g)}]{\setlength{\rightskip}{0pt plus 5cm}void Atleta\+::set\+Genero (
+\begin{DoxyParamCaption}
+\item[{bool}]{g}
+\end{DoxyParamCaption}
+)}\label{class_atleta_a8556e86a2cae3eeafb3d97e6c283241f}
+Muda genero para g 
+\begin{DoxyParams}{Parameters}
+{\em g} & -\/ genero (true feminino, false masculino) \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_atleta_adbaffac5f1bf0eedf090cb0a91734bd5}{}\index{Atleta@{Atleta}!set\+Modalidades@{set\+Modalidades}}
+\index{set\+Modalidades@{set\+Modalidades}!Atleta@{Atleta}}
+\subsubsection[{set\+Modalidades(vector$<$ Modalidade $\ast$ $>$ m)}]{\setlength{\rightskip}{0pt plus 5cm}void Atleta\+::set\+Modalidades (
+\begin{DoxyParamCaption}
+\item[{vector$<$ {\bf Modalidade} $\ast$ $>$}]{m}
+\end{DoxyParamCaption}
+)}\label{class_atleta_adbaffac5f1bf0eedf090cb0a91734bd5}
+Muda modalidadess para m
+
+
+\begin{DoxyParams}{Parameters}
+{\em m} & -\/ um vetor de modalidades \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_atleta_a35fcdb190f9b6b5100fba23cc98e5304}{}\index{Atleta@{Atleta}!set\+Nome@{set\+Nome}}
+\index{set\+Nome@{set\+Nome}!Atleta@{Atleta}}
+\subsubsection[{set\+Nome(string n)}]{\setlength{\rightskip}{0pt plus 5cm}void Atleta\+::set\+Nome (
+\begin{DoxyParamCaption}
+\item[{string}]{n}
+\end{DoxyParamCaption}
+)}\label{class_atleta_a35fcdb190f9b6b5100fba23cc98e5304}
+Muda nome para n
+
+
+\begin{DoxyParams}{Parameters}
+{\em n} & -\/ nome do atleta \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_atleta_a9af09149a6b3c22ca514154b4a29b7f3}{}\index{Atleta@{Atleta}!setpontos@{setpontos}}
+\index{setpontos@{setpontos}!Atleta@{Atleta}}
+\subsubsection[{setpontos(int p)}]{\setlength{\rightskip}{0pt plus 5cm}void Atleta\+::setpontos (
+\begin{DoxyParamCaption}
+\item[{int}]{p}
+\end{DoxyParamCaption}
+)}\label{class_atleta_a9af09149a6b3c22ca514154b4a29b7f3}
+Muda pontos para p
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & -\/ numero de pontos \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_atleta_ae70dd68db249f3828ee53c15df67a201}{}\index{Atleta@{Atleta}!set\+Provas@{set\+Provas}}
+\index{set\+Provas@{set\+Provas}!Atleta@{Atleta}}
+\subsubsection[{set\+Provas(vector$<$ Prova $\ast$ $>$ p)}]{\setlength{\rightskip}{0pt plus 5cm}void Atleta\+::set\+Provas (
+\begin{DoxyParamCaption}
+\item[{vector$<$ {\bf Prova} $\ast$ $>$}]{p}
+\end{DoxyParamCaption}
+)}\label{class_atleta_ae70dd68db249f3828ee53c15df67a201}
+Muda provas para p
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & -\/ um vetor de provas \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Friends And Related Function Documentation}
+\hypertarget{class_atleta_a49ef3d4a229ab0e44df89ff6bf7f0e61}{}\index{Atleta@{Atleta}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!Atleta@{Atleta}}
+\subsubsection[{operator$<$$<$}]{\setlength{\rightskip}{0pt plus 5cm}ostream\& operator$<$$<$ (
+\begin{DoxyParamCaption}
+\item[{ostream \&}]{o, }
+\item[{const {\bf Atleta} \&}]{d}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [friend]}}\label{class_atleta_a49ef3d4a229ab0e44df89ff6bf7f0e61}
+imprime o nome da equipa
+
+
+\begin{DoxyParams}{Parameters}
+{\em o} & -\/ stream de output \\
+\hline
+{\em d} & -\/ um atleta \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+o 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/Equipa.\+h\item 
+src/Equipa.\+cpp\end{DoxyCompactItemize}

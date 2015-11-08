@@ -1,0 +1,309 @@
+\hypertarget{class_equipa}{}\section{Equipa Class Reference}
+\label{class_equipa}\index{Equipa@{Equipa}}
+
+
+{\ttfamily \#include $<$Equipa.\+h$>$}
+
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{class_equipa_1_1_atleta_existe}{Atleta\+Existe}
+\item 
+class \hyperlink{class_equipa_1_1_equipa_inexistente}{Equipa\+Inexistente}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_equipa_aa318e7b925bfed173bb90d20c63d8a43}{Equipa} (string n)
+\item 
+string \hyperlink{class_equipa_a9d20d0c8daa94e7562c5ea173337a224}{get\+Nome} () const 
+\item 
+vector$<$ \hyperlink{class_atleta}{Atleta} $\ast$ $>$ \hyperlink{class_equipa_a24c4de83cc1171ce42f442ef7be8a7c4}{get\+Atletas} () const 
+\item 
+vector$<$ \hyperlink{class_desporto}{Desporto} $\ast$ $>$ \hyperlink{class_equipa_a6b6996a193cea733caafb99d0ddebbcc}{get\+Desportos} () const 
+\item 
+void \hyperlink{class_equipa_a0e9f300d552f0c4de6fc28d555141eb5}{set\+Nome} (string n)
+\item 
+void \hyperlink{class_equipa_a3269b5a8f6c3ebc9370c4cdf004c0b31}{set\+Atletas} (vector$<$ \hyperlink{class_atleta}{Atleta} $\ast$ $>$ a)
+\item 
+void \hyperlink{class_equipa_ae94bfeafedcf21a1d85db42a7f60b4ea}{set\+Desportos} (vector$<$ \hyperlink{class_desporto}{Desporto} $\ast$ $>$ d)
+\item 
+bool \hyperlink{class_equipa_a18b0bb0b40831afda4d8baa0730dc40f}{adiciona\+Atleta} (\hyperlink{class_atleta}{Atleta} $\ast$a)
+\item 
+void \hyperlink{class_equipa_a22daef4c32fcc25228a113a134911565}{adiciona\+Desporto} (\hyperlink{class_desporto}{Desporto} $\ast$d)
+\item 
+void \hyperlink{class_equipa_a0ff737879e2ece8397d01d1da745a788}{apaga\+Modalidade} (int i\+\_\+atleta, int i\+\_\+modalidade)
+\item 
+void \hyperlink{class_equipa_ac2252ae9144c32ad2dfb227b9dfb2c15}{apaga\+Atleta} (string nome)
+\item 
+bool \hyperlink{class_equipa_a754b42e94c0ca91ac2c2a3890e7f3191}{operator==} (const \hyperlink{class_equipa}{Equipa} \&c) const 
+\item 
+\hyperlink{class_equipa}{Equipa} \& \hyperlink{class_equipa_a372f3177a2f628ddaff2c40ed7d26bf8}{operator=} (const \hyperlink{class_equipa}{Equipa} \&a)
+\item 
+void \hyperlink{class_equipa_ac2ab600cc917f8709aeda9a71a0a9aa4}{adicionar\+Desporto} (vector$<$ \hyperlink{class_desporto}{Desporto} $\ast$ $>$ Desp\+List)
+\item 
+void \hyperlink{class_equipa_a90fac8b1f621a9a82b4b32eb3efcdaa4}{retirar\+Desporto} ()
+\item 
+void \hyperlink{class_equipa_a44df4366958af97be66020a0f8e18a94}{menu} (vector$<$ \hyperlink{class_desporto}{Desporto} $\ast$ $>$ Desp\+List)
+\item 
+void \hyperlink{class_equipa_a8f8b5838284e2154abe8608f53ee2681}{menu\+Atletas} ()
+\item 
+void \hyperlink{class_equipa_afead1fbf9a337c39bb771b37dad578d3}{adiciona\+Atleta} ()
+\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+ostream \& \hyperlink{class_equipa_a45a67c28f3613161c95e9cfd11c055df}{operator$<$$<$} (ostream \&o, const \hyperlink{class_equipa}{Equipa} \&d)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Class \hyperlink{class_equipa}{Equipa}
+
+Representa um conjunto de atletas 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_equipa_aa318e7b925bfed173bb90d20c63d8a43}{}\index{Equipa@{Equipa}!Equipa@{Equipa}}
+\index{Equipa@{Equipa}!Equipa@{Equipa}}
+\subsubsection[{Equipa(string n)}]{\setlength{\rightskip}{0pt plus 5cm}Equipa\+::\+Equipa (
+\begin{DoxyParamCaption}
+\item[{string}]{n}
+\end{DoxyParamCaption}
+)}\label{class_equipa_aa318e7b925bfed173bb90d20c63d8a43}
+Inicializa o nome
+
+
+\begin{DoxyParams}{Parameters}
+{\em n} & -\/ nome da equipa \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_equipa_a18b0bb0b40831afda4d8baa0730dc40f}{}\index{Equipa@{Equipa}!adiciona\+Atleta@{adiciona\+Atleta}}
+\index{adiciona\+Atleta@{adiciona\+Atleta}!Equipa@{Equipa}}
+\subsubsection[{adiciona\+Atleta(\+Atleta $\ast$a)}]{\setlength{\rightskip}{0pt plus 5cm}bool Equipa\+::adiciona\+Atleta (
+\begin{DoxyParamCaption}
+\item[{{\bf Atleta} $\ast$}]{a}
+\end{DoxyParamCaption}
+)}\label{class_equipa_a18b0bb0b40831afda4d8baa0730dc40f}
+adiciona um novo atleta se este ainda nao estiver na equipa 
+\begin{DoxyParams}{Parameters}
+{\em a} & -\/ um atleta \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true se conseguir adicionar, false se nao 
+\end{DoxyReturn}
+\hypertarget{class_equipa_afead1fbf9a337c39bb771b37dad578d3}{}\index{Equipa@{Equipa}!adiciona\+Atleta@{adiciona\+Atleta}}
+\index{adiciona\+Atleta@{adiciona\+Atleta}!Equipa@{Equipa}}
+\subsubsection[{adiciona\+Atleta()}]{\setlength{\rightskip}{0pt plus 5cm}void Equipa\+::adiciona\+Atleta (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_equipa_afead1fbf9a337c39bb771b37dad578d3}
+Pede ao utilizador a informacao necessaria para criar um atleta, e cria-\/o. \hypertarget{class_equipa_a22daef4c32fcc25228a113a134911565}{}\index{Equipa@{Equipa}!adiciona\+Desporto@{adiciona\+Desporto}}
+\index{adiciona\+Desporto@{adiciona\+Desporto}!Equipa@{Equipa}}
+\subsubsection[{adiciona\+Desporto(\+Desporto $\ast$d)}]{\setlength{\rightskip}{0pt plus 5cm}void Equipa\+::adiciona\+Desporto (
+\begin{DoxyParamCaption}
+\item[{{\bf Desporto} $\ast$}]{d}
+\end{DoxyParamCaption}
+)}\label{class_equipa_a22daef4c32fcc25228a113a134911565}
+adiciona um novo desporto se este ainda nao estiver na equipa 
+\begin{DoxyParams}{Parameters}
+{\em d} & -\/ um desporto \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_equipa_ac2ab600cc917f8709aeda9a71a0a9aa4}{}\index{Equipa@{Equipa}!adicionar\+Desporto@{adicionar\+Desporto}}
+\index{adicionar\+Desporto@{adicionar\+Desporto}!Equipa@{Equipa}}
+\subsubsection[{adicionar\+Desporto(vector$<$ Desporto $\ast$ $>$ Desp\+List)}]{\setlength{\rightskip}{0pt plus 5cm}void Equipa\+::adicionar\+Desporto (
+\begin{DoxyParamCaption}
+\item[{vector$<$ {\bf Desporto} $\ast$ $>$}]{Desp\+List}
+\end{DoxyParamCaption}
+)}\label{class_equipa_ac2ab600cc917f8709aeda9a71a0a9aa4}
+Abre uma lista de desportos a partir do vector Desp\+List, e permite selecionar um , o qual e adicionado.
+
+
+\begin{DoxyParams}{Parameters}
+{\em Desp\+List} & -\/ Lista de desportos \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_equipa_ac2252ae9144c32ad2dfb227b9dfb2c15}{}\index{Equipa@{Equipa}!apaga\+Atleta@{apaga\+Atleta}}
+\index{apaga\+Atleta@{apaga\+Atleta}!Equipa@{Equipa}}
+\subsubsection[{apaga\+Atleta(string nome)}]{\setlength{\rightskip}{0pt plus 5cm}void Equipa\+::apaga\+Atleta (
+\begin{DoxyParamCaption}
+\item[{string}]{nome}
+\end{DoxyParamCaption}
+)}\label{class_equipa_ac2252ae9144c32ad2dfb227b9dfb2c15}
+apaga o atleta de nome nome 
+\begin{DoxyParams}{Parameters}
+{\em nome} & -\/ nome do atleta \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_equipa_a0ff737879e2ece8397d01d1da745a788}{}\index{Equipa@{Equipa}!apaga\+Modalidade@{apaga\+Modalidade}}
+\index{apaga\+Modalidade@{apaga\+Modalidade}!Equipa@{Equipa}}
+\subsubsection[{apaga\+Modalidade(int i\+\_\+atleta, int i\+\_\+modalidade)}]{\setlength{\rightskip}{0pt plus 5cm}void Equipa\+::apaga\+Modalidade (
+\begin{DoxyParamCaption}
+\item[{int}]{i\+\_\+atleta, }
+\item[{int}]{i\+\_\+modalidade}
+\end{DoxyParamCaption}
+)}\label{class_equipa_a0ff737879e2ece8397d01d1da745a788}
+apaga a modalidade de indice i\+\_\+modalidade de um atleta de indice i\+\_\+atleta 
+\begin{DoxyParams}{Parameters}
+{\em i\+\_\+atleta} & -\/ indice do atleta \\
+\hline
+{\em i\+\_\+modalidade} & -\/ indice da modalidade \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_equipa_a24c4de83cc1171ce42f442ef7be8a7c4}{}\index{Equipa@{Equipa}!get\+Atletas@{get\+Atletas}}
+\index{get\+Atletas@{get\+Atletas}!Equipa@{Equipa}}
+\subsubsection[{get\+Atletas() const }]{\setlength{\rightskip}{0pt plus 5cm}vector$<$ {\bf Atleta} $\ast$ $>$ Equipa\+::get\+Atletas (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\label{class_equipa_a24c4de83cc1171ce42f442ef7be8a7c4}
+\begin{DoxyReturn}{Returns}
+atletas 
+\end{DoxyReturn}
+\hypertarget{class_equipa_a6b6996a193cea733caafb99d0ddebbcc}{}\index{Equipa@{Equipa}!get\+Desportos@{get\+Desportos}}
+\index{get\+Desportos@{get\+Desportos}!Equipa@{Equipa}}
+\subsubsection[{get\+Desportos() const }]{\setlength{\rightskip}{0pt plus 5cm}vector$<$ {\bf Desporto} $\ast$ $>$ Equipa\+::get\+Desportos (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\label{class_equipa_a6b6996a193cea733caafb99d0ddebbcc}
+\begin{DoxyReturn}{Returns}
+desportos 
+\end{DoxyReturn}
+\hypertarget{class_equipa_a9d20d0c8daa94e7562c5ea173337a224}{}\index{Equipa@{Equipa}!get\+Nome@{get\+Nome}}
+\index{get\+Nome@{get\+Nome}!Equipa@{Equipa}}
+\subsubsection[{get\+Nome() const }]{\setlength{\rightskip}{0pt plus 5cm}string Equipa\+::get\+Nome (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\label{class_equipa_a9d20d0c8daa94e7562c5ea173337a224}
+\begin{DoxyReturn}{Returns}
+nome 
+\end{DoxyReturn}
+\hypertarget{class_equipa_a44df4366958af97be66020a0f8e18a94}{}\index{Equipa@{Equipa}!menu@{menu}}
+\index{menu@{menu}!Equipa@{Equipa}}
+\subsubsection[{menu(vector$<$ Desporto $\ast$ $>$ Desp\+List)}]{\setlength{\rightskip}{0pt plus 5cm}void Equipa\+::menu (
+\begin{DoxyParamCaption}
+\item[{vector$<$ {\bf Desporto} $\ast$ $>$}]{Desp\+List}
+\end{DoxyParamCaption}
+)}\label{class_equipa_a44df4366958af97be66020a0f8e18a94}
+Abre um menu com as seguintes opcoes\+: Alterar Nome, Alterar Atletas, Inscrever em \hyperlink{class_desporto}{Desporto} e Desinscrever de \hyperlink{class_desporto}{Desporto} \hypertarget{class_equipa_a8f8b5838284e2154abe8608f53ee2681}{}\index{Equipa@{Equipa}!menu\+Atletas@{menu\+Atletas}}
+\index{menu\+Atletas@{menu\+Atletas}!Equipa@{Equipa}}
+\subsubsection[{menu\+Atletas()}]{\setlength{\rightskip}{0pt plus 5cm}void Equipa\+::menu\+Atletas (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_equipa_a8f8b5838284e2154abe8608f53ee2681}
+Abre uma lista de selecao com todos os atletas da equipa, e permite escolher um ou adicionar um novo \hypertarget{class_equipa_a372f3177a2f628ddaff2c40ed7d26bf8}{}\index{Equipa@{Equipa}!operator=@{operator=}}
+\index{operator=@{operator=}!Equipa@{Equipa}}
+\subsubsection[{operator=(const Equipa \&a)}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Equipa} \& Equipa\+::operator= (
+\begin{DoxyParamCaption}
+\item[{const {\bf Equipa} \&}]{a}
+\end{DoxyParamCaption}
+)}\label{class_equipa_a372f3177a2f628ddaff2c40ed7d26bf8}
+
+\begin{DoxyParams}{Parameters}
+{\em a} & -\/ uma equipa \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+uma equipa igual a \char`\"{}a\char`\"{} 
+\end{DoxyReturn}
+\hypertarget{class_equipa_a754b42e94c0ca91ac2c2a3890e7f3191}{}\index{Equipa@{Equipa}!operator==@{operator==}}
+\index{operator==@{operator==}!Equipa@{Equipa}}
+\subsubsection[{operator==(const Equipa \&c) const }]{\setlength{\rightskip}{0pt plus 5cm}bool Equipa\+::operator== (
+\begin{DoxyParamCaption}
+\item[{const {\bf Equipa} \&}]{c}
+\end{DoxyParamCaption}
+) const}\label{class_equipa_a754b42e94c0ca91ac2c2a3890e7f3191}
+
+\begin{DoxyParams}{Parameters}
+{\em c} & -\/ uma equipa \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true se o nome de c e desta equipa forem iguais, false caso contrario. 
+\end{DoxyReturn}
+\hypertarget{class_equipa_a90fac8b1f621a9a82b4b32eb3efcdaa4}{}\index{Equipa@{Equipa}!retirar\+Desporto@{retirar\+Desporto}}
+\index{retirar\+Desporto@{retirar\+Desporto}!Equipa@{Equipa}}
+\subsubsection[{retirar\+Desporto()}]{\setlength{\rightskip}{0pt plus 5cm}void Equipa\+::retirar\+Desporto (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_equipa_a90fac8b1f621a9a82b4b32eb3efcdaa4}
+Abre a lista a partir do vector desportos, e permite selecionar um , o qual e retirado. \hypertarget{class_equipa_a3269b5a8f6c3ebc9370c4cdf004c0b31}{}\index{Equipa@{Equipa}!set\+Atletas@{set\+Atletas}}
+\index{set\+Atletas@{set\+Atletas}!Equipa@{Equipa}}
+\subsubsection[{set\+Atletas(vector$<$ Atleta $\ast$ $>$ a)}]{\setlength{\rightskip}{0pt plus 5cm}void Equipa\+::set\+Atletas (
+\begin{DoxyParamCaption}
+\item[{vector$<$ {\bf Atleta} $\ast$ $>$}]{a}
+\end{DoxyParamCaption}
+)}\label{class_equipa_a3269b5a8f6c3ebc9370c4cdf004c0b31}
+Altera atletas para a;
+
+
+\begin{DoxyParams}{Parameters}
+{\em a} & -\/ lista de atletas \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_equipa_ae94bfeafedcf21a1d85db42a7f60b4ea}{}\index{Equipa@{Equipa}!set\+Desportos@{set\+Desportos}}
+\index{set\+Desportos@{set\+Desportos}!Equipa@{Equipa}}
+\subsubsection[{set\+Desportos(vector$<$ Desporto $\ast$ $>$ d)}]{\setlength{\rightskip}{0pt plus 5cm}void Equipa\+::set\+Desportos (
+\begin{DoxyParamCaption}
+\item[{vector$<$ {\bf Desporto} $\ast$ $>$}]{d}
+\end{DoxyParamCaption}
+)}\label{class_equipa_ae94bfeafedcf21a1d85db42a7f60b4ea}
+Altera desportos para d;
+
+
+\begin{DoxyParams}{Parameters}
+{\em d} & -\/ lista de desportos \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_equipa_a0e9f300d552f0c4de6fc28d555141eb5}{}\index{Equipa@{Equipa}!set\+Nome@{set\+Nome}}
+\index{set\+Nome@{set\+Nome}!Equipa@{Equipa}}
+\subsubsection[{set\+Nome(string n)}]{\setlength{\rightskip}{0pt plus 5cm}void Equipa\+::set\+Nome (
+\begin{DoxyParamCaption}
+\item[{string}]{n}
+\end{DoxyParamCaption}
+)}\label{class_equipa_a0e9f300d552f0c4de6fc28d555141eb5}
+Altera nome para n;
+
+
+\begin{DoxyParams}{Parameters}
+{\em n} & -\/ nome da equipa \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Friends And Related Function Documentation}
+\hypertarget{class_equipa_a45a67c28f3613161c95e9cfd11c055df}{}\index{Equipa@{Equipa}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!Equipa@{Equipa}}
+\subsubsection[{operator$<$$<$}]{\setlength{\rightskip}{0pt plus 5cm}ostream\& operator$<$$<$ (
+\begin{DoxyParamCaption}
+\item[{ostream \&}]{o, }
+\item[{const {\bf Equipa} \&}]{d}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [friend]}}\label{class_equipa_a45a67c28f3613161c95e9cfd11c055df}
+imprime o nome da equipa
+
+
+\begin{DoxyParams}{Parameters}
+{\em o} & -\/ stream de output \\
+\hline
+{\em d} & -\/ uma equipa \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+o 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/Equipa.\+h\item 
+src/Equipa.\+cpp\end{DoxyCompactItemize}

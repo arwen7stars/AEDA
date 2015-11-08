@@ -1,0 +1,135 @@
+\hypertarget{class_prova_terminada}{}\section{Prova\+Terminada Class Reference}
+\label{class_prova_terminada}\index{Prova\+Terminada@{Prova\+Terminada}}
+
+
+{\ttfamily \#include $<$Prova.\+h$>$}
+
+Inheritance diagram for Prova\+Terminada\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_prova_terminada}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_prova_terminada_a273ba377768056d52dc71770d91c860c}{Prova\+Terminada} (\hyperlink{class_modalidade}{Modalidade} $\ast$m, \hyperlink{class_data}{Data} d, \hyperlink{class_hora}{Hora} i, char g)
+\item 
+\hyperlink{class_atleta}{Atleta} $\ast$ \hyperlink{class_prova_terminada_aa66bb50f4a969d6a4795bb39595705d8}{get\+Primeiro} () const 
+\item 
+\hyperlink{class_atleta}{Atleta} $\ast$ \hyperlink{class_prova_terminada_a3117799dd3ddb513442376203f0ea035}{get\+Segundo} () const 
+\item 
+\hyperlink{class_atleta}{Atleta} $\ast$ \hyperlink{class_prova_terminada_a332c8f4466c18f153a3ebf7347ab944a}{get\+Terceiro} () const 
+\item 
+vector$<$ float $>$ \hyperlink{class_prova_terminada_a449d07fa099785eda45301303792b6b0}{get\+Pontuacoes} () const 
+\item 
+void \hyperlink{class_prova_terminada_a189ef4830e8e6dbe3e50153bdc28b1ed}{set\+Atletas} (vector$<$ \hyperlink{class_atleta}{Atleta} $\ast$ $>$ a)
+\item 
+bool \hyperlink{class_prova_terminada_afe024233747b571f92080b6fc325b6a5}{operator$<$} (const \hyperlink{class_prova_terminada}{Prova\+Terminada} \&p) const 
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+class \hyperlink{class_prova_terminada}{Prova\+Terminada}
+
+Representa uma prova que ja ocorreu 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_prova_terminada_a273ba377768056d52dc71770d91c860c}{}\index{Prova\+Terminada@{Prova\+Terminada}!Prova\+Terminada@{Prova\+Terminada}}
+\index{Prova\+Terminada@{Prova\+Terminada}!Prova\+Terminada@{Prova\+Terminada}}
+\subsubsection[{Prova\+Terminada(\+Modalidade $\ast$m, Data d, Hora i, char g)}]{\setlength{\rightskip}{0pt plus 5cm}Prova\+Terminada\+::\+Prova\+Terminada (
+\begin{DoxyParamCaption}
+\item[{{\bf Modalidade} $\ast$}]{m, }
+\item[{{\bf Data}}]{d, }
+\item[{{\bf Hora}}]{i, }
+\item[{char}]{g}
+\end{DoxyParamCaption}
+)}\label{class_prova_terminada_a273ba377768056d52dc71770d91c860c}
+
+\begin{DoxyParams}{Parameters}
+{\em m} & -\/ modalidade \\
+\hline
+{\em d} & -\/ data \\
+\hline
+{\em i} & -\/ hora \\
+\hline
+{\em g} & -\/ genero \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_prova_terminada_a449d07fa099785eda45301303792b6b0}{}\index{Prova\+Terminada@{Prova\+Terminada}!get\+Pontuacoes@{get\+Pontuacoes}}
+\index{get\+Pontuacoes@{get\+Pontuacoes}!Prova\+Terminada@{Prova\+Terminada}}
+\subsubsection[{get\+Pontuacoes() const }]{\setlength{\rightskip}{0pt plus 5cm}vector$<$ float $>$ Prova\+Terminada\+::get\+Pontuacoes (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\label{class_prova_terminada_a449d07fa099785eda45301303792b6b0}
+\begin{DoxyReturn}{Returns}
+pontuacoes 
+\end{DoxyReturn}
+\hypertarget{class_prova_terminada_aa66bb50f4a969d6a4795bb39595705d8}{}\index{Prova\+Terminada@{Prova\+Terminada}!get\+Primeiro@{get\+Primeiro}}
+\index{get\+Primeiro@{get\+Primeiro}!Prova\+Terminada@{Prova\+Terminada}}
+\subsubsection[{get\+Primeiro() const }]{\setlength{\rightskip}{0pt plus 5cm}{\bf Atleta} $\ast$ Prova\+Terminada\+::get\+Primeiro (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\label{class_prova_terminada_aa66bb50f4a969d6a4795bb39595705d8}
+\begin{DoxyReturn}{Returns}
+o atleta em primeiro lugar 
+\end{DoxyReturn}
+\hypertarget{class_prova_terminada_a3117799dd3ddb513442376203f0ea035}{}\index{Prova\+Terminada@{Prova\+Terminada}!get\+Segundo@{get\+Segundo}}
+\index{get\+Segundo@{get\+Segundo}!Prova\+Terminada@{Prova\+Terminada}}
+\subsubsection[{get\+Segundo() const }]{\setlength{\rightskip}{0pt plus 5cm}{\bf Atleta} $\ast$ Prova\+Terminada\+::get\+Segundo (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\label{class_prova_terminada_a3117799dd3ddb513442376203f0ea035}
+\begin{DoxyReturn}{Returns}
+o atleta em segundo lugar 
+\end{DoxyReturn}
+\hypertarget{class_prova_terminada_a332c8f4466c18f153a3ebf7347ab944a}{}\index{Prova\+Terminada@{Prova\+Terminada}!get\+Terceiro@{get\+Terceiro}}
+\index{get\+Terceiro@{get\+Terceiro}!Prova\+Terminada@{Prova\+Terminada}}
+\subsubsection[{get\+Terceiro() const }]{\setlength{\rightskip}{0pt plus 5cm}{\bf Atleta} $\ast$ Prova\+Terminada\+::get\+Terceiro (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\label{class_prova_terminada_a332c8f4466c18f153a3ebf7347ab944a}
+\begin{DoxyReturn}{Returns}
+o atleta em terceiro lugar 
+\end{DoxyReturn}
+\hypertarget{class_prova_terminada_afe024233747b571f92080b6fc325b6a5}{}\index{Prova\+Terminada@{Prova\+Terminada}!operator$<$@{operator$<$}}
+\index{operator$<$@{operator$<$}!Prova\+Terminada@{Prova\+Terminada}}
+\subsubsection[{operator$<$(const Prova\+Terminada \&p) const }]{\setlength{\rightskip}{0pt plus 5cm}bool Prova\+Terminada\+::operator$<$ (
+\begin{DoxyParamCaption}
+\item[{const {\bf Prova\+Terminada} \&}]{p}
+\end{DoxyParamCaption}
+) const}\label{class_prova_terminada_afe024233747b571f92080b6fc325b6a5}
+
+\begin{DoxyParams}{Parameters}
+{\em p2} & -\/ prova \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true se occorer antes p2, false se nao 
+\end{DoxyReturn}
+\hypertarget{class_prova_terminada_a189ef4830e8e6dbe3e50153bdc28b1ed}{}\index{Prova\+Terminada@{Prova\+Terminada}!set\+Atletas@{set\+Atletas}}
+\index{set\+Atletas@{set\+Atletas}!Prova\+Terminada@{Prova\+Terminada}}
+\subsubsection[{set\+Atletas(vector$<$ Atleta $\ast$ $>$ a)}]{\setlength{\rightskip}{0pt plus 5cm}void Prova\+Terminada\+::set\+Atletas (
+\begin{DoxyParamCaption}
+\item[{vector$<$ {\bf Atleta} $\ast$ $>$}]{a}
+\end{DoxyParamCaption}
+)}\label{class_prova_terminada_a189ef4830e8e6dbe3e50153bdc28b1ed}
+Muda atletas para a; 
+\begin{DoxyParams}{Parameters}
+{\em a} & -\/ um vetor de atletas \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/Prova.\+h\item 
+src/Prova.\+cpp\end{DoxyCompactItemize}

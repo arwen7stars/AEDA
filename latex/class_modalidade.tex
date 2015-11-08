@@ -1,0 +1,152 @@
+\hypertarget{class_modalidade}{}\section{Modalidade Class Reference}
+\label{class_modalidade}\index{Modalidade@{Modalidade}}
+
+
+{\ttfamily \#include $<$Modalidade.\+h$>$}
+
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{class_modalidade_1_1_modalidade_inexistente}{Modalidade\+Inexistente}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_modalidade_ab70be2e5b2bf7a96a6e6a023f99b0c4b}{Modalidade} (string n, int h, int m, \hyperlink{class_desporto}{Desporto} $\ast$d)
+\item 
+string \hyperlink{class_modalidade_a46003f6a0dceac894f92971a6df9e4a7}{get\+Nome} () const 
+\item 
+\hyperlink{class_hora}{Hora} \hyperlink{class_modalidade_a7328b4411500160244ca64183478a5c1}{get\+Duracao} () const 
+\item 
+\hyperlink{class_desporto}{Desporto} $\ast$ \hyperlink{class_modalidade_ad128148792b93ca028b9cbcf73989bdd}{get\+Desporto} () const 
+\item 
+bool \hyperlink{class_modalidade_a502ce8cade8d9a04bc946ca5c3d6b0ca}{operator==} (const \hyperlink{class_modalidade}{Modalidade} \&c) const 
+\item 
+void \hyperlink{class_modalidade_a96cf31bec8dccd09e83b23d7d44925b3}{menu} ()
+\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+ostream \& \hyperlink{class_modalidade_a0068376dcbf60055a775ed885687e6e8}{operator$<$$<$} (ostream \&o, const \hyperlink{class_modalidade}{Modalidade} \&d)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Classe \hyperlink{class_modalidade}{Modalidade} Gere um tipo de prova, isto e uma modalidade.
+
+\begin{DoxyAuthor}{Author}
+Claudia Marinho, Daniela Sa, Joao Costa 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+08/11/2015 
+\end{DoxyDate}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_modalidade_ab70be2e5b2bf7a96a6e6a023f99b0c4b}{}\index{Modalidade@{Modalidade}!Modalidade@{Modalidade}}
+\index{Modalidade@{Modalidade}!Modalidade@{Modalidade}}
+\subsubsection[{Modalidade(string n, int h, int m, Desporto $\ast$d)}]{\setlength{\rightskip}{0pt plus 5cm}Modalidade\+::\+Modalidade (
+\begin{DoxyParamCaption}
+\item[{string}]{n, }
+\item[{int}]{h, }
+\item[{int}]{m, }
+\item[{{\bf Desporto} $\ast$}]{d}
+\end{DoxyParamCaption}
+)}\label{class_modalidade_ab70be2e5b2bf7a96a6e6a023f99b0c4b}
+
+\begin{DoxyParams}{Parameters}
+{\em n} & -\/ nome da modalidade \\
+\hline
+{\em h} & -\/ numero de horas que dura uma prova da modalidade \\
+\hline
+{\em m} & -\/ numero de minutos que dura uma prova da modalidade \\
+\hline
+{\em d} & -\/ desporto ao qual pertence a modalidade \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_modalidade_ad128148792b93ca028b9cbcf73989bdd}{}\index{Modalidade@{Modalidade}!get\+Desporto@{get\+Desporto}}
+\index{get\+Desporto@{get\+Desporto}!Modalidade@{Modalidade}}
+\subsubsection[{get\+Desporto() const }]{\setlength{\rightskip}{0pt plus 5cm}{\bf Desporto} $\ast$ Modalidade\+::get\+Desporto (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\label{class_modalidade_ad128148792b93ca028b9cbcf73989bdd}
+\begin{DoxyReturn}{Returns}
+desporto 
+\end{DoxyReturn}
+\hypertarget{class_modalidade_a7328b4411500160244ca64183478a5c1}{}\index{Modalidade@{Modalidade}!get\+Duracao@{get\+Duracao}}
+\index{get\+Duracao@{get\+Duracao}!Modalidade@{Modalidade}}
+\subsubsection[{get\+Duracao() const }]{\setlength{\rightskip}{0pt plus 5cm}{\bf Hora} Modalidade\+::get\+Duracao (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\label{class_modalidade_a7328b4411500160244ca64183478a5c1}
+\begin{DoxyReturn}{Returns}
+duracao 
+\end{DoxyReturn}
+\hypertarget{class_modalidade_a46003f6a0dceac894f92971a6df9e4a7}{}\index{Modalidade@{Modalidade}!get\+Nome@{get\+Nome}}
+\index{get\+Nome@{get\+Nome}!Modalidade@{Modalidade}}
+\subsubsection[{get\+Nome() const }]{\setlength{\rightskip}{0pt plus 5cm}string Modalidade\+::get\+Nome (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\label{class_modalidade_a46003f6a0dceac894f92971a6df9e4a7}
+\begin{DoxyReturn}{Returns}
+nome 
+\end{DoxyReturn}
+\hypertarget{class_modalidade_a96cf31bec8dccd09e83b23d7d44925b3}{}\index{Modalidade@{Modalidade}!menu@{menu}}
+\index{menu@{menu}!Modalidade@{Modalidade}}
+\subsubsection[{menu()}]{\setlength{\rightskip}{0pt plus 5cm}void Modalidade\+::menu (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_modalidade_a96cf31bec8dccd09e83b23d7d44925b3}
+Menu de Interface de uma modalidade
+
+Mostra a seguinte opcao\+: (Alterar Nome) \hypertarget{class_modalidade_a502ce8cade8d9a04bc946ca5c3d6b0ca}{}\index{Modalidade@{Modalidade}!operator==@{operator==}}
+\index{operator==@{operator==}!Modalidade@{Modalidade}}
+\subsubsection[{operator==(const Modalidade \&c) const }]{\setlength{\rightskip}{0pt plus 5cm}bool Modalidade\+::operator== (
+\begin{DoxyParamCaption}
+\item[{const {\bf Modalidade} \&}]{c}
+\end{DoxyParamCaption}
+) const}\label{class_modalidade_a502ce8cade8d9a04bc946ca5c3d6b0ca}
+
+\begin{DoxyParams}{Parameters}
+{\em c} & -\/ uma modalidade \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true se o nome de c e desta modalidade forem iguais, false caso contrario. 
+\end{DoxyReturn}
+
+
+\subsection{Friends And Related Function Documentation}
+\hypertarget{class_modalidade_a0068376dcbf60055a775ed885687e6e8}{}\index{Modalidade@{Modalidade}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!Modalidade@{Modalidade}}
+\subsubsection[{operator$<$$<$}]{\setlength{\rightskip}{0pt plus 5cm}ostream\& operator$<$$<$ (
+\begin{DoxyParamCaption}
+\item[{ostream \&}]{o, }
+\item[{const {\bf Modalidade} \&}]{d}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [friend]}}\label{class_modalidade_a0068376dcbf60055a775ed885687e6e8}
+imprime o nome da modalidade
+
+
+\begin{DoxyParams}{Parameters}
+{\em o} & -\/ stream de output \\
+\hline
+{\em d} & -\/ uma modalidade \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+o 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/Modalidade.\+h\item 
+src/Modalidade.\+cpp\end{DoxyCompactItemize}

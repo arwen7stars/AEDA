@@ -1,0 +1,318 @@
+\hypertarget{class_prova}{}\section{Prova Class Reference}
+\label{class_prova}\index{Prova@{Prova}}
+
+
+{\ttfamily \#include $<$Prova.\+h$>$}
+
+Inheritance diagram for Prova\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_prova}
+\end{center}
+\end{figure}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{class_prova_1_1_provas_simultaneas}{Provas\+Simultaneas}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_prova_a5d67d4424ea4ed03475ddcf80dee3539}{Prova} (\hyperlink{class_modalidade}{Modalidade} $\ast$m, \hyperlink{class_data}{Data} d, \hyperlink{class_hora}{Hora} i, char g)
+\item 
+\hyperlink{class_hora}{Hora} \hyperlink{class_prova_a27a6579ac4f103e53cbdd65d1f7994d1}{get\+Inicio} () const 
+\item 
+\hyperlink{class_hora}{Hora} \hyperlink{class_prova_aef874ac6cf95b34bd3b1574158cddc5f}{get\+Fim} () const 
+\item 
+\hyperlink{class_data}{Data} \hyperlink{class_prova_a2dbc83f56f67433d62246d9f69629b11}{get\+Data} () const 
+\item 
+\hyperlink{class_modalidade}{Modalidade} $\ast$ \hyperlink{class_prova_afbf918fbf8ddfd7a2b3785af51536e25}{get\+Modalidade} () const 
+\item 
+vector$<$ \hyperlink{class_atleta}{Atleta} $\ast$ $>$ \hyperlink{class_prova_a293abf27bb26c97f150be37c3a3e3636}{get\+Atletas} () const 
+\item 
+bool \hyperlink{class_prova_a5ebde6f5552c4459c0b5b7c677085a9e}{get\+Genero} () const 
+\item 
+bool \hyperlink{class_prova_abec8bb56f6e6e903b38aad4cc3f50e67}{get\+Realizada} () const 
+\item 
+void \hyperlink{class_prova_a6ef32c4d0f63b9576db83e4a8d63f390}{apaga\+Atleta} (string nome)
+\item 
+void \hyperlink{class_prova_abdb9448d1bc2efcb5b94265ddc73f4da}{adiciona\+Atleta} (\hyperlink{class_atleta}{Atleta} $\ast$a)
+\item 
+void \hyperlink{class_prova_a7c3eaa4b48561e50476739984f4c5648}{adicionar\+Atleta} (vector$<$ \hyperlink{class_equipa}{Equipa} $\ast$ $>$ Team\+List, vector$<$ \hyperlink{class_desporto}{Desporto} $\ast$ $>$ Desp\+List)
+\item 
+void \hyperlink{class_prova_aaee7c0aec1a890ab7e09e02f11f11d87}{retirar\+Atleta} ()
+\item 
+bool \hyperlink{class_prova_a0d9a660b9543ba8c8f9fb4509ff507d6}{Simultaneo} (\hyperlink{class_prova}{Prova} p)
+\item 
+void \hyperlink{class_prova_af8c2055a8a7e5edf94cacb5ef0d89e91}{menu} (vector$<$ \hyperlink{class_equipa}{Equipa} $\ast$ $>$ Team\+List, vector$<$ \hyperlink{class_desporto}{Desporto} $\ast$ $>$ Desp\+List)
+\item 
+bool \hyperlink{class_prova_a0da7d3508f91a710a250761498f7e9ba}{operator$<$} (const \hyperlink{class_prova}{Prova} \&p2) const 
+\item 
+bool \hyperlink{class_prova_a203f2d4d871609222a0621ae631bb1f5}{operator==} (const \hyperlink{class_prova}{Prova} \&p2) const 
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_prova_a72061eddcdd4bbe05f083f812fd4c233}{}\hyperlink{class_modalidade}{Modalidade} $\ast$ {\bfseries modalidade}\label{class_prova_a72061eddcdd4bbe05f083f812fd4c233}
+
+\item 
+\hypertarget{class_prova_a18c9307475b75a77097e3f7b3b95359a}{}\hyperlink{class_data}{Data} {\bfseries data}\label{class_prova_a18c9307475b75a77097e3f7b3b95359a}
+
+\item 
+\hypertarget{class_prova_ae258a1a827472ff56e43910ff2b81a7e}{}\hyperlink{class_hora}{Hora} {\bfseries inicio}\label{class_prova_ae258a1a827472ff56e43910ff2b81a7e}
+
+\item 
+\hypertarget{class_prova_a67feb63b78712f2cd8aa0348c7e855ed}{}\hyperlink{class_hora}{Hora} {\bfseries fim}\label{class_prova_a67feb63b78712f2cd8aa0348c7e855ed}
+
+\item 
+\hypertarget{class_prova_a8561eecd9076cb8707eb99d90a89989d}{}vector$<$ \hyperlink{class_atleta}{Atleta} $\ast$ $>$ {\bfseries atletas}\label{class_prova_a8561eecd9076cb8707eb99d90a89989d}
+
+\item 
+\hypertarget{class_prova_a633da82d6916845b64bd5bdc2c6d6ad9}{}bool {\bfseries genero}\label{class_prova_a633da82d6916845b64bd5bdc2c6d6ad9}
+
+\item 
+\hypertarget{class_prova_ac2d537804224ac83c957db49ffcecef6}{}bool {\bfseries realizada}\label{class_prova_ac2d537804224ac83c957db49ffcecef6}
+
+\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+ostream \& \hyperlink{class_prova_a61b5beb563a366c43426f70b375cff61}{operator$<$$<$} (ostream \&o, const \hyperlink{class_prova}{Prova} \&p)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Class \hyperlink{class_prova}{Prova}
+
+Representa um evento de uma modalidade 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_prova_a5d67d4424ea4ed03475ddcf80dee3539}{}\index{Prova@{Prova}!Prova@{Prova}}
+\index{Prova@{Prova}!Prova@{Prova}}
+\subsubsection[{Prova(\+Modalidade $\ast$m, Data d, Hora i, char g)}]{\setlength{\rightskip}{0pt plus 5cm}Prova\+::\+Prova (
+\begin{DoxyParamCaption}
+\item[{{\bf Modalidade} $\ast$}]{m, }
+\item[{{\bf Data}}]{d, }
+\item[{{\bf Hora}}]{i, }
+\item[{char}]{g}
+\end{DoxyParamCaption}
+)}\label{class_prova_a5d67d4424ea4ed03475ddcf80dee3539}
+
+\begin{DoxyParams}{Parameters}
+{\em m} & -\/ modalidade \\
+\hline
+{\em d} & -\/ data \\
+\hline
+{\em i} & -\/ hora \\
+\hline
+{\em g} & -\/ genero \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_prova_abdb9448d1bc2efcb5b94265ddc73f4da}{}\index{Prova@{Prova}!adiciona\+Atleta@{adiciona\+Atleta}}
+\index{adiciona\+Atleta@{adiciona\+Atleta}!Prova@{Prova}}
+\subsubsection[{adiciona\+Atleta(\+Atleta $\ast$a)}]{\setlength{\rightskip}{0pt plus 5cm}void Prova\+::adiciona\+Atleta (
+\begin{DoxyParamCaption}
+\item[{{\bf Atleta} $\ast$}]{a}
+\end{DoxyParamCaption}
+)}\label{class_prova_abdb9448d1bc2efcb5b94265ddc73f4da}
+Adiciona atleta ao vetor atletas 
+\begin{DoxyParams}{Parameters}
+{\em a} & -\/ atleta \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_prova_a7c3eaa4b48561e50476739984f4c5648}{}\index{Prova@{Prova}!adicionar\+Atleta@{adicionar\+Atleta}}
+\index{adicionar\+Atleta@{adicionar\+Atleta}!Prova@{Prova}}
+\subsubsection[{adicionar\+Atleta(vector$<$ Equipa $\ast$ $>$ Team\+List, vector$<$ Desporto $\ast$ $>$ Desp\+List)}]{\setlength{\rightskip}{0pt plus 5cm}void Prova\+::adicionar\+Atleta (
+\begin{DoxyParamCaption}
+\item[{vector$<$ {\bf Equipa} $\ast$ $>$}]{Team\+List, }
+\item[{vector$<$ {\bf Desporto} $\ast$ $>$}]{Desp\+List}
+\end{DoxyParamCaption}
+)}\label{class_prova_a7c3eaa4b48561e50476739984f4c5648}
+Permite ao utilizador escolher um atleta 
+\begin{DoxyParams}{Parameters}
+{\em Team\+List} & -\/ Lista de equipas \\
+\hline
+{\em Desp\+List} & -\/ Lista de desportos \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_prova_a6ef32c4d0f63b9576db83e4a8d63f390}{}\index{Prova@{Prova}!apaga\+Atleta@{apaga\+Atleta}}
+\index{apaga\+Atleta@{apaga\+Atleta}!Prova@{Prova}}
+\subsubsection[{apaga\+Atleta(string nome)}]{\setlength{\rightskip}{0pt plus 5cm}void Prova\+::apaga\+Atleta (
+\begin{DoxyParamCaption}
+\item[{string}]{nome}
+\end{DoxyParamCaption}
+)}\label{class_prova_a6ef32c4d0f63b9576db83e4a8d63f390}
+Apaga o atleta de nome nome do vetor atletas 
+\begin{DoxyParams}{Parameters}
+{\em nome} & -\/ nome do atleta \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_prova_a293abf27bb26c97f150be37c3a3e3636}{}\index{Prova@{Prova}!get\+Atletas@{get\+Atletas}}
+\index{get\+Atletas@{get\+Atletas}!Prova@{Prova}}
+\subsubsection[{get\+Atletas() const }]{\setlength{\rightskip}{0pt plus 5cm}vector$<$ {\bf Atleta} $\ast$ $>$ Prova\+::get\+Atletas (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\label{class_prova_a293abf27bb26c97f150be37c3a3e3636}
+\begin{DoxyReturn}{Returns}
+atletas 
+\end{DoxyReturn}
+\hypertarget{class_prova_a2dbc83f56f67433d62246d9f69629b11}{}\index{Prova@{Prova}!get\+Data@{get\+Data}}
+\index{get\+Data@{get\+Data}!Prova@{Prova}}
+\subsubsection[{get\+Data() const }]{\setlength{\rightskip}{0pt plus 5cm}{\bf Data} Prova\+::get\+Data (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\label{class_prova_a2dbc83f56f67433d62246d9f69629b11}
+\begin{DoxyReturn}{Returns}
+data 
+\end{DoxyReturn}
+\hypertarget{class_prova_aef874ac6cf95b34bd3b1574158cddc5f}{}\index{Prova@{Prova}!get\+Fim@{get\+Fim}}
+\index{get\+Fim@{get\+Fim}!Prova@{Prova}}
+\subsubsection[{get\+Fim() const }]{\setlength{\rightskip}{0pt plus 5cm}{\bf Hora} Prova\+::get\+Fim (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\label{class_prova_aef874ac6cf95b34bd3b1574158cddc5f}
+\begin{DoxyReturn}{Returns}
+fim 
+\end{DoxyReturn}
+\hypertarget{class_prova_a5ebde6f5552c4459c0b5b7c677085a9e}{}\index{Prova@{Prova}!get\+Genero@{get\+Genero}}
+\index{get\+Genero@{get\+Genero}!Prova@{Prova}}
+\subsubsection[{get\+Genero() const }]{\setlength{\rightskip}{0pt plus 5cm}bool Prova\+::get\+Genero (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\label{class_prova_a5ebde6f5552c4459c0b5b7c677085a9e}
+\begin{DoxyReturn}{Returns}
+genero 
+\end{DoxyReturn}
+\hypertarget{class_prova_a27a6579ac4f103e53cbdd65d1f7994d1}{}\index{Prova@{Prova}!get\+Inicio@{get\+Inicio}}
+\index{get\+Inicio@{get\+Inicio}!Prova@{Prova}}
+\subsubsection[{get\+Inicio() const }]{\setlength{\rightskip}{0pt plus 5cm}{\bf Hora} Prova\+::get\+Inicio (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\label{class_prova_a27a6579ac4f103e53cbdd65d1f7994d1}
+\begin{DoxyReturn}{Returns}
+inicio 
+\end{DoxyReturn}
+\hypertarget{class_prova_afbf918fbf8ddfd7a2b3785af51536e25}{}\index{Prova@{Prova}!get\+Modalidade@{get\+Modalidade}}
+\index{get\+Modalidade@{get\+Modalidade}!Prova@{Prova}}
+\subsubsection[{get\+Modalidade() const }]{\setlength{\rightskip}{0pt plus 5cm}{\bf Modalidade} $\ast$ Prova\+::get\+Modalidade (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\label{class_prova_afbf918fbf8ddfd7a2b3785af51536e25}
+\begin{DoxyReturn}{Returns}
+modalidades 
+\end{DoxyReturn}
+\hypertarget{class_prova_abec8bb56f6e6e903b38aad4cc3f50e67}{}\index{Prova@{Prova}!get\+Realizada@{get\+Realizada}}
+\index{get\+Realizada@{get\+Realizada}!Prova@{Prova}}
+\subsubsection[{get\+Realizada() const }]{\setlength{\rightskip}{0pt plus 5cm}bool Prova\+::get\+Realizada (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\label{class_prova_abec8bb56f6e6e903b38aad4cc3f50e67}
+\begin{DoxyReturn}{Returns}
+realizada 
+\end{DoxyReturn}
+\hypertarget{class_prova_af8c2055a8a7e5edf94cacb5ef0d89e91}{}\index{Prova@{Prova}!menu@{menu}}
+\index{menu@{menu}!Prova@{Prova}}
+\subsubsection[{menu(vector$<$ Equipa $\ast$ $>$ Team\+List, vector$<$ Desporto $\ast$ $>$ Desp\+List)}]{\setlength{\rightskip}{0pt plus 5cm}void Prova\+::menu (
+\begin{DoxyParamCaption}
+\item[{vector$<$ {\bf Equipa} $\ast$ $>$}]{Team\+List, }
+\item[{vector$<$ {\bf Desporto} $\ast$ $>$}]{Desp\+List}
+\end{DoxyParamCaption}
+)}\label{class_prova_af8c2055a8a7e5edf94cacb5ef0d89e91}
+Mostra as seguintes opcoes\+: (Alterar Atletas e Retirar Atletas) 
+\begin{DoxyParams}{Parameters}
+{\em Team\+List} & -\/ Lista de equipas \\
+\hline
+{\em Desp\+List} & -\/ Lista de desportos \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_prova_a0da7d3508f91a710a250761498f7e9ba}{}\index{Prova@{Prova}!operator$<$@{operator$<$}}
+\index{operator$<$@{operator$<$}!Prova@{Prova}}
+\subsubsection[{operator$<$(const Prova \&p2) const }]{\setlength{\rightskip}{0pt plus 5cm}bool Prova\+::operator$<$ (
+\begin{DoxyParamCaption}
+\item[{const {\bf Prova} \&}]{p2}
+\end{DoxyParamCaption}
+) const}\label{class_prova_a0da7d3508f91a710a250761498f7e9ba}
+
+\begin{DoxyParams}{Parameters}
+{\em p2} & -\/ prova \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true se occorer antes p2, false se nao 
+\end{DoxyReturn}
+\hypertarget{class_prova_a203f2d4d871609222a0621ae631bb1f5}{}\index{Prova@{Prova}!operator==@{operator==}}
+\index{operator==@{operator==}!Prova@{Prova}}
+\subsubsection[{operator==(const Prova \&p2) const }]{\setlength{\rightskip}{0pt plus 5cm}bool Prova\+::operator== (
+\begin{DoxyParamCaption}
+\item[{const {\bf Prova} \&}]{p2}
+\end{DoxyParamCaption}
+) const}\label{class_prova_a203f2d4d871609222a0621ae631bb1f5}
+
+\begin{DoxyParams}{Parameters}
+{\em p2} & -\/ prova \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true se forem iguais, false se nao 
+\end{DoxyReturn}
+\hypertarget{class_prova_aaee7c0aec1a890ab7e09e02f11f11d87}{}\index{Prova@{Prova}!retirar\+Atleta@{retirar\+Atleta}}
+\index{retirar\+Atleta@{retirar\+Atleta}!Prova@{Prova}}
+\subsubsection[{retirar\+Atleta()}]{\setlength{\rightskip}{0pt plus 5cm}void Prova\+::retirar\+Atleta (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_prova_aaee7c0aec1a890ab7e09e02f11f11d87}
+Permite ao utilizador escolher um atleta para apagar \hypertarget{class_prova_a0d9a660b9543ba8c8f9fb4509ff507d6}{}\index{Prova@{Prova}!Simultaneo@{Simultaneo}}
+\index{Simultaneo@{Simultaneo}!Prova@{Prova}}
+\subsubsection[{Simultaneo(\+Prova p)}]{\setlength{\rightskip}{0pt plus 5cm}bool Prova\+::\+Simultaneo (
+\begin{DoxyParamCaption}
+\item[{{\bf Prova}}]{p}
+\end{DoxyParamCaption}
+)}\label{class_prova_a0d9a660b9543ba8c8f9fb4509ff507d6}
+
+\begin{DoxyParams}{Parameters}
+{\em p} & -\/ prova \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true se p e esta prova pertencerem ao mesmo desporto e forem em simultaneo 
+\end{DoxyReturn}
+
+
+\subsection{Friends And Related Function Documentation}
+\hypertarget{class_prova_a61b5beb563a366c43426f70b375cff61}{}\index{Prova@{Prova}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!Prova@{Prova}}
+\subsubsection[{operator$<$$<$}]{\setlength{\rightskip}{0pt plus 5cm}ostream\& operator$<$$<$ (
+\begin{DoxyParamCaption}
+\item[{ostream \&}]{o, }
+\item[{const {\bf Prova} \&}]{p}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [friend]}}\label{class_prova_a61b5beb563a366c43426f70b375cff61}
+imprime uma prova
+
+
+\begin{DoxyParams}{Parameters}
+{\em o} & -\/ stream de output \\
+\hline
+{\em p} & -\/ uma proba \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+o 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/Prova.\+h\item 
+src/Prova.\+cpp\end{DoxyCompactItemize}

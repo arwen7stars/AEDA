@@ -1,0 +1,154 @@
+\hypertarget{class_hora}{}\section{Hora Class Reference}
+\label{class_hora}\index{Hora@{Hora}}
+
+
+{\ttfamily \#include $<$Data.\+h$>$}
+
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{class_hora_1_1_hora_invalida}{Hora\+Invalida}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_hora_acba1e481b72cf9af44cc3418b2db5d84}{Hora} (int h, int m)
+\item 
+\hyperlink{class_hora}{Hora} \hyperlink{class_hora_a4d20f25d9881fcf81572d5c6c6797afa}{operator+} (const \hyperlink{class_hora}{Hora} \&h) const 
+\item 
+bool \hyperlink{class_hora_a6640c1cebbbc73495ec36f0f1480ac35}{operator$<$} (const \hyperlink{class_hora}{Hora} \&h) const 
+\item 
+bool \hyperlink{class_hora_a837b9feb94fc55d8cd60a888185ee496}{operator$>$} (const \hyperlink{class_hora}{Hora} \&h) const 
+\item 
+int \hyperlink{class_hora_aa7fa11ebe86089fbb43d90e7ed432cb6}{get\+Horas} () const 
+\item 
+int \hyperlink{class_hora_afd7735ef6f6222904a77f22a8bbb80fd}{get\+Minutos} () const 
+\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+ostream \& \hyperlink{class_hora_a51fe201f7a8d2f4069b045da603fc7a1}{operator$<$$<$} (ostream \&o, const \hyperlink{class_hora}{Hora} \&h)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\hyperlink{class_hora}{Hora}
+
+Representa uma hora 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_hora_acba1e481b72cf9af44cc3418b2db5d84}{}\index{Hora@{Hora}!Hora@{Hora}}
+\index{Hora@{Hora}!Hora@{Hora}}
+\subsubsection[{Hora(int h, int m)}]{\setlength{\rightskip}{0pt plus 5cm}Hora\+::\+Hora (
+\begin{DoxyParamCaption}
+\item[{int}]{h, }
+\item[{int}]{m}
+\end{DoxyParamCaption}
+)}\label{class_hora_acba1e481b72cf9af44cc3418b2db5d84}
+
+\begin{DoxyItemize}
+\item Inicializa os atributos 
+\begin{DoxyParams}{Parameters}
+{\em h} & -\/ horas \\
+\hline
+{\em m} & -\/ minutos \\
+\hline
+\end{DoxyParams}
+
+\end{DoxyItemize}
+
+\subsection{Member Function Documentation}
+\hypertarget{class_hora_aa7fa11ebe86089fbb43d90e7ed432cb6}{}\index{Hora@{Hora}!get\+Horas@{get\+Horas}}
+\index{get\+Horas@{get\+Horas}!Hora@{Hora}}
+\subsubsection[{get\+Horas() const }]{\setlength{\rightskip}{0pt plus 5cm}int Hora\+::get\+Horas (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\label{class_hora_aa7fa11ebe86089fbb43d90e7ed432cb6}
+\begin{DoxyReturn}{Returns}
+horas 
+\end{DoxyReturn}
+\hypertarget{class_hora_afd7735ef6f6222904a77f22a8bbb80fd}{}\index{Hora@{Hora}!get\+Minutos@{get\+Minutos}}
+\index{get\+Minutos@{get\+Minutos}!Hora@{Hora}}
+\subsubsection[{get\+Minutos() const }]{\setlength{\rightskip}{0pt plus 5cm}int Hora\+::get\+Minutos (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\label{class_hora_afd7735ef6f6222904a77f22a8bbb80fd}
+\begin{DoxyReturn}{Returns}
+minutos 
+\end{DoxyReturn}
+\hypertarget{class_hora_a4d20f25d9881fcf81572d5c6c6797afa}{}\index{Hora@{Hora}!operator+@{operator+}}
+\index{operator+@{operator+}!Hora@{Hora}}
+\subsubsection[{operator+(const Hora \&h) const }]{\setlength{\rightskip}{0pt plus 5cm}{\bf Hora} Hora\+::operator+ (
+\begin{DoxyParamCaption}
+\item[{const {\bf Hora} \&}]{h}
+\end{DoxyParamCaption}
+) const}\label{class_hora_a4d20f25d9881fcf81572d5c6c6797afa}
+
+\begin{DoxyParams}{Parameters}
+{\em h} & -\/ uma hora \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a soma das horas 
+\end{DoxyReturn}
+\hypertarget{class_hora_a6640c1cebbbc73495ec36f0f1480ac35}{}\index{Hora@{Hora}!operator$<$@{operator$<$}}
+\index{operator$<$@{operator$<$}!Hora@{Hora}}
+\subsubsection[{operator$<$(const Hora \&h) const }]{\setlength{\rightskip}{0pt plus 5cm}bool Hora\+::operator$<$ (
+\begin{DoxyParamCaption}
+\item[{const {\bf Hora} \&}]{h}
+\end{DoxyParamCaption}
+) const}\label{class_hora_a6640c1cebbbc73495ec36f0f1480ac35}
+
+\begin{DoxyParams}{Parameters}
+{\em h} & -\/ uma hora \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true se h for maior que esta hora, false se nao 
+\end{DoxyReturn}
+\hypertarget{class_hora_a837b9feb94fc55d8cd60a888185ee496}{}\index{Hora@{Hora}!operator$>$@{operator$>$}}
+\index{operator$>$@{operator$>$}!Hora@{Hora}}
+\subsubsection[{operator$>$(const Hora \&h) const }]{\setlength{\rightskip}{0pt plus 5cm}bool Hora\+::operator$>$ (
+\begin{DoxyParamCaption}
+\item[{const {\bf Hora} \&}]{h}
+\end{DoxyParamCaption}
+) const}\label{class_hora_a837b9feb94fc55d8cd60a888185ee496}
+
+\begin{DoxyParams}{Parameters}
+{\em h} & -\/ uma hora \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true se h for menor que esta hora, false se nao 
+\end{DoxyReturn}
+
+
+\subsection{Friends And Related Function Documentation}
+\hypertarget{class_hora_a51fe201f7a8d2f4069b045da603fc7a1}{}\index{Hora@{Hora}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!Hora@{Hora}}
+\subsubsection[{operator$<$$<$}]{\setlength{\rightskip}{0pt plus 5cm}ostream\& operator$<$$<$ (
+\begin{DoxyParamCaption}
+\item[{ostream \&}]{o, }
+\item[{const {\bf Hora} \&}]{h}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [friend]}}\label{class_hora_a51fe201f7a8d2f4069b045da603fc7a1}
+imprime a data no formato H\+H\+:M\+M
+
+
+\begin{DoxyParams}{Parameters}
+{\em o} & -\/ stream de output \\
+\hline
+{\em h} & -\/ uma hora \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+o 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/Data.\+h\item 
+src/Data.\+cpp\end{DoxyCompactItemize}

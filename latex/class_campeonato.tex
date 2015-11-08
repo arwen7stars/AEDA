@@ -1,0 +1,632 @@
+\hypertarget{class_campeonato}{}\section{Campeonato Class Reference}
+\label{class_campeonato}\index{Campeonato@{Campeonato}}
+
+
+{\ttfamily \#include $<$Campeonato.\+h$>$}
+
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{class_campeonato_1_1_data_invalida}{Data\+Invalida}
+\item 
+class \hyperlink{class_campeonato_1_1_desporto_existe}{Desporto\+Existe}
+\item 
+class \hyperlink{class_campeonato_1_1_equipa_existe}{Equipa\+Existe}
+\item 
+class \hyperlink{class_campeonato_1_1_hora_invalida}{Hora\+Invalida}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_campeonato_a1768952d93666c042f3548b1dd88969d}{Campeonato} (string n, \hyperlink{class_data}{Data} i, \hyperlink{class_data}{Data} f, \hyperlink{class_hora}{Hora} a, \hyperlink{class_hora}{Hora} fe)
+\item 
+bool \hyperlink{class_campeonato_ad1a75cefd258565c214586fab9ee06e5}{adiciona\+Desporto} (\hyperlink{class_desporto}{Desporto} \&d)
+\item 
+bool \hyperlink{class_campeonato_aa3baf829c6cfb588d10aa34b9bbf5127}{adiciona\+Equipa} (\hyperlink{class_equipa}{Equipa} $\ast$eq)
+\item 
+void \hyperlink{class_campeonato_ab965c85d2c86ec7e871b8ff3a179c8f2}{adiciona\+Prova} (\hyperlink{class_prova}{Prova} \&p)
+\item 
+bool \hyperlink{class_campeonato_ade4f095a505fc04483b2d49810452920}{load\+Desportos} (string nome\+\_\+ficheiro)
+\item 
+bool \hyperlink{class_campeonato_ae96121ec89940168270690c19455cfd2}{load\+Equipas} (string nome\+\_\+ficheiro)
+\item 
+bool \hyperlink{class_campeonato_a5fefbb06b9187b86bd550713cfd02e0d}{load\+Modalidades} (string nome\+\_\+ficheiro)
+\item 
+bool \hyperlink{class_campeonato_a434a9c7c8cf8642714b54409e7707662}{load\+Provas} (string nome\+\_\+ficheiro)
+\item 
+void \hyperlink{class_campeonato_a788cad8d5826398c4c7d32fb69503799}{update\+Desportos} (string nome\+\_\+ficheiro)
+\item 
+void \hyperlink{class_campeonato_a83cadf1caa248b964b340e9f630b09b2}{update\+Equipas} (string nome\+\_\+ficheiro)
+\item 
+void \hyperlink{class_campeonato_a522ea131df67ed791de4f6750746b806}{update\+Modalidades} (string nome\+\_\+ficheiro)
+\item 
+void \hyperlink{class_campeonato_a29e52272fd3274a0f6dc1047e7417064}{update\+Provas} (string nome\+\_\+ficheiro)
+\item 
+void \hyperlink{class_campeonato_a5275bcacc59fce709dbf4882d9c1cb29}{update} ()
+\item 
+void \hyperlink{class_campeonato_a5179d21ac3e5bbdf1c86c1a76b794297}{apaga\+Modalidade} (string n)
+\item 
+\hypertarget{class_campeonato_ae014ca753715e808b6d67c73f241f27d}{}string {\bfseries get\+Nome} () const \label{class_campeonato_ae014ca753715e808b6d67c73f241f27d}
+
+\item 
+\hypertarget{class_campeonato_ae83d9024711025a0b40a4c8d8a25b425}{}\hyperlink{class_data}{Data} {\bfseries get\+Inicio} () const \label{class_campeonato_ae83d9024711025a0b40a4c8d8a25b425}
+
+\item 
+\hypertarget{class_campeonato_a90e5bab79b89854d47c7ab14e2da6091}{}\hyperlink{class_data}{Data} {\bfseries get\+Fim} () const \label{class_campeonato_a90e5bab79b89854d47c7ab14e2da6091}
+
+\item 
+\hypertarget{class_campeonato_a5512a431adabb96f9b2493b02c06aad6}{}\hyperlink{class_hora}{Hora} {\bfseries get\+Abertura} () const \label{class_campeonato_a5512a431adabb96f9b2493b02c06aad6}
+
+\item 
+\hypertarget{class_campeonato_af6dce5eaa07d2683e0417f0f72ce0b72}{}\hyperlink{class_hora}{Hora} {\bfseries get\+Fecho} () const \label{class_campeonato_af6dce5eaa07d2683e0417f0f72ce0b72}
+
+\item 
+\hypertarget{class_campeonato_acfd3604e5b4e6e6683dc91a93d353b94}{}vector$<$ \hyperlink{class_desporto}{Desporto} $\ast$ $>$ {\bfseries get\+Desportos} () const \label{class_campeonato_acfd3604e5b4e6e6683dc91a93d353b94}
+
+\item 
+\hypertarget{class_campeonato_aa0e20ae7c1e4224a9969f8a92fd2c4fa}{}vector$<$ \hyperlink{class_prova}{Prova} $\ast$ $>$ {\bfseries get\+Provas} () const \label{class_campeonato_aa0e20ae7c1e4224a9969f8a92fd2c4fa}
+
+\item 
+\hypertarget{class_campeonato_ac82ee7c13b116b71525cff9f557b45c2}{}vector$<$ \hyperlink{class_equipa}{Equipa} $\ast$ $>$ {\bfseries get\+Equipas} () const \label{class_campeonato_ac82ee7c13b116b71525cff9f557b45c2}
+
+\item 
+\hypertarget{class_campeonato_a2289b23011da7a56382feb8bf01833a2}{}bool {\bfseries is\+Criado} () const \label{class_campeonato_a2289b23011da7a56382feb8bf01833a2}
+
+\item 
+void \hyperlink{class_campeonato_a5be247ea8309e96e6dafcdd2cb6f6103}{menu\+Apagar} ()
+\item 
+void \hyperlink{class_campeonato_a2d0f16fb58b98955694ef81a8c425e33}{menu\+Criacao} ()
+\item 
+void \hyperlink{class_campeonato_adf6bff95b5da944f19ff3b742b9bea7f}{menu\+Desportos} ()
+\item 
+void \hyperlink{class_campeonato_a638255f1c4398a613f89b957996161a2}{menu\+Equipas} ()
+\item 
+void \hyperlink{class_campeonato_a2060389b6b7c0a5d0e97eb5518e9baac}{menu\+Provas} ()
+\item 
+void \hyperlink{class_campeonato_a890b5a7ed78faf99bc1c9efa7c271209}{menu\+Listas} ()
+\item 
+void \hyperlink{class_campeonato_aee59b9e94def8066f779fe5da6d2d753}{menu\+Listas\+Desportos} ()
+\item 
+void \hyperlink{class_campeonato_a9d1f4d2fb847a8859ad75493395198fa}{menu\+Listas\+Modalidades} ()
+\item 
+void \hyperlink{class_campeonato_aac66996a554cbfe115d5098562676a88}{menu\+Listas\+Equipas} ()
+\item 
+void \hyperlink{class_campeonato_a61b565e9686153e9f06c3f0583fc4371}{menu\+Listas\+Atletas} ()
+\item 
+void \hyperlink{class_campeonato_a1a6623de7af07dddf02379e4d0ed85cc}{menu\+Listas\+Provas} ()
+\item 
+void \hyperlink{class_campeonato_a136f541594756136f2007a1ab7e5e741}{Salvar} ()
+\item 
+void \hyperlink{class_campeonato_aa8aad250006e4d16951adeb54f0121e2}{Terminar\+Planeamento} ()
+\item 
+void \hyperlink{class_campeonato_a943851dc30b9ee8afc0014d430f8d800}{adiciona\+Desporto} ()
+\item 
+void \hyperlink{class_campeonato_a61f99e0dac86a67b21facebdc6a6d6a1}{adiciona\+Equipa} ()
+\item 
+void \hyperlink{class_campeonato_ab74b424025f1dca24fdd3036a23df615}{adiciona\+Equipa} (\hyperlink{class_equipa}{Equipa} \&eq)
+\item 
+\hypertarget{class_campeonato_a23beadb789cf823d9fe105a235ddebda}{}void {\bfseries adiciona\+Prova} ()\label{class_campeonato_a23beadb789cf823d9fe105a235ddebda}
+
+\item 
+bool \hyperlink{class_campeonato_ad5e9506a6ba88e773685c5d5feca69fa}{realiza\+Prova} (\hyperlink{class_prova}{Prova} \&p, vector$<$ float $>$ pontuacoes)
+\item 
+void \hyperlink{class_campeonato_a1edcd0959381e958aeee95f0d459789e}{lista\+Desportos} () const 
+\item 
+void \hyperlink{class_campeonato_abc21bdb3d409ca4b798e273bb9cf9998}{lista\+Provas\+Nao\+Realizadas} () const 
+\item 
+void \hyperlink{class_campeonato_a369de94f78288f4581f00555adbc261d}{lista\+Provas\+Realizadas} () const 
+\item 
+void \hyperlink{class_campeonato_aab39195cc77498e6a3baa37b76c51340}{lista\+Atletas} () const 
+\item 
+void \hyperlink{class_campeonato_a6c1c64cbfd00c6b5c2c42d6b159b66a7}{lista\+Atletas\+Equipa} () const 
+\item 
+void \hyperlink{class_campeonato_accaebf46b994064104641dc82caea41e}{lista\+Atletas\+Colocacao} () const 
+\item 
+void \hyperlink{class_campeonato_a093452f73eda63721174e45591787781}{lista\+Atletas\+Desporto} () const 
+\item 
+void \hyperlink{class_campeonato_a496665259e297a59a785a93bca6c2dc3}{lista\+Atletas\+Modalidade} () const 
+\item 
+void \hyperlink{class_campeonato_a87360f66b0e4685e7feedff8a8ddca56}{lista\+Equipas\+Colocacao} () const 
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Classe \hyperlink{class_campeonato}{Campeonato} Gere todo o campeonato
+
+\begin{DoxyAuthor}{Author}
+Claudia Marinho, Daniela Sa, Joao Costa 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+08/11/2015 
+\end{DoxyDate}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_campeonato_a1768952d93666c042f3548b1dd88969d}{}\index{Campeonato@{Campeonato}!Campeonato@{Campeonato}}
+\index{Campeonato@{Campeonato}!Campeonato@{Campeonato}}
+\subsubsection[{Campeonato(string n, Data i, Data f, Hora a, Hora fe)}]{\setlength{\rightskip}{0pt plus 5cm}Campeonato\+::\+Campeonato (
+\begin{DoxyParamCaption}
+\item[{string}]{n, }
+\item[{{\bf Data}}]{i, }
+\item[{{\bf Data}}]{f, }
+\item[{{\bf Hora}}]{a, }
+\item[{{\bf Hora}}]{fe}
+\end{DoxyParamCaption}
+)}\label{class_campeonato_a1768952d93666c042f3548b1dd88969d}
+Construtor de \hyperlink{class_campeonato}{Campeonato}
+
+Inicializa nome, inicio, fim, abertura e fecho
+
+
+\begin{DoxyParams}{Parameters}
+{\em n} & -\/ Nome do campeonato \\
+\hline
+{\em i} & -\/ \hyperlink{class_data}{Data} de comeco do campeonato \\
+\hline
+{\em f} & -\/ \hyperlink{class_data}{Data} de fim do campeonato \\
+\hline
+{\em a} & -\/ \hyperlink{class_hora}{Hora} diaria de abertura do campeonato \\
+\hline
+{\em fe} & -\/ \hyperlink{class_hora}{Hora} diaria de fecho do campeonato \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_campeonato_ad1a75cefd258565c214586fab9ee06e5}{}\index{Campeonato@{Campeonato}!adiciona\+Desporto@{adiciona\+Desporto}}
+\index{adiciona\+Desporto@{adiciona\+Desporto}!Campeonato@{Campeonato}}
+\subsubsection[{adiciona\+Desporto(\+Desporto \&d)}]{\setlength{\rightskip}{0pt plus 5cm}bool Campeonato\+::adiciona\+Desporto (
+\begin{DoxyParamCaption}
+\item[{{\bf Desporto} \&}]{d}
+\end{DoxyParamCaption}
+)}\label{class_campeonato_ad1a75cefd258565c214586fab9ee06e5}
+Adiciona desporto ao campeonato
+
+Verifica se ja existe o desporto e adiciona-\/o ao vetor desportos se nao existir
+
+
+\begin{DoxyParams}{Parameters}
+{\em d} & -\/ \hyperlink{class_desporto}{Desporto} a adicionar ao campeonato \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true se adicionou o desporto, no caso contrario return false 
+\end{DoxyReturn}
+\hypertarget{class_campeonato_a943851dc30b9ee8afc0014d430f8d800}{}\index{Campeonato@{Campeonato}!adiciona\+Desporto@{adiciona\+Desporto}}
+\index{adiciona\+Desporto@{adiciona\+Desporto}!Campeonato@{Campeonato}}
+\subsubsection[{adiciona\+Desporto()}]{\setlength{\rightskip}{0pt plus 5cm}void Campeonato\+::adiciona\+Desporto (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_campeonato_a943851dc30b9ee8afc0014d430f8d800}
+Adiciona desporto ao vetor desportos do campeonato
+
+Lanca excepcao \hyperlink{class_campeonato_1_1_desporto_existe}{Desporto\+Existe} se o desporto ja existir no vetor. \hypertarget{class_campeonato_aa3baf829c6cfb588d10aa34b9bbf5127}{}\index{Campeonato@{Campeonato}!adiciona\+Equipa@{adiciona\+Equipa}}
+\index{adiciona\+Equipa@{adiciona\+Equipa}!Campeonato@{Campeonato}}
+\subsubsection[{adiciona\+Equipa(\+Equipa $\ast$eq)}]{\setlength{\rightskip}{0pt plus 5cm}bool Campeonato\+::adiciona\+Equipa (
+\begin{DoxyParamCaption}
+\item[{{\bf Equipa} $\ast$}]{eq}
+\end{DoxyParamCaption}
+)}\label{class_campeonato_aa3baf829c6cfb588d10aa34b9bbf5127}
+Adiciona equipa ao campeonato
+
+Verifica se ja existe a equipa e adiciona-\/o ao vetor equipas se nao existir 
+\begin{DoxyParams}{Parameters}
+{\em eq} & -\/ \hyperlink{class_equipa}{Equipa} a dicionar ao campeonato \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true se conseguiu adicionar, caso contrario return false 
+\end{DoxyReturn}
+\hypertarget{class_campeonato_a61f99e0dac86a67b21facebdc6a6d6a1}{}\index{Campeonato@{Campeonato}!adiciona\+Equipa@{adiciona\+Equipa}}
+\index{adiciona\+Equipa@{adiciona\+Equipa}!Campeonato@{Campeonato}}
+\subsubsection[{adiciona\+Equipa()}]{\setlength{\rightskip}{0pt plus 5cm}void Campeonato\+::adiciona\+Equipa (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_campeonato_a61f99e0dac86a67b21facebdc6a6d6a1}
+Adiciona equipa ao vetor Equipas do campeonato
+
+Pede ao utilizador o nome da nova equipa. Se ja existir lanca a excecao Equipa\+Existente, caso contrario adiciona \hypertarget{class_campeonato_ab74b424025f1dca24fdd3036a23df615}{}\index{Campeonato@{Campeonato}!adiciona\+Equipa@{adiciona\+Equipa}}
+\index{adiciona\+Equipa@{adiciona\+Equipa}!Campeonato@{Campeonato}}
+\subsubsection[{adiciona\+Equipa(\+Equipa \&eq)}]{\setlength{\rightskip}{0pt plus 5cm}void Campeonato\+::adiciona\+Equipa (
+\begin{DoxyParamCaption}
+\item[{{\bf Equipa} \&}]{eq}
+\end{DoxyParamCaption}
+)}\label{class_campeonato_ab74b424025f1dca24fdd3036a23df615}
+Adiciona a equipa fornecida ao vetor equipas, se ainda nao existir (criado para testes) \begin{DoxyVerb}@param eq - equipa a adicionar\end{DoxyVerb}
+ \hypertarget{class_campeonato_ab965c85d2c86ec7e871b8ff3a179c8f2}{}\index{Campeonato@{Campeonato}!adiciona\+Prova@{adiciona\+Prova}}
+\index{adiciona\+Prova@{adiciona\+Prova}!Campeonato@{Campeonato}}
+\subsubsection[{adiciona\+Prova(\+Prova \&p)}]{\setlength{\rightskip}{0pt plus 5cm}void Campeonato\+::adiciona\+Prova (
+\begin{DoxyParamCaption}
+\item[{{\bf Prova} \&}]{p}
+\end{DoxyParamCaption}
+)}\label{class_campeonato_ab965c85d2c86ec7e871b8ff3a179c8f2}
+Adiciona prova ao campeonato
+
+Verifica se ja existe a prova e adiciona-\/o ao vetor equipas se nao existir. Lanca excecao \hyperlink{class_campeonato_1_1_data_invalida}{Data\+Invalida} e \hyperlink{class_campeonato_1_1_hora_invalida}{Hora\+Invalida} se data ou hora da prova se sobrepuserem a outra prova ja existente 
+\begin{DoxyParams}{Parameters}
+{\em p} & -\/ \hyperlink{class_prova}{Prova} a adicionar ao campeonato \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_campeonato_a5179d21ac3e5bbdf1c86c1a76b794297}{}\index{Campeonato@{Campeonato}!apaga\+Modalidade@{apaga\+Modalidade}}
+\index{apaga\+Modalidade@{apaga\+Modalidade}!Campeonato@{Campeonato}}
+\subsubsection[{apaga\+Modalidade(string n)}]{\setlength{\rightskip}{0pt plus 5cm}void Campeonato\+::apaga\+Modalidade (
+\begin{DoxyParamCaption}
+\item[{string}]{n}
+\end{DoxyParamCaption}
+)}\label{class_campeonato_a5179d21ac3e5bbdf1c86c1a76b794297}
+Apaga a modalidade de nome n do vetor de desportos, modalidades e modalidades de atletas
+
+
+\begin{DoxyParams}{Parameters}
+{\em n} & -\/ nome da modalidade \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_campeonato_aab39195cc77498e6a3baa37b76c51340}{}\index{Campeonato@{Campeonato}!lista\+Atletas@{lista\+Atletas}}
+\index{lista\+Atletas@{lista\+Atletas}!Campeonato@{Campeonato}}
+\subsubsection[{lista\+Atletas() const }]{\setlength{\rightskip}{0pt plus 5cm}void Campeonato\+::lista\+Atletas (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\label{class_campeonato_aab39195cc77498e6a3baa37b76c51340}
+Lista no terminal os atletas no vetor equipas por ordem alfabetica \hypertarget{class_campeonato_accaebf46b994064104641dc82caea41e}{}\index{Campeonato@{Campeonato}!lista\+Atletas\+Colocacao@{lista\+Atletas\+Colocacao}}
+\index{lista\+Atletas\+Colocacao@{lista\+Atletas\+Colocacao}!Campeonato@{Campeonato}}
+\subsubsection[{lista\+Atletas\+Colocacao() const }]{\setlength{\rightskip}{0pt plus 5cm}void Campeonato\+::lista\+Atletas\+Colocacao (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\label{class_campeonato_accaebf46b994064104641dc82caea41e}
+Lista no terminal os atletas no vetor equipas por ordem decrescente de colocacao \hypertarget{class_campeonato_a093452f73eda63721174e45591787781}{}\index{Campeonato@{Campeonato}!lista\+Atletas\+Desporto@{lista\+Atletas\+Desporto}}
+\index{lista\+Atletas\+Desporto@{lista\+Atletas\+Desporto}!Campeonato@{Campeonato}}
+\subsubsection[{lista\+Atletas\+Desporto() const }]{\setlength{\rightskip}{0pt plus 5cm}void Campeonato\+::lista\+Atletas\+Desporto (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\label{class_campeonato_a093452f73eda63721174e45591787781}
+Lista no terminal os atletas no vetor equipas por ordem alfabetica, divididos por \hyperlink{class_desporto}{Desporto} \hypertarget{class_campeonato_a6c1c64cbfd00c6b5c2c42d6b159b66a7}{}\index{Campeonato@{Campeonato}!lista\+Atletas\+Equipa@{lista\+Atletas\+Equipa}}
+\index{lista\+Atletas\+Equipa@{lista\+Atletas\+Equipa}!Campeonato@{Campeonato}}
+\subsubsection[{lista\+Atletas\+Equipa() const }]{\setlength{\rightskip}{0pt plus 5cm}void Campeonato\+::lista\+Atletas\+Equipa (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\label{class_campeonato_a6c1c64cbfd00c6b5c2c42d6b159b66a7}
+Lista no terminal os atletas no vetor equipas por ordem alfabetica, divididos por Equipas \hypertarget{class_campeonato_a496665259e297a59a785a93bca6c2dc3}{}\index{Campeonato@{Campeonato}!lista\+Atletas\+Modalidade@{lista\+Atletas\+Modalidade}}
+\index{lista\+Atletas\+Modalidade@{lista\+Atletas\+Modalidade}!Campeonato@{Campeonato}}
+\subsubsection[{lista\+Atletas\+Modalidade() const }]{\setlength{\rightskip}{0pt plus 5cm}void Campeonato\+::lista\+Atletas\+Modalidade (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\label{class_campeonato_a496665259e297a59a785a93bca6c2dc3}
+Lista no terminal os atletas no vetor equipas por ordem alfabetica, divididos por \hyperlink{class_modalidade}{Modalidade} \hypertarget{class_campeonato_a1edcd0959381e958aeee95f0d459789e}{}\index{Campeonato@{Campeonato}!lista\+Desportos@{lista\+Desportos}}
+\index{lista\+Desportos@{lista\+Desportos}!Campeonato@{Campeonato}}
+\subsubsection[{lista\+Desportos() const }]{\setlength{\rightskip}{0pt plus 5cm}void Campeonato\+::lista\+Desportos (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\label{class_campeonato_a1edcd0959381e958aeee95f0d459789e}
+Lista no terminal os desportos no vetor desportos por ordem alfabetica \hypertarget{class_campeonato_a87360f66b0e4685e7feedff8a8ddca56}{}\index{Campeonato@{Campeonato}!lista\+Equipas\+Colocacao@{lista\+Equipas\+Colocacao}}
+\index{lista\+Equipas\+Colocacao@{lista\+Equipas\+Colocacao}!Campeonato@{Campeonato}}
+\subsubsection[{lista\+Equipas\+Colocacao() const }]{\setlength{\rightskip}{0pt plus 5cm}void Campeonato\+::lista\+Equipas\+Colocacao (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\label{class_campeonato_a87360f66b0e4685e7feedff8a8ddca56}
+Lista no terminal as equipas no vetor equipas por ordem decrescente de colocacao \hypertarget{class_campeonato_abc21bdb3d409ca4b798e273bb9cf9998}{}\index{Campeonato@{Campeonato}!lista\+Provas\+Nao\+Realizadas@{lista\+Provas\+Nao\+Realizadas}}
+\index{lista\+Provas\+Nao\+Realizadas@{lista\+Provas\+Nao\+Realizadas}!Campeonato@{Campeonato}}
+\subsubsection[{lista\+Provas\+Nao\+Realizadas() const }]{\setlength{\rightskip}{0pt plus 5cm}void Campeonato\+::lista\+Provas\+Nao\+Realizadas (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\label{class_campeonato_abc21bdb3d409ca4b798e273bb9cf9998}
+Lista no terminal as Provas\+Terminadas no vetor provas por ordem cronologica \hypertarget{class_campeonato_a369de94f78288f4581f00555adbc261d}{}\index{Campeonato@{Campeonato}!lista\+Provas\+Realizadas@{lista\+Provas\+Realizadas}}
+\index{lista\+Provas\+Realizadas@{lista\+Provas\+Realizadas}!Campeonato@{Campeonato}}
+\subsubsection[{lista\+Provas\+Realizadas() const }]{\setlength{\rightskip}{0pt plus 5cm}void Campeonato\+::lista\+Provas\+Realizadas (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\label{class_campeonato_a369de94f78288f4581f00555adbc261d}
+Lista no terminal as Provas no vetor provas por ordem cronologica \hypertarget{class_campeonato_ade4f095a505fc04483b2d49810452920}{}\index{Campeonato@{Campeonato}!load\+Desportos@{load\+Desportos}}
+\index{load\+Desportos@{load\+Desportos}!Campeonato@{Campeonato}}
+\subsubsection[{load\+Desportos(string nome\+\_\+ficheiro)}]{\setlength{\rightskip}{0pt plus 5cm}bool Campeonato\+::load\+Desportos (
+\begin{DoxyParamCaption}
+\item[{string}]{nome\+\_\+ficheiro}
+\end{DoxyParamCaption}
+)}\label{class_campeonato_ade4f095a505fc04483b2d49810452920}
+Carrega os desportos do ficheiro para o campeonato
+
+O ficheiro .txt deve estar na pasta Debug do projeto e ter o seguinte formato\+:
+
+\char`\"{}nome do desporto
+tipo de pontuacao / peso dos pontos\char`\"{}, em que o peso dos pontos e C se o vencedor for que tiver mais pontos e D no caso contrario 
+\begin{DoxyParams}{Parameters}
+{\em nome\+\_\+ficheiro} & -\/ Nome do ficheiro de desportos na pasta Debug \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+flase se o ficheiro nao estiver formatado corretamente 
+\end{DoxyReturn}
+\hypertarget{class_campeonato_ae96121ec89940168270690c19455cfd2}{}\index{Campeonato@{Campeonato}!load\+Equipas@{load\+Equipas}}
+\index{load\+Equipas@{load\+Equipas}!Campeonato@{Campeonato}}
+\subsubsection[{load\+Equipas(string nome\+\_\+ficheiro)}]{\setlength{\rightskip}{0pt plus 5cm}bool Campeonato\+::load\+Equipas (
+\begin{DoxyParamCaption}
+\item[{string}]{nome\+\_\+ficheiro}
+\end{DoxyParamCaption}
+)}\label{class_campeonato_ae96121ec89940168270690c19455cfd2}
+Carrega as equipas do ficheiro para o campeonato
+
+O ficheiro .txt deve estar na pasta Debug do projeto e ter o seguinte formato\+:
+
+\char`\"{}nome da equipa
+-\/ nome do jogador / genero\char`\"{}, em que genero é M ou F consoante o atleta e do genero masculino ou do genero feminino
+
+
+\begin{DoxyParams}{Parameters}
+{\em nome\+\_\+ficheiro} & -\/ Nome do ficheiro de equipas na pasta Debug \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+false se o ficheiro nao estiver formatado corretamente 
+\end{DoxyReturn}
+\hypertarget{class_campeonato_a5fefbb06b9187b86bd550713cfd02e0d}{}\index{Campeonato@{Campeonato}!load\+Modalidades@{load\+Modalidades}}
+\index{load\+Modalidades@{load\+Modalidades}!Campeonato@{Campeonato}}
+\subsubsection[{load\+Modalidades(string nome\+\_\+ficheiro)}]{\setlength{\rightskip}{0pt plus 5cm}bool Campeonato\+::load\+Modalidades (
+\begin{DoxyParamCaption}
+\item[{string}]{nome\+\_\+ficheiro}
+\end{DoxyParamCaption}
+)}\label{class_campeonato_a5fefbb06b9187b86bd550713cfd02e0d}
+Carrega as modalidades do ficheiro para o campeonato
+
+O ficheiro .txt deve estar na pasta Debug do projeto e ter o seguinte formato\+:
+
+"nome do desporto nome da modalidade horas minutos\char`\"{}, em que \char`\"{}horas\char`\"{} e \char`\"{}minutos" sao a duracao das provas dessa modalidade e sao escritos com digitos
+
+
+\begin{DoxyParams}{Parameters}
+{\em nome\+\_\+ficheiro} & -\/ Nome do ficheiro de modalidades na pasta Debug \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+false se o ficheiro nao estiver formatado corretamente 
+\end{DoxyReturn}
+\hypertarget{class_campeonato_a434a9c7c8cf8642714b54409e7707662}{}\index{Campeonato@{Campeonato}!load\+Provas@{load\+Provas}}
+\index{load\+Provas@{load\+Provas}!Campeonato@{Campeonato}}
+\subsubsection[{load\+Provas(string nome\+\_\+ficheiro)}]{\setlength{\rightskip}{0pt plus 5cm}bool Campeonato\+::load\+Provas (
+\begin{DoxyParamCaption}
+\item[{string}]{nome\+\_\+ficheiro}
+\end{DoxyParamCaption}
+)}\label{class_campeonato_a434a9c7c8cf8642714b54409e7707662}
+Carrega as modalidades do ficheiro para o campeonato
+
+O ficheiro .txt deve estar na pasta Debug do projeto e ter o seguinte formato\+:
+
+"nome da prova dia mes ano / hora minutos / genero
+\begin{DoxyItemize}
+\item nome do atleta\char`\"{}, em que \char`\"{}dia\char`\"{}, \char`\"{}mes\char`\"{} e \char`\"{}ano\char`\"{} sao digitos a indicar a data da prova
+                    \char`\"{}horas\char`\"{} e \char`\"{}minutos\char`\"{} sao digitos a indicar a duracao das provas dessa modalidade
+                    \char`\"{}genero" e M ou F consoate o genero dos atletas na prova e devem ser adicionados mais atletas seguindo o mesmo formato
+\end{DoxyItemize}
+
+
+\begin{DoxyParams}{Parameters}
+{\em nome\+\_\+ficheiro} & -\/ Nome do ficheiro de equipas na pasta Debug \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+false se o ficheiro nao estiver formatado corretamente 
+\end{DoxyReturn}
+\hypertarget{class_campeonato_a5be247ea8309e96e6dafcdd2cb6f6103}{}\index{Campeonato@{Campeonato}!menu\+Apagar@{menu\+Apagar}}
+\index{menu\+Apagar@{menu\+Apagar}!Campeonato@{Campeonato}}
+\subsubsection[{menu\+Apagar()}]{\setlength{\rightskip}{0pt plus 5cm}void Campeonato\+::menu\+Apagar (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_campeonato_a5be247ea8309e96e6dafcdd2cb6f6103}
+Menu na interface para apagar atributos no campeonato
+
+Na fase inicial, mostra as opcoes por onde escolher o que apagar (desporto, modalidade, etc) numa segunda fase mostra os dados especificos a apagar (lista de desportos, de modalidades, etc). O utilizador seleciona o que apagar \hypertarget{class_campeonato_a2d0f16fb58b98955694ef81a8c425e33}{}\index{Campeonato@{Campeonato}!menu\+Criacao@{menu\+Criacao}}
+\index{menu\+Criacao@{menu\+Criacao}!Campeonato@{Campeonato}}
+\subsubsection[{menu\+Criacao()}]{\setlength{\rightskip}{0pt plus 5cm}void Campeonato\+::menu\+Criacao (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_campeonato_a2d0f16fb58b98955694ef81a8c425e33}
+Menu na interface para apagar atributos no campeonato \begin{DoxyVerb}Na fase inicial, mostra as opcoes por onde escolher o que criar (desporto, modalidade, etc)
+numa segunda fase pede ao utilizador para introduzir os dados necessarios\end{DoxyVerb}
+ \hypertarget{class_campeonato_adf6bff95b5da944f19ff3b742b9bea7f}{}\index{Campeonato@{Campeonato}!menu\+Desportos@{menu\+Desportos}}
+\index{menu\+Desportos@{menu\+Desportos}!Campeonato@{Campeonato}}
+\subsubsection[{menu\+Desportos()}]{\setlength{\rightskip}{0pt plus 5cm}void Campeonato\+::menu\+Desportos (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_campeonato_adf6bff95b5da944f19ff3b742b9bea7f}
+Menu na interface para alterar atributos de um \hyperlink{class_desporto}{Desporto}
+
+Mostra opcoes por onde escolher o que alterar, entre os atributos de um \hyperlink{class_desporto}{Desporto} (modalidades, tipo de pontuacao, etc) \hypertarget{class_campeonato_a638255f1c4398a613f89b957996161a2}{}\index{Campeonato@{Campeonato}!menu\+Equipas@{menu\+Equipas}}
+\index{menu\+Equipas@{menu\+Equipas}!Campeonato@{Campeonato}}
+\subsubsection[{menu\+Equipas()}]{\setlength{\rightskip}{0pt plus 5cm}void Campeonato\+::menu\+Equipas (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_campeonato_a638255f1c4398a613f89b957996161a2}
+Menu na interface para alterar atributos de uma \hyperlink{class_equipa}{Equipa}
+
+Mostra opcoes por onde escolher o que alterar, entre os atributos de uma \hyperlink{class_equipa}{Equipa} (atletas, provas, etc) \hypertarget{class_campeonato_a890b5a7ed78faf99bc1c9efa7c271209}{}\index{Campeonato@{Campeonato}!menu\+Listas@{menu\+Listas}}
+\index{menu\+Listas@{menu\+Listas}!Campeonato@{Campeonato}}
+\subsubsection[{menu\+Listas()}]{\setlength{\rightskip}{0pt plus 5cm}void Campeonato\+::menu\+Listas (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_campeonato_a890b5a7ed78faf99bc1c9efa7c271209}
+Menu na interface para mostrar listas com os atributos do campeonato
+
+O utilizador pode escolher entre que listas quer ver, e serao mostradas mais opcoes de listas consoante a opcao \hypertarget{class_campeonato_a61b565e9686153e9f06c3f0583fc4371}{}\index{Campeonato@{Campeonato}!menu\+Listas\+Atletas@{menu\+Listas\+Atletas}}
+\index{menu\+Listas\+Atletas@{menu\+Listas\+Atletas}!Campeonato@{Campeonato}}
+\subsubsection[{menu\+Listas\+Atletas()}]{\setlength{\rightskip}{0pt plus 5cm}void Campeonato\+::menu\+Listas\+Atletas (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_campeonato_a61b565e9686153e9f06c3f0583fc4371}
+Menu na interface para mostrar listas de atletas \begin{DoxyVerb}O utilizador pode escolher listar os atletas por ordem alfabetica, ordem alfabetica dividida
+por desportos ou modalidades, e por colocacao\end{DoxyVerb}
+ \hypertarget{class_campeonato_aee59b9e94def8066f779fe5da6d2d753}{}\index{Campeonato@{Campeonato}!menu\+Listas\+Desportos@{menu\+Listas\+Desportos}}
+\index{menu\+Listas\+Desportos@{menu\+Listas\+Desportos}!Campeonato@{Campeonato}}
+\subsubsection[{menu\+Listas\+Desportos()}]{\setlength{\rightskip}{0pt plus 5cm}void Campeonato\+::menu\+Listas\+Desportos (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_campeonato_aee59b9e94def8066f779fe5da6d2d753}
+Menu na interface para mostrar listas de desportos
+
+A unica opcao para listar desportos e por ordem alfabetica \hypertarget{class_campeonato_aac66996a554cbfe115d5098562676a88}{}\index{Campeonato@{Campeonato}!menu\+Listas\+Equipas@{menu\+Listas\+Equipas}}
+\index{menu\+Listas\+Equipas@{menu\+Listas\+Equipas}!Campeonato@{Campeonato}}
+\subsubsection[{menu\+Listas\+Equipas()}]{\setlength{\rightskip}{0pt plus 5cm}void Campeonato\+::menu\+Listas\+Equipas (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_campeonato_aac66996a554cbfe115d5098562676a88}
+Menu na interface para mostrar listas de equipas \begin{DoxyVerb}O utilizador pode escolher listar as equipas por ordem alfabetica ou por colocacao\end{DoxyVerb}
+ \hypertarget{class_campeonato_a9d1f4d2fb847a8859ad75493395198fa}{}\index{Campeonato@{Campeonato}!menu\+Listas\+Modalidades@{menu\+Listas\+Modalidades}}
+\index{menu\+Listas\+Modalidades@{menu\+Listas\+Modalidades}!Campeonato@{Campeonato}}
+\subsubsection[{menu\+Listas\+Modalidades()}]{\setlength{\rightskip}{0pt plus 5cm}void Campeonato\+::menu\+Listas\+Modalidades (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_campeonato_a9d1f4d2fb847a8859ad75493395198fa}
+Menu na interface para mostrar listas de modalidades \begin{DoxyVerb}A unica opcao para listar modalidade e por ordem alfabetica\end{DoxyVerb}
+ \hypertarget{class_campeonato_a1a6623de7af07dddf02379e4d0ed85cc}{}\index{Campeonato@{Campeonato}!menu\+Listas\+Provas@{menu\+Listas\+Provas}}
+\index{menu\+Listas\+Provas@{menu\+Listas\+Provas}!Campeonato@{Campeonato}}
+\subsubsection[{menu\+Listas\+Provas()}]{\setlength{\rightskip}{0pt plus 5cm}void Campeonato\+::menu\+Listas\+Provas (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_campeonato_a1a6623de7af07dddf02379e4d0ed85cc}
+Menu na interface para mostrar listas de provas \begin{DoxyVerb}O utilizador pode escolher listar as provas por ordem cronologica, divididas em provas realizadas
+e por realizar\end{DoxyVerb}
+ \hypertarget{class_campeonato_a2060389b6b7c0a5d0e97eb5518e9baac}{}\index{Campeonato@{Campeonato}!menu\+Provas@{menu\+Provas}}
+\index{menu\+Provas@{menu\+Provas}!Campeonato@{Campeonato}}
+\subsubsection[{menu\+Provas()}]{\setlength{\rightskip}{0pt plus 5cm}void Campeonato\+::menu\+Provas (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_campeonato_a2060389b6b7c0a5d0e97eb5518e9baac}
+Menu na interface para alterar atributos de uma \hyperlink{class_equipa}{Equipa} \begin{DoxyVerb}Mostra opcoes por onde escolher o que alterar, entre os atributos de uma Prova (data, hora, etc)\end{DoxyVerb}
+ \hypertarget{class_campeonato_ad5e9506a6ba88e773685c5d5feca69fa}{}\index{Campeonato@{Campeonato}!realiza\+Prova@{realiza\+Prova}}
+\index{realiza\+Prova@{realiza\+Prova}!Campeonato@{Campeonato}}
+\subsubsection[{realiza\+Prova(\+Prova \&p, vector$<$ float $>$ pontuacoes)}]{\setlength{\rightskip}{0pt plus 5cm}bool Campeonato\+::realiza\+Prova (
+\begin{DoxyParamCaption}
+\item[{{\bf Prova} \&}]{p, }
+\item[{vector$<$ float $>$}]{pontuacoes}
+\end{DoxyParamCaption}
+)}\label{class_campeonato_ad5e9506a6ba88e773685c5d5feca69fa}
+Converte \hyperlink{class_prova}{Prova} para \hyperlink{class_prova_terminada}{Prova\+Terminada}
+
+Cria uma \hyperlink{class_prova_terminada}{Prova\+Terminada}, chama atribui\+Pontuacoes e set\+Atletas, retira a \hyperlink{class_prova}{Prova} p do vetor provas e adiciona-\/lhe a nova \hyperlink{class_prova_terminada}{Prova\+Terminada}
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & -\/ prova agora realizada \\
+\hline
+{\em pontuacoes} & -\/ vetor com as pontuacoes dos atletas, pela ordem que estao em Proa p \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true se conseguiu adicionar, false se a p nao existir em provas 
+\end{DoxyReturn}
+\hypertarget{class_campeonato_a136f541594756136f2007a1ab7e5e741}{}\index{Campeonato@{Campeonato}!Salvar@{Salvar}}
+\index{Salvar@{Salvar}!Campeonato@{Campeonato}}
+\subsubsection[{Salvar()}]{\setlength{\rightskip}{0pt plus 5cm}void Campeonato\+::\+Salvar (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_campeonato_a136f541594756136f2007a1ab7e5e741}
+Salva o estado do campeonatp
+
+chama \hyperlink{class_campeonato_a5275bcacc59fce709dbf4882d9c1cb29}{update()} para exportar os vetores atuais para os ficheiros correspondentes \hypertarget{class_campeonato_aa8aad250006e4d16951adeb54f0121e2}{}\index{Campeonato@{Campeonato}!Terminar\+Planeamento@{Terminar\+Planeamento}}
+\index{Terminar\+Planeamento@{Terminar\+Planeamento}!Campeonato@{Campeonato}}
+\subsubsection[{Terminar\+Planeamento()}]{\setlength{\rightskip}{0pt plus 5cm}void Campeonato\+::\+Terminar\+Planeamento (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_campeonato_aa8aad250006e4d16951adeb54f0121e2}
+Verifica se o campeonato esta completamente importado
+
+Imprime mensagens de erro se nao houverem provas, equipas, atletas, etc Se estiver tudo correto, altera o membro dado \char`\"{}criado\char`\"{} para true \hypertarget{class_campeonato_a5275bcacc59fce709dbf4882d9c1cb29}{}\index{Campeonato@{Campeonato}!update@{update}}
+\index{update@{update}!Campeonato@{Campeonato}}
+\subsubsection[{update()}]{\setlength{\rightskip}{0pt plus 5cm}void Campeonato\+::update (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_campeonato_a5275bcacc59fce709dbf4882d9c1cb29}
+Update dos ficheiros originais com as alteracoes efetuadas aos atributos de campeonato
+
+Chama update\+Desportos, update\+Equipas, etc... \hypertarget{class_campeonato_a788cad8d5826398c4c7d32fb69503799}{}\index{Campeonato@{Campeonato}!update\+Desportos@{update\+Desportos}}
+\index{update\+Desportos@{update\+Desportos}!Campeonato@{Campeonato}}
+\subsubsection[{update\+Desportos(string nome\+\_\+ficheiro)}]{\setlength{\rightskip}{0pt plus 5cm}void Campeonato\+::update\+Desportos (
+\begin{DoxyParamCaption}
+\item[{string}]{nome\+\_\+ficheiro}
+\end{DoxyParamCaption}
+)}\label{class_campeonato_a788cad8d5826398c4c7d32fb69503799}
+Carrega as alteracoes ao vetor desportos para o ficheiro utilizado previamente
+
+Lanca a excecao \hyperlink{class_ficheiro_inexistente}{Ficheiro\+Inexistente} se o ficheiro nao existir
+
+
+\begin{DoxyParams}{Parameters}
+{\em nome\+\_\+ficheiro} & -\/ nome do ficheiro de desportos \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_campeonato_a83cadf1caa248b964b340e9f630b09b2}{}\index{Campeonato@{Campeonato}!update\+Equipas@{update\+Equipas}}
+\index{update\+Equipas@{update\+Equipas}!Campeonato@{Campeonato}}
+\subsubsection[{update\+Equipas(string nome\+\_\+ficheiro)}]{\setlength{\rightskip}{0pt plus 5cm}void Campeonato\+::update\+Equipas (
+\begin{DoxyParamCaption}
+\item[{string}]{nome\+\_\+ficheiro}
+\end{DoxyParamCaption}
+)}\label{class_campeonato_a83cadf1caa248b964b340e9f630b09b2}
+Carrega as alteracoes ao vetor equipas para o ficheiro utilizado previamente
+
+Lanca a excecao \hyperlink{class_ficheiro_inexistente}{Ficheiro\+Inexistente} se o ficheiro nao existir
+
+
+\begin{DoxyParams}{Parameters}
+{\em nome\+\_\+ficheiro} & -\/ nome do ficheiro de equipas \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_campeonato_a522ea131df67ed791de4f6750746b806}{}\index{Campeonato@{Campeonato}!update\+Modalidades@{update\+Modalidades}}
+\index{update\+Modalidades@{update\+Modalidades}!Campeonato@{Campeonato}}
+\subsubsection[{update\+Modalidades(string nome\+\_\+ficheiro)}]{\setlength{\rightskip}{0pt plus 5cm}void Campeonato\+::update\+Modalidades (
+\begin{DoxyParamCaption}
+\item[{string}]{nome\+\_\+ficheiro}
+\end{DoxyParamCaption}
+)}\label{class_campeonato_a522ea131df67ed791de4f6750746b806}
+Carrega as alteracoes ao vetor modalidades para o ficheiro utilizado previamente
+
+Lanca a excecao \hyperlink{class_ficheiro_inexistente}{Ficheiro\+Inexistente} se o ficheiro nao existir
+
+
+\begin{DoxyParams}{Parameters}
+{\em nome\+\_\+ficheiro} & -\/ nome do ficheiro de modalidades \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_campeonato_a29e52272fd3274a0f6dc1047e7417064}{}\index{Campeonato@{Campeonato}!update\+Provas@{update\+Provas}}
+\index{update\+Provas@{update\+Provas}!Campeonato@{Campeonato}}
+\subsubsection[{update\+Provas(string nome\+\_\+ficheiro)}]{\setlength{\rightskip}{0pt plus 5cm}void Campeonato\+::update\+Provas (
+\begin{DoxyParamCaption}
+\item[{string}]{nome\+\_\+ficheiro}
+\end{DoxyParamCaption}
+)}\label{class_campeonato_a29e52272fd3274a0f6dc1047e7417064}
+Carrega as alteracoes ao vetor provas para o ficheiro utilizado previamente
+
+Lanca a excecao \hyperlink{class_ficheiro_inexistente}{Ficheiro\+Inexistente} se o ficheiro nao existir
+
+
+\begin{DoxyParams}{Parameters}
+{\em nome\+\_\+ficheiro} & -\/ nome do ficheiro de provas \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/Campeonato.\+h\item 
+src/Campeonato.\+cpp\end{DoxyCompactItemize}

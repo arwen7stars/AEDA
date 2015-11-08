@@ -1,0 +1,189 @@
+\hypertarget{class_desporto}{}\section{Desporto Class Reference}
+\label{class_desporto}\index{Desporto@{Desporto}}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{class_desporto_1_1_desporto_inexistente}{Desporto\+Inexistente}
+\item 
+class \hyperlink{class_desporto_1_1_modalidade_existe}{Modalidade\+Existe}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_desporto_af6abc41a2b8a416e475afb9409226ef6}{Desporto} ()
+\item 
+\hyperlink{class_desporto_a8f285da75c79fbbc353535296cd5f492}{Desporto} (string n, string pont, bool cresc)
+\item 
+\hypertarget{class_desporto_ab8a8413f056aeaa6dbd55730a7b6cd85}{}string {\bfseries get\+Nome} () const \label{class_desporto_ab8a8413f056aeaa6dbd55730a7b6cd85}
+
+\item 
+\hypertarget{class_desporto_a689058796c1401692f7b9630e882516f}{}string {\bfseries get\+Pontuacao} () const \label{class_desporto_a689058796c1401692f7b9630e882516f}
+
+\item 
+\hypertarget{class_desporto_a0b93c7fb93a29b1e960bed04b0aa048e}{}vector$<$ \hyperlink{class_modalidade}{Modalidade} $\ast$ $>$ {\bfseries get\+Modalidades} () const \label{class_desporto_a0b93c7fb93a29b1e960bed04b0aa048e}
+
+\item 
+\hypertarget{class_desporto_abdc20318ca9a2d4a724572100eb2f271}{}bool {\bfseries is\+Crescente} () const \label{class_desporto_abdc20318ca9a2d4a724572100eb2f271}
+
+\item 
+void \hyperlink{class_desporto_a51a8862940614dfed584f05e17fb7b68}{apaga\+Modalidade} (int indice)
+\item 
+bool \hyperlink{class_desporto_a0656b98e63e1b54a7e3b03e20e9ca8b3}{operator==} (const \hyperlink{class_desporto}{Desporto} \&c) const 
+\item 
+void \hyperlink{class_desporto_ae172dd6af2bbb85308d8f38a7f77fe33}{menu} ()
+\item 
+void \hyperlink{class_desporto_aa0bacf802c53d5422d0b6b9882c9a843}{menu\+Modalidades} ()
+\item 
+void \hyperlink{class_desporto_ac4c0ce9d5e637917a137fa9949fe7f41}{adiciona\+Modalidade} ()
+\item 
+void \hyperlink{class_desporto_a070694d6e2512119538fd12a26699e1e}{adiciona\+Modalidade} (\hyperlink{class_modalidade}{Modalidade} $\ast$m)
+\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+ostream \& \hyperlink{class_desporto_a521ed305078741a8eff6537a37502f95}{operator$<$$<$} (ostream \&o, const \hyperlink{class_desporto}{Desporto} \&d)
+\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_desporto_af6abc41a2b8a416e475afb9409226ef6}{}\index{Desporto@{Desporto}!Desporto@{Desporto}}
+\index{Desporto@{Desporto}!Desporto@{Desporto}}
+\subsubsection[{Desporto()}]{\setlength{\rightskip}{0pt plus 5cm}Desporto\+::\+Desporto (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_desporto_af6abc41a2b8a416e475afb9409226ef6}
+Construtor default \hypertarget{class_desporto_a8f285da75c79fbbc353535296cd5f492}{}\index{Desporto@{Desporto}!Desporto@{Desporto}}
+\index{Desporto@{Desporto}!Desporto@{Desporto}}
+\subsubsection[{Desporto(string n, string pont, bool cresc)}]{\setlength{\rightskip}{0pt plus 5cm}Desporto\+::\+Desporto (
+\begin{DoxyParamCaption}
+\item[{string}]{n, }
+\item[{string}]{pont, }
+\item[{bool}]{cresc}
+\end{DoxyParamCaption}
+)}\label{class_desporto_a8f285da75c79fbbc353535296cd5f492}
+Construtor de \hyperlink{class_desporto}{Desporto}
+
+inicializa nome, pontuacao.\+nome, pontuacao.\+crescente
+
+
+\begin{DoxyParams}{Parameters}
+{\em n} & -\/ nome do desporto \\
+\hline
+{\em pont} & -\/ tipo de pontuacao do desporto \\
+\hline
+{\em cresc} & -\/ true se a pontuacao e crecente ( se o vencedor é quem tem mais pontos) \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_desporto_ac4c0ce9d5e637917a137fa9949fe7f41}{}\index{Desporto@{Desporto}!adiciona\+Modalidade@{adiciona\+Modalidade}}
+\index{adiciona\+Modalidade@{adiciona\+Modalidade}!Desporto@{Desporto}}
+\subsubsection[{adiciona\+Modalidade()}]{\setlength{\rightskip}{0pt plus 5cm}void Desporto\+::adiciona\+Modalidade (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_desporto_ac4c0ce9d5e637917a137fa9949fe7f41}
+Mostra na interface um menu para criar uma nova modalidade
+
+O utilizador tem de introduzir os dados para a criacao de uma nova modalidade e se todos forem validos O ela e criada e adicionada ao vetor modalidades \hypertarget{class_desporto_a070694d6e2512119538fd12a26699e1e}{}\index{Desporto@{Desporto}!adiciona\+Modalidade@{adiciona\+Modalidade}}
+\index{adiciona\+Modalidade@{adiciona\+Modalidade}!Desporto@{Desporto}}
+\subsubsection[{adiciona\+Modalidade(\+Modalidade $\ast$m)}]{\setlength{\rightskip}{0pt plus 5cm}void Desporto\+::adiciona\+Modalidade (
+\begin{DoxyParamCaption}
+\item[{{\bf Modalidade} $\ast$}]{m}
+\end{DoxyParamCaption}
+)}\label{class_desporto_a070694d6e2512119538fd12a26699e1e}
+Adiciona uma modalidade nova ao vetor modalidades (para testes)
+
+Verifica se a modalidade ja existe e se nao existir adiciona-\/a ao vetor modalidades
+
+
+\begin{DoxyParams}{Parameters}
+{\em m} & -\/modalidade a adicionar \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_desporto_a51a8862940614dfed584f05e17fb7b68}{}\index{Desporto@{Desporto}!apaga\+Modalidade@{apaga\+Modalidade}}
+\index{apaga\+Modalidade@{apaga\+Modalidade}!Desporto@{Desporto}}
+\subsubsection[{apaga\+Modalidade(int indice)}]{\setlength{\rightskip}{0pt plus 5cm}void Desporto\+::apaga\+Modalidade (
+\begin{DoxyParamCaption}
+\item[{int}]{indice}
+\end{DoxyParamCaption}
+)}\label{class_desporto_a51a8862940614dfed584f05e17fb7b68}
+Retira modalidade do vetor de modalidades do desporto
+
+Procura a modalidade de indice indice e retira-\/a o vetor modalidades
+
+
+\begin{DoxyParams}{Parameters}
+{\em indice} & -\/ indice da modalidade em modalidades \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_desporto_ae172dd6af2bbb85308d8f38a7f77fe33}{}\index{Desporto@{Desporto}!menu@{menu}}
+\index{menu@{menu}!Desporto@{Desporto}}
+\subsubsection[{menu()}]{\setlength{\rightskip}{0pt plus 5cm}void Desporto\+::menu (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_desporto_ae172dd6af2bbb85308d8f38a7f77fe33}
+Mostra na interface um menu para o utilizador escolher que atributos do desporto quer mudar
+
+O utilizador pode escolher entre mudar as modalidades, o tipo ou a hierarquia da pontuacao e o nome do desporto \hypertarget{class_desporto_aa0bacf802c53d5422d0b6b9882c9a843}{}\index{Desporto@{Desporto}!menu\+Modalidades@{menu\+Modalidades}}
+\index{menu\+Modalidades@{menu\+Modalidades}!Desporto@{Desporto}}
+\subsubsection[{menu\+Modalidades()}]{\setlength{\rightskip}{0pt plus 5cm}void Desporto\+::menu\+Modalidades (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_desporto_aa0bacf802c53d5422d0b6b9882c9a843}
+Mostra na interface um menu para o utilizador alterar as modalidades do campeonato
+
+O utilizador pode escolher entre alterar as modalidades existentes (é chamada a funcao menu\+Modalidades) e criar uma nova modalidade (e chamado o adiciona\+Modalidade) \hypertarget{class_desporto_a0656b98e63e1b54a7e3b03e20e9ca8b3}{}\index{Desporto@{Desporto}!operator==@{operator==}}
+\index{operator==@{operator==}!Desporto@{Desporto}}
+\subsubsection[{operator==(const Desporto \&c) const }]{\setlength{\rightskip}{0pt plus 5cm}bool Desporto\+::operator== (
+\begin{DoxyParamCaption}
+\item[{const {\bf Desporto} \&}]{c}
+\end{DoxyParamCaption}
+) const}\label{class_desporto_a0656b98e63e1b54a7e3b03e20e9ca8b3}
+Compara dois desportos
+
+Verifica se os dois desportos tem o mesmo nome
+
+
+\begin{DoxyParams}{Parameters}
+{\em c} & -\/ desporto a comparar \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true se os dois desportos tiverem o mesmo nome 
+\end{DoxyReturn}
+
+
+\subsection{Friends And Related Function Documentation}
+\hypertarget{class_desporto_a521ed305078741a8eff6537a37502f95}{}\index{Desporto@{Desporto}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!Desporto@{Desporto}}
+\subsubsection[{operator$<$$<$}]{\setlength{\rightskip}{0pt plus 5cm}ostream\& operator$<$$<$ (
+\begin{DoxyParamCaption}
+\item[{ostream \&}]{o, }
+\item[{const {\bf Desporto} \&}]{d}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [friend]}}\label{class_desporto_a521ed305078741a8eff6537a37502f95}
+Devolve um ostream com o nome do desporto
+
+Preenche o com o nome do desporto
+
+
+\begin{DoxyParams}{Parameters}
+{\em o} & -\/ ostream a alterar \\
+\hline
+{\em d} & -\/ desporto cujo nome vai para o \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+o, com o nome do desporto 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/Desporto.\+h\item 
+src/Desporto.\+cpp\end{DoxyCompactItemize}

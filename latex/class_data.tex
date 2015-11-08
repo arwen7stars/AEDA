@@ -1,0 +1,186 @@
+\hypertarget{class_data}{}\section{Data Class Reference}
+\label{class_data}\index{Data@{Data}}
+
+
+{\ttfamily \#include $<$Data.\+h$>$}
+
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{class_data_1_1_data_invalida}{Data\+Invalida}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_data_af070d89007b1c6f4d80564b41f76716e}{Data} (int a, int m, int d)
+\item 
+bool \hyperlink{class_data_a682016837c60b8e801d4bcee3e694039}{operator==} (const \hyperlink{class_data}{Data} \&data) const 
+\item 
+bool \hyperlink{class_data_a54019a127c7262ad527e523b98ddd26a}{operator$<$} (const \hyperlink{class_data}{Data} \&data) const 
+\item 
+bool \hyperlink{class_data_a841974ad49226c9404572ba74f9e0e0b}{scan\+Ano\+Bissexto} (int ano)
+\item 
+int \hyperlink{class_data_a5c51ebb6bc3bef948910ee9c4211fa7c}{dias\+Mes} (int ano, int mes)
+\item 
+int \hyperlink{class_data_ad3981013cc47680fc4619063b7df4375}{get\+Ano} () const 
+\item 
+int \hyperlink{class_data_af73ca438bf53a0f386a6b1c03a6c0d3e}{get\+Mes} () const 
+\item 
+int \hyperlink{class_data_a56e5ac1591af52df4bc391d3c840cb07}{get\+Dia} () const 
+\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+ostream \& \hyperlink{class_data_a8ebf3d35facaad4039739437d2f9a8f3}{operator$<$$<$} (ostream \&o, const \hyperlink{class_data}{Data} \&d)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Class \hyperlink{class_data}{Data}
+
+Represente uma \hyperlink{class_data}{Data} 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_data_af070d89007b1c6f4d80564b41f76716e}{}\index{Data@{Data}!Data@{Data}}
+\index{Data@{Data}!Data@{Data}}
+\subsubsection[{Data(int a, int m, int d)}]{\setlength{\rightskip}{0pt plus 5cm}Data\+::\+Data (
+\begin{DoxyParamCaption}
+\item[{int}]{a, }
+\item[{int}]{m, }
+\item[{int}]{d}
+\end{DoxyParamCaption}
+)}\label{class_data_af070d89007b1c6f4d80564b41f76716e}
+Inicializa os atributos 
+\begin{DoxyParams}{Parameters}
+{\em a} & -\/ ano \\
+\hline
+{\em m} & -\/ mes \\
+\hline
+{\em d} & -\/ dia \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_data_a5c51ebb6bc3bef948910ee9c4211fa7c}{}\index{Data@{Data}!dias\+Mes@{dias\+Mes}}
+\index{dias\+Mes@{dias\+Mes}!Data@{Data}}
+\subsubsection[{dias\+Mes(int ano, int mes)}]{\setlength{\rightskip}{0pt plus 5cm}int Data\+::dias\+Mes (
+\begin{DoxyParamCaption}
+\item[{int}]{ano, }
+\item[{int}]{mes}
+\end{DoxyParamCaption}
+)}\label{class_data_a5c51ebb6bc3bef948910ee9c4211fa7c}
+
+\begin{DoxyParams}{Parameters}
+{\em ano} & -\/ um ano \\
+\hline
+{\em mes} & -\/ um mes \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+o numero de dia do mes naquele ano 
+\end{DoxyReturn}
+\hypertarget{class_data_ad3981013cc47680fc4619063b7df4375}{}\index{Data@{Data}!get\+Ano@{get\+Ano}}
+\index{get\+Ano@{get\+Ano}!Data@{Data}}
+\subsubsection[{get\+Ano() const }]{\setlength{\rightskip}{0pt plus 5cm}int Data\+::get\+Ano (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\label{class_data_ad3981013cc47680fc4619063b7df4375}
+\begin{DoxyReturn}{Returns}
+ano 
+\end{DoxyReturn}
+\hypertarget{class_data_a56e5ac1591af52df4bc391d3c840cb07}{}\index{Data@{Data}!get\+Dia@{get\+Dia}}
+\index{get\+Dia@{get\+Dia}!Data@{Data}}
+\subsubsection[{get\+Dia() const }]{\setlength{\rightskip}{0pt plus 5cm}int Data\+::get\+Dia (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\label{class_data_a56e5ac1591af52df4bc391d3c840cb07}
+\begin{DoxyReturn}{Returns}
+dia 
+\end{DoxyReturn}
+\hypertarget{class_data_af73ca438bf53a0f386a6b1c03a6c0d3e}{}\index{Data@{Data}!get\+Mes@{get\+Mes}}
+\index{get\+Mes@{get\+Mes}!Data@{Data}}
+\subsubsection[{get\+Mes() const }]{\setlength{\rightskip}{0pt plus 5cm}int Data\+::get\+Mes (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\label{class_data_af73ca438bf53a0f386a6b1c03a6c0d3e}
+\begin{DoxyReturn}{Returns}
+mes 
+\end{DoxyReturn}
+\hypertarget{class_data_a54019a127c7262ad527e523b98ddd26a}{}\index{Data@{Data}!operator$<$@{operator$<$}}
+\index{operator$<$@{operator$<$}!Data@{Data}}
+\subsubsection[{operator$<$(const Data \&data) const }]{\setlength{\rightskip}{0pt plus 5cm}bool Data\+::operator$<$ (
+\begin{DoxyParamCaption}
+\item[{const {\bf Data} \&}]{data}
+\end{DoxyParamCaption}
+) const}\label{class_data_a54019a127c7262ad527e523b98ddd26a}
+
+\begin{DoxyParams}{Parameters}
+{\em data} & -\/ uma data \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true se data for posterior a esta data, false se nao 
+\end{DoxyReturn}
+\hypertarget{class_data_a682016837c60b8e801d4bcee3e694039}{}\index{Data@{Data}!operator==@{operator==}}
+\index{operator==@{operator==}!Data@{Data}}
+\subsubsection[{operator==(const Data \&data) const }]{\setlength{\rightskip}{0pt plus 5cm}bool Data\+::operator== (
+\begin{DoxyParamCaption}
+\item[{const {\bf Data} \&}]{data}
+\end{DoxyParamCaption}
+) const}\label{class_data_a682016837c60b8e801d4bcee3e694039}
+
+\begin{DoxyParams}{Parameters}
+{\em c} & -\/ uma data \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true as datas forem iguais, false caso contrario. 
+\end{DoxyReturn}
+\hypertarget{class_data_a841974ad49226c9404572ba74f9e0e0b}{}\index{Data@{Data}!scan\+Ano\+Bissexto@{scan\+Ano\+Bissexto}}
+\index{scan\+Ano\+Bissexto@{scan\+Ano\+Bissexto}!Data@{Data}}
+\subsubsection[{scan\+Ano\+Bissexto(int ano)}]{\setlength{\rightskip}{0pt plus 5cm}bool Data\+::scan\+Ano\+Bissexto (
+\begin{DoxyParamCaption}
+\item[{int}]{ano}
+\end{DoxyParamCaption}
+)}\label{class_data_a841974ad49226c9404572ba74f9e0e0b}
+
+\begin{DoxyParams}{Parameters}
+{\em ano} & -\/ um ano \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true se o ano for bissexto, false se nao 
+\end{DoxyReturn}
+
+
+\subsection{Friends And Related Function Documentation}
+\hypertarget{class_data_a8ebf3d35facaad4039739437d2f9a8f3}{}\index{Data@{Data}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!Data@{Data}}
+\subsubsection[{operator$<$$<$}]{\setlength{\rightskip}{0pt plus 5cm}ostream\& operator$<$$<$ (
+\begin{DoxyParamCaption}
+\item[{ostream \&}]{o, }
+\item[{const {\bf Data} \&}]{d}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [friend]}}\label{class_data_a8ebf3d35facaad4039739437d2f9a8f3}
+imprime a data no formato D\+D/\+M\+M/\+A\+A\+A\+A
+
+
+\begin{DoxyParams}{Parameters}
+{\em o} & -\/ stream de output \\
+\hline
+{\em d} & -\/ uma hora \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+o 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/Data.\+h\item 
+src/Data.\+cpp\end{DoxyCompactItemize}
