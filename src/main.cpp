@@ -120,9 +120,13 @@ Campeonato load()
 
 	try{
 	c.loadModalidades(modalidades);
-	} catch(Desporto::DesportoInexistente e)
+	} catch(Hora::HoraInvalida e)
 	{
-		cout << "O desporto " << e.getNome() << " nao existe!\n";
+		cout << e.getMessage();
+	}
+	catch(Desporto::DesportoInexistente e)
+	{
+		cout << e.getMessage();
 	}
 
 	string provas = "Provas.txt";
@@ -134,7 +138,7 @@ Campeonato load()
 
 	try {
 		c.loadProvas(provas);
-	} catch(ExcecoesLoadProva &e)
+	} catch(LoadProvasFail &e)
 	{
 		cout << e.getMessage();
 	}

@@ -262,7 +262,7 @@ bool Campeonato::loadEquipas(string nome_ficheiro)
 	return true;
 }
 
-void Campeonato::loadModalidades(string nome_ficheiro)
+bool Campeonato::loadModalidades(string nome_ficheiro)
 {
 	ifstream in;
 
@@ -311,7 +311,7 @@ void Campeonato::loadModalidades(string nome_ficheiro)
 	in.close();
 }
 
-void Campeonato::loadProvas(string nome_ficheiro)
+bool Campeonato::loadProvas(string nome_ficheiro)
 {
 	ifstream in;
 	unsigned int k = 0;
@@ -836,39 +836,6 @@ void Campeonato::menuApagar(){
 			}
 			//return;
 		}
-	}
-}
-
-
-void Campeonato::menuCriacao(){
-	bool exit = false;
-	while (!exit){
-		system("cls");
-		vector<string> choices;
-		choices.push_back("Desportos");
-		if(desportos.size() > 0){
-			choices.push_back("Equipas");
-			choices.push_back("Provas");
-			choices.push_back("Apagar");
-			choices.push_back("Salvar");
-			choices.push_back("Terminar Planeamento");
-		}
-
-		int ch = fazMenu("Campeonato Polidesportivo - Planeamento", choices);
-		if (ch == -1)
-			exit = true;
-		else if (ch == 0)
-			menuDesportos();
-		else if (ch == 1)
-			menuEquipas();
-		else if (ch == 2)
-			menuProvas();
-		else if (ch == 3)
-			menuApagar();
-		//		else if (ch == 4)
-		//			Salvar();
-		//		else
-		//			TerminarPlaneamento();
 	}
 }
 

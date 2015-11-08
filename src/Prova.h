@@ -55,7 +55,7 @@ public:
 	bool operator < (const Prova &p2) const;
 	bool operator == (const Prova &p2) const;
 
-	class ProvasSimultaneas : public ExcecoesLoadProva {
+	class ProvasSimultaneas : public LoadProvasFail {
 		string mod1, mod2;
 	public:
 		ProvasSimultaneas() {}

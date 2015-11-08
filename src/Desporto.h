@@ -10,6 +10,7 @@
 
 #include <string>
 #include <vector>
+#include "Lists.h"
 //#include "Modalidade.h"
 
 using namespace std;
@@ -45,6 +46,18 @@ public:
 
 	void adicionaModalidade();
 	void adicionaModalidade(Modalidade *m);
+
+	class DesportoInexistente {
+		string nome;
+	public:
+		DesportoInexistente() {}
+		DesportoInexistente(string n) { nome = n;}
+		string getMessage() const {
+			string m = "O desporto " + nome + " nao existe!\n";
+			return m;
+		}
+	};
+
 	class ModalidadeExiste{
 		string nome;
 	public:
@@ -53,13 +66,6 @@ public:
 		string getNome() const {return nome;}
 	};
 
-	class DesportoInexistente{
-		string nome;
-	public:
-		DesportoInexistente() {}
-		DesportoInexistente(string n) { nome = n;}
-		string getNome() const { return nome;}
-	};
 };
 
 

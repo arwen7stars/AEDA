@@ -194,6 +194,12 @@ public:
 	string getNome() { return nome; }
 };
 
+class LoadProvasFail{
+public:
+	virtual string getMessage() const = 0;
+	virtual ~LoadProvasFail() {}
+};
+
 class CaraterInvalido{
 public:
 	char c;
@@ -203,18 +209,6 @@ public:
 		return c;
 	}
 
-};
-
-class ExcecoesLoadProva{
-public:
-	virtual string getMessage() const = 0;
-	virtual ~ExcecoesLoadProva() {}
-};
-
-class ExcecoesLoadModalidades{
-public:
-	virtual string getMessage() const = 0;
-	virtual ~ExcecoesLoadModalidades() {}
 };
 
 #endif /* SRC_LISTS_H_ */

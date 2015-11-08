@@ -34,7 +34,7 @@ public:
 
 	void menu();
 
-	class ModalidadeInexistente : public ExcecoesLoadProva{
+	class ModalidadeInexistente : public LoadProvasFail {
 		string nome;
 	public:
 		ModalidadeInexistente() {}
