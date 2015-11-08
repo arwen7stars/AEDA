@@ -76,8 +76,7 @@ void Equipa::apagaModalidade(int i_atleta, int i_modalidade)
 	atletas[i_atleta]->apagaModalidade(i_modalidade);
 }
 
-void Equipa::apagaAtleta(string nome)
-{
+void Equipa::apagaAtleta(string nome){
 	for(unsigned int i = 0; i < atletas.size(); i++)
 	{
 		if (atletas[i]->getNome() == nome)
@@ -311,6 +310,7 @@ bool  Atleta::getGenero() const{
 }
 
 void Atleta::adicionaPontuacao(int p){
+	cout << "kiuabate" << endl;
 	pontos += p;
 }
 

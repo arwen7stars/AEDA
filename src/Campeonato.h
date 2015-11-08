@@ -25,7 +25,6 @@ class Campeonato{
 	vector<Desporto *> desportos; ///< Lista de Desportos/Modalidades
 	vector<Equipa* > equipas; ///< Lista de Equipas
 	vector<Prova *> provas;
-	vector<ProvaTerminada> provasTerminadas;
 	bool criado;
 	Data inicio, fim;///< Data do inicio e do fim do campeonato, pode dar jeito
 	Hora abertura, fecho;
@@ -114,4 +113,3 @@ void atribuiPontuacao(Prova pro, vector<float> pontos);
 
 
 #endif /* CAMPEONATO_H_ */
-

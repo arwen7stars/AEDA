@@ -3,6 +3,7 @@
 #include "Lists.h"
 #include "Modalidade.h"
 #include "insertionSort.h"
+#include <algorithm>
 
 using namespace std;
 
@@ -409,7 +410,6 @@ void Campeonato::loadProvas(string nome_ficheiro)
 				}
 			} while(extraido == "-" && !in.eof());
 
-
 		adicionaProva(*p);
 	}
 }
@@ -507,27 +507,28 @@ void Campeonato::updateProvas(string nome_ficheiro)
 /*
 void Campeonato::apagaDesporto(string n)
 {
-	bool encontrado = false;
+bool encontrado = false;
 	for (unsigned int i = 0; i < desportos.size(); i++)
 	{
 		if ( desportos[i]->getNome() == n)
-		{
-			desportos.erase(desportos.begin()+i);
-			encontrado = true;
+			{
+				desportos.erase(desportos.begin()+i);
+							encontrado = true;
 		}
 	}
+
 
 	for(unsigned int i = 0; i < equipas.size(); i++)
 	{
 		for(unsigned int j= 0; j < equipas[i]->getDesportos().size(); j++)
 		{
-			if (n == equipas[i]->getDesportos()[j]->getNome())
-				{
-				equipas[i]->apagaDesporto(j);
+							equipas[i]->apagaDesporto(j);
 				}
+
 		}
 
-	}
+
+
 }
 */
 
@@ -544,6 +545,7 @@ void Campeonato::apagaModalidade(string n)
 			}
 		}
 	}
+
 
 	for(unsigned int i = 0; i < equipas.size(); i++)
 	{
@@ -570,6 +572,7 @@ void Campeonato::apagaModalidade(string n)
 		}
 	}
 }
+
 
 void Campeonato::menuApagar(){
 	bool exit = false;
@@ -630,7 +633,6 @@ void Campeonato::menuApagar(){
 				bool exit3 = false;
 				while (!exit3){
 					system("cls");
-
 					if (desportos[ch2]->getModalidades().size() == 0)
 					{
 						system("cls");
@@ -645,7 +647,6 @@ void Campeonato::menuApagar(){
 							continue;
 					}
 					}
-
 					for (int i = 0; i < provas.size(); i++)
 						if (provas[i]->getModalidade() == desportos[ch2]->getModalidades()[ch3]){
 							system("cls");
@@ -718,7 +719,6 @@ void Campeonato::menuApagar(){
 					exit2 = true;
 					continue;
 				}
-
 				if (provas[ch2]->getAtletas().size() != 0){
 					bool exit = false;
 						while (!exit){
@@ -745,6 +745,7 @@ void Campeonato::menuApagar(){
 				return;
 			}
 		}
+
 	}
 }
 
@@ -1017,104 +1018,30 @@ void Campeonato::adicionaProva(){
 
 }
 
-void atribuiPontuacao(ProvaTerminada &pro, vector< float> pontos){
-	int primeiro = -1;
-	int segundo = -1;
+void atribuiPontuacao(ProvaTerminada &pro, vector<float> pontos) {
+//ordena o vetor atletas por pontuacao e faz pushback das pontuacoes ordenadas no pontuacoes da provaTerminada
+	//e faz push:_back dos atletas ordenados tb
 
-	if (pontos.size() < 3) {
-		if (pro.getModalidade()->getDesporto()->isCrescente())
-
-			if (pontos[0] > pontos[1]){
-
-
-				primeiro = 0;}
-			else{
-
-
-				primeiro = 1;
+	for (unsigned int i = 0; i < pontos.size() - 1; i++)
+		for (unsigned int j = i; j < pontos.size(); j++) {
+			if (pontos[i] < pontos[j]) {
+				swap(pontos[i], pontos[j]); // ou assim paracido, seja como for trocarlos
+				swap(pro.getAtletas()[i], pro.getAtletas()[j]); // assim os atletas tb sao ordenados
 			}
-		else {
-			if (pontos[0] > pontos[1])
-				primeiro = 1;
-			else
-				primeiro = 0;
 		}
 
-		// nao e preciso devolver nada
-		//	vector<Atleta> rankingProva;
-		//
-		//	rankingProva.push_back(pro.getAtletas()[primeiro]);
-		//	rankingProva.push_back(pro.getAtletas()[segundo]);
-		//	rankingProva.push_back(pro.getAtletas()[terceiro]);
-
-		pro.getAtletas()[primeiro]->adicionaPontuacao(3);
-
-	}
-	else {
-		int terceiro = -1;
-
-		int menor = pontos[0];
-		int segundoMenor = pontos[1];
-		int terceiroMenor = pontos[2];
-
-		int maior = pontos[0];
-		int segundoMaior = pontos[1];
-		int terceiroMaior = pontos[2];
-
-		if (pro.getModalidade()->getDesporto()->isCrescente()) {
-			for (unsigned int i = 0; i < pontos.size(); i++)
-				if (pontos[i] > maior) {
-					terceiroMaior = segundoMaior;
-					segundoMaior = maior;
-					maior = pontos[i];
-					terceiro = segundo;
-					segundo = primeiro;
-					primeiro = i;
-				} else if (pontos[i] > segundoMaior) {
-					terceiroMaior = segundoMaior;
-					segundoMaior = pontos[i];
-					terceiro = segundo;
-					segundo = i;
-				}
-		} else
-			for (unsigned int i = 0; i < pontos.size(); i++)
-				if (pontos[i] < menor) {
-					terceiroMenor = segundoMenor;
-					segundoMenor = menor;
-					menor = pontos[i];
-					terceiro = segundo;
-					segundo = primeiro;
-					primeiro = i;
-				} else if (pontos[i] < segundoMenor) {
-					terceiroMenor = segundoMenor;
-					segundoMenor = pontos[i];
-					terceiro = segundo;
-					segundo = i;
-				}
-
-		// nao e preciso devolver nada
-		//	vector<Atleta> rankingProva;
-		//
-		//	rankingProva.push_back(pro.getAtletas()[primeiro]);
-		//	rankingProva.push_back(pro.getAtletas()[segundo]);
-		//	rankingProva.push_back(pro.getAtletas()[terceiro]);
-
-
-
-		pro.getAtletas()[primeiro]->adicionaPontuacao(3);
-		pro.getAtletas()[segundo]->adicionaPontuacao(2);
-		pro.getAtletas()[terceiro]->adicionaPontuacao(1);
-
-		vector <Atleta> tmp;
-		for (unsigned int x = 0; x < pro.getAtletas().size();x++)
-			tmp.push_back(*pro.getAtletas()[x]);
-
-
-		insertionSort<Atleta>(tmp);
-
-		pro.setRankingFinal(tmp);
+	if (pro.getAtletas().size() < 2) {
+		cout << pro.getAtletas().size();
+		pro.getAtletas()[0]->adicionaPontuacao(3);
+	} else {
+		pro.getAtletas()[0]->adicionaPontuacao(3);
+		pro.getAtletas()[1]->adicionaPontuacao(2);
+		pro.getAtletas()[2]->adicionaPontuacao(1);
 
 	}
+
+	for (unsigned int k = 0; k < pontos.size(); k++)
+		pro.getPontuacoes().push_back(pontos[k]);
 }
 
 
@@ -1167,21 +1094,19 @@ void Campeonato::listaProvasNaoRealizadas() const{
 }
 
 void Campeonato::listaProvasRealizadas() const{
-	vector<ProvaTerminada > vprova;
+	vector<Prova> vprova;
 
 		cout << "Provas ja realizadas no campeonato: " << endl;
 
-
-
-		for (unsigned int j = 0; j < provasTerminadas.size();j++)
-			if(provasTerminadas[j].getRealizada() == 1)
-				vprova.push_back(provasTerminadas[j]);
+		for (unsigned int j = 0; j < provas.size();j++)
+			if(provas[j]->getRealizada() == 1)
+				vprova.push_back(*provas[j]);
 
 		if (vprova.size() == 0)
 
 		cout <<endl << "Ainda nao foram realizadas provas" <<endl <<endl;
 		else{
-		insertionSort<ProvaTerminada>(vprova);
+		insertionSort<Prova>(vprova);
 
 		for (unsigned int i = 0; i < vprova.size(); i++)
 			cout << vprova[i].getData() << ": Prova de " << (*vprova[i].getModalidade()->getDesporto())
@@ -1353,10 +1278,12 @@ bool Campeonato::realizaProva(Prova &p , vector <float> pontuacoes){
 	for (vector < Prova*>::iterator it = provas.begin(); it < provas.end();it++)
 		if ((*it) == &p)
 			{
-			ProvaTerminada nova (p.getModalidade(), p.getData(), hi, p.getGenero(), p.getAtletas());
-			atribuiPontuacao(nova, pontuacoes);
+			ProvaTerminada * nova = new ProvaTerminada(p.getModalidade(), p.getData(), hi, p.getGenero());
+			nova->setAtletas(p.getAtletas());
+			atribuiPontuacao(*nova, pontuacoes);
+			provas.push_back(nova);
 			it = provas.erase(it);
-			provasTerminadas.push_back(nova);
+
 			return true;
 			}
 		else if ((!((*it) == &p))&& (it++)==provas.end())
@@ -1364,4 +1291,3 @@ bool Campeonato::realizaProva(Prova &p , vector <float> pontuacoes){
 return false;
 
 }
-

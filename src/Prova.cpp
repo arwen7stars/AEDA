@@ -94,6 +94,8 @@ bool Prova::operator < (const Prova &p2) const{
 
 bool Prova::operator ==(const Prova &p2) const {
 
+	if(realizada != p2.getRealizada())
+		return false;
 	if (genero != p2.getGenero())
 		return false;
 	else if (modalidade->getNome() != p2.getModalidade()->getNome())
@@ -102,8 +104,9 @@ bool Prova::operator ==(const Prova &p2) const {
 		return false;
 	else if (inicio < p2.getInicio() || inicio > p2.getInicio())
 		return false;
-	else
+	else{ cout << " prova " << p2.getModalidade()->getNome() << " = " << modalidade->getNome() << endl;
 		return true;
+	}
 }
 
 void Prova::adicionarAtleta(vector<Equipa*> TeamList, vector<Desporto*> DespList){
@@ -198,11 +201,8 @@ void Prova::menu(vector<Equipa*> TeamList, vector<Desporto*> DespList){
 ------------------------------------------------------------------------------
  */
 
-ProvaTerminada::ProvaTerminada(Modalidade* m, Data d, Hora i, char g, vector <Atleta *> a):Prova(m,d,i,g){
-	realizada = true;
-	for (unsigned int i =0; i < a.size();i++)
-		atletas.push_back(a[i]);
-}
+ProvaTerminada::ProvaTerminada(Modalidade* m, Data d, Hora i, char g) :Prova(m, d, i, g) {realizada = true;}
+
 
 Atleta* ProvaTerminada::getPrimeiro() const{
 	return atletas[0];
@@ -216,13 +216,13 @@ Atleta*ProvaTerminada:: getTerceiro() const{
 	return atletas[2];
 }
 
-vector<Atleta *> ProvaTerminada::getRankingFinal() const{
-	return rankingFinal;
+void ProvaTerminada::setAtletas (vector<Atleta*> a) {
+	for (unsigned int i = 0; i < a.size(); i++)
+		atletas.push_back(a[i]);
 }
 
-void ProvaTerminada::setRankingFinal(vector<Atleta> &ranking){
-	for (unsigned int i = 0; i< ranking.size(); i++)
-		rankingFinal[i] = &ranking [i];
+vector <float> ProvaTerminada::getPontuacoes() const{
+	return pontuacoes;
 }
 
 bool ProvaTerminada:: operator < (const ProvaTerminada &p) const{
@@ -230,4 +230,5 @@ bool ProvaTerminada:: operator < (const ProvaTerminada &p) const{
 		return true;
 	return false;
 }
+
 

@@ -45,6 +45,7 @@ public:
 	void adicionarAtleta(vector<Equipa*> TeamList, vector<Desporto*> DespList);
 	void retirarAtleta();
 
+
 	bool Simultaneo(Prova p);
 
 	void menu(vector<Equipa*> TeamList, vector<Desporto*> DespList);
@@ -66,15 +67,14 @@ public:
 };
 
 class ProvaTerminada: public Prova{ //Quando uma prova ja terminou, transformamola num ProvaTerminada
-	vector<int> pontuacoes; //Vetor com as pontuacoes dos atletas, corresponde com o vector atletas
-	vector<Atleta *> rankingFinal;
+	vector<float> pontuacoes; //Vetor com as pontuacoes dos atletas, corresponde com o vector atletas
 public:
-	ProvaTerminada(Modalidade* m, Data d, Hora i, char g, vector <Atleta *> a); //o ranking final so e atualizado durante o atribui pontuacoes, chamado em realizaProva
+	ProvaTerminada(Modalidade* m, Data d, Hora i, char g); //o ranking final so e atualizado durante o atribui pontuacoes, chamado em realizaProva
 	Atleta* getPrimeiro() const;
 	Atleta* getSegundo() const;
 	Atleta* getTerceiro() const;
-	void setRankingFinal(vector<Atleta > &rankin);
-	vector<Atleta *> getRankingFinal() const;
+	vector < float> getPontuacoes() const;
+	void setAtletas(vector<Atleta*> a);
 	bool operator < (const ProvaTerminada &p) const;
 };
 
