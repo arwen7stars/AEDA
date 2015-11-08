@@ -165,7 +165,6 @@ Campeonato load()
 
 }
 
-void menuNovoCampeonato(){}
 
 void menu(){
 	vector<string> choices;
@@ -181,11 +180,19 @@ void menu(){
 		else if (ch == 0)
 			menuNovoCampeonato();
 		else{
-			Campeonato C = load();
-//			if(C.isCriado())
-//				cout << "Ola";
-//			else
+			try{
+				Campeonato C = load();
 				C.menuCriacao();
+			}
+			catch(FicheiroInexistente e)
+			{
+				system("cls");
+				cout << "O ficheiro " << e.getNome() << " nao existe.\n";
+			}
+
+			//			if(C.isCriado())
+			//				cout << "Ola";
+			//			else
 		}
 	}
 }
@@ -777,8 +784,14 @@ int main(){
 						cout << endl;
 					}
 
-*/
-	menu();
+ */
+	try{
+		menu();
+	} catch(...)
+	{
+		cout << "Um erro inesperado ocorreu, o programa irá agora terminar.\n\nGAME OVER";
+		_getch();
+	}
 
 	cout << "Press any key to continue...";
 	_getch();
