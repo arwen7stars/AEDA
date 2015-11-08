@@ -80,6 +80,16 @@ void Prova::adicionaAtleta(Atleta * a){
 		atletas.push_back(a);
 }
 
+
+void Prova::apagaAtleta(string nome)
+{
+	for(unsigned int i = 0; i < atletas.size(); i++)
+	{
+		if (atletas[i]->getNome() == nome)
+			atletas.erase(atletas.begin()+i);
+	}
+}
+
 ostream & operator<<(ostream & o, const Prova & p){
 	o << p.data << " " << p.inicio << "-" << p.fim << "  "<< p.modalidade->getNome();
 	return o;
@@ -162,7 +172,7 @@ void Prova::retirarAtleta(){
 		else{
 			for (int i = 0; i < atletas[ch]->getProvas().size();i++){
 				if (atletas[ch]->getProvas()[i]==this){
-					atletas[ch]->getProvas().erase(atletas[ch]->getProvas().begin() + i);
+					atletas[ch]->apagaProva(i);
 					break;
 				}
 			}

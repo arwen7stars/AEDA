@@ -34,8 +34,8 @@ public:
 	bool adicionaEquipa(Equipa * eq);
 	void adicionaProva(Prova &p);
 
-	void loadDesportos(string nome_ficheiro);
-	void loadEquipas(string nome_ficheiro);
+	bool loadDesportos(string nome_ficheiro);
+	bool loadEquipas(string nome_ficheiro);
 	void loadModalidades(string nome_ficheiro);
 	void loadProvas(string nome_ficheiro);
 

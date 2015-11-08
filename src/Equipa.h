@@ -95,6 +95,7 @@ public:
 	void adicionaPontuacao(int p);
 
 	void apagaModalidade(int indice);
+	void apagaProva(int indice);
 
 	void menu();
 

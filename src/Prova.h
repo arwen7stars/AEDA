@@ -41,10 +41,11 @@ public:
 	bool getGenero() const;
 	bool getRealizada() const;
 
+	void apagaAtleta(string nome);
+
 	void adicionaAtleta(Atleta * a);
 	void adicionarAtleta(vector<Equipa*> TeamList, vector<Desporto*> DespList);
 	void retirarAtleta();
-
 
 	bool Simultaneo(Prova p);
 

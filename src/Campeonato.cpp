@@ -128,7 +128,7 @@ void Campeonato::adicionaProva(Prova &p)
 
 }
 
-void Campeonato::loadDesportos(string nome_ficheiro)
+bool Campeonato::loadDesportos(string nome_ficheiro)
 {
 	//int elementos_equipa;
 	string desporto;
@@ -151,6 +151,9 @@ void Campeonato::loadDesportos(string nome_ficheiro)
 		in >> barra;
 		in >> crescente;
 
+		if (barra != '/' && !in.eof())
+			return false;
+
 		in.ignore(1000, '\n');
 		in.ignore(1000, '\n');
 
@@ -158,7 +161,7 @@ void Campeonato::loadDesportos(string nome_ficheiro)
 			c = true;
 		else if (crescente == 'D')
 			c = false;
-		else throw CaraterInvalido(crescente);
+		else return false;;
 
 		Desporto * ds = new Desporto(desporto, tipo_de_pontuacao, c);
 
@@ -167,10 +170,11 @@ void Campeonato::loadDesportos(string nome_ficheiro)
 	}
 
 	in.close();
+	return true;
 }
 
 
-void Campeonato::loadEquipas(string nome_ficheiro)
+bool Campeonato::loadEquipas(string nome_ficheiro)
 {
 	ifstream in;
 	unsigned int k = 0;
@@ -180,7 +184,7 @@ void Campeonato::loadEquipas(string nome_ficheiro)
 
 	while (!in.eof())
 	{
-		string eq, str,at;
+		string eq, str, at;
 		char genero;
 		bool g;
 
@@ -233,7 +237,9 @@ void Campeonato::loadEquipas(string nome_ficheiro)
 
 					if (genero == 'M')
 						g= true;
-					else g = false;
+					else if (genero == 'F')
+						g = false;
+					else return false;
 
 					Atleta * atleta = new Atleta(at, equipa, g);
 
@@ -252,8 +258,8 @@ void Campeonato::loadEquipas(string nome_ficheiro)
 				}
 					} while(extraido == "-" && !in.eof());
 	}
-
 	in.close();
+	return true;
 }
 
 void Campeonato::loadModalidades(string nome_ficheiro)
@@ -410,6 +416,7 @@ void Campeonato::loadProvas(string nome_ficheiro)
 				}
 			} while(extraido == "-" && !in.eof());
 
+
 		adicionaProva(*p);
 	}
 }
@@ -507,28 +514,27 @@ void Campeonato::updateProvas(string nome_ficheiro)
 /*
 void Campeonato::apagaDesporto(string n)
 {
-bool encontrado = false;
+	bool encontrado = false;
 	for (unsigned int i = 0; i < desportos.size(); i++)
 	{
 		if ( desportos[i]->getNome() == n)
-			{
-				desportos.erase(desportos.begin()+i);
-							encontrado = true;
+		{
+			desportos.erase(desportos.begin()+i);
+			encontrado = true;
 		}
 	}
-
 
 	for(unsigned int i = 0; i < equipas.size(); i++)
 	{
 		for(unsigned int j= 0; j < equipas[i]->getDesportos().size(); j++)
 		{
-							equipas[i]->apagaDesporto(j);
+			if (n == equipas[i]->getDesportos()[j]->getNome())
+				{
+				equipas[i]->apagaDesporto(j);
 				}
-
 		}
 
-
-
+	}
 }
 */
 
@@ -545,7 +551,6 @@ void Campeonato::apagaModalidade(string n)
 			}
 		}
 	}
-
 
 	for(unsigned int i = 0; i < equipas.size(); i++)
 	{
@@ -573,7 +578,6 @@ void Campeonato::apagaModalidade(string n)
 	}
 }
 
-
 void Campeonato::menuApagar(){
 	bool exit = false;
 	int ch, ch2, ch3;
@@ -600,20 +604,53 @@ void Campeonato::menuApagar(){
 					continue;
 				}
 
-				for (int i = 0; i < equipas.size(); i++)
-					for (int j = 0; j < equipas[i]->getDesportos().size(); j++)
+				vector<Equipa*> equipas_desp;
+
+				for (unsigned int i = 0; i < equipas.size(); i++)
+					for (unsigned int j = 0; j < equipas[i]->getDesportos().size(); j++)
 						if (equipas[i]->getDesportos()[j] == desportos[ch2]){
-							system("cls");
-							cout << "Ainda existem equipas subscritas a este desporto.";
-							_getch();
-							return;
+							equipas_desp.push_back(equipas[i]);
 						}
 
-				if (desportos[ch2]->getModalidades().size() != 0){
+				if (equipas_desp.size() != 0)
+				{
 					system("cls");
-					cout << "Ainda existem modalidades neste desporto.";
+					cout << "Ainda existem equipas subscritas a este desporto.\n";
+					cout << endl;
+					cout << "Por favor elimine as seguintes equipas:\n";
+
+					for(unsigned int i = 0; i < equipas_desp.size(); i++)
+					{
+						cout << equipas_desp[i]->getNome() << endl;
+					}
+
 					_getch();
 					return;
+
+				}
+
+				if (desportos[ch2]->getModalidades().size() != 0)
+				{
+					bool exit3 = false;
+					while (!exit3){
+						system("cls");
+
+						cout << desportos[ch2]->getNome();
+						cout << " ainda tem modalidades.\n";
+						cout << endl;
+
+						ch3 = fazMenu("Modalidades a Retirar:", desportos[ch2]->getModalidades());
+						if (ch3 == -1){
+							exit3 = true;
+							continue;
+						}
+						else{
+							apagaModalidade(desportos[ch2]->getModalidades()[ch3]->getNome());
+							if (desportos[ch2]->getModalidades().size() == 0)
+								desportos.erase(desportos.begin()+ch2);
+							return;
+						}
+					}
 				}
 
 				desportos.erase(desportos.begin()+ch2);
@@ -633,10 +670,11 @@ void Campeonato::menuApagar(){
 				bool exit3 = false;
 				while (!exit3){
 					system("cls");
+
 					if (desportos[ch2]->getModalidades().size() == 0)
 					{
 						system("cls");
-						cout << "Nao existem mais provas neste desporto.";
+						cout << "Nao existem mais modalidades neste desporto.";
 						_getch();
 						return;
 
@@ -647,13 +685,30 @@ void Campeonato::menuApagar(){
 							continue;
 					}
 					}
+
+					vector<Prova*> provas_mod;
+
 					for (int i = 0; i < provas.size(); i++)
 						if (provas[i]->getModalidade() == desportos[ch2]->getModalidades()[ch3]){
-							system("cls");
-							cout << "Ainda existem provas desta modalidade.";
-							_getch();
-							return;
+							provas_mod.push_back(provas[i]);
 						}
+
+					if (provas_mod.size() != 0)
+					{
+						system("cls");
+						cout << "Ainda existem provas subscritas a esta modalidade.\n";
+						cout << endl;
+						cout << "Por favor elimine as seguintes equipas:\n";
+
+						for(unsigned int i = 0; i < provas_mod.size(); i++)
+						{
+							cout << *provas_mod[i] << endl;
+						}
+
+						_getch();
+						return;
+
+					}
 					apagaModalidade(desportos[ch2]->getModalidades()[ch3]->getNome());
 					return;
 				}
@@ -669,14 +724,29 @@ void Campeonato::menuApagar(){
 					exit2 = true;
 					continue;
 				}
-				if (equipas[ch2]->getAtletas().size() != 0){
-					system("cls");
-					cout << "Ainda existem atletas desta equipa.";
-					_getch();
-					return;
-				}
+				if (equipas[ch2]->getAtletas().size() != 0)
+				{
+					bool exit3 = false;
+					while (!exit3){
+						system("cls");
 
-				equipas.erase(equipas.begin()+ch2);
+						cout << equipas[ch2]->getNome();
+						cout << " ainda tem atletas.\n";
+						cout << endl;
+
+						ch3 = fazMenu("Atletas a Retirar:", equipas[ch2]->getAtletas());
+						if (ch3 == -1){
+							exit3 = true;
+							continue;
+						}
+						else{
+							equipas[ch2]->apagaAtleta(equipas[ch2]->getAtletas()[ch3]->getNome());
+							if (equipas[ch2]->getAtletas().size() == 0)
+								equipas.erase(equipas.begin()+ch2);
+							return;
+						}
+					}
+				}
 				return;
 			}
 		}
@@ -698,14 +768,31 @@ void Campeonato::menuApagar(){
 						exit3 = true;
 						continue;
 					}
-					if (equipas[ch2]->getAtletas()[ch3]->getProvas().size() != 0){
-						system("cls");
-						cout << "Este atleta ainda esta inscrito em provas.";
-						_getch();
+					if (provas[ch2]->getAtletas()[ch3]->getProvas().size() != 0){
+						{
+							bool exit4 = false;
+							while (!exit4 && provas[ch2]->getAtletas()[ch3]->getProvas().size() != 0){
+								system("cls");
+								cout << provas[ch2]->getAtletas()[ch3]->getNome();
+								cout << " ainda esta inscrito em provas.\n";
+								cout << endl;
+
+								int ch4 = fazMenu("Provas a Retirar:", provas[ch2]->getAtletas()[ch3]->getProvas());
+								if (ch4 == -1)
+								{
+									exit4 = true;
+									continue;
+								}
+								else{
+									provas[ch2]->getAtletas()[ch3]->apagaProva(ch4);
+									if (provas[ch2]->getAtletas()[ch3]->getProvas().size() == 0)
+										equipas[ch2]->apagaAtleta(equipas[ch2]->getAtletas()[ch3]->getNome());
+									return;
+								}
+							}
+						}
 						return;
 					}
-					equipas[ch2]->apagaAtleta(equipas[ch2]->getAtletas()[ch3]->getNome());
-					return;
 				}
 			}
 		}
@@ -719,33 +806,69 @@ void Campeonato::menuApagar(){
 					exit2 = true;
 					continue;
 				}
-				if (provas[ch2]->getAtletas().size() != 0){
-					bool exit = false;
-						while (!exit){
-							system("cls");
-							vector<string> choices;
-							//choices.push_back("Alterar Atletas");
-							choices.push_back("Retirar Atletas");
 
+				if (provas[ch2]->getAtletas().size() != 0){
+					{
+						bool exit3 = false;
+						while (!exit3 && provas[ch2]->getAtletas().size() != 0){
+							system("cls");
 							cout << *provas[ch2];
 							cout << endl;
-							int ch = fazMenu("Opcoes", choices);
-							if (ch == -1)
-								exit = true;
-							else provas[ch2]->retirarAtleta();
+							cout << "Esta prova ainda tem atletas.\n";
+							cout << endl;
+
+							int ch3 = fazMenu("Selecionar Atletas:", provas[ch2]->getAtletas());
+							if (ch3 == -1)
+								{
+								exit3 = true;
+								continue;
+								}
+							else{
+								provas[ch2]->apagaAtleta(provas[ch2]->getAtletas()[ch3]->getNome());
+								if (provas[ch2]->getAtletas().size() == 0)
+									provas.erase(provas.begin()+ch2);
+								return;
+							}
 						}
-					/*
-					system("cls");
-					cout << "Esta prova ainda tem atletas.";
-					_getch();
+					}
 					return;
-					*/
 				}
-				provas.erase(provas.begin()+ch2);
-				return;
 			}
+			//return;
+		}
+	}
+}
+
+
+void Campeonato::menuCriacao(){
+	bool exit = false;
+	while (!exit){
+		system("cls");
+		vector<string> choices;
+		choices.push_back("Desportos");
+		if(desportos.size() > 0){
+			choices.push_back("Equipas");
+			choices.push_back("Provas");
+			choices.push_back("Apagar");
+			choices.push_back("Salvar");
+			choices.push_back("Terminar Planeamento");
 		}
 
+		int ch = fazMenu("Campeonato Polidesportivo - Planeamento", choices);
+		if (ch == -1)
+			exit = true;
+		else if (ch == 0)
+			menuDesportos();
+		else if (ch == 1)
+			menuEquipas();
+		else if (ch == 2)
+			menuProvas();
+		else if (ch == 3)
+			menuApagar();
+		//		else if (ch == 4)
+		//			Salvar();
+		//		else
+		//			TerminarPlaneamento();
 	}
 }
 

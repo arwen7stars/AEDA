@@ -211,4 +211,10 @@ public:
 	virtual ~ExcecoesLoadProva() {}
 };
 
+class ExcecoesLoadModalidades{
+public:
+	virtual string getMessage() const = 0;
+	virtual ~ExcecoesLoadModalidades() {}
+};
+
 #endif /* SRC_LISTS_H_ */

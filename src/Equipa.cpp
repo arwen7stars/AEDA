@@ -283,6 +283,11 @@ void Atleta::apagaModalidade(int indice)
 	modalidades.erase(modalidades.begin()+indice);
 }
 
+void Atleta::apagaProva(int indice)
+{
+	provas.erase(provas.begin()+indice);
+}
+
 void Atleta::setNome( string n){
 	nome = n;
 }
