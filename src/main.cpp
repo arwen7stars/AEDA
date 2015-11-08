@@ -177,8 +177,6 @@ void menu(){
 		int ch = fazMenu("Campeonato Polidesportivo", choices);
 		if (ch == -1)
 			exit = true;
-		else if (ch == 0)
-			menuNovoCampeonato();
 		else{
 			try{
 				Campeonato C = load();

@@ -1206,7 +1206,7 @@ void Campeonato::TerminarPlaneamento()
 
 		for(unsigned int j = 0; j < equipas[i]->getAtletas().size(); j++)
 		{
-			if (equipas[i]->getAtletas()[j]->getProvas().size)
+			if (equipas[i]->getAtletas()[j]->getProvas().size() == 0)
 				provas_at_vazio = true;
 		}
 	}
@@ -1246,7 +1246,7 @@ void Campeonato::TerminarPlaneamento()
 	}
 	else if(atletas_pro_vazio)
 	{
-		cout << "Ainda ha provas sem atletas!"
+		cout << "Ainda ha provas sem atletas!";
 		_getch();
 		return;
 	}
