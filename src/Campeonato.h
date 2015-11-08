@@ -140,7 +140,11 @@ public:
  * @param nome_ficheiro - nome do ficheiro de provas
 	 */
 	void updateProvas(string nome_ficheiro);
-
+/**Update dos ficheiros originais com as alteracoes efetuadas aos atributos de campeonato
+ *
+ * Chama updateDesportos, updateEquipas, etc...
+ *
+ */
 	void update();
 /**Apaga a modalidade de nome n do vetor de desportos, modalidades e modalidades de atletas
  *
@@ -188,13 +192,56 @@ public:
 		 * Mostra opcoes por onde escolher o que alterar, entre os atributos de uma Prova (data, hora, etc)
 		 */
 	void menuProvas();
-	void menuListas();
-	void menuListasDesportos();
-	void menuListasModalidades();
-	void menuListasEquipas();
-	void menuListasAtletas();
-	void menuListasProvas();
-	void Salvar();
+		/**Menu na interface para mostrar listas com os atributos do campeonato
+		 *
+		 * O utilizador pode escolher entre que listas quer ver, e serao mostradas mais opcoes de listas consoante a opcao
+		 *
+		 */
+		void menuListas();
+		/**Menu na interface para mostrar listas de desportos
+		 *
+		 * A unica opcao para listar desportos e por ordem alfabetica
+		 *
+		 */
+		void menuListasDesportos();
+		/**Menu na interface para mostrar listas de modalidades
+			 *
+			 * A unica opcao para listar modalidade e por ordem alfabetica
+			 *
+			 */
+		void menuListasModalidades();
+		/**Menu na interface para mostrar listas de equipas
+			 *
+			 * O utilizador pode escolher listar as equipas por ordem alfabetica ou por colocacao
+			 *
+			 */
+		void menuListasEquipas();
+		/**Menu na interface para mostrar listas de atletas
+			 *
+			 * O utilizador pode escolher listar os atletas por ordem alfabetica, ordem alfabetica dividida
+			 * por desportos ou modalidades, e por colocacao
+			 *
+			 */
+		void menuListasAtletas();
+		/**Menu na interface para mostrar listas de provas
+			 *
+			 * O utilizador pode escolher listar as provas por ordem cronologica, divididas em provas realizadas
+			 * e por realizar
+			 *
+			 */
+		void menuListasProvas();
+		/**Salva o estado do campeonatp
+		 *
+		 * chama update() para exportar os vetores atuais para os ficheiros correspondentes
+		 *
+		 */
+		void Salvar();
+		/**Verifica se o campeonato esta completamente importado
+		 *
+		 *Imprime mensagens de erro se nao houverem provas, equipas, atletas, etc
+		 *Se estiver tudo correto, altera o membro dado "criado" para true
+		 *
+		 */
 	void TerminarPlaneamento();
 /**Adiciona desporto ao vetor desportos do campeonato
  *
@@ -221,10 +268,16 @@ public:
 		DesportoExiste(string n) {nome = n;}
 		string getNome() const {return nome;}
 	};
-/**
- *
- */
+	/**Adiciona equipa ao vetor Equipas do campeonato
+	 *
+	 *Pede ao utilizador o nome da nova equipa. Se ja existir lanca a excecao EquipaExistente, caso contrario adiciona
+	 *
+	 */
 	void adicionaEquipa();
+	/**Adiciona a equipa fornecida ao vetor equipas, se ainda nao existir (criado para testes)
+		 *
+		 * @param eq - equipa a adicionar
+		 */
 	void adicionaEquipa(Equipa &eq);
 	/**Classe EquipaExiste
 		 *
