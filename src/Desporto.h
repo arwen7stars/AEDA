@@ -84,26 +84,65 @@ public:
 	 *
 	 */
 	void menuModalidades();
-
+/**Mostra na interface um menu para criar uma nova modalidade
+ *
+ *O utilizador tem de introduzir os dados para a criacao de uma nova modalidade e se todos forem validos
+ *O ela e criada e adicionada ao vetor modalidades
+ *
+ */
 	void adicionaModalidade();
+	/**Adiciona uma modalidade nova ao vetor modalidades (para testes)
+	 *
+	 * Verifica se a modalidade ja existe e se nao existir adiciona-a ao vetor modalidades
+	 *
+	 * @param m  -modalidade a adicionar
+	 */
 	void adicionaModalidade(Modalidade *m);
-
+/**Classe DesportoInexistente
+ *  Uma excecao para o caso de acedermos a um desporto inexistente
+ */
 	class DesportoInexistente {
 		string nome;
 	public:
+		/**Contrutor default
+		 *
+		 * Uma excecao para o caso de acedermos a um desporto inexistente
+		 */
 		DesportoInexistente() {}
+		/**Contrutor DesportoInexistente
+		 *
+		 * @param n - nome do desporto que causou a excecao
+		 */
 		DesportoInexistente(string n) { nome = n;}
+		/**Para imprimir mensagem de erro
+		 *
+		 * @return mensagem a imprimir
+		 */
 		string getMessage() const {
 			string m = "O desporto " + nome + " nao existe!\n";
 			return m;
 		}
 	};
-
+/**Classe ModalidadeExiste
+ *
+ * Uma excecao para o caso de tentarmos adicionar uma modalidade ja existente
+ */
 	class ModalidadeExiste{
 		string nome;
 	public:
+		/**Construtor default
+		 *
+		 */
 		ModalidadeExiste(){};
+		/**Costrutor ModalidadeExistente
+		 *
+		 * @param n - nome da modalidade que causou a excecao
+		 */
 		ModalidadeExiste(string n) {nome = n;}
+		/**Para imprimir mensagem de erro
+				 *
+				 * @return mensagem a imprimir
+				 */
 		string getNome() const {return nome;}
 	};
 
