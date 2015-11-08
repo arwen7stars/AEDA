@@ -607,25 +607,85 @@ void Campeonato::menuCriacao(){
 			choices.push_back("Apagar");
 			choices.push_back("Salvar");
 			choices.push_back("Terminar Planeamento");
-		}
 
-		int ch = fazMenu("Campeonato Polidesportivo - Planeamento", choices);
-		if (ch == -1)
-			exit = true;
-		else if (ch == 0)
-			menuDesportos();
-		else if (ch == 1)
-			menuEquipas();
-		else if (ch == 2)
-			menuProvas();
-		else if (ch == 3)
-			menuListas();
-		else if (ch == 4)
-			menuApagar();
-		else if (ch == 5)
-			Salvar();
-		//		else
-		//			TerminarPlaneamento();
+			vector<string> choices2;
+			choices2.push_back("Realizar Prova");
+			choices2.push_back("Listas");
+
+			if (!criado)
+			{
+				int ch = fazMenu("Campeonato Polidesportivo - Planeamento", choices);
+				if (ch == -1)
+					exit = true;
+				else if (ch == 0)
+					menuDesportos();
+				else if (ch == 1)
+					menuEquipas();
+				else if (ch == 2)
+					menuProvas();
+				else if (ch == 3)
+					menuListas();
+				else if (ch == 4)
+					menuApagar();
+				else if (ch == 5)
+					Salvar();
+				else
+					TerminarPlaneamento();
+			}
+			else {
+				int ch = fazMenu("Campeonato Polidesportivo - Realizacao", choices2);
+				if (ch == -1)
+					exit = true;
+				else if (ch == 0)
+				{
+					system("cls");
+					Prova min = *provas[0];
+					int indice = 0;
+
+					for(unsigned int i = 0; i < provas.size(); i++)
+					{
+						if (*provas[i] < min)
+						{
+							min = *provas[i];
+							indice = i;
+						}
+					}
+
+					cout << "Pontuacoes dos atletas.\n" << endl;
+					if (provas.size() != 0)
+					{
+						vector<float> pont;
+						for(unsigned int i = 0; i < provas[0]->getAtletas().size(); i++)
+						{
+							float num;
+							cout << provas[0]->getAtletas()[i]->getNome() << ": ";
+							while (!(cin >> num))
+							{
+								cin.clear();
+								cin.ignore(1000, '\n');
+								cout << "Input invalido! O numero deve ser um float\n";
+								cout << provas[0]->getAtletas()[i]->getNome() << ": ";
+							}
+							cin.ignore(1000, '\n');
+							pont.push_back(num);
+						}
+						realizaProva(*provas[0], pont);
+					}
+					else {
+						cout << "As provas ja foram todas realizadas\n";
+					}
+					_getch();
+					return;
+
+				}
+				else{
+					system("cls");
+					menuListas();
+					_getch();
+					return;
+				}
+			}
+		}
 	}
 }
 
@@ -762,8 +822,6 @@ void Campeonato::menuApagar(){
 						}
 					}
 				}
-
-				desportos.erase(desportos.begin()+ch2);
 				return;
 			}
 		}
@@ -1213,7 +1271,7 @@ void Campeonato::TerminarPlaneamento()
 
 	for(unsigned int i = 0; i < provas.size(); i++)
 	{
-		if (provas[i]->getAtletas().size() == 0)
+		if (provas[i]->getAtletas().size() < 2)
 			atletas_pro_vazio = true;
 	}
 	system("cls");
@@ -1246,7 +1304,7 @@ void Campeonato::TerminarPlaneamento()
 	}
 	else if(atletas_pro_vazio)
 	{
-		cout << "Ainda ha provas sem atletas!";
+		cout << "Ainda ha provas sem atletas suficientes (minimo: 2)!";
 		_getch();
 		return;
 	}
@@ -1498,7 +1556,6 @@ void Campeonato::listaProvasNaoRealizadas() const{
 
 		vprova.push_back(*provas[j]);
 
-
 	if (vprova.size() == 0)
 		cout <<endl << "Ja foram realizadas todas as provas" <<endl <<endl;
 	else{
@@ -1708,3 +1765,4 @@ bool Campeonato::realizaProva(Prova &p , vector <float> pontuacoes){
 return false;
 
 }
+

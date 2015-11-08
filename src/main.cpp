@@ -168,7 +168,6 @@ Campeonato load()
 
 void menu(){
 	vector<string> choices;
-	choices.push_back("Novo Campeonato");
 	choices.push_back("Carregar Campeonato");
 
 	bool exit = false;
@@ -790,7 +789,7 @@ int main(){
 		cout << "Um erro inesperado ocorreu, o programa irá agora terminar.\n\nGAME OVER";
 		_getch();
 	}
-
+	system("cls");
 	cout << "Press any key to continue...";
 	_getch();
 	return 0;
