@@ -140,6 +140,8 @@ public:
  * @param nome_ficheiro - nome do ficheiro de provas
 	 */
 	void updateProvas(string nome_ficheiro);
+
+	void update();
 /**Apaga a modalidade de nome n do vetor de desportos, modalidades e modalidades de atletas
  *
  * @param n - nome da modalidade
@@ -186,6 +188,13 @@ public:
 		 * Mostra opcoes por onde escolher o que alterar, entre os atributos de uma Prova (data, hora, etc)
 		 */
 	void menuProvas();
+	void menuListas();
+	void menuListasDesportos();
+	void menuListasModalidades();
+	void menuListasEquipas();
+	void menuListasAtletas();
+	void menuListasProvas();
+	void Salvar();
 /**Adiciona desporto ao vetor desportos do campeonato
  *
  * Lanca excepcao DesportoExiste se o desporto ja existir no vetor.
@@ -211,7 +220,9 @@ public:
 		DesportoExiste(string n) {nome = n;}
 		string getNome() const {return nome;}
 	};
-
+/**
+ *
+ */
 	void adicionaEquipa();
 	void adicionaEquipa(Equipa &eq);
 	/**Classe EquipaExiste
