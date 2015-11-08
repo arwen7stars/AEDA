@@ -10,6 +10,7 @@ Prova::Prova(Modalidade* m, Data d, Hora i, char g)
 	if (g == 'M')
 		genero = true;
 	else genero = false;
+	realizada = false;
 }
 
 Hora Prova::getInicio() const
@@ -37,6 +38,10 @@ vector<Atleta*> Prova::getAtletas() const{
 
 bool  Prova::getGenero() const{
 	return genero;
+}
+
+bool Prova::getRealizada() const{
+	return realizada;
 }
 
 bool Prova::Simultaneo(Prova p)
@@ -85,6 +90,20 @@ bool Prova::operator < (const Prova &p2) const{
 	if (getData()< p2.getData())
 		return true;
 	return false;
+}
+
+bool Prova::operator ==(const Prova &p2) const {
+
+	if (genero != p2.getGenero())
+		return false;
+	else if (modalidade->getNome() != p2.getModalidade()->getNome())
+		return false;
+	else if (!(data == p2.getData()))
+		return false;
+	else if (inicio < p2.getInicio() || inicio > p2.getInicio())
+		return false;
+	else
+		return true;
 }
 
 void Prova::adicionarAtleta(vector<Equipa*> TeamList, vector<Desporto*> DespList){
@@ -171,13 +190,19 @@ void Prova::menu(vector<Equipa*> TeamList, vector<Desporto*> DespList){
 			retirarAtleta();
 	}
 }
+
+
 /*
 ------------------------------------------------------------------------------
 						    Prova Terminada
 ------------------------------------------------------------------------------
  */
 
-ProvaTerminada::ProvaTerminada(Modalidade* m, Data d, Hora i, char g):Prova(m,d,i,g){}
+ProvaTerminada::ProvaTerminada(Modalidade* m, Data d, Hora i, char g, vector <Atleta *> a):Prova(m,d,i,g){
+	realizada = true;
+	for (unsigned int i =0; i < a.size();i++)
+		atletas.push_back(a[i]);
+}
 
 Atleta* ProvaTerminada::getPrimeiro() const{
 	return atletas[0];
@@ -191,4 +216,18 @@ Atleta*ProvaTerminada:: getTerceiro() const{
 	return atletas[2];
 }
 
+vector<Atleta *> ProvaTerminada::getRankingFinal() const{
+	return rankingFinal;
+}
+
+void ProvaTerminada::setRankingFinal(vector<Atleta> &ranking){
+	for (unsigned int i = 0; i< ranking.size(); i++)
+		rankingFinal[i] = &ranking [i];
+}
+
+bool ProvaTerminada:: operator < (const ProvaTerminada &p) const{
+	if (getData()< p.getData())
+		return true;
+	return false;
+}
 

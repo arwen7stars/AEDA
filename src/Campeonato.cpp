@@ -56,7 +56,6 @@ vector<Equipa*> Campeonato::getEquipas() const
 
 void Campeonato::adicionaProva(Prova &p)
 {
-
 	bool tamanho_zero = false;
 	if (p.getData() < inicio || fim < p.getData())
 	{
@@ -73,8 +72,7 @@ void Campeonato::adicionaProva(Prova &p)
 		else
 		{
 			if (provas.size() == 0)
-			{
-				tamanho_zero = true;
+			{tamanho_zero = true;
 				provas.push_back(&p);
 			}
 			else
@@ -91,8 +89,7 @@ void Campeonato::adicionaProva(Prova &p)
 	}
 
 	if (!tamanho_zero)
-		provas.push_back(&p);
-
+			provas.push_back(&p);
 }
 
 void Campeonato::adicionaEquipa(Equipa * eq)
@@ -195,6 +192,7 @@ void Campeonato::loadEquipas(string nome_ficheiro)
 			adicionaEquipa(equipa);
 
 		extraido = "";
+
 		int c = in.peek();
 
 		if (!in.eof() && c != '\n')
@@ -330,6 +328,7 @@ void Campeonato::loadProvas(string nome_ficheiro)
 
 		k++;
 
+
 		for (unsigned int i = 0; i < desportos.size(); i++)
 		{
 			for(unsigned int j = 0; j < desportos[i]->getModalidades().size(); j++)
@@ -392,6 +391,7 @@ void Campeonato::loadProvas(string nome_ficheiro)
 
 		adicionaProva(*p);
 	}
+
 }
 
 void Campeonato::updateDesportos(string nome_ficheiro)
@@ -399,7 +399,6 @@ void Campeonato::updateDesportos(string nome_ficheiro)
 	ofstream out;
 
 	out.open(nome_ficheiro.c_str());
-
 	if(!ficheiroExiste(nome_ficheiro))
 		throw FicheiroInexistente(nome_ficheiro);
 
@@ -418,7 +417,6 @@ void Campeonato::updateEquipas(string nome_ficheiro)
 {
 	ofstream out;
 	out.open(nome_ficheiro.c_str());
-
 	if(!ficheiroExiste(nome_ficheiro))
 		throw FicheiroInexistente(nome_ficheiro);
 
@@ -484,6 +482,7 @@ void Campeonato::updateProvas(string nome_ficheiro)
 		out << endl;
 	}
 }
+
 
 
 
@@ -905,18 +904,22 @@ void Campeonato::adicionaProva(){
 
 }
 
-void atribuiPontuacao(Prova pro, vector< float> pontos){
+void atribuiPontuacao(ProvaTerminada &pro, vector< float> pontos){
 	int primeiro = -1;
 	int segundo = -1;
 
 	if (pontos.size() < 3) {
-		cout <<"-2";
 		if (pro.getModalidade()->getDesporto()->isCrescente())
-			if (pontos[0] > pontos[1])
-				primeiro = 0;
-			else
-				primeiro = 1;
 
+			if (pontos[0] > pontos[1]){
+
+
+				primeiro = 0;}
+			else{
+
+
+				primeiro = 1;
+			}
 		else {
 			if (pontos[0] > pontos[1])
 				primeiro = 1;
@@ -932,9 +935,9 @@ void atribuiPontuacao(Prova pro, vector< float> pontos){
 		//	rankingProva.push_back(pro.getAtletas()[terceiro]);
 
 		pro.getAtletas()[primeiro]->adicionaPontuacao(3);
+
 	}
 	else {
-		cout << "+2";
 		int terceiro = -1;
 
 		int menor = pontos[0];
@@ -983,9 +986,20 @@ void atribuiPontuacao(Prova pro, vector< float> pontos){
 		//	rankingProva.push_back(pro.getAtletas()[segundo]);
 		//	rankingProva.push_back(pro.getAtletas()[terceiro]);
 
+
+
 		pro.getAtletas()[primeiro]->adicionaPontuacao(3);
 		pro.getAtletas()[segundo]->adicionaPontuacao(2);
 		pro.getAtletas()[terceiro]->adicionaPontuacao(1);
+
+		vector <Atleta> tmp;
+		for (unsigned int x = 0; x < pro.getAtletas().size();x++)
+			tmp.push_back(*pro.getAtletas()[x]);
+
+
+		insertionSort<Atleta>(tmp);
+
+		pro.setRankingFinal(tmp);
 
 	}
 }
@@ -1027,22 +1041,50 @@ void Campeonato::listaDesportos() const{
 		cout << desportos[j]->getNome() << endl;
 }
 
-void Campeonato::listaProvas() const{
+void Campeonato::listaProvasNaoRealizadas() const{
 	vector<Prova> vprova;
 
-	cout << "Provas no campeonato: " << endl;
+	cout << "Provas por realizar no campeonato: " << endl;
 
 	for (unsigned int j = 0; j < provas.size();j++)
+		if(provas[j]->getRealizada() == 0)
+
 		vprova.push_back(*provas[j]);
 
+
+	if (vprova.size() == 0)
+		cout <<endl << "Ja foram realizadas todas as provas" <<endl <<endl;
+	else{
 	insertionSort<Prova>(vprova);
 
-	for (unsigned int i = 0; i < provas.size(); i++)
-		cout << provas[i]->getData() << ": Prova de " << (*provas[i]->getModalidade()->getDesporto())
-		<< "("<<(*provas[i]->getModalidade())<<")"
-		<< " as " << provas[i]->getInicio() << endl;
+	for (unsigned int i = 0; i < vprova.size(); i++)
+			cout << vprova[i].getData() << ": Prova de " << (*vprova[i].getModalidade()->getDesporto())
+			<< "("<<(*vprova[i].getModalidade())<<")"
+			<< " as " << vprova[i].getInicio() << endl;}
 }
 
+void Campeonato::listaProvasRealizadas() const{
+	vector<ProvaTerminada > vprova;
+
+		cout << "Provas ja realizadas no campeonato: " << endl;
+
+
+
+		for (unsigned int j = 0; j < provasTerminadas.size();j++)
+			if(provasTerminadas[j].getRealizada() == 1)
+				vprova.push_back(provasTerminadas[j]);
+
+		if (vprova.size() == 0)
+
+		cout <<endl << "Ainda nao foram realizadas provas" <<endl <<endl;
+		else{
+		insertionSort<ProvaTerminada>(vprova);
+
+		for (unsigned int i = 0; i < vprova.size(); i++)
+			cout << vprova[i].getData() << ": Prova de " << (*vprova[i].getModalidade()->getDesporto())
+			<< "("<<(*vprova[i].getModalidade())<<")"
+			<< " as " << vprova[i].getInicio() << endl;}
+}
 
 void Campeonato::listaAtletas() const{
 	vector<string> vat;
@@ -1201,3 +1243,22 @@ void Campeonato::listaAtletasModalidade() const{
 		}
 	}
 }
+
+bool Campeonato::realizaProva(Prova &p , vector <float> pontuacoes){
+	Hora hi (p.getInicio().getHoras(),p.getInicio().getMinutos());
+
+	for (vector < Prova*>::iterator it = provas.begin(); it < provas.end();it++)
+		if ((*it) == &p)
+			{
+			ProvaTerminada nova (p.getModalidade(), p.getData(), hi, p.getGenero(), p.getAtletas());
+			atribuiPontuacao(nova, pontuacoes);
+			it = provas.erase(it);
+			provasTerminadas.push_back(nova);
+			return true;
+			}
+		else if ((!((*it) == &p))&& (it++)==provas.end())
+			return false;
+return false;
+
+}
+

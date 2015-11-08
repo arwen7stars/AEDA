@@ -188,6 +188,26 @@ void Equipa::menu(vector<Desporto*> DespList){
 	}
 }
 
+void Equipa::setNome(string n) {
+	nome = n;
+}
+void Equipa::setAtletas(vector<Atleta *> a) {
+	for (unsigned int i = 0; i < a.size(); i++)
+		atletas[i] = a[i];
+}
+void Equipa::setDesportos(vector<Desporto *> d) {
+	for (unsigned int i = 0; i < d.size(); i++)
+		desportos[i] = d[i];
+}
+
+Equipa & Equipa::operator= (const Equipa & e){
+	setNome(e.getNome());
+	setAtletas(e.getAtletas());
+	setDesportos(e.getDesportos());
+	return *this;
+}
+
+
 //void Equipa::menuEquipas(){
 //	bool exit = false;
 //	while (!exit){
@@ -242,6 +262,27 @@ vector<Modalidade *> Atleta::getModalidades() const{
 	return modalidades;
 }
 
+void Atleta::setNome( string n){
+	nome = n;
+}
+
+void Atleta::setEquipa(Equipa & eq){
+	equipa = &eq;
+}
+
+void Atleta::setProvas(vector <Prova *> p) {
+	for (unsigned int i = 0; i< p.size(); i++)
+		provas[i]=p[i];
+}
+
+void Atleta::setModalidades(vector <Modalidade *> m) {
+	for (unsigned int i = 0; i< m.size(); i++)
+			modalidades[i]=m[i];
+}
+
+void Atleta::setGenero(bool g){
+	genero = g;
+}
 
 bool  Atleta::getGenero() const{
 	return genero;
@@ -312,6 +353,16 @@ bool Atleta::operator <(const Atleta & a) const{
 	if (pontos > a.getPontos())
 		return true;
 	else return false;
+}
+
+Atleta & Atleta::operator=(const Atleta & a) {
+	setNome(a.nome);
+	setEquipa(*a.getEquipa());
+	setProvas(a.getProvas());
+	setModalidades(a.getModalidades());
+	setpontos(a.getPontos());
+	setGenero(a.getGenero());
+return *this;
 }
 
 void Atleta::setpontos(int p){

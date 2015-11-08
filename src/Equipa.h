@@ -28,11 +28,16 @@ public:
 	vector<Atleta *> getAtletas() const;
 	vector<Desporto *> getDesportos() const;
 
+	void setNome(string n);
+	void setAtletas(vector <Atleta *> a) ;
+	void setDesportos(vector <Desporto *> d);
+
 	bool adicionaAtleta(Atleta * a);
 	void adicionaDesporto(Desporto * d);
 
 	bool operator== (const Equipa & c) const;
 	friend ostream & operator<<(ostream & o, const Equipa & d);
+	Equipa & operator= (const Equipa & a);
 
 	void adicionarDesporto(vector<Desporto*> DespList);
 	void retirarDesporto();
@@ -73,9 +78,13 @@ public:
 	int getPontos() const;
 	vector<Prova *> getProvas() const;
 	vector<Modalidade *> getModalidades() const;
-
 	bool getGenero() const;
 
+void setGenero(bool g);
+	void setNome( string n);
+	void setEquipa(Equipa & eq);
+	void setProvas(vector <Prova *> p);
+	void setModalidades(vector <Modalidade *> m);
 	void setpontos(int p); //no fim nao precisamos disto, e para testar
 
 	void adicionaProva(Prova * p);
@@ -87,6 +96,7 @@ public:
 	bool operator== (const Atleta & c) const;
 	friend ostream & operator<<(ostream & o, const Atleta & d);
 	bool operator <(const Atleta & a) const;
+	Atleta & operator= (const Atleta & a);
 };
 
 

@@ -28,6 +28,7 @@ protected:
 	Hora inicio, fim;
 	vector<Atleta *> atletas;
 	bool genero;
+	bool realizada;
 public:
 	Prova(){};
 	Prova(Modalidade* m, Data d, Hora i, char g);
@@ -38,17 +39,20 @@ public:
 	Modalidade* getModalidade() const;
 	vector<Atleta*> getAtletas() const;
 	bool getGenero() const;
+	bool getRealizada() const;
 
 	void adicionaAtleta(Atleta * a);
-	bool Simultaneo(Prova p);
-
 	void adicionarAtleta(vector<Equipa*> TeamList, vector<Desporto*> DespList);
 	void retirarAtleta();
+
+
+	bool Simultaneo(Prova p);
+
 	void menu(vector<Equipa*> TeamList, vector<Desporto*> DespList);
 
 	friend ostream & operator<<(ostream & o, const Prova & p);
-
 	bool operator < (const Prova &p2) const;
+	bool operator == (const Prova &p2) const;
 
 	class ProvasSimultaneas : public ExcecoesLoadProva {
 		string mod1, mod2;
@@ -64,11 +68,15 @@ public:
 
 class ProvaTerminada: public Prova{ //Quando uma prova ja terminou, transformamola num ProvaTerminada
 	vector<int> pontuacoes; //Vetor com as pontuacoes dos atletas, corresponde com o vector atletas
+	vector<Atleta *> rankingFinal;
 public:
-	ProvaTerminada(Modalidade* m, Data d, Hora i, char g);
+	ProvaTerminada(Modalidade* m, Data d, Hora i, char g, vector <Atleta *> a); //o ranking final so e atualizado durante o atribui pontuacoes, chamado em realizaProva
 	Atleta* getPrimeiro() const;
 	Atleta* getSegundo() const;
 	Atleta* getTerceiro() const;
+	void setRankingFinal(vector<Atleta > &rankin);
+	vector<Atleta *> getRankingFinal() const;
+	bool operator < (const ProvaTerminada &p) const;
 };
 
 

@@ -25,6 +25,7 @@ class Campeonato{
 	vector<Desporto *> desportos; ///< Lista de Desportos/Modalidades
 	vector<Equipa* > equipas; ///< Lista de Equipas
 	vector<Prova *> provas;
+	vector<ProvaTerminada> provasTerminadas;
 	bool criado;
 	Data inicio, fim;///< Data do inicio e do fim do campeonato, pode dar jeito
 	Hora abertura, fecho;
@@ -95,8 +96,10 @@ public:
 		Hora getHora() const {return hora;}
 	};
 
+	bool realizaProva(Prova & p, vector <float> pontuacoes);
 	void listaDesportos() const;
-	void listaProvas() const;
+	void listaProvasNaoRealizadas() const;
+	void listaProvasRealizadas() const;
 	void listaAtletas() const;
 	void listaAtletasEquipa() const;
 	void listaAtletasColocacao() const;
@@ -109,3 +112,4 @@ void atribuiPontuacao(Prova pro, vector<float> pontos);
 
 
 #endif /* CAMPEONATO_H_ */
+
