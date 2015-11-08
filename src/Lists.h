@@ -251,7 +251,17 @@ class FicheiroInexistente
 {
 	string nome;
 public:
+	FicheiroInexistente() {}
 	FicheiroInexistente(string n) : nome(n) {}
+	string getNome() { return nome; }
+};
+
+class LoadFail
+{
+	string nome;
+public:
+	LoadFail() {}
+	LoadFail(string n) : nome(n) {}
 	string getNome() { return nome; }
 };
 

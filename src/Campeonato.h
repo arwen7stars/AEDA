@@ -195,6 +195,7 @@ public:
 	void menuListasAtletas();
 	void menuListasProvas();
 	void Salvar();
+	void TerminarPlaneamento();
 /**Adiciona desporto ao vetor desportos do campeonato
  *
  * Lanca excepcao DesportoExiste se o desporto ja existir no vetor.

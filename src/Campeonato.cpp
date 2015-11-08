@@ -1166,6 +1166,96 @@ void Campeonato::menuListasProvas(){
 		}
 }
 
+void Campeonato::TerminarPlaneamento()
+{
+	bool mod_vazio = false;
+	bool provas_mod_vazio = false;
+	bool atletas_vazio = false;
+	bool desportos_vazio = false;
+	bool provas_at_vazio = false;
+	bool atletas_pro_vazio = false;
+
+	for(unsigned int i = 0; i < desportos.size(); i++)
+	{
+		if (desportos[i]->getModalidades().size() == 0)
+		{
+			mod_vazio = true;
+		}
+		for(unsigned int j = 0; j < desportos[i]->getModalidades().size(); j++)
+		{
+			int i = 0;
+			for (unsigned int k = 0; k < provas.size(); k++)
+			{
+				if (provas[j]->getModalidade() == desportos[i]->getModalidades()[k])
+				{
+					i++;
+				}
+			}
+
+			if (i == 0)
+				provas_mod_vazio = true;
+		}
+	}
+
+	for(unsigned int i = 0; i < equipas.size(); i++)
+	{
+		if (equipas[i]->getAtletas().size() == 0)
+			atletas_vazio = true;
+		if (equipas[i]->getDesportos().size() == 0)
+			desportos_vazio = true;
+
+		for(unsigned int j = 0; j < equipas[i]->getAtletas().size(); j++)
+		{
+			if (equipas[i]->getAtletas()[j]->getProvas().size)
+				provas_at_vazio = true;
+		}
+	}
+
+	for(unsigned int i = 0; i < provas.size(); i++)
+	{
+		if (provas[i]->getAtletas().size() == 0)
+			atletas_pro_vazio = true;
+	}
+	system("cls");
+
+	if (mod_vazio)
+	{
+		cout << "Ainda ha desportos sem modalidades!";
+		_getch();
+		return;
+	}else if (provas_mod_vazio)
+	{
+		cout << "Ainda ha modalidades sem provas!";
+		_getch();
+		return;
+	}else if(atletas_vazio)
+	{
+		cout << "Ainda ha equipas sem atletas!";
+		_getch();
+		return;
+	}else if(desportos_vazio)
+	{
+		cout << "Ainda ha equipas sem desportos!";
+		_getch();
+		return;
+	}else if(provas_at_vazio)
+	{
+		cout << "Ainda ha atletas sem provas!";
+		_getch();
+		return;
+	}
+	else if(atletas_pro_vazio)
+	{
+		cout << "Ainda ha provas sem atletas!"
+		_getch();
+		return;
+	}
+	else {
+		criado = true;
+	}
+
+}
+
 void Campeonato::adicionaDesporto(){
 	system("cls");
 
