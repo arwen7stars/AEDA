@@ -49,8 +49,8 @@ int wherey();
  * Esc - Sai da lista.
  * Enter - Sei da lista returnando o indice do objecto atual de options.
  *
- * @param titulo
- * @param options
+ * @param titulo - titulo do menu
+ * @param options -  vector de objectos que vao ser imprimidos como opcoes para escolher
  * @return -1 se for pressionado ESC, indice do objecto selecionado se for pressionado ENTER
  */
 template <class T>
@@ -66,8 +66,8 @@ int fazMenu(string titulo, vector<T*> options);
  * Esc - Sai da lista.
  * Enter - Sei da lista returnando o indice do objecto atual de options.
  *
- * @param titulo
- * @param options
+ * @param titulo - titulo do menu
+ * @param options -  vector de objectos que vao ser imprimidos como opcoes para escolher
  * @return -1 se for pressionado ESC, indice do objecto selecionado se for pressionado ENTER
  */
 template <class T>
@@ -84,9 +84,9 @@ int fazMenu(string titulo, vector<T> options);
  * Esc - Sai da lista.
  * Enter - Sei da lista returnando o indice do objecto atual. (Tamanho de options se a seta estiver em Op1)
  *
- * @param titulo
- * @param options
- * @param Op1
+ * @param titulo - titulo do menu
+ * @param options -  vector de objectos que vao ser imprimidos como opcoes para escolher
+ * @param Op1 - uma ultima opcao
  * @return -1 se for pressionado ESC, indice do objecto selecionado se for pressionado ENTER
  */
 template <class T>
@@ -95,8 +95,8 @@ int fazMenu(string titulo, vector<T*> options, string Op1);
 /**
  * Procura no vector v, um apontador para um objecto que seja igual a x, e retorna o seu indice.
  *
- * @param v
- * @param x
+ * @param v - um vector onde se vai procurar
+ * @param x - um objecto para encontrar
  * @return -1 se nao encontrar nenhum, ou indice do elemento se encontrar.
  */
 template <class T>
