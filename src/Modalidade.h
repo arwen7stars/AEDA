@@ -55,7 +55,7 @@ public:
 
 	/**
 	 *
-	 * @param c
+	 * @param c - uma modalidade
 	 * @return true se o nome de c e desta modalidade forem iguais, false caso contrario.
 	 */
 	bool operator== (const Modalidade & c) const;
