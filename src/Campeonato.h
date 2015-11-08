@@ -45,7 +45,6 @@ public:
 	void updateModalidades(string nome_ficheiro);
 	void updateProvas(string nome_ficheiro);
 
-	void apagaDesporto(string n);
 	void apagaModalidade(string n);
 
 	string getNome() const;

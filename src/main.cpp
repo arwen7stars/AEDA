@@ -708,23 +708,25 @@ int main(){
 	c.updateModalidades("Modalidades.txt");
 	c.updateProvas("Provas.txt");
 */
-	//menu();
-/*
-	Campeonato c = load();
-	c.apagaModalidade("Finais");
+	//Campeonato c = load();
+/*	c.apagaModalidade("Finais");
 
+	c.updateModalidades("Modalidades.txt");
+	c.updateProvas("Provas.txt");
+	*/
+
+/*
 	cout << endl << "Vetor de provas de campeonato\n" << endl;
 		for(unsigned int i = 0; i < c.getProvas().size();i++)
 		{
-			cout << c.getProvas()[i]->getModalidade()->getNome() << endl;
-			cout << c.getProvas()[i]->getData() << endl;
-			cout << c.getProvas()[i]->getInicio() << endl;
+			cout << *c.getProvas()[i] << endl;
 			if (c.getProvas()[i]->getGenero())
 				cout << "M" << endl;
 			else cout << "F" << endl;
 			cout << endl;
 		}
-
+		*/
+/*
 
 				for(unsigned int i = 0; i < c.getDesportos().size(); i++)
 					{
@@ -754,6 +756,7 @@ int main(){
 					}
 
 */
+	menu();
 
 	cout << "Press any key to continue...";
 	_getch();

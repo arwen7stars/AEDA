@@ -45,7 +45,6 @@ public:
 	void adicionarAtleta(vector<Equipa*> TeamList, vector<Desporto*> DespList);
 	void retirarAtleta();
 
-
 	bool Simultaneo(Prova p);
 
 	void menu(vector<Equipa*> TeamList, vector<Desporto*> DespList);

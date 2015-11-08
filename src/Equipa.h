@@ -35,8 +35,8 @@ public:
 	bool adicionaAtleta(Atleta * a);
 	void adicionaDesporto(Desporto * d);
 
-	void apagaDesporto(int indice);
 	void apagaModalidade(int i_atleta, int i_modalidade);
+	void apagaAtleta(string nome);
 
 	bool operator== (const Equipa & c) const;
 	friend ostream & operator<<(ostream & o, const Equipa & d);
