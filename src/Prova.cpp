@@ -118,7 +118,6 @@ bool Prova::operator ==(const Prova &p2) const {
 		return true;
 	}
 }
-
 void Prova::adicionarAtleta(vector<Equipa*> TeamList, vector<Desporto*> DespList){
 	bool exit = false;
 	while (!exit){
@@ -126,7 +125,11 @@ void Prova::adicionarAtleta(vector<Equipa*> TeamList, vector<Desporto*> DespList
 		int ch = fazMenu("Selecionar Equipa:", TeamList);
 		if (ch == -1)
 			exit = true;
-		else{
+		else{if (atletas.size() == 0){
+			cout << "Nao existem atletas inscritos.";
+			_getch();
+			return;
+		}
 			if (search(TeamList[ch]->getDesportos(), *modalidade->getDesporto()) == -1){
 				cout << "A equipa " << TeamList[ch]->getNome() << " nao esta inscrita no desporto " << modalidade->getDesporto()->getNome() << ".\n";
 				_getch();

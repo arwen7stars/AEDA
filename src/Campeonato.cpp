@@ -747,7 +747,6 @@ void Campeonato::menuProvas(){
 	}
 }
 
-
 void Campeonato::menuApagar(){
 	bool exit = false;
 	int ch, ch2, ch3;
@@ -798,6 +797,11 @@ void Campeonato::menuApagar(){
 					return;
 
 				}
+				if (desportos[ch2]->getModalidades().size() == 0)
+					{
+					desportos.erase(desportos.begin()+ch2);
+					return;
+					}
 
 				if (desportos[ch2]->getModalidades().size() != 0)
 				{
@@ -866,7 +870,7 @@ void Campeonato::menuApagar(){
 						system("cls");
 						cout << "Ainda existem provas subscritas a esta modalidade.\n";
 						cout << endl;
-						cout << "Por favor elimine as seguintes equipas:\n";
+						cout << "Por favor elimine as seguintes provas:\n";
 
 						for(unsigned int i = 0; i < provas_mod.size(); i++)
 						{
@@ -974,6 +978,12 @@ void Campeonato::menuApagar(){
 					exit2 = true;
 					continue;
 				}
+
+				if (provas[ch2]->getAtletas().size() == 0)
+					{
+					provas.erase(provas.begin()+ch2);
+					return;
+					}
 
 				if (provas[ch2]->getAtletas().size() != 0){
 					{
@@ -1227,7 +1237,6 @@ void Campeonato::menuListasProvas(){
 void Campeonato::TerminarPlaneamento()
 {
 	bool mod_vazio = false;
-	bool provas_mod_vazio = false;
 	bool atletas_vazio = false;
 	bool desportos_vazio = false;
 	bool provas_at_vazio = false;
@@ -1238,20 +1247,6 @@ void Campeonato::TerminarPlaneamento()
 		if (desportos[i]->getModalidades().size() == 0)
 		{
 			mod_vazio = true;
-		}
-		for(unsigned int j = 0; j < desportos[i]->getModalidades().size(); j++)
-		{
-			int i = 0;
-			for (unsigned int k = 0; k < provas.size(); k++)
-			{
-				if (provas[j]->getModalidade() == desportos[i]->getModalidades()[k])
-				{
-					i++;
-				}
-			}
-
-			if (i == 0)
-				provas_mod_vazio = true;
 		}
 	}
 
@@ -1279,11 +1274,6 @@ void Campeonato::TerminarPlaneamento()
 	if (mod_vazio)
 	{
 		cout << "Ainda ha desportos sem modalidades!";
-		_getch();
-		return;
-	}else if (provas_mod_vazio)
-	{
-		cout << "Ainda ha modalidades sem provas!";
 		_getch();
 		return;
 	}else if(atletas_vazio)
