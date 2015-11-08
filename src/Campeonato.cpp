@@ -54,8 +54,41 @@ vector<Equipa*> Campeonato::getEquipas() const
 	return equipas;
 }
 
+bool Campeonato::adicionaDesporto(Desporto &d){
+	int indice = -1;
+	for(unsigned int i = 0; i < desportos.size(); i++)
+		if (desportos[i]->getNome() == d.getNome())
+			{
+			indice = i;
+			return false;
+			}
+
+	if (indice == -1)
+		desportos.push_back(&d);
+	return true;
+}
+
+bool Campeonato::adicionaEquipa(Equipa * eq)
+{
+	int indice = -1;
+	for(unsigned int i = 0; i < equipas.size(); i++)
+	{
+		if (comparar_strings(eq->getNome(), equipas[i]->getNome()))
+			{
+			indice = i;
+			return false;
+			}
+	}
+
+	if(indice == -1)
+		equipas.push_back(eq);
+	return true;
+
+}
+
 void Campeonato::adicionaProva(Prova &p)
 {
+
 	bool tamanho_zero = false;
 	if (p.getData() < inicio || fim < p.getData())
 	{
@@ -72,7 +105,8 @@ void Campeonato::adicionaProva(Prova &p)
 		else
 		{
 			if (provas.size() == 0)
-			{tamanho_zero = true;
+			{
+				tamanho_zero = true;
 				provas.push_back(&p);
 			}
 			else
@@ -81,7 +115,7 @@ void Campeonato::adicionaProva(Prova &p)
 				{
 					bool simultaneo = provas[i]->Simultaneo(p);
 
-					if (simultaneo)
+					if (simultaneo && comparar_strings(p.getModalidade()->getNome(),provas[i]->getModalidade()->getNome()))
 						throw Prova::ProvasSimultaneas(p.getModalidade()->getNome(), provas[i]->getModalidade()->getNome());
 				}
 			}
@@ -89,19 +123,7 @@ void Campeonato::adicionaProva(Prova &p)
 	}
 
 	if (!tamanho_zero)
-			provas.push_back(&p);
-}
-
-void Campeonato::adicionaEquipa(Equipa * eq)
-{
-	int indice = -1;
-	for(unsigned int i = 0; i < equipas.size(); i++)
-	{
-		if (eq->getNome() == equipas[i]->getNome())
-			indice = i;
-	}
-	if(indice == -1)
-		equipas.push_back(eq);
+		provas.push_back(&p);
 
 }
 
@@ -192,7 +214,6 @@ void Campeonato::loadEquipas(string nome_ficheiro)
 			adicionaEquipa(equipa);
 
 		extraido = "";
-
 		int c = in.peek();
 
 		if (!in.eof() && c != '\n')
@@ -219,7 +240,7 @@ void Campeonato::loadEquipas(string nome_ficheiro)
 
 					for (unsigned int i = 0; i < equipas.size(); i++)
 					{
-						if (eq == equipas[i]->getNome())
+						if (comparar_strings(eq, equipas[i]->getNome()))
 							indiceEquipa = i;
 					}
 					if (indiceEquipa == -1 && eq != "")
@@ -328,7 +349,6 @@ void Campeonato::loadProvas(string nome_ficheiro)
 
 		k++;
 
-
 		for (unsigned int i = 0; i < desportos.size(); i++)
 		{
 			for(unsigned int j = 0; j < desportos[i]->getModalidades().size(); j++)
@@ -391,7 +411,6 @@ void Campeonato::loadProvas(string nome_ficheiro)
 
 		adicionaProva(*p);
 	}
-
 }
 
 void Campeonato::updateDesportos(string nome_ficheiro)
@@ -399,6 +418,7 @@ void Campeonato::updateDesportos(string nome_ficheiro)
 	ofstream out;
 
 	out.open(nome_ficheiro.c_str());
+
 	if(!ficheiroExiste(nome_ficheiro))
 		throw FicheiroInexistente(nome_ficheiro);
 
@@ -417,6 +437,7 @@ void Campeonato::updateEquipas(string nome_ficheiro)
 {
 	ofstream out;
 	out.open(nome_ficheiro.c_str());
+
 	if(!ficheiroExiste(nome_ficheiro))
 		throw FicheiroInexistente(nome_ficheiro);
 
@@ -483,7 +504,37 @@ void Campeonato::updateProvas(string nome_ficheiro)
 	}
 }
 
+void Campeonato::apagaDesporto(string n)
+{
+	for (unsigned int i = 0; i < desportos.size(); i++)
+	{
+		if ( desportos[i]->getNome() == n)
+			desportos.erase(desportos.begin()+i);
+	}
 
+
+	for(unsigned int i = 0; i < equipas.size(); i++)
+	{
+		for(unsigned int j= 0; j < equipas[i]->getDesportos().size(); j++)
+		{
+			if (n == equipas[i]->getDesportos()[j]->getNome())
+				equipas[i]->apagaDesporto(j);
+		}
+
+		for(unsigned int j = 0; j < equipas[i]->getAtletas().size(); j++)
+		{
+			for(unsigned int k = 0; k < equipas[i]->getAtletas()[j]->getModalidades().size(); k++)
+			{
+				if (equipas[i]->getAtletas()[j]->getModalidades()[k]->getDesporto()->getNome() == n)
+				{
+					equipas[i]->apagaModalidade(j,k);
+					k--;
+				}
+			}
+		}
+	}
+
+}
 
 
 void Campeonato::menuApagar(){
@@ -1015,16 +1066,6 @@ void Campeonato::adicionaEquipa(Equipa &eq){
 
 	if (indice == -1)
 		equipas.push_back(&eq);
-}
-
-void Campeonato::adicionaDesporto(Desporto &d){
-	int indice = -1;
-	for(unsigned int i = 0; i < desportos.size(); i++)
-		if (desportos[i]->getNome() == d.getNome())
-			indice = i;
-
-	if (indice == -1)
-		desportos.push_back(&d);
 }
 
 void Campeonato::listaDesportos() const{

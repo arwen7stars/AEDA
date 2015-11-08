@@ -71,6 +71,17 @@ void Equipa::adicionaDesporto(Desporto * d)
 	}
 }
 
+void Equipa::apagaDesporto(int indice)
+{
+	desportos.erase(desportos.begin()+indice);
+
+}
+
+void Equipa::apagaModalidade(int i_atleta, int i_modalidade)
+{
+	atletas[i_atleta]->apagaModalidade(i_modalidade);
+}
+
 void Equipa::adicionaAtleta(){
 	system("cls");
 	string n;
@@ -260,6 +271,11 @@ vector<Prova *> Atleta::getProvas() const{
 
 vector<Modalidade *> Atleta::getModalidades() const{
 	return modalidades;
+}
+
+void Atleta::apagaModalidade(int indice)
+{
+	modalidades.erase(modalidades.begin()+indice);
 }
 
 void Atleta::setNome( string n){

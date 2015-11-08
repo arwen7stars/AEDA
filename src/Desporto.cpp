@@ -92,6 +92,11 @@ bool Desporto::isCrescente() const{
 	return pontuacao.crescente;
 }
 
+void Desporto::apagaModalidade(int indice)
+{
+	modalidades.erase(modalidades.begin()+indice);
+}
+
 void Desporto::adicionaModalidade(){
 	system("cls");
 

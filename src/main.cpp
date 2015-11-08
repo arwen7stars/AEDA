@@ -708,6 +708,39 @@ int main(){
 	c.updateModalidades("Modalidades.txt");
 	c.updateProvas("Provas.txt");
 */
+	//menu();
+	/*
+		Campeonato c = load();
+		c.apagaDesporto("Futebol");
+		*/
+	/*
+		for(unsigned int i = 0; i < c.getDesportos().size(); i++)
+			{
+				cout << c.getDesportos()[i]->getNome() << endl;
+
+				for(unsigned int j = 0; j < c.getDesportos()[i]->getModalidades().size(); j++)
+					cout << "<" << c.getDesportos()[i]->getModalidades()[j]->getNome() << ">" << endl;
+				cout << endl;
+			}
+	*/
+		/*
+		for(unsigned int i = 0; i < c.getEquipas().size(); i++)
+			{
+				cout << c.getEquipas()[i]->getNome() << endl;
+
+				for(unsigned int j = 0; j < c.getEquipas()[i]->getAtletas().size(); j++)
+					{
+					cout << c.getEquipas()[i]->getAtletas()[j]->getNome() << endl;
+					for(unsigned int k = 0; k < c.getEquipas()[i]->getAtletas()[j]->getModalidades().size(); k++)
+					{
+						cout << c.getEquipas()[i]->getAtletas()[j]->getModalidades()[k]->getDesporto()->getNome() << endl;
+						cout << c.getEquipas()[i]->getAtletas()[j]->getModalidades()[k]->getNome() << endl << endl;
+					}
+					}
+
+				cout << endl;
+			}
+	*/
 	cout << "Press any key to continue...";
 	_getch();
 	return 0;

@@ -35,6 +35,9 @@ public:
 	bool adicionaAtleta(Atleta * a);
 	void adicionaDesporto(Desporto * d);
 
+	void apagaDesporto(int indice);
+	void apagaModalidade(int i_atleta, int i_modalidade);
+
 	bool operator== (const Equipa & c) const;
 	friend ostream & operator<<(ostream & o, const Equipa & d);
 	Equipa & operator= (const Equipa & a);
@@ -80,7 +83,7 @@ public:
 	vector<Modalidade *> getModalidades() const;
 	bool getGenero() const;
 
-void setGenero(bool g);
+	void setGenero(bool g);
 	void setNome( string n);
 	void setEquipa(Equipa & eq);
 	void setProvas(vector <Prova *> p);
@@ -90,6 +93,8 @@ void setGenero(bool g);
 	void adicionaProva(Prova * p);
 	void adicionaModalidade(Modalidade * m);
 	void adicionaPontuacao(int p);
+
+	void apagaModalidade(int indice);
 
 	void menu();
 

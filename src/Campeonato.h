@@ -31,9 +31,9 @@ class Campeonato{
 	Hora abertura, fecho;
 public:
 	Campeonato(string n, Data i, Data f, Hora a, Hora fe);
-	void adicionaEquipa(Equipa * eq);
+	bool adicionaDesporto(Desporto &d);
+	bool adicionaEquipa(Equipa * eq);
 	void adicionaProva(Prova &p);
-	void adicionaDesporto(Desporto &d);
 
 	void loadDesportos(string nome_ficheiro);
 	void loadEquipas(string nome_ficheiro);
@@ -44,6 +44,8 @@ public:
 	void updateEquipas(string nome_ficheiro);
 	void updateModalidades(string nome_ficheiro);
 	void updateProvas(string nome_ficheiro);
+
+	void apagaDesporto(string n);
 
 	string getNome() const;
 	Data getInicio() const;
@@ -104,8 +106,8 @@ public:
 	void listaAtletasEquipa() const;
 	void listaAtletasColocacao() const;
 	void listaAtletasDesporto() const;
-	void listaEquipasColocacao() const ;
 	void listaAtletasModalidade() const;
+	void listaEquipasColocacao() const ;
 };
 
 void atribuiPontuacao(Prova pro, vector<float> pontos);

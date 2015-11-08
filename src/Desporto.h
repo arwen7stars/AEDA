@@ -35,6 +35,8 @@ public:
 	vector<Modalidade *> getModalidades() const;
 	bool isCrescente() const;
 
+	void apagaModalidade(int indice);
+
 	bool operator== (const Desporto & c) const;
 	friend ostream & operator<<(ostream & o, const Desporto & d);
 
