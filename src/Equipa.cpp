@@ -315,7 +315,6 @@ bool  Atleta::getGenero() const{
 }
 
 void Atleta::adicionaPontuacao(int p){
-	cout << "kiuabate" << endl;
 	pontos += p;
 }
 
