@@ -534,6 +534,15 @@ void Campeonato::apagaDesporto(string n)
 		}
 	}
 
+	for(unsigned int i = 0; i < provas.size(); i++)
+	{
+		if(provas[i]->getModalidade()->getDesporto()->getNome() == n)
+		{
+			provas.erase(provas.begin()+i);
+			i--;
+		}
+	}
+
 }
 
 
