@@ -745,7 +745,7 @@ void Campeonato::menuProvas(){
 		if (ch == -1)
 			exit = true;
 		else if (ch < provas.size())
-			provas[ch]->menu(equipas, desportos);
+			provas[ch]->menu(equipas);
 		else
 			adicionaProva();
 	}

@@ -118,20 +118,17 @@ bool Prova::operator ==(const Prova &p2) const {
 		return true;
 	}
 }
-void Prova::adicionarAtleta(vector<Equipa*> TeamList, vector<Desporto*> DespList){
+void Prova::adicionarAtleta(vector<Equipa*> TeamList){
 	bool exit = false;
 	while (!exit){
 		system("cls");
+
 		int ch = fazMenu("Selecionar Equipa:", TeamList);
 		if (ch == -1)
 			exit = true;
-		else{if (atletas.size() == 0){
-			cout << "Nao existem atletas inscritos.";
-			_getch();
-			return;
-		}
+		else{
 			if (search(TeamList[ch]->getDesportos(), *modalidade->getDesporto()) == -1){
-				cout << "A equipa " << TeamList[ch]->getNome() << " nao esta inscrita no desporto " << modalidade->getDesporto()->getNome() << ".\n";
+					cout << "A equipa " << TeamList[ch]->getNome() << " nao esta inscrita no desporto " << modalidade->getDesporto()->getNome() << ".\n";
 				_getch();
 			}
 			else{
@@ -139,28 +136,32 @@ void Prova::adicionarAtleta(vector<Equipa*> TeamList, vector<Desporto*> DespList
 				while (!exit2){
 					system("cls");
 					int ch2 = fazMenu("Selecionar Atleta:", TeamList[ch]->getAtletas());
-					if (ch == -1)
+					if (ch2 == -1)
+						{
 						exit2 = true;
+						}
 					else{
 						if (search(atletas, *TeamList[ch]->getAtletas()[ch2]) == -1){
 							atletas.push_back(TeamList[ch]->getAtletas()[ch2]);
 							TeamList[ch]->getAtletas()[ch2]->adicionaProva(this);
+							return;
 						}
 						else{
-							cout << "O atleta " << TeamList[ch]->getAtletas()[ch2]->getNome() << "ja esta inscrito.\n";
+							system("cls");
+							cout << "O atleta " << TeamList[ch]->getAtletas()[ch2]->getNome() << " ja esta inscrito.\n";
 							_getch();
+							return;
 						}
-
 					}
 				}
 			}
-			exit = true;
 		}
 	}
 }
 
 void Prova::retirarAtleta(){
 	system("cls");
+
 	if (atletas.size() == 0){
 		cout << "Nao existem atletas inscritos.";
 		_getch();
@@ -187,12 +188,12 @@ void Prova::retirarAtleta(){
 	}
 }
 
-void Prova::menu(vector<Equipa*> TeamList, vector<Desporto*> DespList){
+void Prova::menu(vector<Equipa*> TeamList){
 	bool exit = false;
 	while (!exit){
 		system("cls");
 		vector<string> choices;
-		choices.push_back("Alterar Atletas");
+		choices.push_back("Adicionar Atletas");
 		choices.push_back("Retirar Atletas");
 
 		cout << *this;
@@ -201,7 +202,7 @@ void Prova::menu(vector<Equipa*> TeamList, vector<Desporto*> DespList){
 		if (ch == -1)
 			exit = true;
 		else if (ch == 0)
-			adicionarAtleta(TeamList, DespList);
+			adicionarAtleta(TeamList);
 		else
 			retirarAtleta();
 	}

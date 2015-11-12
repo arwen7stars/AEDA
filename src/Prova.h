@@ -96,7 +96,7 @@ public:
 	 * @param TeamList - Lista de equipas
 	 * @param DespList - Lista de desportos
 	 */
-	void adicionarAtleta(vector<Equipa*> TeamList, vector<Desporto*> DespList);
+	void adicionarAtleta(vector<Equipa*> TeamList);
 
 	/**
 	 * Permite ao utilizador escolher um atleta para apagar
@@ -115,7 +115,7 @@ public:
 	 * @param TeamList - Lista de equipas
 	 * @param DespList - Lista de desportos
 	 */
-	void menu(vector<Equipa*> TeamList, vector<Desporto*> DespList);
+	void menu(vector<Equipa*> TeamList);
 
 	/**
 	 * imprime uma prova

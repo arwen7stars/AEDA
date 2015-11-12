@@ -230,13 +230,13 @@ void menu(){
 
 int main(){
 
-	//try{
+	try{
 		menu();
-	/*} catch(...)
+	} catch(...)
 	{
 		cout << "Um erro inesperado ocorreu, o programa irá agora terminar.\n\nGAME OVER";
 		_getch();
-	}*/
+	}
 	system("cls");
 	cout << "Press any key to continue...";
 	_getch();
