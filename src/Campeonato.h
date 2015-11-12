@@ -42,6 +42,7 @@ public:
 	 * @param fe - Hora diaria de fecho do campeonato
 	 */
 	Campeonato(string n, Data i, Data f, Hora a, Hora fe);
+	Campeonato();
 	/**Adiciona desporto ao campeonato
 	 *
 	 * Verifica se ja existe o desporto e adiciona-o ao vetor desportos se nao existir
@@ -73,7 +74,7 @@ public:
  * @param nome_ficheiro - Nome do ficheiro de desportos na pasta Debug
  * @return flase se o ficheiro nao estiver formatado corretamente
  */
-	bool loadDesportos(string nome_ficheiro);
+void loadDesportos(string nome_ficheiro);
 	/**Carrega as equipas do ficheiro para o campeonato
  *
  * O ficheiro .txt deve estar na pasta Debug do projeto e ter o seguinte formato:
@@ -84,7 +85,7 @@ public:
  * @param nome_ficheiro - Nome do ficheiro de equipas na pasta Debug
  * @return false se o ficheiro nao estiver formatado corretamente
 	 */
-	bool loadEquipas(string nome_ficheiro);
+void loadEquipas(string nome_ficheiro);
 	/**Carrega as modalidades do ficheiro para o campeonato
  *
  * O ficheiro .txt deve estar na pasta Debug do projeto e ter o seguinte formato:
@@ -96,7 +97,7 @@ public:
  * @param nome_ficheiro - Nome do ficheiro de modalidades na pasta Debug
  * @return false se o ficheiro nao estiver formatado corretamente
 	 */
-	bool loadModalidades(string nome_ficheiro);
+	void loadModalidades(string nome_ficheiro);
 	/**Carrega as modalidades do ficheiro para o campeonato
  *
  * O ficheiro .txt deve estar na pasta Debug do projeto e ter o seguinte formato:
@@ -111,7 +112,7 @@ public:
  * @param nome_ficheiro - Nome do ficheiro de equipas na pasta Debug
  * @return false se o ficheiro nao estiver formatado corretamente
 	 */
-	bool loadProvas(string nome_ficheiro);
+void loadProvas(string nome_ficheiro);
 /**Carrega as alteracoes ao vetor desportos para o ficheiro utilizado previamente
  *
  * Lanca a excecao FicheiroInexistente se o ficheiro nao existir

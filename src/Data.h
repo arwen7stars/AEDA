@@ -105,6 +105,7 @@ public:
 		 */
 		string getMessage() const
 		{
+			system("cls");
 			string d = int_to_string(dia);
 			string m = int_to_string(mes);
 			string a = int_to_string(ano);
