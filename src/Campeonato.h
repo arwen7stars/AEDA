@@ -171,6 +171,11 @@ void loadProvas(string nome_ficheiro);
 	 *
 	 */
 	void menuApagar();
+	void menuApagarDesportos();
+	void menuApagarModalidades();
+	void menuApagarEquipas();
+	void menuApagarAtletas();
+	void menuApagarProvas();
 	/**Menu na interface para apagar atributos no campeonato
 		 *
 		 * Na fase inicial, mostra as opcoes por onde escolher o que criar (desporto, modalidade, etc)

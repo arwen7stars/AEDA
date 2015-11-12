@@ -76,7 +76,7 @@ void Equipa::apagaModalidade(int i_atleta, int i_modalidade)
 	atletas[i_atleta]->apagaModalidade(i_modalidade);
 }
 
-void Equipa::apagaAtleta(string nome){
+void Equipa::apagaAtleta(const string nome){
 	for(unsigned int i = 0; i < atletas.size(); i++)
 	{
 		if (atletas[i]->getNome() == nome)
@@ -85,6 +85,9 @@ void Equipa::apagaAtleta(string nome){
 			i--;
 			}
 	}
+}
+void Equipa::apagaProva(int i_atleta, int i_prova){
+	atletas[i_atleta]->apagaProva(i_prova);
 }
 
 void Equipa::adicionaAtleta(){

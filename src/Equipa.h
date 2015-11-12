@@ -91,7 +91,8 @@ public:
 	 * apaga o atleta de nome nome
 	 * @param nome - nome do atleta
 	 */
-	void apagaAtleta(string nome);
+	void apagaAtleta(const string nome);
+	void apagaProva(int i_atleta, int i_prova);
 
 	/**
 	 *
