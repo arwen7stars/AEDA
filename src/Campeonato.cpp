@@ -1017,26 +1017,13 @@ void Campeonato::menuApagarAtletas()
 			}
 			if (equipas[ch2]->getAtletas()[ch3]->getProvas().size() != 0){
 				{
-					bool exit4 = false;
-					while (!exit4 && equipas[ch2]->getAtletas()[ch3]->getProvas().size() != 0){
-						system("cls");
-						cout << equipas[ch2]->getAtletas()[ch3]->getNome();
-						cout << " ainda esta inscrito em provas.\n";
-						cout << endl;
-
-						int ch4 = fazMenu("Provas a Retirar:", provas[ch2]->getAtletas()[ch3]->getProvas());
-						if (ch4 == -1)
-						{
-							exit4 = true;
-							continue;
-						}
-						else{
-							equipas[ch2]->getAtletas()[ch3]->apagaProva(ch4);
-							if (equipas[ch2]->getAtletas()[ch3]->getProvas().size() == 0)
-								equipas[ch2]->apagaAtleta(equipas[ch2]->getAtletas()[ch3]->getNome());
-							return;
-						}
-					}
+					system("cls");
+					cout << equipas[ch2]->getAtletas()[ch3]->getNome();
+					cout << " ainda esta inscrito nas seguintes provas:\n";
+					for(unsigned int i = 0; i < equipas[ch2]->getAtletas()[ch3]->getProvas().size(); i++)
+						cout << *equipas[ch2]->getAtletas()[ch3]->getProvas()[i] << endl;
+					_getch();
+					return;
 				}
 				return;
 			}
