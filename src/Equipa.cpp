@@ -159,13 +159,13 @@ void Equipa::menuAtletas(){
 		int ch = fazMenu("Atletas:", atletas, "Novo Atleta");
 		if (ch == -1)
 			exit = true;
-		else if (ch < atletas.size())
+		else if ((unsigned)ch < atletas.size())
 			atletas[ch]->menu();
 		else{
 			try{
 				adicionaAtleta();
 			}
-			catch (AtletaExiste a){
+			catch (AtletaExiste &a){
 				cout << "Atleta \"" << a.getNome() << "\" ja existe.";
 				_getch();
 			}

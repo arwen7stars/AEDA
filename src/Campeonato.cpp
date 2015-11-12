@@ -672,7 +672,7 @@ void Campeonato::menuCriacao(){
 							cin.ignore(1000, '\n');
 							pont.push_back(num);
 						}
-						bool var = realizaProva(*provas[indice], pont);
+						realizaProva(*provas[indice], pont);
 
 					}
 					else {
@@ -700,13 +700,13 @@ void Campeonato::menuDesportos(){
 		int ch = fazMenu("Desportos:", desportos, "Novo Desporto");
 		if (ch == -1)
 			exit = true;
-		else if (ch < desportos.size())
+		else if ((unsigned)ch < desportos.size())
 			desportos[ch]->menu();
 		else{
 			try{
 				adicionaDesporto();
 			}
-			catch (DesportoExiste d){
+			catch (DesportoExiste &d){
 				cout << "Desporto \"" << d.getNome() << "\" ja existe.";
 				_getch();
 			}
@@ -723,13 +723,13 @@ void Campeonato::menuEquipas(){
 		int ch = fazMenu("Equipas:", equipas, "Nova Equipa");
 		if (ch == -1)
 			exit = true;
-		else if (ch < equipas.size())
+		else if ((unsigned)ch < equipas.size())
 			equipas[ch]->menu(desportos);
 		else{
 			try{
 				adicionaEquipa();
 			}
-			catch (EquipaExiste eq){
+			catch (EquipaExiste &eq){
 				cout << "Equipa \"" << eq.getNome() << "\" ja existe.";
 				_getch();
 			}
@@ -744,7 +744,7 @@ void Campeonato::menuProvas(){
 		int ch = fazMenu("Provas:", provas, "Nova Prova");
 		if (ch == -1)
 			exit = true;
-		else if (ch < provas.size())
+		else if ((unsigned)ch < provas.size())
 			provas[ch]->menu(equipas);
 		else
 			adicionaProva();
@@ -1339,7 +1339,7 @@ void Campeonato::adicionaDesporto(){
 			d->adicionaModalidade();
 			break;
 		}
-		catch (Desporto::ModalidadeExiste m){
+		catch (Desporto::ModalidadeExiste &m){
 			cout << "A modalidade " << m.getNome() << " ja existe.\n";
 		}
 	}
@@ -1419,7 +1419,7 @@ void Campeonato::adicionaProva(){
 				throw Data::DataInvalida(a,m,d);
 			break;
 		}
-		catch (Data::DataInvalida D){
+		catch (Data::DataInvalida &D){
 			cout << D.getMessage();
 			cout << "Datas validas sao desde " << inicio << " ate " << fim << ".\n";
 			_getch();
@@ -1457,7 +1457,7 @@ void Campeonato::adicionaProva(){
 				throw Hora::HoraInvalida(h,min);
 			break;
 		}
-		catch (Hora::HoraInvalida H){
+		catch (Hora::HoraInvalida &H){
 			cout << H.getMessage();
 			cout << "Datas validas sao desde " << abertura << " ate " << fecho << ".\n";
 			_getch();
@@ -1583,8 +1583,7 @@ void Campeonato::listaProvasRealizadas() const{
 				vprova.push_back(*provas[j]);
 
 		if (vprova.size() == 0)
-
-		cout <<endl << "Ainda nao foram realizadas provas" <<endl <<endl;
+			cout <<endl << "Ainda nao foram realizadas provas" <<endl <<endl;
 		else{
 		insertionSort<Prova>(vprova);
 
@@ -1761,9 +1760,9 @@ bool Campeonato::realizaProva(Prova &p , vector <float> pontuacoes){
 			ProvaTerminada nova(p.getModalidade(), p.getData(), hi, p.getGenero());
 			nova.setAtletas(p.getAtletas());
 			atribuiPontuacao(nova, pontuacoes);
-			//cout << "ola" << endl;
-			provas.push_back(&nova);
+
 			it = provas.erase(it);
+			provas.push_back(&nova);
 
 			return true;
 			}

@@ -210,7 +210,7 @@ void Desporto::menuModalidades(){
 			try{
 				adicionaModalidade();
 			}
-			catch (ModalidadeExiste mod){
+			catch (ModalidadeExiste &mod){
 				cout << "Modalidade \"" << mod.getNome() << "\" ja existe.";
 				_getch();
 			}

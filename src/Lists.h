@@ -74,7 +74,6 @@ template <class T>
 int fazMenu(string titulo, vector<T> options);
 
 /**
- * /**
  * Imprime "titulo". De seguide, imprime todos os objectos apontados por options. Depois, ainda imprime Op1.
  *
  * Constroi uma seta que aponta para o primeiro objecto.
