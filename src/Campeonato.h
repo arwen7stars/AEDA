@@ -15,6 +15,7 @@
 #include "Equipa.h"
 #include "Data.h"
 #include "Lists.h"
+#include "BST.h"
 
 /**Classe Campeonato
  * Gere todo o campeonato
@@ -27,6 +28,7 @@ class Campeonato{
 	vector<Desporto *> desportos; ///< Lista de Desportos/Modalidades
 	vector<Equipa* > equipas; ///< Lista de Equipas
 	vector<Prova *> provas;
+	BST<Prova> datas;
 	bool criado;
 	Data inicio, fim;///< Data do inicio e do fim do campeonato, pode dar jeito
 	Hora abertura, fecho;
@@ -390,6 +392,8 @@ void loadProvas(string nome_ficheiro);
 		 *
 		 */
 	void listaEquipasColocacao() const ;
+
+	void calendario();
 };
 
 /**Atribui pontos aos atletas que venceram a Prova

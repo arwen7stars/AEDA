@@ -7,7 +7,7 @@
 
 using namespace std;
 
-Campeonato::Campeonato(string n, Data i, Data f, Hora a, Hora fe){
+Campeonato::Campeonato(string n, Data i, Data f, Hora a, Hora fe) : datas(Prova()){
 	nome = n;
 	inicio = i;
 	fim = f;
@@ -16,7 +16,7 @@ Campeonato::Campeonato(string n, Data i, Data f, Hora a, Hora fe){
 	criado = false;
 }
 
-Campeonato::Campeonato()
+Campeonato::Campeonato() : datas(Prova())
 {
 	nome = "";
 	criado = false;
@@ -1649,8 +1649,7 @@ void Campeonato::listaProvasNaoRealizadas() const{
 
 	for (unsigned int j = 0; j < provas.size();j++)
 		if(provas[j]->getRealizada() == 0)
-
-		vprova.push_back(*provas[j]);
+			vprova.push_back(*provas[j]);
 
 	if (vprova.size() == 0)
 		cout <<endl << "Ja foram realizadas todas as provas" <<endl <<endl;
@@ -1867,5 +1866,17 @@ bool Campeonato::realizaProva(Prova &p , vector <float> pontuacoes){
 			return false;
 return false;
 
+}
+
+void Campeonato::calendario(){
+	vector<Prova> vprova;
+
+	for (unsigned int j = 0; j < provas.size();j++)
+		vprova.push_back(*provas[j]);
+
+	insertionSort<Prova>(vprova);
+
+	for (unsigned int i = 0; i < vprova.size(); i++)
+		datas.insert(vprova[i]);
 }
 

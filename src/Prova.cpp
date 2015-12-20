@@ -97,9 +97,19 @@ ostream & operator<<(ostream & o, const Prova & p){
 
 
 bool Prova::operator < (const Prova &p2) const{
-	if (getData()< p2.getData())
-		return true;
-	return false;
+	if (getData() < p2.getData())
+		return false;
+	else if (getData() == p2.getData()){
+		if (getInicio() < p2.getInicio())
+			return true;
+		else if (getInicio() > p2.getInicio())
+			return false;
+		else {
+			if (getModalidade()->getNome() < p2.getModalidade()->getNome())
+				return true;
+			else return false;
+		}
+	} else return false;
 }
 
 bool Prova::operator ==(const Prova &p2) const {
