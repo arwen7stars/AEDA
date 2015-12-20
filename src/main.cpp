@@ -24,7 +24,6 @@ Load loadCampeonato(){
 	ifstream in;
 	string campeonato = "Campeonato.txt";
 	l.sucesso = true;
-	cout << "ola" << endl;
 	if(!ficheiroExiste(campeonato))
 	{
 		throw FicheiroInexistente(campeonato);

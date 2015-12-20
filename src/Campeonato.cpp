@@ -422,6 +422,7 @@ void Campeonato::loadProvas(string nome_ficheiro)
 
 		adicionaProva(*p);
 	}
+	criaCalendario();
 }
 
 void Campeonato::updateDesportos(string nome_ficheiro)
@@ -527,32 +528,6 @@ void Campeonato::update(){
 	updateProvas(provas);
 
 }
-/*
-void Campeonato::apagaDesporto(string n)
-{
-	bool encontrado = false;
-	for (unsigned int i = 0; i < desportos.size(); i++)
-	{
-		if ( desportos[i]->getNome() == n)
-		{
-			desportos.erase(desportos.begin()+i);
-			encontrado = true;
-		}
-	}
-
-	for(unsigned int i = 0; i < equipas.size(); i++)
-	{
-		for(unsigned int j= 0; j < equipas[i]->getDesportos().size(); j++)
-		{
-			if (n == equipas[i]->getDesportos()[j]->getNome())
-				{
-				equipas[i]->apagaDesporto(j);
-				}
-		}
-
-	}
-}
-*/
 
 void Campeonato::apagaModalidade(string n)
 {
@@ -604,6 +579,7 @@ void Campeonato::menuCriacao(){
 		if(desportos.size() > 0){
 			choices.push_back("Equipas");
 			choices.push_back("Provas");
+			choices.push_back("Calendario");
 			choices.push_back("Listas");
 			choices.push_back("Apagar");
 			choices.push_back("Salvar");
@@ -625,10 +601,12 @@ void Campeonato::menuCriacao(){
 				else if (ch == 2)
 					menuProvas();
 				else if (ch == 3)
-					menuListas();
+					menuCalendario();
 				else if (ch == 4)
-					menuApagar();
+					menuListas();
 				else if (ch == 5)
+					menuApagar();
+				else if (ch == 6)
 					Salvar();
 				else
 					TerminarPlaneamento();
@@ -1794,23 +1772,6 @@ void Campeonato::listaEquipasColocacao() const {
 }
 
 void Campeonato::listaAtletasModalidade() const{
-//	vector< pair <string, string> > vam; // first = nome atleta sec= nome modalidade
-//
-//	for (unsigned int j = 0; j < equipas.size(); j++)
-//		for (unsigned int u = 0; u < equipas[j]->getAtletas().size(); u++)
-//			vat.push_back(make_pair(*equipas[j]->getAtletas()[u])),equipas[j].getAtletas()[u].getModalidade); //vetor com todos atletas
-//
-//	cout << "Atletas no campeonato: " << endl << vat.size();
-//
-//
-//	for (unsigned int a = 0; a < desportos.size(); a++) {
-//		for (unsigned int b = 0; b < desportos[a]->getModalidades().size();b++)
-//			{vector <Atleta> vat;
-//			for (unsigned int c=0;c< desportos[a]->getModalidades()[b].getAtletas().size();c++)
-//				vat.push_back( desportos[a]->getModalidades()[b]->getAtletas()[c])
-//
-//			}
-
 	vector<Atleta> vat;
 
 	for (unsigned int j = 0; j < equipas.size(); j++)
@@ -1868,15 +1829,51 @@ return false;
 
 }
 
-void Campeonato::calendario(){
+void Campeonato::criaCalendario(){
 	vector<Prova> vprova;
 
 	for (unsigned int j = 0; j < provas.size();j++)
-		vprova.push_back(*provas[j]);
-
-	insertionSort<Prova>(vprova);
+		vprova.push_back(*(provas[j]));
 
 	for (unsigned int i = 0; i < vprova.size(); i++)
+	{
 		datas.insert(vprova[i]);
+	}
+}
+
+void Campeonato::alterarData(){
+
+}
+
+void Campeonato::cancelarProva(){
+
+}
+
+void Campeonato::verCalendario(){
+	system("cls");
+	criaCalendario();
+	datas.printTree();
+	_getch();
+}
+
+void Campeonato::menuCalendario(){
+	bool exit = false;
+	while (!exit){
+		system("cls");
+		vector<string> choices;
+		choices.push_back("Alterar data");
+		choices.push_back("Cancelar prova");
+		choices.push_back("Ver calendario");
+
+		int ch = fazMenu("Campeonato Polidesportivo - Calendario", choices);
+		if (ch == -1)
+			exit = true;
+		else if (ch == 0)
+			alterarData();
+		else if (ch == 1)
+			cancelarProva();
+		else
+			verCalendario();
+	}
 }
 

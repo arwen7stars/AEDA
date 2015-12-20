@@ -182,13 +182,13 @@ void BST<Comparable>::
 insert( const Comparable & x, BinaryNode<Comparable> * & t ) const
 {
   if( t == NULL )
-    t = new BinaryNode<Comparable>( x, NULL, NULL );
+	  t = new BinaryNode<Comparable>( x, NULL, NULL );
   else if( x < t->element )
-    insert( x, t->left );
+	  insert( x, t->left );
   else if( t->element < x )
-    insert( x, t->right );
+	  insert( x, t->right );
   else
-    ;  // Duplicate; do nothing
+    ;
 }
 
 template <class Comparable>
@@ -238,8 +238,7 @@ BST<Comparable>::findMax( BinaryNode<Comparable> *t ) const
 
 template <class Comparable>
 BinaryNode<Comparable> *
-BST<Comparable>::
-find( const Comparable & x, BinaryNode<Comparable> *t ) const
+BST<Comparable>::find( const Comparable & x, BinaryNode<Comparable> *t ) const
 {
   if( t == NULL )
     return NULL;
@@ -255,8 +254,7 @@ find( const Comparable & x, BinaryNode<Comparable> *t ) const
  * Internal method to make subtree empty.
  */
 template <class Comparable>
-void BST<Comparable>::
-makeEmpty( BinaryNode<Comparable> * & t ) const
+void BST<Comparable>::makeEmpty( BinaryNode<Comparable> * & t ) const
 {
   if( t != NULL )
     {

@@ -393,7 +393,11 @@ void loadProvas(string nome_ficheiro);
 		 */
 	void listaEquipasColocacao() const ;
 
-	void calendario();
+	void menuCalendario();
+	void criaCalendario();
+	void alterarData();
+	void cancelarProva();
+	void verCalendario();
 };
 
 /**Atribui pontos aos atletas que venceram a Prova
