@@ -141,6 +141,7 @@ public:
 	/**
 	 * Uma expecao para quando duas provas sao incompativeis
 	 */
+	void setInicio(Data d, Hora i);
 	class ProvasSimultaneas : public LoadProvasFail {
 		string mod1, mod2;
 	public:

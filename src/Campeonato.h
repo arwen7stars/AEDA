@@ -395,6 +395,7 @@ void loadProvas(string nome_ficheiro);
 
 	void menuCalendario();
 	void criaCalendario();
+	vector<Prova> provasSimultaneas();
 	void alterarData();
 	void cancelarProva();
 	void verCalendario();

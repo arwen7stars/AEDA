@@ -124,10 +124,11 @@ bool Prova::operator ==(const Prova &p2) const {
 		return false;
 	else if (inicio < p2.getInicio() || inicio > p2.getInicio())
 		return false;
-	else{ cout << " prova " << p2.getModalidade()->getNome() << " = " << modalidade->getNome() << endl;
+	else{
 		return true;
 	}
 }
+
 void Prova::adicionarAtleta(vector<Equipa*> TeamList){
 	bool exit = false;
 	while (!exit){
@@ -216,6 +217,12 @@ void Prova::menu(vector<Equipa*> TeamList){
 		else
 			retirarAtleta();
 	}
+}
+
+void Prova::setInicio(Data d, Hora i){
+	data = d;
+	inicio = i;
+	fim = i + modalidade->getDuracao();
 }
 
 

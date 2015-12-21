@@ -14,7 +14,6 @@ Bilhete::Bilhete(string endereco, string nome, string morada){
 	this->morada = morada;
 }
 
-
 bool Bilhete::adicionaProva(Prova* p){
 	for (int i = 0; i < provasCompradas.size();i++)
 		if (provasCompradas[i] == p)

@@ -167,8 +167,7 @@ operator=( const BST<Comparable> & rhs )
 
 
 template <class Comparable>
-const Comparable & BST<Comparable>::
-elementAt( BinaryNode<Comparable> *t ) const
+const Comparable & BST<Comparable>::elementAt( BinaryNode<Comparable> *t ) const
 {
   if( t == NULL )
     return ITEM_NOT_FOUND;
@@ -237,8 +236,7 @@ BST<Comparable>::findMax( BinaryNode<Comparable> *t ) const
 }
 
 template <class Comparable>
-BinaryNode<Comparable> *
-BST<Comparable>::find( const Comparable & x, BinaryNode<Comparable> *t ) const
+BinaryNode<Comparable> * BST<Comparable>::find( const Comparable & x, BinaryNode<Comparable> *t ) const
 {
   if( t == NULL )
     return NULL;
