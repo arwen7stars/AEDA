@@ -2326,7 +2326,7 @@ void Campeonato::menuCalendario(){
  *
  */
 
-void Campeonato::comprarBilhete(){
+void Campeonato::novoBilhete(){
 	system("cls");
 	string endereco, nome, morada;
 
@@ -2400,19 +2400,12 @@ void Campeonato::addProvaBilhete(){
 				exit = true;
 				return;
 			} else{
-				for (tabHBilhetes::iterator itr = bilhetes.begin(); itr != bilhetes.end(); ++itr) {
-					if ((*itr).getEndereco() == vbilhetes[ch].getEndereco()){
-						bilhetes.erase(itr);
-						break;
-					}
-				}
-
 				vector<Prova *> vprova;
 
 				for(unsigned int i = 0; i < provas.size(); i++){
 					bool p = false;
 					for(unsigned int j = 0; j < vbilhetes[ch].getProvasCompradas().size(); j++){
-						if (provas[i] == vbilhetes[ch].getProvasCompradas()[j])
+						if (*provas[i] == *vbilhetes[ch].getProvasCompradas()[j])
 						{
 							p = true;
 							break;
@@ -2424,17 +2417,30 @@ void Campeonato::addProvaBilhete(){
 					p = false;
 				}
 
+				for (tabHBilhetes::iterator itr = bilhetes.begin(); itr != bilhetes.end(); ++itr) {
+					if ((*itr).getEndereco() == vbilhetes[ch].getEndereco()){
+						bilhetes.erase(itr);
+						break;
+					}
+				}
+
 				int ch2;
 				bool exit2 = false;
 				while (!exit2){
 					system("cls");
-
-					ch2 = fazMenu("Selecione a prova que deseja associar ao bilhete:", vprova);
-					if (ch2 == -1){
-						exit2 = true;
-						return;
-					} else{
-						vbilhetes[ch].adicionaProva(provas[ch2]);
+					if (vprova.size() > 0){
+						ch2 = fazMenu("Selecione a prova que deseja associar ao bilhete:", vprova);
+						if (ch2 == -1){
+							exit2 = true;
+							return;
+						} else{
+							vbilhetes[ch].adicionaProva(vprova[ch2]);
+							exit2 = true;
+						}
+					}
+					else{
+						cout << "Nao existem mais provas para adicionar!\n";
+						_getch();
 						exit2 = true;
 					}
 				}
@@ -2455,7 +2461,12 @@ void Campeonato::trocaProvaBilhete(){
 }
 
 void Campeonato::listaProvasAdepto(){
+	system("cls");
 
+	for (tabHBilhetes::iterator itr = bilhetes.begin(); itr != bilhetes.end(); ++itr) {
+	}
+
+	_getch();
 }
 
 void Campeonato::pesquisaAdepto(){
@@ -2497,6 +2508,7 @@ void Campeonato::menuBilhetes(){
 		vector<string> choices;
 		choices.push_back("Comprar bilhete");
 		choices.push_back("Vender bilhete");
+		choices.push_back("Comprar bilhete a venda");
 		choices.push_back("Adicionar provas a bilhete");
 		choices.push_back("Trocar provas num bilhete");
 		choices.push_back("Lista de provas por adepto");
@@ -2506,14 +2518,16 @@ void Campeonato::menuBilhetes(){
 		if (ch == -1)
 			exit = true;
 		else if (ch == 0)
-			comprarBilhete();
+			novoBilhete();
 		else if (ch == 1)
 			venderBilhete();
 		else if (ch == 2)
-			addProvaBilhete();
+			comprarBilhete();
 		else if (ch == 3)
-			trocaProvaBilhete();
+			addProvaBilhete();
 		else if (ch == 4)
+			trocaProvaBilhete();
+		else if (ch == 5)
 			listaProvasAdepto();
 		else pesquisaAdepto();
 	}

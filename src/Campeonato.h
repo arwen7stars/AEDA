@@ -34,6 +34,7 @@ class Campeonato{
 	Data inicio, fim;///< Data do inicio e do fim do campeonato, pode dar jeito
 	Hora abertura, fecho;
 	tabHBilhetes bilhetes;
+	vector<Bilhete> bilhetes_a_venda;
 public:
 	/**Construtor de Campeonato
 	 *
@@ -405,8 +406,9 @@ void loadBilhetes(string nome_ficheiro);
 	void verCalendario();
 
 	void menuBilhetes();
-	void comprarBilhete();
+	void novoBilhete();
 	void venderBilhete();
+	void comprarBilhete();
 	void addProvaBilhete();
 	void trocaProvaBilhete();
 	void listaProvasAdepto();
