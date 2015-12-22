@@ -576,99 +576,112 @@ void Campeonato::menuCriacao(){
 	while (!exit){
 		system("cls");
 		vector<string> choices;
+		choices.push_back("Bilhetes");
+		choices.push_back("Calendario");
+		choices.push_back("Listas");
+
 		choices.push_back("Desportos");
-		if(desportos.size() > 0){
-			choices.push_back("Equipas");
-			choices.push_back("Provas");
-			choices.push_back("Calendario");
-			choices.push_back("Listas");
-			choices.push_back("Apagar");
-			choices.push_back("Salvar");
-			choices.push_back("Terminar Planeamento");
+		choices.push_back("Equipas");
+		choices.push_back("Provas");
 
-			vector<string> choices2;
-			choices2.push_back("Realizar Prova");
-			choices2.push_back("Listas");
+		choices.push_back("Apagar");
+		choices.push_back("Salvar");
+		choices.push_back("Terminar Planeamento");
 
-			if (!criado)
+		vector<string> choices2;
+		choices2.push_back("Realizar Prova");
+		choices2.push_back("Listas");
+
+		if (!criado)
+		{
+			int ch = fazMenu("Campeonato Polidesportivo - Planeamento", choices);
+			if (ch == -1)
+				exit = true;
+			else if (ch == 0)
+				menuBilhetes();
+			else if (ch == 1)
+				menuCalendario();
+			else if (ch == 2)
+				menuListas();
+			else if (ch == 3)
+				menuDesportos();
+			else if (ch == 4)
+				menuEquipas();
+			else if (ch == 5)
+				menuProvas();
+			else if (ch == 6)
+				menuApagar();
+			else if (ch == 7)
+				Salvar();
+			else
+				TerminarPlaneamento();
+		}
+		else {
+			int ch = fazMenu("Campeonato Polidesportivo - Realizacao", choices2);
+			if (ch == -1)
+				exit = true;
+			else if (ch == 0)
 			{
-				int ch = fazMenu("Campeonato Polidesportivo - Planeamento", choices);
-				if (ch == -1)
-					exit = true;
-				else if (ch == 0)
-					menuDesportos();
-				else if (ch == 1)
-					menuEquipas();
-				else if (ch == 2)
-					menuProvas();
-				else if (ch == 3)
-					menuCalendario();
-				else if (ch == 4)
-					menuListas();
-				else if (ch == 5)
-					menuApagar();
-				else if (ch == 6)
-					Salvar();
-				else
-					TerminarPlaneamento();
-			}
-			else {
-				int ch = fazMenu("Campeonato Polidesportivo - Realizacao", choices2);
-				if (ch == -1)
-					exit = true;
-				else if (ch == 0)
-				{
-					system("cls");
-					Prova min = *provas[0];
-					int indice = 0;
+				system("cls");
+				int indice = -1;
 
-					for(unsigned int i = 0; i < provas.size(); i++)
+				Prova min;
+
+				for(unsigned int i = 0; i < provas.size(); i++)
+					if (!provas[i]->getRealizada())
 					{
-						if (*provas[i] < min)
-						{
-							min = *provas[i];
-							indice = i;
-						}
-					}
+						min = *provas[i];
+						indice = i;
 
-					cout << *provas[indice] << endl;
-
-					cout << "Pontuacoes dos atletas.\n" << endl;
-					if (provas.size() != 0)
-					{
-						vector<float> pont;
-						for(unsigned int i = 0; i < provas[indice]->getAtletas().size(); i++)
+						for(unsigned int j = 0; j < provas.size(); j++)
 						{
-							float num;
-							cout << provas[indice]->getAtletas()[i]->getNome() << ": ";
-							while (!(cin >> num))
+							if ((*provas[j] < min) && !provas[j]->getRealizada())
 							{
-								cin.clear();
-								cin.ignore(1000, '\n');
-								cout << "Input invalido! O numero deve ser um float\n";
-								cout << provas[0]->getAtletas()[i]->getNome() << ": ";
+								min = *provas[j];
+								indice = j;
 							}
-							cin.ignore(1000, '\n');
-							pont.push_back(num);
 						}
-						realizaProva(*provas[indice], pont);
+						break;
+					}
 
+				cout << *provas[indice] << endl;
+
+				cout << "Pontuacoes dos atletas.\n" << endl;
+				if (provas.size() != 0)
+				{
+					vector<float> pont;
+					for(unsigned int i = 0; i < provas[indice]->getAtletas().size(); i++)
+					{
+						float num;
+						cout << provas[indice]->getAtletas()[i]->getNome() << ": ";
+						while (!(cin >> num))
+						{
+							cin.clear();
+							cin.ignore(1000, '\n');
+							cout << "Input invalido! O numero deve ser um float\n";
+							cout << provas[0]->getAtletas()[i]->getNome() << ": ";
+						}
+						cin.ignore(1000, '\n');
+						pont.push_back(num);
 					}
-					else {
-						cout << "As provas ja foram todas realizadas\n";
-					}
-					break;
+					realizaProva(*provas[indice], pont);
 
 				}
-				else{
-					system("cls");
-					menuListas();
-					_getch();
-					exit = true;
+				else {
+					cout << "As provas ja foram todas realizadas\n";
 				}
+				break;
+
+			}
+			else{
+				system("cls");
+				menuListas();
+				_getch();
+				exit = true;
 			}
 		}
 	}
+
 	menuCriacao();
 }
 
@@ -1569,7 +1582,6 @@ void atribuiPontuacao(ProvaTerminada &pro, vector<float> pontos) {//ordena o vet
 
 	if(pro.getModalidade()->getDesporto()->isCrescente())
 			{if (pro.getAtletas().size() <= 2) {
-		//cout << pro.getAtletas().size();
 		pro.getAtletas()[0]->adicionaPontuacao(3);
 	} else {
 		pro.getAtletas()[0]->adicionaPontuacao(3);
@@ -1820,6 +1832,7 @@ bool Campeonato::realizaProva(Prova &p , vector <float> pontuacoes){
 			atribuiPontuacao(*nova, pontuacoes);
 
 			it = provas.erase(it);
+			nova->setRealizada(true);
 			provas.push_back(nova);
 
 			return true;
@@ -1829,6 +1842,13 @@ bool Campeonato::realizaProva(Prova &p , vector <float> pontuacoes){
 return false;
 
 }
+
+/*
+ *
+ * CALENDARIO
+ * ARVORES BINARIAS DE PESQUISA
+ *
+ */
 
 void Campeonato::criaCalendario(){
 	vector<Prova> vprova;
@@ -1845,8 +1865,6 @@ void Campeonato::criaCalendario(){
 int Campeonato::maxProvasSimul(){
 	unsigned int simul = 0;
 	vector< vector<Prova> > vec;
-
-	system("cls");
 
 	for (unsigned int i = 0; i < provas.size(); i++){
 		vector<Prova> sim;
@@ -1873,8 +1891,6 @@ int Campeonato::maxProvasSimul(){
 }
 
 void Campeonato::alterarDataInicio(){
-	system("cls");
-
 	vector<Prova> vprova;
 	BSTItrIn<Prova> itr(datas);
 
@@ -1923,6 +1939,7 @@ void Campeonato::alterarDataInicio(){
 					cout << "Ano: ";
 				}
 				cin.ignore(1000, '\n');
+
 				try{
 					Data data(a,m,d);
 				} catch(Data::DataInvalida &d){
@@ -1958,6 +1975,7 @@ void Campeonato::alterarDataInicio(){
 					cout << "Minutos: ";
 				}
 				cin.ignore(1000, '\n');
+
 				try{
 					Hora hor(horas,min);
 				} catch(Hora::HoraInvalida &h){
@@ -2028,8 +2046,6 @@ void Campeonato::alterarDataInicio(){
 }
 
 void Campeonato::alterarData(){
-	system("cls");
-
 	vector<Prova> vprova;
 	BSTItrIn<Prova> itr(datas);
 
@@ -2245,3 +2261,148 @@ void Campeonato::menuCalendario(){
 	}
 }
 
+/*
+ *
+ * BILHETES
+ * TABELAS DE DISPERSAO
+ *
+ */
+
+void Campeonato::comprarBilhete(){
+	system("cls");
+	string endereco, nome, morada;
+
+	cout << "Endereco eletronico: ";
+	cin >> endereco;
+	cin.ignore(1000,'\n');
+
+	for (tabHBilhetes::iterator itr = bilhetes.begin(); itr != bilhetes.end(); ++itr) {
+		if ((*itr).getEndereco() == endereco){
+			cout << endl << "O endereco eletronico introduzido ja existe!";
+			return;
+		}
+	}
+	cout << "Nome: ";
+	getline(cin, nome);
+
+	cout << "Morada: ";
+	getline(cin, morada);
+
+	Bilhete b(endereco, nome, morada);
+
+	vector<Prova *> vprova = provas;
+
+	int ch;
+	bool exit = false;
+	while (!exit){
+		system("cls");
+		if (vprova.size() > 0){
+			ch = fazMenu("Selecione as provas que deseja associar ao bilhete (pressione ESC para sair):", vprova);
+			if (ch == -1){
+				exit = true;
+				return;
+			} else{
+				b.adicionaProva(vprova[ch]);
+				vprova.erase(vprova.begin()+ch);
+			}
+		} else{
+			cout << "Nao e possivel adicionar mais provas ao seu bilhete!";
+			_getch();
+			exit = true;
+		}
+	}
+
+	bilhetes.insert(b);
+}
+
+void Campeonato::venderBilhete(){
+
+}
+
+void Campeonato::addProvaBilhete(){
+	vector<Bilhete> vbilhetes;
+
+	for (tabHBilhetes::iterator itr = bilhetes.begin(); itr != bilhetes.end(); ++itr) {
+		vbilhetes.push_back(*itr);
+	}
+
+	int ch;
+	bool exit = false;
+	while (!exit){
+		system("cls");
+		if (vbilhetes.size() > 0){
+			ch = fazMenu("Bilhetes:", vbilhetes);
+			if (ch == -1){
+				exit = true;
+				return;
+			} else{
+				for (tabHBilhetes::iterator itr = bilhetes.begin(); itr != bilhetes.end(); ++itr) {
+					if ((*itr).getEndereco() == vbilhetes[ch].getEndereco()){
+						bilhetes.erase(itr);
+						break;
+					}
+				}
+
+				int ch2;
+				bool exit = false;
+				while (!exit){
+					system("cls");
+
+					ch2 = fazMenu("Selecione a prova que deseja associar ao bilhete:", provas);
+					if (ch == -1){
+						exit = true;
+						return;
+					} else{
+						vbilhetes[ch].adicionaProva(provas[ch]);
+					}
+				}
+
+				bilhetes.erase(vbilhetes[ch]);
+			}
+		} else{
+			cout << "Ainda nao foram comprados bilhetes.";
+			return;
+		}
+	}
+}
+
+void Campeonato::trocaProvaBilhete(){
+
+}
+
+void Campeonato::listaProvasAdepto(){
+
+}
+
+void Campeonato::pesquisaAdepto(){
+
+}
+
+void Campeonato::menuBilhetes(){
+	bool exit = false;
+	while (!exit){
+		system("cls");
+		vector<string> choices;
+		choices.push_back("Comprar bilhete");
+		choices.push_back("Vender bilhete");
+		choices.push_back("Adicionar provas a bilhete");
+		choices.push_back("Trocar provas num bilhete");
+		choices.push_back("Lista de provas por adepto");
+		choices.push_back("Pesquisa de adepto");
+
+		int ch = fazMenu("Campeonato Polidesportivo - Bilhetes", choices);
+		if (ch == -1)
+			exit = true;
+		else if (ch == 0)
+			comprarBilhete();
+		else if (ch == 1)
+			venderBilhete();
+		else if (ch == 2)
+			addProvaBilhete();
+		else if (ch == 3)
+			trocaProvaBilhete();
+		else if (ch == 4)
+			listaProvasAdepto();
+		else pesquisaAdepto();
+	}
+}

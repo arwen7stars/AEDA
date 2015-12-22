@@ -61,3 +61,8 @@ string Bilhete::getNome() const{
 string Bilhete::getMorada() const{
 	return morada;
 }
+
+ostream & operator<<(ostream & o, const Bilhete & b){
+	o << b.getEndereco() << ": " << b.getNome();
+	return o;
+}

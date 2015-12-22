@@ -142,6 +142,7 @@ public:
 	 * Uma expecao para quando duas provas sao incompativeis
 	 */
 	void setInicio(Data d, Hora i);
+	void setRealizada(bool r);
 	class ProvasSimultaneas : public LoadProvasFail {
 		string mod1, mod2;
 	public:
@@ -159,6 +160,26 @@ public:
 		string getMessage() const{
 			string m = "Provas " + mod1 + " e " + mod2 + " simultaneas\n";
 			return m;
+		}
+	};
+
+	class ProvaInexistente {
+		Prova * p;
+	public:
+		ProvaInexistente() {
+			p=NULL;
+		}
+		ProvaInexistente(Prova * prova) : p(prova) {}
+		/**
+		 * Constroi uma mensagem como o nome da modalidade
+		 *
+		 * @return uma string como uma mensagem
+		 */
+		string getMessage() const{
+			string message = "A prova da modalidade " + p->getModalidade()->getNome() + " na data ";
+			/*message += p->getData().getAno() + "/" + p->getData().getMes() + "/" + p->getData().getDia();
+			message += " as " + "nao existe!\n";*/
+			return message;
 		}
 	};
 };

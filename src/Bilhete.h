@@ -28,10 +28,11 @@ public:
 	string getEndereco() const;
 	string getNome() const;
 	string getMorada() const;
+	friend ostream & operator<<(ostream & o, const Bilhete & b);
 };
 
-struct BilhetesHash{
-	int operator() (const Bilhete & bilhete){
+struct BilhetesHash {
+	int operator() (const Bilhete & bilhete) const {
 		int h = bilhete.getEndereco().size() % 10;
 		h *= 10;
 		h += bilhete.getMorada().size() % 10;
@@ -39,14 +40,16 @@ struct BilhetesHash{
 		h += bilhete.getEndereco().size() % 100;
 		return h;
 	}
+};
 
-	bool operator() (const Bilhete & bilhete1, const Bilhete & bilhete2){
+struct eqbil {
+	bool operator() (const Bilhete & bilhete1, const Bilhete & bilhete2) const {
 		if (bilhete1.getEndereco() == bilhete2.getEndereco())
 			return true;
 		return false;
 	}
 };
 
-typedef tr1::unordered_set<Bilhete, BilhetesHash, BilhetesHash> tabHBilhetes;
+typedef tr1::unordered_set<Bilhete, BilhetesHash, eqbil> tabHBilhetes;
 
 #endif

@@ -220,6 +220,10 @@ void Prova::setInicio(Data d, Hora i){
 	fim = i + modalidade->getDuracao();
 }
 
+void Prova::setRealizada(bool r){
+	realizada = true;
+}
+
 
 /*
 ------------------------------------------------------------------------------

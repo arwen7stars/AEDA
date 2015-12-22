@@ -15,6 +15,7 @@
 #include "Equipa.h"
 #include "Data.h"
 #include "Lists.h"
+#include "Bilhete.h"
 #include "BST.h"
 
 /**Classe Campeonato
@@ -32,6 +33,7 @@ class Campeonato{
 	bool criado;
 	Data inicio, fim;///< Data do inicio e do fim do campeonato, pode dar jeito
 	Hora abertura, fecho;
+	tabHBilhetes bilhetes;
 public:
 	/**Construtor de Campeonato
 	 *
@@ -400,6 +402,14 @@ void loadProvas(string nome_ficheiro);
 	void alterarDataInicio();
 	void cancelarProva();
 	void verCalendario();
+
+	void menuBilhetes();
+	void comprarBilhete();
+	void venderBilhete();
+	void addProvaBilhete();
+	void trocaProvaBilhete();
+	void listaProvasAdepto();
+	void pesquisaAdepto();
 };
 
 /**Atribui pontos aos atletas que venceram a Prova
