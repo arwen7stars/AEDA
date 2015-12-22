@@ -4,6 +4,7 @@
 #include "Modalidade.h"
 #include "insertionSort.h"
 #include <algorithm>
+#include <climits>
 
 using namespace std;
 
@@ -1841,32 +1842,37 @@ void Campeonato::criaCalendario(){
 	}
 }
 
-vector<Prova> Campeonato::provasSimultaneas(){
-	int sim = 1;
-	vector <Prova> simultaneas;
+int Campeonato::provasSimultaneas(){
+	unsigned int simul = 0;
+	vector< vector<Prova> > vec;
+
+	system("cls");
 
 	for (unsigned int i = 0; i < provas.size(); i++){
-		simultaneas.push_back(*provas[i]);
-		for(unsigned int j = 0; j < provas.size(); j++)
+		vector<Prova> sim;
+		sim.push_back(*provas[i]);
+		for(unsigned int j = i; j < provas.size(); j++)
 			if (i != j){
 				bool simultaneo = provas[i]->Simultaneo(*provas[j]);
 
 				if (simultaneo){
-					simultaneas.push_back(*provas[j]);
-					sim++;
-				}
-
-				if (sim > 2){
-					return simultaneas;
+					sim.push_back(*provas[j]);
 				}
 			}
+		vec.push_back(sim);
 	}
 
-	vector<Prova> vazio;
-	return vazio;
+
+	for(unsigned int i = 0; i < vec.size(); i++){
+		if (vec[i].size() > simul){
+			simul = vec[i].size();
+		}
+	}
+
+	return simul;
 }
 
-void Campeonato::alterarData(){
+void Campeonato::alterarDataInicio(){
 	system("cls");
 
 	vector<Prova> vprova;
@@ -1918,11 +1924,11 @@ void Campeonato::alterarData(){
 				}
 				cin.ignore(1000, '\n');
 				try{
-				Data data(a,m,d);
+					Data data(a,m,d);
 				} catch(Data::DataInvalida &d){
 					cout << endl << "Data invalida!\n";
 					_getch();
-					return;
+					continue;
 				}
 
 				Data data(a,m,d);
@@ -1930,7 +1936,7 @@ void Campeonato::alterarData(){
 				{
 					cout << endl << "Data fora dos limites!\n";
 					_getch();
-					return;
+					continue;
 				}
 
 				cout << endl << "Nova hora (entre " << abertura << " e " << fecho << "):\n";
@@ -1953,18 +1959,18 @@ void Campeonato::alterarData(){
 				}
 				cin.ignore(1000, '\n');
 				try{
-				Hora hor(horas,min);
+					Hora hor(horas,min);
 				} catch(Hora::HoraInvalida &h){
 					cout << "Hora invalida!";
 					_getch();
-					return;
+					continue;
 				}
 				Hora hor(horas,min);
 
 				if (hor < abertura || fecho < hor){
 					cout << endl << "Hora fora dos limites!\n";
 					_getch();
-					return;
+					continue;
 				}
 
 				unsigned int indice = 0;
@@ -1988,36 +1994,188 @@ void Campeonato::alterarData(){
 							cout << endl << "Duas provas simultaneas da mesma modalidade!\n";
 							provas[indice]->setInicio(d_anterior,h_anterior);
 							_getch();
-							return;
+							continue;
 						}
 					}
-
-				vector<Prova>sim = provasSimultaneas();
-
-				if(sim.size() > 2){
-					cout << "Se mudar a data, fica-se com mais de 2 provas simultaneas!" << endl;
-					_getch();
-					provas[indice]->setInicio(d_anterior,h_anterior);
-					return;
-				}
 
 				for(unsigned int i = 0; i < equipas.size(); i++)
 					for(unsigned int j = 0; j < equipas[i]->getAtletas().size(); j++)
 						for(unsigned int k = 0; k < equipas[i]->getAtletas()[j]->getProvas().size(); k++){
 							if (*equipas[i]->getAtletas()[j]->getProvas()[k] == vprova[ch]){
-							equipas[i]->getAtletas()[j]->getProvas()[k]->setInicio(data,hor);
+								equipas[i]->getAtletas()[j]->getProvas()[k]->setInicio(data,hor);
 							}
 						}
 
 				datas.remove(vprova[ch]);
 				vprova[ch].setInicio(data,hor);
 				datas.insert(vprova[ch]);
+
+				int sim = provasSimultaneas();
+
+				while(sim > 3){
+					system("cls");
+					cout << "Ainda ha " << sim << " provas simultaneas!";
+					_getch();
+
+					alterarDataInicio();
+					sim = provasSimultaneas();
+				}
 				return;
 			}
 		}
 
 
-		_getch();
+}
+
+void Campeonato::alterarData(){
+	system("cls");
+
+	vector<Prova> vprova;
+	BSTItrIn<Prova> itr(datas);
+
+	while (!itr.isAtEnd())
+	{
+		vprova.push_back(itr.retrieve());
+		itr.advance();
+	}
+
+	int ch;
+	bool exit = false;
+	while (!exit){
+		system("cls");
+		ch = fazMenu("Provas:", vprova);
+		if (ch == -1){
+			exit = true;
+			continue;
+		} else{
+			system("cls");
+			int d, m, a, horas, min;
+			cout << "Nova data (entre " << inicio << " e " << fim << "):\n" << endl;
+			cout << "Dia: ";
+			while (!(cin >> d))
+			{
+				cin.clear();
+				cin.ignore(1000, '\n');
+				cout << "Input invalido! O numero deve ser um inteiro\n";
+				cout << "Dia: ";
+			}
+			cin.ignore(1000, '\n');
+			cout << "Mes: ";
+			while (!(cin >> m))
+			{
+				cin.clear();
+				cin.ignore(1000, '\n');
+				cout << "Input invalido! O numero deve ser um inteiro\n";
+				cout << "Mes: ";
+			}
+			cin.ignore(1000, '\n');
+			cout << "Ano: ";
+			while (!(cin >> a))
+			{
+				cin.clear();
+				cin.ignore(1000, '\n');
+				cout << "Input invalido! O numero deve ser um inteiro\n";
+				cout << "Ano: ";
+			}
+			cin.ignore(1000, '\n');
+			try{
+				Data data(a,m,d);
+			} catch(Data::DataInvalida &d){
+				cout << endl << "Data invalida!\n";
+				_getch();
+				return;
+			}
+
+			Data data(a,m,d);
+			if (data < inicio || fim < data)
+			{
+				cout << endl << "Data fora dos limites!\n";
+				_getch();
+				return;
+			}
+
+			cout << endl << "Nova hora (entre " << abertura << " e " << fecho << "):\n";
+			cout << "Horas: ";
+			while (!(cin >> horas))
+			{
+				cin.clear();
+				cin.ignore(1000, '\n');
+				cout << "Input invalido! O numero deve ser um inteiro\n";
+				cout << "Horas: ";
+			}
+			cin.ignore(1000, '\n');
+			cout << "Minutos: ";
+			while (!(cin >> min))
+			{
+				cin.clear();
+				cin.ignore(1000, '\n');
+				cout << "Input invalido! O numero deve ser um inteiro\n";
+				cout << "Minutos: ";
+			}
+			cin.ignore(1000, '\n');
+			try{
+				Hora hor(horas,min);
+			} catch(Hora::HoraInvalida &h){
+				cout << "Hora invalida!";
+				_getch();
+				return;
+			}
+			Hora hor(horas,min);
+
+			if (hor < abertura || fecho < hor){
+				cout << endl << "Hora fora dos limites!\n";
+				_getch();
+				return;
+			}
+
+			unsigned int indice = 0;
+			Data d_anterior;
+			Hora h_anterior;
+
+			for(unsigned int i = 0; i < provas.size(); i++)
+				if (*provas[i] == vprova[ch]){
+					indice = i;
+					d_anterior = provas[i]->getData();
+					h_anterior = provas[i]->getInicio();
+
+					provas[i]->setInicio(data,hor);
+					break;
+				}
+
+			for(unsigned int i = 0; i < provas.size(); i++)
+				if (indice != i){
+					bool simultaneo = provas[indice]->Simultaneo(*provas[i]);
+					if (simultaneo && (comparar_strings(provas[i]->getModalidade()->getNome(), provas[indice]->getModalidade()->getNome()))){
+						cout << endl << "Duas provas simultaneas da mesma modalidade!\n";
+						provas[indice]->setInicio(d_anterior,h_anterior);
+						_getch();
+						return;
+					}
+				}
+
+			int sim = provasSimultaneas();
+
+			if(sim > 3){
+				cout << "Se mudar a data, fica-se com mais de 3 provas simultaneas!" << endl;
+				_getch();
+				provas[indice]->setInicio(d_anterior,h_anterior);
+				return;
+			}
+
+			for(unsigned int i = 0; i < equipas.size(); i++)
+				for(unsigned int j = 0; j < equipas[i]->getAtletas().size(); j++)
+					for(unsigned int k = 0; k < equipas[i]->getAtletas()[j]->getProvas().size(); k++){
+						if (*equipas[i]->getAtletas()[j]->getProvas()[k] == vprova[ch]){
+							equipas[i]->getAtletas()[j]->getProvas()[k]->setInicio(data,hor);
+						}
+					}
+
+			datas.remove(vprova[ch]);
+			vprova[ch].setInicio(data,hor);
+			datas.insert(vprova[ch]);
+			return;
+		}
+	}
 }
 
 void Campeonato::cancelarProva(){
@@ -2043,12 +2201,19 @@ void Campeonato::cancelarProva(){
 		} else{
 			for(unsigned int i = 0; i < provas.size(); i++)
 				if (*provas[i] == vprova[ch]){
-					bool simultaneo = provas[i]->Simultaneo(vprova[ch]);
-
-
 					provas.erase(provas.begin()+i);
 					break;
 				}
+
+			for(unsigned int i = 0; i < equipas.size(); i++)
+				for(unsigned int j = 0; j < equipas[i]->getAtletas().size(); j++)
+					for(unsigned int k = 0; k < equipas[i]->getAtletas()[j]->getProvas().size(); k++){
+						if (*equipas[i]->getAtletas()[j]->getProvas()[k] == vprova[ch]){
+							equipas[i]->getAtletas()[j]->apagaProva(k);
+						}
+					}
+			datas.remove(vprova[ch]);
+			return;
 		}
 	}
 }

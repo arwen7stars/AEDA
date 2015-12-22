@@ -58,12 +58,7 @@ bool Prova::Simultaneo(Prova p)
 				return false;
 
 	}
-	Desporto * d1 = modalidade->getDesporto();
-	Desporto * d2 = p.modalidade->getDesporto();
-
-	if (*d1 == *d2)
-		return true;
-	else return false;
+	return true;
 
 }
 

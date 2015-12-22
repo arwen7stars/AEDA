@@ -8,9 +8,11 @@
 #include <vector>
 #include <iostream>
 #include <fstream>
+#include <vector>
 #include "Lists.h"
 #include "Desporto.h"
 #include "Data.h"
+#include "Prova.h"
 #include "Campeonato.h"
 
 struct Load
@@ -207,8 +209,20 @@ void menu(){
 			try{
 				Load l = load();
 				Campeonato C = l.campeonato;
-				if (l.sucesso)
+				if (l.sucesso){
+					int v = C.provasSimultaneas();
+					cout << v << endl;
+
+					if (v > 3){
+						system("cls");
+						cout << "O campeonato tem mais de 3 provas simultaneas!\n";
+						cout << "Mude a data de uma das provas simultaneas.\n";
+						_getch();
+						C.alterarDataInicio();
+					}
+
 					C.menuCriacao();
+				}
 				else
 				{
 					cout << "Ocorreu algum erro!" << endl;
@@ -233,7 +247,7 @@ int main(){
 		menu();
 	} catch(...)
 	{
-		cout << "Um erro inesperado ocorreu, o programa irá agora terminar.\n\nGAME OVER";
+		cout << "Um erro inesperado ocorreu, o programa ira agora terminar.\n\nGAME OVER";
 		_getch();
 	}
 	system("cls");
