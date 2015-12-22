@@ -1842,7 +1842,7 @@ void Campeonato::criaCalendario(){
 	}
 }
 
-int Campeonato::provasSimultaneas(){
+int Campeonato::maxProvasSimul(){
 	unsigned int simul = 0;
 	vector< vector<Prova> > vec;
 
@@ -1851,7 +1851,7 @@ int Campeonato::provasSimultaneas(){
 	for (unsigned int i = 0; i < provas.size(); i++){
 		vector<Prova> sim;
 		sim.push_back(*provas[i]);
-		for(unsigned int j = i; j < provas.size(); j++)
+		for(unsigned int j = 0; j < provas.size(); j++)
 			if (i != j){
 				bool simultaneo = provas[i]->Simultaneo(*provas[j]);
 
@@ -2010,7 +2010,7 @@ void Campeonato::alterarDataInicio(){
 				vprova[ch].setInicio(data,hor);
 				datas.insert(vprova[ch]);
 
-				int sim = provasSimultaneas();
+				int sim = maxProvasSimul();
 
 				while(sim > 3){
 					system("cls");
@@ -2018,7 +2018,7 @@ void Campeonato::alterarDataInicio(){
 					_getch();
 
 					alterarDataInicio();
-					sim = provasSimultaneas();
+					sim = maxProvasSimul();
 				}
 				return;
 			}
@@ -2153,7 +2153,7 @@ void Campeonato::alterarData(){
 					}
 				}
 
-			int sim = provasSimultaneas();
+			int sim = maxProvasSimul();
 
 			if(sim > 3){
 				cout << "Se mudar a data, fica-se com mais de 3 provas simultaneas!" << endl;

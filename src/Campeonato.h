@@ -395,7 +395,7 @@ void loadProvas(string nome_ficheiro);
 
 	void menuCalendario();
 	void criaCalendario();
-	int provasSimultaneas();
+	int maxProvasSimul();
 	void alterarData();
 	void alterarDataInicio();
 	void cancelarProva();

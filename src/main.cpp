@@ -210,13 +210,12 @@ void menu(){
 				Load l = load();
 				Campeonato C = l.campeonato;
 				if (l.sucesso){
-					int v = C.provasSimultaneas();
-					cout << v << endl;
+					int v = C.maxProvasSimul();
 
 					if (v > 3){
 						system("cls");
 						cout << "O campeonato tem mais de 3 provas simultaneas!\n";
-						cout << "Mude a data de uma das provas simultaneas.\n";
+						cout << "Mude a data das provas de tal forma que haja no maximo 3 provas simultaneas.\n";
 						_getch();
 						C.alterarDataInicio();
 					}
