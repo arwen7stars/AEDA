@@ -62,6 +62,10 @@ string Bilhete::getMorada() const{
 	return morada;
 }
 
+vector<Prova*> Bilhete::getProvasCompradas() const{
+	return provasCompradas;
+}
+
 ostream & operator<<(ostream & o, const Bilhete & b){
 	o << b.getEndereco() << ": " << b.getNome();
 	return o;

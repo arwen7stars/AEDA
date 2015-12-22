@@ -426,6 +426,64 @@ void Campeonato::loadProvas(string nome_ficheiro)
 	criaCalendario();
 }
 
+void Campeonato::loadBilhetes(string nome_ficheiro){
+	ifstream in;
+	string extraido = " ";
+
+	in.open(nome_ficheiro.c_str());
+
+	while(!in.eof())
+	{
+		string endereco, nome, morada, modalidade, linha;
+		int dia, mes, ano, horas, minutos;
+		char genero, barra;
+
+		int i_prova = -1;
+
+		getline(in, endereco);
+		getline(in, nome);
+		getline(in, morada);
+
+		Bilhete b(endereco, nome, morada);
+
+		getline(in, linha);
+
+		do{
+			stringstream linhass;
+			linhass << linha;
+			linhass >> dia >> mes >> ano;
+			linhass >> barra;
+			linhass >> horas >> minutos;
+			linhass >> barra;
+			linhass >> genero;
+
+			Data * d = new Data(ano,mes,dia);
+			Hora * h = new Hora(horas,minutos);
+			Modalidade * m;
+
+			for (int i_desporto = 0; i_desporto < desportos.size();  i_desporto++)
+				for (int i_modalidade = 0; i_modalidade < desportos[i_desporto]->getModalidades().size(); i_modalidade++)
+					if (desportos[i_desporto]->getModalidades()[i_modalidade]->getNome() == modalidade)
+						m = desportos[i_desporto]->getModalidades()[i_modalidade];
+
+			Prova p = Prova(m, *d, *h, genero);
+
+			for (int i = 0; i < provas.size(); i++)
+				if (*(provas[i]) == p)
+					i_prova = i;
+
+			if (i_prova == -1)
+			{
+				throw Prova::ProvaInexistente();
+			}
+
+			b.adicionaProva(provas[i_prova]);
+
+			getline(in, linha);
+		}while (linha != "");
+	}
+}
+
 void Campeonato::updateDesportos(string nome_ficheiro)
 {
 	ofstream out;
@@ -2290,7 +2348,10 @@ void Campeonato::comprarBilhete(){
 
 	Bilhete b(endereco, nome, morada);
 
-	vector<Prova *> vprova = provas;
+	vector<Prova*> vprova;
+
+	for(unsigned int i = 0; i < provas.size(); i++)
+		vprova.push_back(provas[i]);
 
 	int ch;
 	bool exit = false;
@@ -2299,10 +2360,12 @@ void Campeonato::comprarBilhete(){
 		if (vprova.size() > 0){
 			ch = fazMenu("Selecione as provas que deseja associar ao bilhete (pressione ESC para sair):", vprova);
 			if (ch == -1){
+				bilhetes.insert(b);
 				exit = true;
 				return;
 			} else{
 				b.adicionaProva(vprova[ch]);
+				cout << vprova[ch];
 				vprova.erase(vprova.begin()+ch);
 			}
 		} else{
@@ -2313,6 +2376,7 @@ void Campeonato::comprarBilhete(){
 	}
 
 	bilhetes.insert(b);
+
 }
 
 void Campeonato::venderBilhete(){
@@ -2343,24 +2407,44 @@ void Campeonato::addProvaBilhete(){
 					}
 				}
 
+				vector<Prova *> vprova;
+
+				for(unsigned int i = 0; i < provas.size(); i++){
+					bool p = false;
+					for(unsigned int j = 0; j < vbilhetes[ch].getProvasCompradas().size(); j++){
+						if (provas[i] == vbilhetes[ch].getProvasCompradas()[j])
+						{
+							p = true;
+							break;
+						}
+					}
+					if(!p)
+						vprova.push_back(provas[i]);
+
+					p = false;
+				}
+
 				int ch2;
-				bool exit = false;
-				while (!exit){
+				bool exit2 = false;
+				while (!exit2){
 					system("cls");
 
-					ch2 = fazMenu("Selecione a prova que deseja associar ao bilhete:", provas);
-					if (ch == -1){
-						exit = true;
+					ch2 = fazMenu("Selecione a prova que deseja associar ao bilhete:", vprova);
+					if (ch2 == -1){
+						exit2 = true;
 						return;
 					} else{
-						vbilhetes[ch].adicionaProva(provas[ch]);
+						vbilhetes[ch].adicionaProva(provas[ch2]);
+						exit2 = true;
 					}
 				}
 
-				bilhetes.erase(vbilhetes[ch]);
+				bilhetes.insert(vbilhetes[ch]);
+				return;
 			}
 		} else{
 			cout << "Ainda nao foram comprados bilhetes.";
+			_getch();
 			return;
 		}
 	}
@@ -2375,6 +2459,34 @@ void Campeonato::listaProvasAdepto(){
 }
 
 void Campeonato::pesquisaAdepto(){
+	system("cls");
+	string endereco;
+	cout << "Introduza o endereco eletronico do adepto a procurar: ";
+	cin >> endereco;
+
+	system("cls");
+	for (tabHBilhetes::iterator itr = bilhetes.begin(); itr != bilhetes.end(); ++itr) {
+		if ((*itr).getEndereco() == endereco){
+			cout << "O bilhete do adepto com o endereco " << endereco << " foi encontrado.\n";
+
+			if ((*itr).getProvasCompradas().size() > 0){
+			cout << "As provas associadas a esse bilhete sao:\n";
+
+			for(unsigned int i = 0; i < (*itr).getProvasCompradas().size(); i++)
+				cout << *((*itr).getProvasCompradas()[i]) << endl;
+			}
+			else cout << "Nao existem provas associadas a esse bilhete.\n";
+
+			_getch();
+
+
+			return;
+		}
+	}
+
+	cout << "Nao foi encontrado nenhum adepto com o endereco introduzido.";
+	_getch();
+	return;
 
 }
 

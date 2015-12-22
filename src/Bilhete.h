@@ -28,6 +28,7 @@ public:
 	string getEndereco() const;
 	string getNome() const;
 	string getMorada() const;
+	vector<Prova*> getProvasCompradas() const;
 	friend ostream & operator<<(ostream & o, const Bilhete & b);
 };
 

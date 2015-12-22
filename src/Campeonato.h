@@ -117,6 +117,7 @@ void loadEquipas(string nome_ficheiro);
  * @return false se o ficheiro nao estiver formatado corretamente
 	 */
 void loadProvas(string nome_ficheiro);
+void loadBilhetes(string nome_ficheiro);
 /**Carrega as alteracoes ao vetor desportos para o ficheiro utilizado previamente
  *
  * Lanca a excecao FicheiroInexistente se o ficheiro nao existir
