@@ -14,6 +14,11 @@
 #include <tr1/unordered_set>
 using namespace std;
 
+/**Class Data
+ *
+ * Represente um possessor de entradas para as provas
+ *
+ */
 class Bilhete{
 	string endereco;
 	string nome;
@@ -21,9 +26,29 @@ class Bilhete{
 	vector<Prova*> provasCompradas;
 public:
 	Bilhete(){};
+	/**
+	 * Inicializa os atributos
+	 * @param endereco - endereco do comprador
+	 * @param nome - nome do comprador
+	 * @param morada - morada do comprador
+	 */
 	Bilhete(string endereco, string nome, string morada);
+	/**
+	 * Adiciona todas as provas do vetor provas ao vetor provasCompradas do bilhete
+	 * @param provas - vetor de provas a adicionar ao bilhete
+	 */
 	void adicionaProva(vector<Prova *> provas);
+	/**
+	 * Adiciona a prova p ao vetor provasCompradas do bilhete
+	 * @param p - apontodor para a prova a adicionar
+	 * @return false se p ja existir, false se nao e a prova for adionada com sucesso
+	 */
 	bool adicionaProva(Prova* p);
+	/**
+	 * Mostra a lista de provas do bilhete e permite selecionar uma delas.
+	 * A prova selecionada e apagado do bilhete.
+	 * @return false se o bilhete nao tiver provas, true caso contrario
+	 */
 	bool retiraProva();
 	string getEndereco() const;
 	string getNome() const;
