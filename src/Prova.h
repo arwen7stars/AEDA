@@ -232,6 +232,7 @@ public:
 	 * @param a - um vetor de atletas
 	 */
 	void setAtletas(vector<Atleta*> a);
+	void setPontuacoes(vector<float> pont);
 	/**
 	 *
 	 * @param p2 - prova

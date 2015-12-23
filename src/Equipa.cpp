@@ -230,39 +230,14 @@ Equipa & Equipa::operator= (const Equipa & e){
 }
 
 bool Equipa::operator < (Equipa &eq1){
-	if(getMedalhas().ouro>eq1.getMedalhas().ouro)
-		return false;
-	if(getMedalhas().prata>eq1.getMedalhas().prata)
-		return false;
-	if(getMedalhas().bronze>eq1.getMedalhas().bronze)
-		return false;
-	return true;
+	if(getMedalhas().ouro<eq1.getMedalhas().ouro)
+		return true;
+	if(getMedalhas().prata<eq1.getMedalhas().prata)
+		return true;
+	if(getMedalhas().bronze<eq1.getMedalhas().bronze)
+		return true;
+	return false;
 }
-
-//void Equipa::menuEquipas(){
-//	bool exit = false;
-//	while (!exit){
-//		system("cls");
-//		int ch = fazMenu("Equipas:", equipas, "Nova Equipa");
-//		if (ch == -1)
-//			exit = true;
-//		else if (ch < equipas.size())
-//			//equipas[ch]->menu();
-//			equipas[ch]->getNome();
-//		else{
-//			try{
-//				adicionaEquipa();
-//			}
-//			catch (EquipaExiste eq){
-//				cout << "Equipa \"" << eq.getNome() << "\" ja existe.";
-//				_getch();
-//			}
-//
-//		}
-//
-//	}
-//}
-
 
 /*
 ------------------------------------------------------------------------------

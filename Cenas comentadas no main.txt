@@ -1,3 +1,66 @@
+CENAS COMENTADOS EM CAMPEONATO.CPP
+
+//	vector<pair<int, string> > peq (equipas.size(), make_pair(0, "")); //pontuacoes totais e equipas
+//	vector<int> peqb (equipas.size()); //potuacoes
+//	vector<string> final;
+//	for (unsigned int i = 0; i < equipas.size(); i++) {
+//
+//		peq[i].second = equipas[i]->getNome();
+//		for (unsigned int j = 0; j < equipas[i]->getAtletas().size(); j++) {
+//
+//			peq[i].first += equipas[i]->getAtletas()[j]->getPontos();
+//			peqb[i] += equipas[i]->getAtletas()[j]->getPontos();
+//		}
+//	}
+
+//	for(unsigned int i = 0; i < peq.size();i++){
+//		if (peq[i].first >)
+//	}
+
+//	insertionSort<int>(peqb); //ordenar pontuacoes
+
+//	for (unsigned int a = 0; a < peq.size(); a++)
+//		for (unsigned int b = 0; b < peqb.size(); b++)
+//			if (peqb[b] == peq[a].first) //se a pontuacao for igual
+//			{
+//				if (i < equipas.size())
+//					cout<< peq[a].second << "  " << peq[a].first << endl;
+//				i++;
+//	}
+
+
+-----------------------------------------------------------------------------------------------------------
+
+CENAS COMENTADOS EM EQUIPA.CPP
+
+
+//void Equipa::menuEquipas(){
+//	bool exit = false;
+//	while (!exit){
+//		system("cls");
+//		int ch = fazMenu("Equipas:", equipas, "Nova Equipa");
+//		if (ch == -1)
+//			exit = true;
+//		else if (ch < equipas.size())
+//			//equipas[ch]->menu();
+//			equipas[ch]->getNome();
+//		else{
+//			try{
+//				adicionaEquipa();
+//			}
+//			catch (EquipaExiste eq){
+//				cout << "Equipa \"" << eq.getNome() << "\" ja existe.";
+//				_getch();
+//			}
+//
+//		}
+//
+//	}
+//}
+
+-------------------------------------------------------------------------------------------------------
+
+MAIN.CPP
 
 //	Desporto D;
 //	D = Desporto("Atletismo", "Segundos", true);

@@ -34,7 +34,7 @@ class Campeonato{
 	Data inicio, fim;///< Data do inicio e do fim do campeonato, pode dar jeito
 	Hora abertura, fecho;
 	tabHBilhetes bilhetes;
-	priority_queue<Equipa> medalhas;
+	priority_queue<Equipa*> ranking;
 public:
 	/**Construtor de Campeonato
 	 *
@@ -415,6 +415,10 @@ void loadBilhetes(string nome_ficheiro);
 	void listaProvasAdepto();
 	void pesquisaAdepto();
 
+	void menuRanking();
+	void atualizarFila();
+	void verRanking();
+	void desclassificarEquipa();
 	void organizaMedalhas();
 };
 

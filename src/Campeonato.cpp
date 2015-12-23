@@ -697,8 +697,8 @@ void Campeonato::apagaModalidade(string n)
 
 
 void Campeonato::menuCriacao(){
-	bool exit = false;
-	while (!exit){
+	bool exit1 = false;
+	while (!exit1){
 		system("cls");
 		vector<string> choices;
 		choices.push_back("Bilhetes");
@@ -716,12 +716,13 @@ void Campeonato::menuCriacao(){
 		vector<string> choices2;
 		choices2.push_back("Realizar Prova");
 		choices2.push_back("Listas");
+		choices2.push_back("Ranking de equipas");
 
 		if (!criado)
 		{
 			int ch = fazMenu("Campeonato Polidesportivo - Planeamento", choices);
 			if (ch == -1)
-				exit = true;
+				exit1 = true;
 			else if (ch == 0)
 				menuBilhetes();
 			else if (ch == 1)
@@ -742,6 +743,7 @@ void Campeonato::menuCriacao(){
 				TerminarPlaneamento();
 		}
 		else {
+			bool exit = false;
 			int ch = fazMenu("Campeonato Polidesportivo - Realizacao", choices2);
 			if (ch == -1)
 				exit = true;
@@ -800,6 +802,7 @@ void Campeonato::menuCriacao(){
 						pont.push_back(num);
 					}
 					realizaProva(*provas[indice], pont);
+					atualizarFila();
 
 				}
 				else {
@@ -808,10 +811,14 @@ void Campeonato::menuCriacao(){
 				break;
 
 			}
-			else{
+			else if (ch == 1){
 				system("cls");
 				menuListas();
-				_getch();
+				exit = true;
+			}
+			else if (ch == 2){
+				system("cls");
+				menuRanking();
 				exit = true;
 			}
 		}
@@ -1642,8 +1649,6 @@ void Campeonato::adicionaProva(){
 		}
 	}
 
-
-
 	while (true){
 		system("cls");
 		cout << "Horas de Inicio: ";
@@ -1699,7 +1704,6 @@ void Campeonato::adicionaProva(){
 
 	}
 
-
 	provas.push_back(p);
 
 }
@@ -1713,43 +1717,41 @@ bool ordenaPontuacao(pair <Atleta*,float> v1,pair <Atleta*,float> v2){
 void atribuiPontuacao(ProvaTerminada &pro, vector<float> pontos) {//ordena o vetor atletas por pontuacao e faz pushback das pontuacoes ordenadas no pontuacoes da provaTerminada
 	//e faz push:_back dos atletas ordenados tb
 
-	vector<pair <Atleta*, int> > atletaPontos (pontos.size());
+	vector<pair <Atleta*, float> > atletaPontos (pontos.size());
 	vector<Atleta*> final(pontos.size());
+	vector<float> pont(pontos.size());
 
 	for (unsigned int i = 0; i < pontos.size(); i++)
 		atletaPontos[i].second = pontos[i];
 
-		for (unsigned int j = 0; j < pro.getAtletas().size(); j++) {
-			//i += j;
-			atletaPontos[j].first = pro.getAtletas()[j];
-			cout << atletaPontos[j].first->getNome();
-
-			cout<<"  " <<atletaPontos[j].second << endl;
-			}
-
+	for (unsigned int j = 0; j < pro.getAtletas().size(); j++) {
+		atletaPontos[j].first = pro.getAtletas()[j];
+	}
 
 	sort(atletaPontos.begin(),atletaPontos.end(),ordenaPontuacao);
 
-//	for(unsigned int i = 0;i< pontos.size(); i++){
-//		for (unsigned int j = 0; j < atletaPontos.size(); j++){
-//			if(pontos[i]==atletaPontos[j].second)
-//				final[i] = atletaPontos[j].first;
-//		}
-//	}
-
-	if(pro.getModalidade()->getDesporto()->isCrescente())
-			{if (pro.getAtletas().size() <= 2) {
-		atletaPontos[0].first->adicionaPontuacao(3);
-	} else {
-		atletaPontos[0].first->adicionaPontuacao(3);
-		atletaPontos[1].first->adicionaPontuacao(2);
-		atletaPontos[2].first->adicionaPontuacao(1);
+	for(unsigned int i = 0; i < atletaPontos.size(); i++){
+		pont.push_back(atletaPontos[i].second);
 	}
 
-		for (unsigned int k = 0; k < pontos.size(); k++)
-			{
-			pro.getPontuacoes().push_back(pontos[k]);
-			}
+	if(pro.getModalidade()->getDesporto()->isCrescente())
+	{
+		if (pro.getAtletas().size() <= 2) {
+			atletaPontos[0].first->adicionaPontuacao(3);
+		} else {
+			atletaPontos[0].first->adicionaPontuacao(3);
+			atletaPontos[1].first->adicionaPontuacao(2);
+			atletaPontos[2].first->adicionaPontuacao(1);
+		}
+
+		for(unsigned int i = 0; i < atletaPontos.size(); i++){
+			final.push_back(atletaPontos[i].first);
+		}
+
+		pro.setPontuacoes(pont);
+		pro.setAtletas(final);
+
+
 	} else {
 		if (pro.getAtletas().size() <= 2) {
 			final[pro.getAtletas().size() - 1]->adicionaPontuacao(3);
@@ -1759,12 +1761,14 @@ void atribuiPontuacao(ProvaTerminada &pro, vector<float> pontos) {//ordena o vet
 			atletaPontos[final.size() - 3].first->adicionaPontuacao(1);
 		}
 
-		reverse(pontos.begin(), pontos.end());
-		for (unsigned int k = 0; k < pontos.size(); k++) {
-			pro.getPontuacoes().push_back(pontos[k]);
+		for(unsigned int i = 0; i < atletaPontos.size(); i++){
+			final.push_back(atletaPontos[i].first);
 		}
-	}
 
+		reverse(pont.begin(), pont.end());
+		pro.setPontuacoes(pont);
+		pro.setAtletas(final);
+	}
 }
 
 
@@ -1926,25 +1930,6 @@ bool compararEquipas( Equipa* eq1,Equipa *eq2){
 }
 
 void Campeonato::listaEquipasColocacao() {
-//	vector<pair<int, string> > peq (equipas.size(), make_pair(0, "")); //pontuacoes totais e equipas
-//	vector<int> peqb (equipas.size()); //potuacoes
-//	vector<string> final;
-//	for (unsigned int i = 0; i < equipas.size(); i++) {
-//
-//		peq[i].second = equipas[i]->getNome();
-//		for (unsigned int j = 0; j < equipas[i]->getAtletas().size(); j++) {
-//
-//			peq[i].first += equipas[i]->getAtletas()[j]->getPontos();
-//			peqb[i] += equipas[i]->getAtletas()[j]->getPontos();
-//		}
-//	}
-
-//	for(unsigned int i = 0; i < peq.size();i++){
-//		if (peq[i].first >)
-//	}
-
-//	insertionSort<int>(peqb); //ordenar pontuacoes
-
 	bool campeonato_por_realizar = true;
 
 	for(unsigned int i = 0; i < provas.size(); i++){
@@ -1962,19 +1947,12 @@ void Campeonato::listaEquipasColocacao() {
 
 	cout << "Ranking de Equipas :" << endl << endl;
 
-
-	for(unsigned int x =0; x < equipas.size(); x++)
-		cout << equipas[x]->getNome();
-	//<< " ouro: "<< equipas[x]->getMedalhas().ouro << " prata: "<< equipas[x]->getMedalhas().prata<< " bronze: "<< equipas[x]->getMedalhas().bronze << endl;
-
-//	for (unsigned int a = 0; a < peq.size(); a++)
-//		for (unsigned int b = 0; b < peqb.size(); b++)
-//			if (peqb[b] == peq[a].first) //se a pontuacao for igual
-//			{
-//				if (i < equipas.size())
-//					cout<< peq[a].second << "  " << peq[a].first << endl;
-//				i++;
-//	}
+	for(unsigned int x =0; x < equipas.size(); x++){
+		cout << equipas[x]->getNome() << endl;
+		cout << "   Ouro: " << equipas[x]->getMedalhas().ouro;
+		cout << "   Prata: " << equipas[x]->getMedalhas().prata;
+		cout << "   Bronze: "<< equipas[x]->getMedalhas().bronze << endl;
+	}
 
 }
 
@@ -2851,7 +2829,7 @@ void Campeonato::menuBilhetes(){
 		else pesquisaAdepto();
 	}
 }
-
+/*
 void Campeonato::organizaMedalhas(){
 	vector<Equipa> tmp;
 
@@ -2864,13 +2842,75 @@ void Campeonato::organizaMedalhas(){
 		medalhas.push(tmp[i]);
 	}
 }
+*/
 
 bool operator < (const Equipa &eq1, const Equipa &eq2){
-	if(eq1.getMedalhas().ouro>eq2.getMedalhas().ouro)
-		return false;
-	if(eq1.getMedalhas().prata>eq2.getMedalhas().prata)
-		return false;
-	if(eq1.getMedalhas().bronze>eq2.getMedalhas().bronze)
-		return false;
-	return true;
+	if(eq1.getMedalhas().ouro<eq2.getMedalhas().ouro)
+		return true;
+	if(eq1.getMedalhas().prata<eq2.getMedalhas().prata)
+		return true;
+	if(eq1.getMedalhas().bronze<eq2.getMedalhas().bronze)
+		return true;
+	return false;
+}
+
+/*
+ *
+ * RANKING DE EQUIPAS
+ * FILAS DE PRIORIDADE
+ *
+ */
+
+void Campeonato::atualizarFila(){
+	if (!ranking.empty()){
+		while(!ranking.empty())
+			ranking.pop();
+	}
+
+	for(unsigned int i = 0; i < equipas.size(); i++)
+	{
+		ranking.push(equipas[i]);
+	}
+}
+
+void Campeonato::verRanking(){
+	vector<Equipa*>vequipa;
+
+	while(!ranking.empty()){
+		vequipa.push_back(ranking.top());
+		ranking.pop();
+	}
+	system("cls");
+	for(unsigned int x =0; x < vequipa.size(); x++){
+		cout << vequipa[x]->getNome() << endl;
+		cout << "   Ouro: " << vequipa[x]->getMedalhas().ouro;
+		cout << "   Prata: " << vequipa[x]->getMedalhas().prata;
+		cout << "   Bronze: "<< vequipa[x]->getMedalhas().bronze << endl;
+		ranking.push(vequipa[x]);
+	}
+	_getch();
+
+
+	return;
+}
+
+void Campeonato::desclassificarEquipa(){
+
+}
+
+void Campeonato::menuRanking(){
+	bool exit = false;
+	while (!exit){
+		system("cls");
+		vector<string> choices;
+		choices.push_back("Ver ranking de equipas");
+		choices.push_back("Desclassificar equipa");
+
+		int ch = fazMenu("Campeonato Polidesportivo - Ranking", choices);
+		if (ch == -1)
+			exit = true;
+		else if (ch == 0)
+			verRanking();
+		else desclassificarEquipa();
+	}
 }

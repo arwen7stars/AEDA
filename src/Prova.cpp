@@ -251,6 +251,11 @@ void ProvaTerminada::setAtletas (vector<Atleta*> a) {
 		atletas.push_back(a[i]);
 }
 
+void ProvaTerminada::setPontuacoes(vector<float> pont){
+	for(unsigned int i = 0; i < pont.size(); i++)
+		pontuacoes.push_back(pont[i]);
+
+}
 vector <float> ProvaTerminada::getPontuacoes() const{
 	return pontuacoes;
 }
