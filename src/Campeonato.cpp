@@ -2846,37 +2846,12 @@ void Campeonato::organizaMedalhas(){
 }
 */
 
-bool operator < (const Equipa &eq1, const Equipa &eq2){
-	int e1 = 0;
-	int e2 = 0;
-
-	if(eq1.getMedalhas().ouro<eq2.getMedalhas().ouro)
-		e1 += 3;
-	else if (eq1.getMedalhas().ouro>eq2.getMedalhas().ouro)
-		e2 += 3;
-	else{
-		e1 += 3;
-		e2 += 3;
-	}
-
-	if(eq1.getMedalhas().prata<eq2.getMedalhas().prata)
-		e1 += 2;
-	else if(eq1.getMedalhas().prata>eq2.getMedalhas().prata)
-		e2 += 2;
-	else{
-		e1 += 2;
-		e2 += 2;
-	}
-
-	if(eq1.getMedalhas().bronze<eq2.getMedalhas().bronze)
-		e1 += 1;
-	else if(eq1.getMedalhas().prata>eq2.getMedalhas().prata)
-		e2 += 1;
-	else{
-		e1 += 1;
-		e2 += 1;
-	}
-	return e1 < e2;
+bool operator<(const Equipa eq1, const Equipa eq2){
+	if(eq1.getMedalhas().ouro!=eq2.getMedalhas().ouro)
+		return  eq1.getMedalhas().ouro<eq2.getMedalhas().ouro;
+	if(eq1.getMedalhas().prata!=eq2.getMedalhas().prata)
+		return  eq1.getMedalhas().prata<eq2.getMedalhas().prata;
+	else return  eq1.getMedalhas().bronze<eq2.getMedalhas().bronze;
 }
 
 /*
@@ -2896,12 +2871,12 @@ void Campeonato::atualizarFila(){
 	{
 		Equipa * eq = new Equipa();
 		eq = equipas[i];
-		ranking.push(*eq);
+		ranking.push(eq);
 	}
 }
 
 void Campeonato::verRanking(){
-	vector<Equipa>vequipa;
+	vector<Equipa*>vequipa;
 
 	if(ranking.empty()){
 		system("cls");
@@ -2910,18 +2885,22 @@ void Campeonato::verRanking(){
 		return;
 	}
 
+
+
 	while(!ranking.empty()){
 		vequipa.push_back(ranking.top());
 		ranking.pop();
 	}
 	system("cls");
 	for(unsigned int x =0; x < vequipa.size(); x++){
-		cout << vequipa[x].getNome() << endl;
-		cout << "   Ouro: " << vequipa[x].getMedalhas().ouro;
-		cout << "   Prata: " << vequipa[x].getMedalhas().prata;
-		cout << "   Bronze: "<< vequipa[x].getMedalhas().bronze << endl;
+		cout << vequipa[x]->getNome() << endl;
+		cout << "   Ouro: " << vequipa[x]->getMedalhas().ouro;
+		cout << "   Prata: " << vequipa[x]->getMedalhas().prata;
+		cout << "   Bronze: "<< vequipa[x]->getMedalhas().bronze << endl;
 		ranking.push(vequipa[x]);
 	}
+
+
 	_getch();
 
 	return;

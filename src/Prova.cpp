@@ -253,6 +253,36 @@ void ProvaTerminada::setAtletas (vector<Atleta*> a) {
 void ProvaTerminada::setPontuacoes(vector<float> pont){
 	pontuacoes = pont;
 }
+
+void ProvaTerminada::setPontuacoesAtletas(vector<pair <Atleta*, float> > atletasPontos){
+	for(unsigned int i = 0; i < atletasPontos.size() && i < atletas.size(); i++){
+		atletas[i] = atletasPontos[i].first;
+	}
+
+	if (getAtletas().size() <= 2) {
+		atletas[0]->adicionaPontuacao(3);
+	} else {
+		atletas[0]->adicionaPontuacao(3);
+		atletas[1]->adicionaPontuacao(2);
+		atletas[2]->adicionaPontuacao(1);
+	}
+}
+
+void ProvaTerminada::setPontuacoesAtletasRev(vector<pair <Atleta*, float> > atletasPontos){
+	if (getAtletas().size() <= 2) {
+		atletasPontos[getAtletas().size() - 1].first->adicionaPontuacao(3);
+	} else {
+		atletasPontos[getAtletas().size() - 1].first->adicionaPontuacao(3);
+		atletasPontos[getAtletas().size() - 2].first->adicionaPontuacao(2);
+		atletasPontos[getAtletas().size() - 3].first->adicionaPontuacao(1);
+	}
+
+	for(unsigned int i = 0; i < atletasPontos.size() && i < atletas.size(); i++){
+
+	}
+
+}
+
 vector <float> ProvaTerminada::getPontuacoes() const{
 	return pontuacoes;
 }

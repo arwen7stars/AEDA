@@ -228,7 +228,7 @@ Equipa & Equipa::operator= (const Equipa & e){
 	setDesportos(e.getDesportos());
 	return *this;
 }
-
+/*
 bool Equipa::operator < (Equipa &eq2){
 	int e1 = 0;
 		int e2 = 0;
@@ -261,7 +261,7 @@ bool Equipa::operator < (Equipa &eq2){
 		}
 		return e1 < e2;
 }
-
+*/
 /*
 ------------------------------------------------------------------------------
 								Class Atleta

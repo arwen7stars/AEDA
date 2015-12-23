@@ -242,6 +242,8 @@ public:
 	 */
 	void setAtletas(vector<Atleta*> a);
 	void setPontuacoes(vector<float> pont);
+	void setPontuacoesAtletas(vector<pair <Atleta*, float> >);
+	void setPontuacoesAtletasRev(vector<pair <Atleta*, float> >);
 	/**
 	 *
 	 * @param p2 - prova

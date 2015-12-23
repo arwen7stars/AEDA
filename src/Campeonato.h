@@ -16,7 +16,21 @@
 #include "Data.h"
 #include "Lists.h"
 #include "Bilhete.h"
+#include <functional>
 #include "BST.h"
+
+class Compare
+{
+public:
+    bool operator() (Equipa * eq1, Equipa * eq2)
+    {
+    	if(eq1->getMedalhas().ouro!=eq2->getMedalhas().ouro)
+    		return  eq1->getMedalhas().ouro<eq2->getMedalhas().ouro;
+    	if(eq1->getMedalhas().prata!=eq2->getMedalhas().prata)
+    		return  eq1->getMedalhas().prata<eq2->getMedalhas().prata;
+    	else return  eq1->getMedalhas().bronze<eq2->getMedalhas().bronze;
+    }
+};
 
 /**Classe Campeonato
  * Gere todo o campeonato
@@ -34,7 +48,8 @@ class Campeonato{
 	Data inicio, fim;///< Data do inicio e do fim do campeonato, pode dar jeito
 	Hora abertura, fecho;
 	tabHBilhetes bilhetes;
-	priority_queue<Equipa> ranking;
+	std::priority_queue<Equipa*, std::vector<Equipa*>, Compare> ranking;
+
 	//vector<pair <Equipa*, float> > equipaPontos;
 public:
 	/**Construtor de Campeonato

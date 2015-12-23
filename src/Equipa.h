@@ -192,12 +192,10 @@ public:
 		string getNome() const {return nome;}
 	};
 
-
 	Medalhas getMedalhas() const {return medalhas;}
 	void addOuro(){medalhas.ouro++;}
 	void addPrata(){medalhas.prata ++;}
 	void addBronze(){medalhas.bronze++;}
-	bool operator < (Equipa &eq1);
 
 };
 
