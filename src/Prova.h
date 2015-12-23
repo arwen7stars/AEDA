@@ -34,7 +34,11 @@ protected:
 	bool genero;
 	bool realizada;
 public:
-	Prova(){};
+	Prova(){
+		realizada = false;
+		genero = false;
+		modalidade = NULL;
+	};
 	/**
 	 *
 	 * @param m - modalidade
@@ -164,28 +168,28 @@ public:
 	};
 
 	class ProvaInexistente {
-	  Prova * prova;
-	 public:
-	  ProvaInexistente() {prova=NULL;}
-	  ProvaInexistente(Prova * p) : prova(p) {}
-	  /**
-	   * Constroi uma mensagem como o nome da modalidade
-	   *
-	   * @return uma string como uma mensagem
-	   */
-	  string getMessage() const{
-	   string ano = int_to_string(prova->getData().getAno());
-	   string mes = int_to_string(prova->getData().getMes());
-	   string dia = int_to_string(prova->getData().getDia());
-	   string horas = int_to_string(prova->getInicio().getHoras());
-	   string minutos = int_to_string(prova->getInicio().getMinutos());
+		Prova * prova;
+	public:
+		ProvaInexistente() {prova=NULL;}
+		ProvaInexistente(Prova * p) : prova(p) {}
+		/**
+		 * Constroi uma mensagem como o nome da modalidade
+		 *
+		 * @return uma string como uma mensagem
+		 */
+		string getMessage() const{
+			string ano = int_to_string(prova->getData().getAno());
+			string mes = int_to_string(prova->getData().getMes());
+			string dia = int_to_string(prova->getData().getDia());
+			string horas = int_to_string(prova->getInicio().getHoras());
+			string minutos = int_to_string(prova->getInicio().getMinutos());
 
-	   string message = "A prova da modalidade " + prova->getModalidade()->getNome() + " na data ";
-	   message += ano + "/" + mes + "/" + dia;
-	   message += " as " + horas + ":" + minutos + " nao existe!\n";
-	   return message;
-	  }
-	 };
+			string message = "A prova da modalidade " + prova->getModalidade()->getNome() + " na data ";
+			message += ano + "/" + mes + "/" + dia;
+			message += " as " + horas + ":" + minutos + " nao existe!\n";
+			return message;
+		}
+	};
 };
 
 /**class ProvaTerminada

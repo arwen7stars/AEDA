@@ -92,7 +92,6 @@ Load loadCampeonato(){
 	return l;
 }
 
-
 Load load()
 {
 	Load l;
@@ -116,6 +115,7 @@ Load load()
 	string equipas = "Equipas.txt";
 	string modalidades = "Modalidades.txt";
 	string provas = "Provas.txt";
+	string bilhetes = "Bilhetes.txt";
 
 	if(!ficheiroExiste(desportos))
 	{
@@ -131,6 +131,9 @@ Load load()
 	} else if(!ficheiroExiste(provas))
 	{
 		throw FicheiroInexistente(provas);
+	} else if (!ficheiroExiste(bilhetes))
+	{
+		throw FicheiroInexistente(bilhetes);
 	}
 
 	try{
@@ -187,13 +190,28 @@ Load load()
 		l.sucesso = false;
 		_getch();
 	}
+	catch(generoErrado &c){
+		system("cls");
+		cout << "O genero do atleta ";
+		cout << c.getAtleta() << " nao corresponde ao genero " << c.getGeneroProva() << " da prova!";
+		l.sucesso = false;
+		_getch();
+	}
+
+	try {
+		c.loadBilhetes(bilhetes);
+	} catch(Prova::ProvaInexistente &e)
+	{
+		system("cls");
+		cout << e.getMessage();
+		l.sucesso = false;
+		_getch();
+	}
 
 	l.campeonato = c;
 
 	return l;
 }
-
-
 
 void menu(){
 	vector<string> choices;

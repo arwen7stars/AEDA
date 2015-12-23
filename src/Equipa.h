@@ -215,7 +215,7 @@ public:
 	 *
 	 * @param n - nome do atleta
 	 * @param e - equipa
-	 * @param g - genero (true feminino, false masculino)
+	 * @param g - genero (true masculino, false feminino)
 	 */
 	Atleta(string n, Equipa* e, bool g);
 

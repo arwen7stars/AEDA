@@ -19,7 +19,9 @@ using namespace std;
 ------------------------------------------------------------------------------
  */
 
-Modalidade::Modalidade(){}
+Modalidade::Modalidade(){
+	desporto = NULL;
+}
 
 Modalidade::Modalidade(string n, int h, int m, Desporto *d){
 	nome = n;

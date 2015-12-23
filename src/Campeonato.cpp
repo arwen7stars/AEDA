@@ -409,6 +409,15 @@ void Campeonato::loadProvas(string nome_ficheiro)
 						{
 							if (comparar_strings(at,equipas[i]->getAtletas()[j]->getNome()) && at != "")
 							{
+								char g;
+
+								if(equipas[i]->getAtletas()[j]->getGenero())
+									g = 'M';
+								else g = 'F';
+
+								if(g != genero)
+									throw generoErrado(genero, at);
+
 								equipas[i]->getAtletas()[j]->adicionaProva(p);
 								p->adicionaAtleta(equipas[i]->getAtletas()[j]);
 								equipas[i]->adicionaDesporto(desportos[i_desporto]);
@@ -427,6 +436,7 @@ void Campeonato::loadProvas(string nome_ficheiro)
 }
 
 void Campeonato::loadBilhetes(string nome_ficheiro){
+	system("cls");
 	ifstream in;
 	string extraido = " ";
 
@@ -434,53 +444,69 @@ void Campeonato::loadBilhetes(string nome_ficheiro){
 
 	while(!in.eof())
 	{
-		string endereco, nome, morada, modalidade, linha;
-		int dia, mes, ano, horas, minutos;
-		char genero, barra;
+		if (!in.eof()){
+			string endereco, nome, morada, modalidade, linha, proximo, barra;
+			int dia, mes, ano, horas, minutos;
+			char genero;
 
-		int i_prova = -1;
+			int c = in.peek();
+			if (c == '\n')
+				in.ignore(1000,'\n');
 
-		getline(in, endereco);
-		getline(in, nome);
-		getline(in, morada);
+			getline(in, endereco);
+			getline(in, nome);
+			getline(in, morada);
 
-		Bilhete b(endereco, nome, morada);
+			Bilhete b(endereco, nome, morada);
 
-		getline(in, linha);
+			do{
+				int c = in.peek();
 
-		do{
-			stringstream linhass;
-			linhass << linha;
-			linhass >> dia >> mes >> ano;
-			linhass >> barra;
-			linhass >> horas >> minutos;
-			linhass >> barra;
-			linhass >> genero;
+				if (c == '\n')
+					break;
 
-			Data * d = new Data(ano,mes,dia);
-			Hora * h = new Hora(horas,minutos);
-			Modalidade * m;
+				in >> extraido;
 
-			for (int i_desporto = 0; i_desporto < desportos.size();  i_desporto++)
-				for (int i_modalidade = 0; i_modalidade < desportos[i_desporto]->getModalidades().size(); i_modalidade++)
-					if (desportos[i_desporto]->getModalidades()[i_modalidade]->getNome() == modalidade)
-						m = desportos[i_desporto]->getModalidades()[i_modalidade];
+				if (extraido == "-")
+				{
+					in >> modalidade;
+					in >> proximo;
 
-			Prova p = Prova(m, *d, *h, genero);
+					while(proximo != "/"){
+						if (proximo != "/")
+							modalidade = modalidade + " " + proximo;
+						in >> proximo;
+					}
 
-			for (int i = 0; i < provas.size(); i++)
-				if (*(provas[i]) == p)
-					i_prova = i;
+					Modalidade * m = new Modalidade();
 
-			if (i_prova == -1)
-			{
-				throw Prova::ProvaInexistente();
-			}
+					for(unsigned int i = 0; i < desportos.size(); i++)
+						for(unsigned int j = 0; j < desportos[i]->getModalidades().size(); j++)
+							if (desportos[i]->getModalidades()[j]->getNome() == modalidade){
+								m = desportos[i]->getModalidades()[j];
+							}
 
-			b.adicionaProva(provas[i_prova]);
+					in >> dia;
+					in >> mes;
+					in >> ano;
+					in >> barra;
+					in >> horas;
+					in >> minutos;
+					in >> barra;
+					in >> genero;
+					in.ignore(1000,'\n');
 
-			getline(in, linha);
-		}while (linha != "");
+					Data d(ano, mes, dia);
+					Hora i(horas, minutos);
+
+					Prova * p = new Prova(m,d,i,genero);
+
+					b.adicionaProva(p);
+				}
+			} while(extraido == "-" && !in.eof());
+
+			bilhetes.insert(b);
+		}
 	}
 }
 
@@ -575,17 +601,58 @@ void Campeonato::updateProvas(string nome_ficheiro)
 	}
 }
 
+void Campeonato::updateBilhetes(string nome_ficheiro)
+{
+	ofstream out;
+	out.open(nome_ficheiro.c_str());
+
+	if(!ficheiroExiste(nome_ficheiro))
+		throw FicheiroInexistente(nome_ficheiro);
+
+	vector<Bilhete> vbilhete;
+	for (tabHBilhetes::iterator itr = bilhetes.begin(); itr != bilhetes.end(); ++itr) {
+		vbilhete.push_back(*itr);
+	}
+
+	for(unsigned int i = 0; i < vbilhete.size(); i++){
+		out << vbilhete[i].getEndereco() << endl;
+		out << vbilhete[i].getNome() << endl;
+		out << vbilhete[i].getMorada() << endl;
+		for(unsigned int j = 0; j < vbilhete[i].getProvasCompradas().size(); j++){
+			out << "- " << vbilhete[i].getProvasCompradas()[j]->getModalidade()->getNome() << " / ";
+			out << vbilhete[i].getProvasCompradas()[j]->getData().getDia() << " ";
+			out << vbilhete[i].getProvasCompradas()[j]->getData().getMes() << " ";
+			out << vbilhete[i].getProvasCompradas()[j]->getData().getAno() << " / ";
+			out << vbilhete[i].getProvasCompradas()[j]->getInicio().getHoras() << " ";
+			out << vbilhete[i].getProvasCompradas()[j]->getInicio().getMinutos() << " / ";
+			if (vbilhete[i].getProvasCompradas()[j]->getGenero()){
+				if ((i == vbilhete.size() - 1) && (j == vbilhete[i].getProvasCompradas().size()-1))
+					out << "M";
+				else out << "M" << endl;
+			}
+			else{
+				if ((i == vbilhete.size() - 1) && (j == vbilhete[i].getProvasCompradas().size()-1))
+					out << "F";
+				else out << "F" << endl;
+			}
+		}
+		if (i < vbilhete.size() - 1)
+			out << endl;
+	}
+}
+
 void Campeonato::update(){
 	string desportos = "Desportos.txt";
 	string equipas = "Equipas.txt";
 	string modalidades = "Modalidades.txt";
 	string provas = "Provas.txt";
+	string bilhetes = "Bilhetes.txt";
 
 	updateDesportos(desportos);
 	updateEquipas(equipas);
 	updateModalidades(modalidades);
 	updateProvas(provas);
-
+	updateBilhetes(bilhetes);
 }
 
 void Campeonato::apagaModalidade(string n)
@@ -682,8 +749,18 @@ void Campeonato::menuCriacao(){
 			{
 				system("cls");
 				int indice = -1;
-
 				Prova min;
+				bool campeonato_realizado = true;
+
+				for(unsigned int i = 0; i < provas.size(); i++)
+					if(!provas[i]->getRealizada())
+						campeonato_realizado = false;
+
+				if (campeonato_realizado){
+					cout << "Nao ha mais provas a realizar!";
+					_getch();
+					return;
+				}
 
 				for(unsigned int i = 0; i < provas.size(); i++)
 					if (!provas[i]->getRealizada())
@@ -796,8 +873,7 @@ void Campeonato::menuProvas(){
 			exit = true;
 		else if ((unsigned)ch < provas.size())
 			provas[ch]->menu(equipas);
-		else
-			adicionaProva();
+		else adicionaProva();
 	}
 }
 
@@ -1613,17 +1689,18 @@ void Campeonato::adicionaProva(){
 		return;
 
 
-	Prova p(mod, data, hora,g);
+	Prova * p = new Prova(mod, data, hora, g);
 	for (unsigned int i = 0; i < provas.size(); i++){
-		if (provas[i]->Simultaneo(p)){
-			cout << "Ja existem provas do mesmo tipo de desporto para o horario marcado.\n";
+		if ((provas[i]->Simultaneo(*p) && (provas[i]->getModalidade()->getNome() == p->getModalidade()->getNome()))){
+			system("cls");
+			cout << "Ja existem provas da mesma modalidade para o horario marcado.\n";
 			_getch();
 		}
 
 	}
 
 
-	provas.push_back(&p);
+	provas.push_back(p);
 
 }
 
@@ -1868,7 +1945,18 @@ void Campeonato::listaEquipasColocacao() {
 
 //	insertionSort<int>(peqb); //ordenar pontuacoes
 
+	bool campeonato_por_realizar = true;
 
+	for(unsigned int i = 0; i < provas.size(); i++){
+		if (provas[i]->getRealizada())
+			campeonato_por_realizar = false;
+	}
+
+	if (campeonato_por_realizar)
+	{
+		cout << "Nenhuma prova realizada!" << endl;
+		return;
+	}
 
 	sort(equipas.begin(),equipas.end(),compararEquipas);
 
@@ -2429,14 +2517,134 @@ void Campeonato::novoBilhete(){
 }
 
 void Campeonato::venderBilhete(){
+	vector<Bilhete> vbilhetes;
 
+	for (tabHBilhetes::iterator itr = bilhetes.begin(); itr != bilhetes.end(); ++itr) {
+		if (!(*itr).getAVenda())
+			vbilhetes.push_back(*itr);
+	}
+	int ch;
+	bool exit = false;
+	while (!exit){
+		system("cls");
+		if (vbilhetes.size() > 0){
+			ch = fazMenu("Escolha o bilhete que quer vender:", vbilhetes);
+			if (ch == -1){
+				exit = true;
+				return;
+			} else{
+				for (tabHBilhetes::iterator itr = bilhetes.begin(); itr != bilhetes.end(); ++itr) {
+					if ((*itr).getEndereco() == vbilhetes[ch].getEndereco()){
+						bilhetes.erase(itr);
+						break;
+					}
+				}
+				vbilhetes[ch].setAVenda(true);
+				bilhetes.insert(vbilhetes[ch]);
+				return;
+			}
+		} else{
+			cout << "Nao ha bilhetes validos disponiveis.";
+			_getch();
+			return;
+		}
+	}
+}
+
+void Campeonato::comprarBilhete(){
+	string endereco, nome, morada;
+	bool novo_comprador = true;
+	vector<Bilhete> vbilhetes;
+
+	for (tabHBilhetes::iterator itr = bilhetes.begin(); itr != bilhetes.end(); ++itr) {
+		if ((*itr).getAVenda())
+			vbilhetes.push_back(*itr);
+	}
+
+	system("cls");
+
+	if(vbilhetes.size() > 0){
+		cout << "Endereco eletronico do comprador: ";
+		cin >> endereco;
+		cin.ignore(1000,'\n');
+
+		for (tabHBilhetes::iterator itr = bilhetes.begin(); itr != bilhetes.end(); ++itr) {
+			if (((*itr).getEndereco() == endereco) && !(*itr).getAVenda()){
+				novo_comprador = false;
+				break;
+			}
+		}
+
+		if (novo_comprador){
+			cout << "Nome: ";
+			getline(cin, nome);
+
+			cout << "Morada: ";
+			getline(cin, morada);
+		}
+
+		int ch;
+		bool exit = false;
+		while (!exit){
+			ch = fazMenu("Escolha o bilhete que quer comprar:", vbilhetes);
+			if (ch == -1){
+				exit = true;
+				return;
+			} else{
+				for (tabHBilhetes::iterator itr = bilhetes.begin(); itr != bilhetes.end(); ++itr) {
+					if ((*itr).getEndereco() == vbilhetes[ch].getEndereco()){
+						bilhetes.erase(itr);
+						break;
+					}
+				}
+				if (novo_comprador){
+					Bilhete b(endereco, nome, morada);
+
+					for(unsigned int i = 0; i < vbilhetes[ch].getProvasCompradas().size(); i++){
+						b.adicionaProva(vbilhetes[ch].getProvasCompradas()[i]);
+					}
+
+					bilhetes.insert(b);
+					return;
+				} else{
+					for (tabHBilhetes::iterator itr = bilhetes.begin(); itr != bilhetes.end(); ++itr) {
+						if ((*itr).getEndereco() == endereco){
+							Bilhete antigo_bilhete = *itr;
+							bilhetes.erase(itr);
+
+							for(unsigned int i = 0; i < vbilhetes[ch].getProvasCompradas().size(); i++){
+								bool ja_existe = false;
+
+								for(unsigned int j = 0; j < antigo_bilhete.getProvasCompradas().size(); j++){
+									if (*antigo_bilhete.getProvasCompradas()[j] == *vbilhetes[ch].getProvasCompradas()[i]){
+										ja_existe = true;
+									}
+								}
+
+								if (!ja_existe){
+									antigo_bilhete.adicionaProva(vbilhetes[ch].getProvasCompradas()[i]);
+								}
+							}
+							bilhetes.insert(antigo_bilhete);
+							return;
+						}
+					}
+				}
+			}
+		}
+
+	} else{
+		cout << "Nao ha bilhetes a venda.\n";
+		_getch();
+	}
 }
 
 void Campeonato::addProvaBilhete(){
 	vector<Bilhete> vbilhetes;
 
 	for (tabHBilhetes::iterator itr = bilhetes.begin(); itr != bilhetes.end(); ++itr) {
-		vbilhetes.push_back(*itr);
+		if (!(*itr).getAVenda())
+			vbilhetes.push_back(*itr);
 	}
 
 	int ch;
@@ -2473,25 +2681,12 @@ void Campeonato::addProvaBilhete(){
 					}
 				}
 
-				int ch2;
-				bool exit2 = false;
-				while (!exit2){
-					system("cls");
-					if (vprova.size() > 0){
-						ch2 = fazMenu("Selecione a prova que deseja associar ao bilhete:", vprova);
-						if (ch2 == -1){
-							exit2 = true;
-							return;
-						} else{
-							vbilhetes[ch].adicionaProva(vprova[ch2]);
-							exit2 = true;
-						}
-					}
-					else{
-						cout << "Nao existem mais provas para adicionar!\n";
-						_getch();
-						exit2 = true;
-					}
+				if (vprova.size() > 0){
+					vbilhetes[ch].adicionaProva(vprova);
+				}
+				else{
+					cout << "Nao existem mais provas para adicionar!\n";
+					_getch();
 				}
 
 				bilhetes.insert(vbilhetes[ch]);
@@ -2506,14 +2701,89 @@ void Campeonato::addProvaBilhete(){
 }
 
 void Campeonato::trocaProvaBilhete(){
+	vector<Bilhete> vbilhetes;
 
+	for (tabHBilhetes::iterator itr = bilhetes.begin(); itr != bilhetes.end(); ++itr) {
+		if (!(*itr).getAVenda())
+			vbilhetes.push_back(*itr);
+	}
+
+	int ch1;
+	bool exit = false;
+	while (!exit){
+		system("cls");
+		if (vbilhetes.size() > 0){
+			ch1 = fazMenu("Bilhetes:", vbilhetes);
+			if (ch1 == -1){
+				exit = true;
+				return;
+			} else{
+				vector<Prova*>vprova;
+				for(unsigned int i = 0; i < provas.size(); i++){
+					bool p = false;
+					for(unsigned int j = 0; j < vbilhetes[ch1].getProvasCompradas().size(); j++){
+						if (*provas[i] == *vbilhetes[ch1].getProvasCompradas()[j])
+						{
+							p = true;
+							break;
+						}
+					}
+					if(!p)
+						vprova.push_back(provas[i]);
+
+					p = false;
+				}
+
+
+				for (tabHBilhetes::iterator itr = bilhetes.begin(); itr != bilhetes.end(); ++itr) {
+					if ((*itr).getEndereco() == vbilhetes[ch1].getEndereco()){
+						bilhetes.erase(itr);
+						break;
+					}
+				}
+
+				system("cls");
+				if(!vbilhetes[ch1].retiraProva()){
+					cout << "Nao existem provas associadas a este bilhete!\n";
+					_getch();
+					bilhetes.insert(vbilhetes[ch1]);
+					return;
+				}
+
+				vbilhetes[ch1].adicionaProva(vprova);
+
+				bilhetes.insert(vbilhetes[ch1]);
+				return;
+			}
+		} else{
+			cout << "Nao ha bilhetes validos disponiveis.";
+			_getch();
+			return;
+		}
+	}
 }
 
 void Campeonato::listaProvasAdepto(){
 	system("cls");
+	vector<Bilhete> vbilhetes;
 
 	for (tabHBilhetes::iterator itr = bilhetes.begin(); itr != bilhetes.end(); ++itr) {
+		if (!(*itr).getAVenda()){
+			cout << (*itr) << endl;
+			if ((*itr).getProvasCompradas().size() > 0){
+				for(unsigned int i = 0; i < (*itr).getProvasCompradas().size(); i++){
+					cout << "   " << *((*itr).getProvasCompradas()[i]) << endl;
+				}
+			} else {
+				cout << "Nao existem provas associadas a este bilhete.\n";
+			}
+			vbilhetes.push_back(*itr);
+			cout << endl;
+		}
 	}
+
+	if (vbilhetes.size() == 0)
+		cout << "Nao ha bilhetes validos disponiveis para consulta.";
 
 	_getch();
 }
@@ -2526,7 +2796,7 @@ void Campeonato::pesquisaAdepto(){
 
 	system("cls");
 	for (tabHBilhetes::iterator itr = bilhetes.begin(); itr != bilhetes.end(); ++itr) {
-		if ((*itr).getEndereco() == endereco){
+		if ((*itr).getEndereco() == endereco && !(*itr).getAVenda()){
 			cout << "O bilhete do adepto com o endereco " << endereco << " foi encontrado.\n";
 
 			if ((*itr).getProvasCompradas().size() > 0){
@@ -2544,7 +2814,7 @@ void Campeonato::pesquisaAdepto(){
 		}
 	}
 
-	cout << "Nao foi encontrado nenhum adepto com o endereco introduzido.";
+	cout << "Nao foi encontrado nenhum bilhete valido com o endereco introduzido.";
 	_getch();
 	return;
 
@@ -2555,7 +2825,7 @@ void Campeonato::menuBilhetes(){
 	while (!exit){
 		system("cls");
 		vector<string> choices;
-		choices.push_back("Comprar bilhete");
+		choices.push_back("Novo bilhete");
 		choices.push_back("Vender bilhete");
 		choices.push_back("Comprar bilhete a venda");
 		choices.push_back("Adicionar provas a bilhete");
@@ -2570,8 +2840,8 @@ void Campeonato::menuBilhetes(){
 			novoBilhete();
 		else if (ch == 1)
 			venderBilhete();
-		else if (ch == 2){}
-			//comprarBilhete();
+		else if (ch == 2)
+			comprarBilhete();
 		else if (ch == 3)
 			addProvaBilhete();
 		else if (ch == 4)

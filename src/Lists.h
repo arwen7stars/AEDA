@@ -278,7 +278,20 @@ public:
 	{
 		return c;
 	}
+};
 
+class generoErrado{
+public:
+	char g_prova;
+	string atleta;
+	generoErrado(char g, string a) : g_prova(g), atleta(a) {}
+	char getGeneroProva()
+	{
+		return g_prova;
+	}
+	string getAtleta(){
+		return atleta;
+	}
 };
 
 #endif /* SRC_LISTS_H_ */

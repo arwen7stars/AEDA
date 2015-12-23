@@ -34,7 +34,6 @@ class Campeonato{
 	Data inicio, fim;///< Data do inicio e do fim do campeonato, pode dar jeito
 	Hora abertura, fecho;
 	tabHBilhetes bilhetes;
-	vector<Bilhete> bilhetes_a_venda;
 	priority_queue<Equipa> medalhas;
 public:
 	/**Construtor de Campeonato
@@ -148,6 +147,7 @@ void loadBilhetes(string nome_ficheiro);
  * @param nome_ficheiro - nome do ficheiro de provas
 	 */
 	void updateProvas(string nome_ficheiro);
+	void updateBilhetes(string nome_ficheiro);
 /**Update dos ficheiros originais com as alteracoes efetuadas aos atributos de campeonato
  *
  * Chama updateDesportos, updateEquipas, etc...
