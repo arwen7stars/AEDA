@@ -1769,6 +1769,28 @@ void atribuiPontuacao(ProvaTerminada &pro, vector<float> pontos) {//ordena o vet
 		pro.setPontuacoes(pont);
 		pro.setAtletas(final);
 	}
+
+
+		ProvaTerminada * nova = new ProvaTerminada(pro.getModalidade(), pro.getData(), pro.getInicio(), pro.getGenero());
+		nova->setAtletas(final);
+
+		vector<Atleta*> at = pro.getAtletas();
+
+		for (unsigned int i = 0; i < at.size(); i++) {
+			Equipa* eq = at[i]->getEquipa();
+			vector<Atleta*> eqAtletas = eq->getAtletas();
+			for (unsigned int j = 0; j < eqAtletas.size(); j++) {
+				vector<Prova*> atletaProvas = eqAtletas[j]->getProvas();
+				vector<Prova*>::iterator it = pro.getAtletas()[j]->getProvas().begin();
+				for (; it !=  pro.getAtletas()[j]->getProvas().end(); it++)
+					if (*it == &pro){
+						pro.getAtletas()[j]->getProvas().erase(it);
+						it--;
+						pro.getAtletas()[j]->getProvas().push_back(nova);
+					}
+
+			}
+		}
 }
 
 
@@ -2007,10 +2029,12 @@ bool Campeonato::realizaProva(Prova &p , vector <float> pontuacoes){
 			it = provas.erase(it);
 			nova->setRealizada(true);
 			for(unsigned int i = 0; i < equipas.size(); i++)
-				for(unsigned int j = 0; j < equipas[i]->getAtletas().size(); j++)
+				for(unsigned int j = 0; j < equipas[i]->getAtletas().size(); j++){
+					//equipas[i]->getAtletas()[j]->adicionaProva(nova);
 					for(unsigned int k = 0; k < equipas[i]->getAtletas()[j]->getProvas().size(); k++)
 						if (*equipas[i]->getAtletas()[j]->getProvas()[k] == p)
 							equipas[i]->getAtletas()[j]->getProvas()[k]->setRealizada(true);
+				}
 
 			provas.push_back(nova);
 
@@ -2950,7 +2974,7 @@ void Campeonato::desclassificarEquipa(){
 						exit1 = true;
 						return;
 					} else{
-
+						retiraEquipa(*equipas[ch], *vprova[ch1]);
 					}
 				}
 			}
@@ -2982,7 +3006,7 @@ void Campeonato::menuRanking(){
 	}
 }
 
-bool Campeonato::retiraEquipa(Equipa &eq, ProvaTerminada &p){
+bool Campeonato::retiraEquipa(Equipa &eq, Prova &p){
 	cout<<"aqui"<<endl;
 	Atleta* a1 = p.getPrimeiro();
 	Atleta* a2 = p.getSegundo();

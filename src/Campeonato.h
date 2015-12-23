@@ -504,7 +504,7 @@ void loadBilhetes(string nome_ficheiro);
 	 * @param p - uma prova
 	 * @return true se for desclassificado algum atleta, false se nao
 	 */
-	bool retiraEquipa(Equipa &eq, ProvaTerminada &p);
+	bool retiraEquipa(Equipa &eq, Prova &p);
 };
 
 bool operator< (const Equipa &eq1,const Equipa &eq2);

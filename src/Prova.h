@@ -150,7 +150,7 @@ public:
 	virtual Atleta* getPrimeiro() const{
 		return NULL;
 	}
-	virtual Atleta* getSegund() const{
+	virtual Atleta* getSegundo() const{
 		return NULL;
 	}
 	virtual Atleta* getTerceiro() const{
