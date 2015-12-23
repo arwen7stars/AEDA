@@ -15,6 +15,12 @@
 
 using namespace std;
 
+struct Medalhas{
+	int ouro;
+	int prata;
+	int bronze;
+};
+
 class Atleta;
 class Prova;
 
@@ -26,6 +32,7 @@ class Equipa{
 	string nome;
 	vector<Atleta *> atletas;
 	vector<Desporto *> desportos;
+	Medalhas medalhas;
 public:
 	/**
 	 * Inicializa o nome
@@ -180,6 +187,14 @@ public:
 		 */
 		string getNome() const {return nome;}
 	};
+
+
+	Medalhas getMedalhas() const {return medalhas;}
+	void addOuro(){medalhas.ouro++;}
+	void addPrata(){medalhas.prata ++;}
+	void addBronze(){medalhas.bronze++;}
+	bool operator < (Equipa &eq1);
+
 };
 
 /**Class Equipa
@@ -193,6 +208,7 @@ class Atleta{
 	vector<Modalidade *> modalidades;
 	bool genero;
 	int pontos;
+	Medalhas medalhas;
 public:
 	/**
 	 * Inicializa os atributos

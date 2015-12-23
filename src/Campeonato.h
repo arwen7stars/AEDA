@@ -34,6 +34,8 @@ class Campeonato{
 	Data inicio, fim;///< Data do inicio e do fim do campeonato, pode dar jeito
 	Hora abertura, fecho;
 	tabHBilhetes bilhetes;
+	vector<Bilhete> bilhetes_a_venda;
+	priority_queue<Equipa> medalhas;
 public:
 	/**Construtor de Campeonato
 	 *
@@ -394,7 +396,7 @@ void loadBilhetes(string nome_ficheiro);
 	/**Lista no terminal as equipas no vetor equipas por ordem decrescente de colocacao
 		 *
 		 */
-	void listaEquipasColocacao() const ;
+	void listaEquipasColocacao() ; //tb vai organizar
 
 	void menuCalendario();
 	void criaCalendario();
@@ -412,7 +414,11 @@ void loadBilhetes(string nome_ficheiro);
 	void trocaProvaBilhete();
 	void listaProvasAdepto();
 	void pesquisaAdepto();
+
+	void organizaMedalhas();
 };
+
+bool operator< (const Equipa &eq1,const Equipa &eq2);
 
 /**Atribui pontos aos atletas que venceram a Prova
  *

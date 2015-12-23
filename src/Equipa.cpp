@@ -15,6 +15,9 @@
 
 Equipa::Equipa(string n){
 	nome = n;
+	medalhas.ouro = 0;
+	medalhas.prata = 0;
+	medalhas.bronze = 0;
 }
 
 string Equipa::getNome() const{
@@ -226,6 +229,15 @@ Equipa & Equipa::operator= (const Equipa & e){
 	return *this;
 }
 
+bool Equipa::operator < (Equipa &eq1){
+	if(getMedalhas().ouro>eq1.getMedalhas().ouro)
+		return false;
+	if(getMedalhas().prata>eq1.getMedalhas().prata)
+		return false;
+	if(getMedalhas().bronze>eq1.getMedalhas().bronze)
+		return false;
+	return true;
+}
 
 //void Equipa::menuEquipas(){
 //	bool exit = false;
@@ -263,6 +275,9 @@ Atleta::Atleta(string n, Equipa* e, bool g){
 	equipa = e;
 	pontos = 0;
 	genero = g;
+	medalhas.ouro = 0;
+	medalhas.prata = 0;
+	medalhas.bronze = 0;
 }
 
 string Atleta::getNome() const{
@@ -317,8 +332,22 @@ bool  Atleta::getGenero() const{
 	return genero;
 }
 
+
 void Atleta::adicionaPontuacao(int p){
 	pontos += p;
+
+	if (p==3){
+		medalhas.ouro ++;
+		equipa->addOuro();
+	}
+	else if (p == 2){
+		medalhas.prata ++;
+		equipa->addPrata();
+	}
+		else {
+			medalhas.bronze ++;
+			equipa->addBronze();
+		}
 }
 
 void Atleta::adicionaProva(Prova * p){
