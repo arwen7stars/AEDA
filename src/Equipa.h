@@ -74,6 +74,7 @@ public:
 	 * @param d - lista de desportos
 	 */
 	void setDesportos(vector <Desporto *> d);
+	//void setMedalhas();
 
 	/**
 	 * adiciona um novo atleta se este ainda nao estiver na equipa
@@ -244,6 +245,7 @@ public:
 	 * @return modalidades
 	 */
 	vector<Modalidade *> getModalidades() const;
+	Medalhas getMedalhas() const;
 	/**
 	 *
 	 * @return genero

@@ -35,6 +35,7 @@ class Campeonato{
 	Hora abertura, fecho;
 	tabHBilhetes bilhetes;
 	priority_queue<Equipa*> ranking;
+	//vector<pair <Equipa*, float> > equipaPontos;
 public:
 	/**Construtor de Campeonato
 	 *
@@ -433,7 +434,6 @@ bool operator< (const Equipa &eq1,const Equipa &eq2);
  * @param pro - prova agora realizada
  * @param pontos - resultados da prova, em posicoes correspondentes a cada atleta
  */
-void atribuiPontuacao(Prova pro, vector<float> pontos);
-
+void atribuiPontuacao(ProvaTerminada &pro, vector<float> pontos);
 
 #endif /* CAMPEONATO_H_ */

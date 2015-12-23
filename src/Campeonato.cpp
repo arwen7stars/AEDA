@@ -1921,12 +1921,12 @@ void Campeonato::listaAtletasDesporto() const {
 
 bool compararEquipas( Equipa* eq1,Equipa *eq2){
 	if((*eq1).getMedalhas().ouro<(*eq2).getMedalhas().ouro)
-		return false;
+		return true;
 	if((*eq1).getMedalhas().prata<(*eq2).getMedalhas().prata)
-		return false;
+		return true;
 	if((*eq1).getMedalhas().bronze<(*eq2).getMedalhas().bronze)
-		return false;
-	return true;
+		return true;
+	return false;
 }
 
 void Campeonato::listaEquipasColocacao() {
@@ -2890,12 +2890,55 @@ void Campeonato::verRanking(){
 	}
 	_getch();
 
-
 	return;
 }
 
 void Campeonato::desclassificarEquipa(){
+	vector<Prova*>vprova;
 
+	for(unsigned int i = 0; i < provas.size(); i++)
+		if (provas[i]->getRealizada())
+			vprova.push_back(provas[i]);
+
+	bool exit = false;
+	while(!exit){
+		system("cls");
+		int ch = fazMenu("Provas realizadas:", vprova);
+		if (ch == -1){
+			exit = true;
+			return;
+		} else{
+			vector<Equipa*>vequipa;
+
+			for(unsigned int i = 0; i < vprova[ch]->getAtletas().size(); i++){
+				bool ja_existe = false;
+
+				for(unsigned int j = 0; j < vequipa.size(); j++)
+					if (*vequipa[j] == *vprova[ch]->getAtletas()[i]->getEquipa()){
+						ja_existe = true;
+						break;
+					}
+
+				if(!ja_existe)
+					vequipa.push_back(vprova[ch]->getAtletas()[i]->getEquipa());
+			}
+
+			int ch1;
+			bool exit1 = false;
+			while(!exit1){
+				system("cls");
+				ch1 = fazMenu("Equipa a desclassificar:", vequipa);
+				if(ch1 == -1){
+
+
+				} else{
+
+				}
+
+			}
+
+		}
+	}
 }
 
 void Campeonato::menuRanking(){

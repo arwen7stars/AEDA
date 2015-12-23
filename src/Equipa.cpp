@@ -221,7 +221,15 @@ void Equipa::setDesportos(vector<Desporto *> d) {
 	for (unsigned int i = 0; i < d.size(); i++)
 		desportos[i] = d[i];
 }
-
+/*
+void Equipa::setMedalhas(){
+	for(unsigned int i = 0; i < atletas.size(); i++){
+		medalhas.ouro += atletas[i]->getMedalhas().ouro;
+		medalhas.prata += atletas[i]->getMedalhas().prata;
+		medalhas.bronze += atletas[i]->getMedalhas().bronze;
+	}
+}
+*/
 Equipa & Equipa::operator= (const Equipa & e){
 	setNome(e.getNome());
 	setAtletas(e.getAtletas());
@@ -271,6 +279,10 @@ vector<Modalidade *> Atleta::getModalidades() const{
 	return modalidades;
 }
 
+Medalhas Atleta::getMedalhas() const{
+	return medalhas;
+}
+
 void Atleta::apagaModalidade(int indice)
 {
 	modalidades.erase(modalidades.begin()+indice);
@@ -312,16 +324,15 @@ void Atleta::adicionaPontuacao(int p){
 	pontos += p;
 
 	if (p==3){
-		medalhas.ouro ++;
 		equipa->addOuro();
+		medalhas.ouro++;
 	}
 	else if (p == 2){
-		medalhas.prata ++;
-		equipa->addPrata();
+
+		medalhas.prata++;
 	}
 		else {
-			medalhas.bronze ++;
-			equipa->addBronze();
+			medalhas.bronze++;
 		}
 }
 
