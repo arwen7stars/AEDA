@@ -2006,13 +2006,22 @@ bool Campeonato::realizaProva(Prova &p , vector <float> pontuacoes){
 
 			it = provas.erase(it);
 			nova->setRealizada(true);
+			for(unsigned int i = 0; i < equipas.size(); i++)
+				for(unsigned int j = 0; j < equipas[i]->getAtletas().size(); j++)
+					for(unsigned int k = 0; k < equipas[i]->getAtletas()[j]->getProvas().size(); k++)
+						if (*equipas[i]->getAtletas()[j]->getProvas()[k] == p)
+							equipas[i]->getAtletas()[j]->getProvas()[k]->setRealizada(true);
+
 			provas.push_back(nova);
 
 			return true;
 			}
-		else if ((!((*it) == &p))&& (it++)==provas.end())
-			return false;
-return false;
+		else{
+			vector < Prova*>::iterator ite = it + 1;
+			if (  (!(*(*it) == p)) && ite==provas.end() )
+				return false;
+		}
+	return false;
 
 }
 
@@ -2907,53 +2916,49 @@ void Campeonato::verRanking(){
 }
 
 void Campeonato::desclassificarEquipa(){
-	vector<Prova*>vprova;
-
-	for(unsigned int i = 0; i < provas.size(); i++)
-		if (provas[i]->getRealizada())
-			vprova.push_back(provas[i]);
-
-	if(vprova.size() == 0){
-		system("cls");
-		cout << "Ainda nao foram realizadas nenhumas provas";
-		_getch();
-		return;
-	}
-
 	bool exit = false;
 	while(!exit){
 		system("cls");
-		int ch = fazMenu("Provas realizadas:", vprova);
+		int ch = fazMenu("Equipas:", equipas);
 		if (ch == -1){
 			exit = true;
 			return;
 		} else{
-			vector<Equipa*>vequipa;
+			vector<Prova*>vprova;
 
-			for(unsigned int i = 0; i < vprova[ch]->getAtletas().size(); i++){
+			for(unsigned int i = 0; i < equipas[ch]->getAtletas().size(); i++){
+				for(unsigned int j = 0; j < equipas[ch]->getAtletas()[i]->getProvas().size(); j++){
 				bool ja_existe = false;
 
-				for(unsigned int j = 0; j < vequipa.size(); j++)
-					if (*vequipa[j] == *vprova[ch]->getAtletas()[i]->getEquipa()){
+				for(unsigned int l = 0; l < vprova.size(); l++)
+					if (*vprova[l] == *equipas[ch]->getAtletas()[i]->getProvas()[j]){
 						ja_existe = true;
 						break;
 					}
 
-				if(!ja_existe)
-					vequipa.push_back(vprova[ch]->getAtletas()[i]->getEquipa());
-			}
-
-			int ch1;
-			bool exit1 = false;
-			while(!exit1){
-				system("cls");
-				ch1 = fazMenu("Equipa a desclassificar:", vequipa);
-				if(ch1 == -1){
-
-				} else{
-
+				if(!ja_existe && equipas[ch]->getAtletas()[i]->getProvas()[j]->getRealizada())
+					vprova.push_back(equipas[ch]->getAtletas()[i]->getProvas()[j]);
 				}
+			}
+			if (vprova.size() > 0){
+				int ch1;
+				bool exit1 = false;
+				while(!exit1){
+					system("cls");
+					ch1 = fazMenu("Prova:", vprova);
+					if(ch1 == -1){
+						exit1 = true;
+						return;
+					} else{
 
+					}
+				}
+			}
+			else{
+				system("cls");
+				cout << "Esta equipa ainda nao realizou nenhuma prova.\n";
+				_getch();
+				return;
 			}
 
 		}
