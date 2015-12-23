@@ -12,10 +12,11 @@ Bilhete::Bilhete(string endereco, string nome, string morada){
 	this->endereco = endereco;
 	this->nome = nome;
 	this->morada = morada;
+	a_venda = false;
 }
 
 bool Bilhete::adicionaProva(Prova* p){
-	for (int i = 0; i < provasCompradas.size();i++)
+	for (unsigned int i = 0; i < provasCompradas.size();i++)
 		if (provasCompradas[i] == p)
 			return false;
 
@@ -28,11 +29,13 @@ void Bilhete::adicionaProva(vector<Prova *> provas){
 	bool exit = false;
 	while (!exit){
 		system("cls");
-		int ch = fazMenu("Provas:", provas);
+		int ch = fazMenu("Selecione a prova que deseja associar ao bilhete:", provas);
 		if (ch == -1)
 			exit = true;
-		else
+		else {
 			adicionaProva(provas[ch]);
+			return;
+		}
 	}
 }
 
@@ -43,13 +46,19 @@ bool Bilhete::retiraProva(){
 	bool exit = false;
 	while (!exit){
 		system("cls");
-		int ch = fazMenu("Provas:", provasCompradas);
+		int ch = fazMenu("Escolha a prova a retirar: ", provasCompradas);
 		if (ch == -1)
 			exit = true;
-		else
+		else{
 			provasCompradas.erase (provasCompradas.begin()+ch);
+			return true;
+		}
 	}
 	return true;
+}
+
+void Bilhete::setAVenda(bool avenda){
+	a_venda = avenda;
 }
 
 string Bilhete::getEndereco() const{
@@ -60,6 +69,10 @@ string Bilhete::getNome() const{
 }
 string Bilhete::getMorada() const{
 	return morada;
+}
+
+bool Bilhete::getAVenda() const{
+	return a_venda;
 }
 
 vector<Prova*> Bilhete::getProvasCompradas() const{

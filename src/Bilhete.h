@@ -24,6 +24,7 @@ class Bilhete{
 	string nome;
 	string morada;
 	vector<Prova*> provasCompradas;
+	bool a_venda;
 public:
 	Bilhete(){};
 	/**
@@ -50,9 +51,11 @@ public:
 	 * @return false se o bilhete nao tiver provas, true caso contrario
 	 */
 	bool retiraProva();
+	void setAVenda(bool avenda);
 	string getEndereco() const;
 	string getNome() const;
 	string getMorada() const;
+	bool getAVenda() const;
 	vector<Prova*> getProvasCompradas() const;
 	friend ostream & operator<<(ostream & o, const Bilhete & b);
 };

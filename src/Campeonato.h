@@ -34,7 +34,6 @@ class Campeonato{
 	Data inicio, fim;///< Data do inicio e do fim do campeonato, pode dar jeito
 	Hora abertura, fecho;
 	tabHBilhetes bilhetes;
-	vector<Bilhete> bilhetes_a_venda;
 public:
 	/**Construtor de Campeonato
 	 *

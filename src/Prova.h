@@ -164,23 +164,22 @@ public:
 	};
 
 	class ProvaInexistente {
-		Prova * p;
+		Prova prova;
 	public:
 		ProvaInexistente() {
-			p=NULL;
 		}
-		ProvaInexistente(Prova * prova) : p(prova) {}
+		/*ProvaInexistente(Prova prova) : p(prova) {}
 		/**
 		 * Constroi uma mensagem como o nome da modalidade
 		 *
 		 * @return uma string como uma mensagem
 		 */
-		string getMessage() const{
-			string message = "A prova da modalidade " + p->getModalidade()->getNome() + " na data ";
-			/*message += p->getData().getAno() + "/" + p->getData().getMes() + "/" + p->getData().getDia();
-			message += " as " + "nao existe!\n";*/
+		/*string getMessage() const{
+			string message = "A prova da modalidade " + p.getModalidade()->getNome() + " na data ";
+			message += p.getData().getAno() + "/" + p.getData().getMes() + "/" + p.getData().getDia();
+			message += " as " + p.getInicio().getHoras() + ":" + p.getInicio().getMinutos() + " nao existe!\n";
 			return message;
-		}
+		}*/
 	};
 };
 
