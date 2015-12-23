@@ -436,6 +436,8 @@ void loadBilhetes(string nome_ficheiro);
 	void verRanking();
 	void desclassificarEquipa();
 	void organizaMedalhas();
+
+	bool retiraEquipa(Equipa &eq, ProvaTerminada &p);
 };
 
 bool operator< (const Equipa &eq1,const Equipa &eq2);

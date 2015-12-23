@@ -1754,7 +1754,7 @@ void atribuiPontuacao(ProvaTerminada &pro, vector<float> pontos) {//ordena o vet
 
 	} else {
 		if (pro.getAtletas().size() <= 2) {
-			final[pro.getAtletas().size() - 1]->adicionaPontuacao(3);
+			atletaPontos[final.size() - 1].first->adicionaPontuacao(3);
 		} else {
 			atletaPontos[final.size() - 1].first->adicionaPontuacao(3);
 			atletaPontos[final.size() - 2].first->adicionaPontuacao(2);
@@ -2975,4 +2975,32 @@ void Campeonato::menuRanking(){
 			verRanking();
 		else desclassificarEquipa();
 	}
+}
+
+bool Campeonato::retiraEquipa(Equipa &eq, ProvaTerminada &p){
+	cout<<"aqui"<<endl;
+	Atleta* a1 = p.getPrimeiro();
+	Atleta* a2 = p.getSegundo();
+	Atleta* a3 = p.getTerceiro();
+	bool ret = false;
+
+
+
+	if(*(a1->getEquipa())==eq){
+			(*a1).getEquipa()->retiraOuro();
+			(*a1).retiraOuro();
+			ret = true;
+		}
+	if(*(a2->getEquipa())==eq){
+			(*a2).getEquipa()->retiraPrata();
+			(*a2).retiraPrata();
+			ret = true;
+		}
+	if(*(a3->getEquipa())==eq){
+			(*a3).getEquipa()->retiraBronze();
+			(*a3).retiraBronze();
+			ret = true;
+		}
+
+	return ret;
 }

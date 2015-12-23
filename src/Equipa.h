@@ -197,6 +197,10 @@ public:
 	void addPrata(){medalhas.prata ++;}
 	void addBronze(){medalhas.bronze++;}
 
+	void retiraOuro(){medalhas.ouro--;}
+	void retiraPrata(){medalhas.prata --;}
+	void retiraBronze(){medalhas.bronze--;}
+
 };
 
 /**Class Equipa
@@ -355,6 +359,12 @@ public:
 	 * @return
 	 */
 	Atleta & operator= (const Atleta & a);
+
+
+
+	void retiraOuro(){medalhas.ouro--;}
+	void retiraPrata(){medalhas.prata --;}
+	void retiraBronze(){medalhas.bronze--;}
 };
 
 
