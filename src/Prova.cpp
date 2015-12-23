@@ -247,14 +247,11 @@ Atleta*ProvaTerminada:: getTerceiro() const{
 }
 
 void ProvaTerminada::setAtletas (vector<Atleta*> a) {
-	for (unsigned int i = 0; i < a.size(); i++)
-		atletas.push_back(a[i]);
+	atletas = a;
 }
 
 void ProvaTerminada::setPontuacoes(vector<float> pont){
-	for(unsigned int i = 0; i < pont.size(); i++)
-		pontuacoes.push_back(pont[i]);
-
+	pontuacoes = pont;
 }
 vector <float> ProvaTerminada::getPontuacoes() const{
 	return pontuacoes;

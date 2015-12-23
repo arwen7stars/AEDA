@@ -34,6 +34,9 @@ class Equipa{
 	vector<Desporto *> desportos;
 	Medalhas medalhas;
 public:
+	Equipa(){
+		nome = "";
+	}
 	/**
 	 * Inicializa o nome
 	 *

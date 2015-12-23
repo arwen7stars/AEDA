@@ -221,15 +221,7 @@ void Equipa::setDesportos(vector<Desporto *> d) {
 	for (unsigned int i = 0; i < d.size(); i++)
 		desportos[i] = d[i];
 }
-/*
-void Equipa::setMedalhas(){
-	for(unsigned int i = 0; i < atletas.size(); i++){
-		medalhas.ouro += atletas[i]->getMedalhas().ouro;
-		medalhas.prata += atletas[i]->getMedalhas().prata;
-		medalhas.bronze += atletas[i]->getMedalhas().bronze;
-	}
-}
-*/
+
 Equipa & Equipa::operator= (const Equipa & e){
 	setNome(e.getNome());
 	setAtletas(e.getAtletas());
@@ -237,14 +229,37 @@ Equipa & Equipa::operator= (const Equipa & e){
 	return *this;
 }
 
-bool Equipa::operator < (Equipa &eq1){
-	if(getMedalhas().ouro<eq1.getMedalhas().ouro)
-		return true;
-	if(getMedalhas().prata<eq1.getMedalhas().prata)
-		return true;
-	if(getMedalhas().bronze<eq1.getMedalhas().bronze)
-		return true;
-	return false;
+bool Equipa::operator < (Equipa &eq2){
+	int e1 = 0;
+		int e2 = 0;
+
+		if(getMedalhas().ouro<eq2.getMedalhas().ouro)
+			e1 += 3;
+		else if (getMedalhas().ouro>eq2.getMedalhas().ouro)
+			e2 += 3;
+		else{
+			e1 += 3;
+			e2 += 3;
+		}
+
+		if(getMedalhas().prata<eq2.getMedalhas().prata)
+			e1 += 2;
+		else if(getMedalhas().prata>eq2.getMedalhas().prata)
+			e2 += 2;
+		else{
+			e1 += 2;
+			e2 += 2;
+		}
+
+		if(getMedalhas().bronze<eq2.getMedalhas().bronze)
+			e1 += 1;
+		else if(getMedalhas().prata>eq2.getMedalhas().prata)
+			e2 += 1;
+		else{
+			e1 += 1;
+			e2 += 1;
+		}
+		return e1 < e2;
 }
 
 /*
@@ -330,10 +345,12 @@ void Atleta::adicionaPontuacao(int p){
 	else if (p == 2){
 
 		medalhas.prata++;
+		equipa->addPrata();
 	}
-		else {
-			medalhas.bronze++;
-		}
+	else {
+		medalhas.bronze++;
+		equipa->addBronze();
+	}
 }
 
 void Atleta::adicionaProva(Prova * p){

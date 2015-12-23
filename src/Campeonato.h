@@ -34,7 +34,7 @@ class Campeonato{
 	Data inicio, fim;///< Data do inicio e do fim do campeonato, pode dar jeito
 	Hora abertura, fecho;
 	tabHBilhetes bilhetes;
-	priority_queue<Equipa*> ranking;
+	priority_queue<Equipa> ranking;
 	//vector<pair <Equipa*, float> > equipaPontos;
 public:
 	/**Construtor de Campeonato

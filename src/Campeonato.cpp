@@ -2833,25 +2833,50 @@ void Campeonato::menuBilhetes(){
 void Campeonato::organizaMedalhas(){
 	vector<Equipa> tmp;
 
-	while(!medalhas.empty()){
-		tmp.push_back(medalhas.top());
-		medalhas.pop();
+	while(!ranking.empty()){
+		tmp.push_back(*ranking.top());
+		ranking.pop();
 	}
 
+	insertionSort<Equipa>(tmp);
+
 	for(unsigned int i =0; i<tmp.size(); i++){
-		medalhas.push(tmp[i]);
+		ranking.push(&tmp[i]);
 	}
 }
 */
 
 bool operator < (const Equipa &eq1, const Equipa &eq2){
+	int e1 = 0;
+	int e2 = 0;
+
 	if(eq1.getMedalhas().ouro<eq2.getMedalhas().ouro)
-		return true;
+		e1 += 3;
+	else if (eq1.getMedalhas().ouro>eq2.getMedalhas().ouro)
+		e2 += 3;
+	else{
+		e1 += 3;
+		e2 += 3;
+	}
+
 	if(eq1.getMedalhas().prata<eq2.getMedalhas().prata)
-		return true;
+		e1 += 2;
+	else if(eq1.getMedalhas().prata>eq2.getMedalhas().prata)
+		e2 += 2;
+	else{
+		e1 += 2;
+		e2 += 2;
+	}
+
 	if(eq1.getMedalhas().bronze<eq2.getMedalhas().bronze)
-		return true;
-	return false;
+		e1 += 1;
+	else if(eq1.getMedalhas().prata>eq2.getMedalhas().prata)
+		e2 += 1;
+	else{
+		e1 += 1;
+		e2 += 1;
+	}
+	return e1 < e2;
 }
 
 /*
@@ -2869,12 +2894,21 @@ void Campeonato::atualizarFila(){
 
 	for(unsigned int i = 0; i < equipas.size(); i++)
 	{
-		ranking.push(equipas[i]);
+		Equipa * eq = new Equipa();
+		eq = equipas[i];
+		ranking.push(*eq);
 	}
 }
 
 void Campeonato::verRanking(){
-	vector<Equipa*>vequipa;
+	vector<Equipa>vequipa;
+
+	if(ranking.empty()){
+		system("cls");
+		cout << "Ainda nao foram realizadas nenhumas provas";
+		_getch();
+		return;
+	}
 
 	while(!ranking.empty()){
 		vequipa.push_back(ranking.top());
@@ -2882,10 +2916,10 @@ void Campeonato::verRanking(){
 	}
 	system("cls");
 	for(unsigned int x =0; x < vequipa.size(); x++){
-		cout << vequipa[x]->getNome() << endl;
-		cout << "   Ouro: " << vequipa[x]->getMedalhas().ouro;
-		cout << "   Prata: " << vequipa[x]->getMedalhas().prata;
-		cout << "   Bronze: "<< vequipa[x]->getMedalhas().bronze << endl;
+		cout << vequipa[x].getNome() << endl;
+		cout << "   Ouro: " << vequipa[x].getMedalhas().ouro;
+		cout << "   Prata: " << vequipa[x].getMedalhas().prata;
+		cout << "   Bronze: "<< vequipa[x].getMedalhas().bronze << endl;
 		ranking.push(vequipa[x]);
 	}
 	_getch();
@@ -2899,6 +2933,13 @@ void Campeonato::desclassificarEquipa(){
 	for(unsigned int i = 0; i < provas.size(); i++)
 		if (provas[i]->getRealizada())
 			vprova.push_back(provas[i]);
+
+	if(vprova.size() == 0){
+		system("cls");
+		cout << "Ainda nao foram realizadas nenhumas provas";
+		_getch();
+		return;
+	}
 
 	bool exit = false;
 	while(!exit){
