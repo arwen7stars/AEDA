@@ -147,6 +147,15 @@ public:
 	 */
 	void setInicio(Data d, Hora i);
 	void setRealizada(bool r);
+	virtual Atleta* getPrimeiro() const{
+		return NULL;
+	}
+	virtual Atleta* getSegund() const{
+		return NULL;
+	}
+	virtual Atleta* getTerceiro() const{
+		return NULL;
+	}
 	class ProvasSimultaneas : public LoadProvasFail {
 		string mod1, mod2;
 	public:

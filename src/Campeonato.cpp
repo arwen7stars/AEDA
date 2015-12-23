@@ -2930,7 +2930,6 @@ void Campeonato::desclassificarEquipa(){
 				ch1 = fazMenu("Equipa a desclassificar:", vequipa);
 				if(ch1 == -1){
 
-
 				} else{
 
 				}
