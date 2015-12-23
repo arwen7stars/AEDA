@@ -34,7 +34,10 @@ void \hyperlink{class_equipa_a22daef4c32fcc25228a113a134911565}{adiciona\+Despor
 \item 
 void \hyperlink{class_equipa_a0ff737879e2ece8397d01d1da745a788}{apaga\+Modalidade} (int i\+\_\+atleta, int i\+\_\+modalidade)
 \item 
-void \hyperlink{class_equipa_ac2252ae9144c32ad2dfb227b9dfb2c15}{apaga\+Atleta} (string nome)
+void \hyperlink{class_equipa_a400bfd580a01c9999de6fd204a4a5eef}{apaga\+Atleta} (const string nome)
+\item 
+\hypertarget{class_equipa_a49777ca3555eeb24015cb174dcb3f0dc}{}void {\bfseries apaga\+Prova} (int i\+\_\+atleta, int i\+\_\+prova)\label{class_equipa_a49777ca3555eeb24015cb174dcb3f0dc}
+
 \item 
 bool \hyperlink{class_equipa_a754b42e94c0ca91ac2c2a3890e7f3191}{operator==} (const \hyperlink{class_equipa}{Equipa} \&c) const 
 \item 
@@ -49,6 +52,27 @@ void \hyperlink{class_equipa_a44df4366958af97be66020a0f8e18a94}{menu} (vector$<$
 void \hyperlink{class_equipa_a8f8b5838284e2154abe8608f53ee2681}{menu\+Atletas} ()
 \item 
 void \hyperlink{class_equipa_afead1fbf9a337c39bb771b37dad578d3}{adiciona\+Atleta} ()
+\item 
+\hypertarget{class_equipa_a3d430475b8269ca31f0c77f29b2f0118}{}\hyperlink{struct_medalhas}{Medalhas} {\bfseries get\+Medalhas} () const \label{class_equipa_a3d430475b8269ca31f0c77f29b2f0118}
+
+\item 
+\hypertarget{class_equipa_a722830d8138c7d63f03e3ed424e536cc}{}void {\bfseries add\+Ouro} ()\label{class_equipa_a722830d8138c7d63f03e3ed424e536cc}
+
+\item 
+\hypertarget{class_equipa_a081d994b4fc3ad79aba0b07a12515ef5}{}void {\bfseries add\+Prata} ()\label{class_equipa_a081d994b4fc3ad79aba0b07a12515ef5}
+
+\item 
+\hypertarget{class_equipa_a3b4f2e3437724300f7c59b93bad7844e}{}void {\bfseries add\+Bronze} ()\label{class_equipa_a3b4f2e3437724300f7c59b93bad7844e}
+
+\item 
+\hypertarget{class_equipa_aa01771d620b565f4ddb793c5a9be2707}{}void {\bfseries retira\+Ouro} ()\label{class_equipa_aa01771d620b565f4ddb793c5a9be2707}
+
+\item 
+\hypertarget{class_equipa_ae576595e06f12ff256e20200c3d69083}{}void {\bfseries retira\+Prata} ()\label{class_equipa_ae576595e06f12ff256e20200c3d69083}
+
+\item 
+\hypertarget{class_equipa_a6c10562801aba220c52e9db88957a463}{}void {\bfseries retira\+Bronze} ()\label{class_equipa_a6c10562801aba220c52e9db88957a463}
+
 \end{DoxyCompactItemize}
 \subsection*{Friends}
 \begin{DoxyCompactItemize}
@@ -128,13 +152,13 @@ Abre uma lista de desportos a partir do vector Desp\+List, e permite selecionar 
 {\em Desp\+List} & -\/ Lista de desportos \\
 \hline
 \end{DoxyParams}
-\hypertarget{class_equipa_ac2252ae9144c32ad2dfb227b9dfb2c15}{}\index{Equipa@{Equipa}!apaga\+Atleta@{apaga\+Atleta}}
+\hypertarget{class_equipa_a400bfd580a01c9999de6fd204a4a5eef}{}\index{Equipa@{Equipa}!apaga\+Atleta@{apaga\+Atleta}}
 \index{apaga\+Atleta@{apaga\+Atleta}!Equipa@{Equipa}}
-\subsubsection[{apaga\+Atleta(string nome)}]{\setlength{\rightskip}{0pt plus 5cm}void Equipa\+::apaga\+Atleta (
+\subsubsection[{apaga\+Atleta(const string nome)}]{\setlength{\rightskip}{0pt plus 5cm}void Equipa\+::apaga\+Atleta (
 \begin{DoxyParamCaption}
-\item[{string}]{nome}
+\item[{const string}]{nome}
 \end{DoxyParamCaption}
-)}\label{class_equipa_ac2252ae9144c32ad2dfb227b9dfb2c15}
+)}\label{class_equipa_a400bfd580a01c9999de6fd204a4a5eef}
 apaga o atleta de nome nome 
 \begin{DoxyParams}{Parameters}
 {\em nome} & -\/ nome do atleta \\

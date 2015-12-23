@@ -1,0 +1,113 @@
+\hypertarget{class_bilhete}{}\section{Bilhete Class Reference}
+\label{class_bilhete}\index{Bilhete@{Bilhete}}
+
+
+{\ttfamily \#include $<$Bilhete.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_bilhete_a70953a5ccec95a6e5fd94c960718f517}{Bilhete} (string endereco, string nome, string morada)
+\item 
+void \hyperlink{class_bilhete_afc80fa8bd65add44982f6ea8756c5881}{adiciona\+Prova} (vector$<$ \hyperlink{class_prova}{Prova} $\ast$ $>$ provas)
+\item 
+bool \hyperlink{class_bilhete_a6e988a05e9b3875dd386ee1fcb10330c}{adiciona\+Prova} (\hyperlink{class_prova}{Prova} $\ast$p)
+\item 
+bool \hyperlink{class_bilhete_a7ac3fe666c70b096f8751e38d1f0dd89}{retira\+Prova} ()
+\item 
+\hypertarget{class_bilhete_a229d943f8b1fd805726b7df9f8daffc3}{}void {\bfseries set\+A\+Venda} (bool avenda)\label{class_bilhete_a229d943f8b1fd805726b7df9f8daffc3}
+
+\item 
+\hypertarget{class_bilhete_af923a95602b16b463e0646616c15e27c}{}string {\bfseries get\+Endereco} () const \label{class_bilhete_af923a95602b16b463e0646616c15e27c}
+
+\item 
+\hypertarget{class_bilhete_a71ec233ab283a82ba19ddc653bfeeb80}{}string {\bfseries get\+Nome} () const \label{class_bilhete_a71ec233ab283a82ba19ddc653bfeeb80}
+
+\item 
+\hypertarget{class_bilhete_a3406791595a7620538fdfbc5f17d5c1b}{}string {\bfseries get\+Morada} () const \label{class_bilhete_a3406791595a7620538fdfbc5f17d5c1b}
+
+\item 
+\hypertarget{class_bilhete_a8c3fd91a7d7c1d715331a2c1bfe36f5b}{}bool {\bfseries get\+A\+Venda} () const \label{class_bilhete_a8c3fd91a7d7c1d715331a2c1bfe36f5b}
+
+\item 
+\hypertarget{class_bilhete_a31a73368dd3c50b67190921cb533b5d3}{}vector$<$ \hyperlink{class_prova}{Prova} $\ast$ $>$ {\bfseries get\+Provas\+Compradas} () const \label{class_bilhete_a31a73368dd3c50b67190921cb533b5d3}
+
+\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_bilhete_acd1df8886655e03e2e708cda234c0ca7}{}ostream \& {\bfseries operator$<$$<$} (ostream \&o, const \hyperlink{class_bilhete}{Bilhete} \&b)\label{class_bilhete_acd1df8886655e03e2e708cda234c0ca7}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Class \hyperlink{class_data}{Data}
+
+Represente um possessor de entradas para as provas 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_bilhete_a70953a5ccec95a6e5fd94c960718f517}{}\index{Bilhete@{Bilhete}!Bilhete@{Bilhete}}
+\index{Bilhete@{Bilhete}!Bilhete@{Bilhete}}
+\subsubsection[{Bilhete(string endereco, string nome, string morada)}]{\setlength{\rightskip}{0pt plus 5cm}Bilhete\+::\+Bilhete (
+\begin{DoxyParamCaption}
+\item[{string}]{endereco, }
+\item[{string}]{nome, }
+\item[{string}]{morada}
+\end{DoxyParamCaption}
+)}\label{class_bilhete_a70953a5ccec95a6e5fd94c960718f517}
+Inicializa os atributos 
+\begin{DoxyParams}{Parameters}
+{\em endereco} & -\/ endereco do comprador \\
+\hline
+{\em nome} & -\/ nome do comprador \\
+\hline
+{\em morada} & -\/ morada do comprador \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_bilhete_afc80fa8bd65add44982f6ea8756c5881}{}\index{Bilhete@{Bilhete}!adiciona\+Prova@{adiciona\+Prova}}
+\index{adiciona\+Prova@{adiciona\+Prova}!Bilhete@{Bilhete}}
+\subsubsection[{adiciona\+Prova(vector$<$ Prova $\ast$ $>$ provas)}]{\setlength{\rightskip}{0pt plus 5cm}void Bilhete\+::adiciona\+Prova (
+\begin{DoxyParamCaption}
+\item[{vector$<$ {\bf Prova} $\ast$ $>$}]{provas}
+\end{DoxyParamCaption}
+)}\label{class_bilhete_afc80fa8bd65add44982f6ea8756c5881}
+Adiciona todas as provas do vetor provas ao vetor provas\+Compradas do bilhete 
+\begin{DoxyParams}{Parameters}
+{\em provas} & -\/ vetor de provas a adicionar ao bilhete \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_bilhete_a6e988a05e9b3875dd386ee1fcb10330c}{}\index{Bilhete@{Bilhete}!adiciona\+Prova@{adiciona\+Prova}}
+\index{adiciona\+Prova@{adiciona\+Prova}!Bilhete@{Bilhete}}
+\subsubsection[{adiciona\+Prova(\+Prova $\ast$p)}]{\setlength{\rightskip}{0pt plus 5cm}bool Bilhete\+::adiciona\+Prova (
+\begin{DoxyParamCaption}
+\item[{{\bf Prova} $\ast$}]{p}
+\end{DoxyParamCaption}
+)}\label{class_bilhete_a6e988a05e9b3875dd386ee1fcb10330c}
+Adiciona a prova p ao vetor provas\+Compradas do bilhete 
+\begin{DoxyParams}{Parameters}
+{\em p} & -\/ apontodor para a prova a adicionar \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+false se p ja existir, false se nao e a prova for adionada com sucesso 
+\end{DoxyReturn}
+\hypertarget{class_bilhete_a7ac3fe666c70b096f8751e38d1f0dd89}{}\index{Bilhete@{Bilhete}!retira\+Prova@{retira\+Prova}}
+\index{retira\+Prova@{retira\+Prova}!Bilhete@{Bilhete}}
+\subsubsection[{retira\+Prova()}]{\setlength{\rightskip}{0pt plus 5cm}bool Bilhete\+::retira\+Prova (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_bilhete_a7ac3fe666c70b096f8751e38d1f0dd89}
+Mostra a lista de provas do bilhete e permite selecionar uma delas. A prova selecionada e apagado do bilhete. \begin{DoxyReturn}{Returns}
+false se o bilhete nao tiver provas, true caso contrario 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/Bilhete.\+h\item 
+src/Bilhete.\+cpp\end{DoxyCompactItemize}

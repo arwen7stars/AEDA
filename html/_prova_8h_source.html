@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.10"/>
-<title>My Project: src/Prova.h Source File</title>
+<title>CampeonatoPolidesportivo: src/Prova.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -23,7 +23,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">My Project
+   <div id="projectname">CampeonatoPolidesportivo
    </div>
   </td>
  </tr>
@@ -119,70 +119,118 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <span class="keywordtype">bool</span> genero;</div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="keywordtype">bool</span> realizada;</div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <a class="code" href="class_prova.html">Prova</a>(){};</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <a class="code" href="class_prova.html">Prova</a>(<a class="code" href="class_modalidade.html">Modalidade</a>* m, <a class="code" href="class_data.html">Data</a> d, <a class="code" href="class_hora.html">Hora</a> i, <span class="keywordtype">char</span> g);</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <a class="code" href="class_hora.html">Hora</a> getInicio() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <a class="code" href="class_hora.html">Hora</a> getFim() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <a class="code" href="class_data.html">Data</a> getData() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <a class="code" href="class_modalidade.html">Modalidade</a>* getModalidade() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    vector&lt;Atleta*&gt; getAtletas() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    <span class="keywordtype">bool</span> getGenero() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <span class="keywordtype">bool</span> getRealizada() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    <span class="keywordtype">void</span> apagaAtleta(<span class="keywordtype">string</span> nome);</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    <span class="keywordtype">void</span> adicionaAtleta(<a class="code" href="class_atleta.html">Atleta</a> * a);</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    <span class="keywordtype">void</span> adicionarAtleta(vector&lt;Equipa*&gt; TeamList, vector&lt;Desporto*&gt; DespList);</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    <span class="keywordtype">void</span> retirarAtleta();</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    <span class="keywordtype">bool</span> Simultaneo(<a class="code" href="class_prova.html">Prova</a> p);</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;</div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    <span class="keywordtype">void</span> menu(vector&lt;Equipa*&gt; TeamList, vector&lt;Desporto*&gt; DespList);</div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;</div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;    <span class="keyword">friend</span> ostream &amp; operator&lt;&lt;(ostream &amp; o, <span class="keyword">const</span> <a class="code" href="class_prova.html">Prova</a> &amp; p);</div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;    <span class="keywordtype">bool</span> operator &lt; (<span class="keyword">const</span> <a class="code" href="class_prova.html">Prova</a> &amp;p2) <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;    <span class="keywordtype">bool</span> operator == (<span class="keyword">const</span> <a class="code" href="class_prova.html">Prova</a> &amp;p2) <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;</div>
-<div class="line"><a name="l00144"></a><span class="lineno"><a class="line" href="class_prova_1_1_provas_simultaneas.html">  144</a></span>&#160;    <span class="keyword">class </span><a class="code" href="class_prova_1_1_provas_simultaneas.html">ProvasSimultaneas</a> : <span class="keyword">public</span> <a class="code" href="class_load_provas_fail.html">LoadProvasFail</a> {</div>
-<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;        <span class="keywordtype">string</span> mod1, mod2;</div>
-<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;    <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;        <a class="code" href="class_prova_1_1_provas_simultaneas.html">ProvasSimultaneas</a>() {}</div>
-<div class="line"><a name="l00153"></a><span class="lineno"><a class="line" href="class_prova_1_1_provas_simultaneas.html#a4cee5b7ff5cfcee9db81e5075b1d9070">  153</a></span>&#160;        <a class="code" href="class_prova_1_1_provas_simultaneas.html#a4cee5b7ff5cfcee9db81e5075b1d9070">ProvasSimultaneas</a>(<span class="keywordtype">string</span> m1, <span class="keywordtype">string</span> m2) : mod1(m1), mod2(m2) {}</div>
-<div class="line"><a name="l00158"></a><span class="lineno"><a class="line" href="class_prova_1_1_provas_simultaneas.html#a57bf315de1374fd819951fea3fcd129b">  158</a></span>&#160;        <span class="keywordtype">string</span> <a class="code" href="class_prova_1_1_provas_simultaneas.html#a57bf315de1374fd819951fea3fcd129b">getMessage</a>()<span class="keyword"> const</span>{</div>
-<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;            <span class="keywordtype">string</span> m = <span class="stringliteral">&quot;Provas &quot;</span> + mod1 + <span class="stringliteral">&quot; e &quot;</span> + mod2 + <span class="stringliteral">&quot; simultaneas\n&quot;</span>;</div>
-<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;            <span class="keywordflow">return</span> m;</div>
-<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;        }</div>
-<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;    };</div>
-<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;};</div>
-<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;</div>
-<div class="line"><a name="l00169"></a><span class="lineno"><a class="line" href="class_prova_terminada.html">  169</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_prova_terminada.html">ProvaTerminada</a>: <span class="keyword">public</span> <a class="code" href="class_prova.html">Prova</a>{ <span class="comment">//Quando uma prova ja terminou, transformamola num ProvaTerminada</span></div>
-<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;    vector&lt;float&gt; pontuacoes; <span class="comment">//Vetor com as pontuacoes dos atletas, corresponde com o vector atletas</span></div>
-<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;    <a class="code" href="class_prova_terminada.html">ProvaTerminada</a>(<a class="code" href="class_modalidade.html">Modalidade</a>* m, <a class="code" href="class_data.html">Data</a> d, <a class="code" href="class_hora.html">Hora</a> i, <span class="keywordtype">char</span> g);</div>
-<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;    <a class="code" href="class_atleta.html">Atleta</a>* getPrimeiro() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;    <a class="code" href="class_atleta.html">Atleta</a>* getSegundo() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;    <a class="code" href="class_atleta.html">Atleta</a>* getTerceiro() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;    vector &lt; float&gt; getPontuacoes() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;    <span class="keywordtype">void</span> setAtletas(vector&lt;Atleta*&gt; a);</div>
-<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;    <span class="keywordtype">bool</span> operator &lt; (<span class="keyword">const</span> <a class="code" href="class_prova_terminada.html">ProvaTerminada</a> &amp;p) <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;};</div>
-<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;</div>
-<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;</div>
-<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* SRC_PROVA_H_ */</span><span class="preprocessor"></span></div>
-<div class="ttc" id="class_equipa_html"><div class="ttname"><a href="class_equipa.html">Equipa</a></div><div class="ttdef"><b>Definition:</b> Equipa.h:25</div></div>
-<div class="ttc" id="class_load_provas_fail_html"><div class="ttname"><a href="class_load_provas_fail.html">LoadProvasFail</a></div><div class="ttdef"><b>Definition:</b> Lists.h:268</div></div>
-<div class="ttc" id="class_prova_terminada_html"><div class="ttname"><a href="class_prova_terminada.html">ProvaTerminada</a></div><div class="ttdef"><b>Definition:</b> Prova.h:169</div></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <a class="code" href="class_prova.html">Prova</a>(){</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        realizada = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        genero = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        modalidade = NULL;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    };</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <a class="code" href="class_prova.html">Prova</a>(<a class="code" href="class_modalidade.html">Modalidade</a>* m, <a class="code" href="class_data.html">Data</a> d, <a class="code" href="class_hora.html">Hora</a> i, <span class="keywordtype">char</span> g);</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <a class="code" href="class_hora.html">Hora</a> getInicio() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <a class="code" href="class_hora.html">Hora</a> getFim() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <a class="code" href="class_data.html">Data</a> getData() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <a class="code" href="class_modalidade.html">Modalidade</a>* getModalidade() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    vector&lt;Atleta*&gt; getAtletas() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <span class="keywordtype">bool</span> getGenero() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    <span class="keywordtype">bool</span> getRealizada() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    <span class="keywordtype">void</span> apagaAtleta(<span class="keywordtype">string</span> nome);</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    <span class="keywordtype">void</span> adicionaAtleta(<a class="code" href="class_atleta.html">Atleta</a> * a);</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    <span class="keywordtype">void</span> adicionarAtleta(vector&lt;Equipa*&gt; TeamList);</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    <span class="keywordtype">void</span> retirarAtleta();</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    <span class="keywordtype">bool</span> Simultaneo(<a class="code" href="class_prova.html">Prova</a> p);</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;    <span class="keywordtype">void</span> menu(vector&lt;Equipa*&gt; TeamList);</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;    <span class="keyword">friend</span> ostream &amp; operator&lt;&lt;(ostream &amp; o, <span class="keyword">const</span> <a class="code" href="class_prova.html">Prova</a> &amp; p);</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;    <span class="keywordtype">bool</span> operator &lt; (<span class="keyword">const</span> <a class="code" href="class_prova.html">Prova</a> &amp;p2) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;    <span class="keywordtype">bool</span> operator == (<span class="keyword">const</span> <a class="code" href="class_prova.html">Prova</a> &amp;p2) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;    <span class="keywordtype">void</span> setInicio(<a class="code" href="class_data.html">Data</a> d, <a class="code" href="class_hora.html">Hora</a> i);</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;    <span class="keywordtype">void</span> setRealizada(<span class="keywordtype">bool</span> r);</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;    <span class="keyword">virtual</span> <a class="code" href="class_atleta.html">Atleta</a>* getPrimeiro()<span class="keyword"> const</span>{</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;        <span class="keywordflow">return</span> NULL;</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;    }</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;    <span class="keyword">virtual</span> <a class="code" href="class_atleta.html">Atleta</a>* getSegund()<span class="keyword"> const</span>{</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;        <span class="keywordflow">return</span> NULL;</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;    }</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;    <span class="keyword">virtual</span> <a class="code" href="class_atleta.html">Atleta</a>* getTerceiro()<span class="keyword"> const</span>{</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;        <span class="keywordflow">return</span> NULL;</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;    }</div>
+<div class="line"><a name="l00159"></a><span class="lineno"><a class="line" href="class_prova_1_1_provas_simultaneas.html">  159</a></span>&#160;    <span class="keyword">class </span><a class="code" href="class_prova_1_1_provas_simultaneas.html">ProvasSimultaneas</a> : <span class="keyword">public</span> <a class="code" href="class_load_provas_fail.html">LoadProvasFail</a> {</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;        <span class="keywordtype">string</span> mod1, mod2;</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;    <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;        <a class="code" href="class_prova_1_1_provas_simultaneas.html">ProvasSimultaneas</a>() {}</div>
+<div class="line"><a name="l00168"></a><span class="lineno"><a class="line" href="class_prova_1_1_provas_simultaneas.html#a4cee5b7ff5cfcee9db81e5075b1d9070">  168</a></span>&#160;        <a class="code" href="class_prova_1_1_provas_simultaneas.html#a4cee5b7ff5cfcee9db81e5075b1d9070">ProvasSimultaneas</a>(<span class="keywordtype">string</span> m1, <span class="keywordtype">string</span> m2) : mod1(m1), mod2(m2) {}</div>
+<div class="line"><a name="l00173"></a><span class="lineno"><a class="line" href="class_prova_1_1_provas_simultaneas.html#a57bf315de1374fd819951fea3fcd129b">  173</a></span>&#160;        <span class="keywordtype">string</span> <a class="code" href="class_prova_1_1_provas_simultaneas.html#a57bf315de1374fd819951fea3fcd129b">getMessage</a>()<span class="keyword"> const</span>{</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;            <span class="keywordtype">string</span> m = <span class="stringliteral">&quot;Provas &quot;</span> + mod1 + <span class="stringliteral">&quot; e &quot;</span> + mod2 + <span class="stringliteral">&quot; simultaneas\n&quot;</span>;</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;            <span class="keywordflow">return</span> m;</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;        }</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;    };</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;</div>
+<div class="line"><a name="l00179"></a><span class="lineno"><a class="line" href="class_prova_1_1_prova_inexistente.html">  179</a></span>&#160;    <span class="keyword">class </span><a class="code" href="class_prova_1_1_prova_inexistente.html">ProvaInexistente</a> {</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;        <a class="code" href="class_prova.html">Prova</a> * prova;</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;    <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;        <a class="code" href="class_prova_1_1_prova_inexistente.html">ProvaInexistente</a>() {prova=NULL;}</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;        <a class="code" href="class_prova_1_1_prova_inexistente.html">ProvaInexistente</a>(<a class="code" href="class_prova.html">Prova</a> * p) : prova(p) {}</div>
+<div class="line"><a name="l00189"></a><span class="lineno"><a class="line" href="class_prova_1_1_prova_inexistente.html#a0eb25cc50e6f0663efb5c0bec4a0b69c">  189</a></span>&#160;        <span class="keywordtype">string</span> <a class="code" href="class_prova_1_1_prova_inexistente.html#a0eb25cc50e6f0663efb5c0bec4a0b69c">getMessage</a>()<span class="keyword"> const</span>{</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;            <span class="keywordtype">string</span> ano = int_to_string(prova-&gt;<a class="code" href="class_prova.html#a2dbc83f56f67433d62246d9f69629b11">getData</a>().<a class="code" href="class_data.html#ad3981013cc47680fc4619063b7df4375">getAno</a>());</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;            <span class="keywordtype">string</span> mes = int_to_string(prova-&gt;<a class="code" href="class_prova.html#a2dbc83f56f67433d62246d9f69629b11">getData</a>().<a class="code" href="class_data.html#af73ca438bf53a0f386a6b1c03a6c0d3e">getMes</a>());</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;            <span class="keywordtype">string</span> dia = int_to_string(prova-&gt;<a class="code" href="class_prova.html#a2dbc83f56f67433d62246d9f69629b11">getData</a>().<a class="code" href="class_data.html#a56e5ac1591af52df4bc391d3c840cb07">getDia</a>());</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;            <span class="keywordtype">string</span> horas = int_to_string(prova-&gt;<a class="code" href="class_prova.html#a27a6579ac4f103e53cbdd65d1f7994d1">getInicio</a>().<a class="code" href="class_hora.html#aa7fa11ebe86089fbb43d90e7ed432cb6">getHoras</a>());</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;            <span class="keywordtype">string</span> minutos = int_to_string(prova-&gt;<a class="code" href="class_prova.html#a27a6579ac4f103e53cbdd65d1f7994d1">getInicio</a>().<a class="code" href="class_hora.html#afd7735ef6f6222904a77f22a8bbb80fd">getMinutos</a>());</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;            <span class="keywordtype">string</span> message = <span class="stringliteral">&quot;A prova da modalidade &quot;</span> + prova-&gt;<a class="code" href="class_prova.html#afbf918fbf8ddfd7a2b3785af51536e25">getModalidade</a>()-&gt;<a class="code" href="class_modalidade.html#a46003f6a0dceac894f92971a6df9e4a7">getNome</a>() + <span class="stringliteral">&quot; na data &quot;</span>;</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;            message += ano + <span class="stringliteral">&quot;/&quot;</span> + mes + <span class="stringliteral">&quot;/&quot;</span> + dia;</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;            message += <span class="stringliteral">&quot; as &quot;</span> + horas + <span class="stringliteral">&quot;:&quot;</span> + minutos + <span class="stringliteral">&quot; nao existe!\n&quot;</span>;</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;            <span class="keywordflow">return</span> message;</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;        }</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;    };</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;};</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;</div>
+<div class="line"><a name="l00208"></a><span class="lineno"><a class="line" href="class_prova_terminada.html">  208</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_prova_terminada.html">ProvaTerminada</a>: <span class="keyword">public</span> <a class="code" href="class_prova.html">Prova</a>{ <span class="comment">//Quando uma prova ja terminou, transformamola num ProvaTerminada</span></div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;    vector&lt;float&gt; pontuacoes; <span class="comment">//Vetor com as pontuacoes dos atletas, corresponde com o vector atletas</span></div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;    <a class="code" href="class_prova_terminada.html">ProvaTerminada</a>(<a class="code" href="class_modalidade.html">Modalidade</a>* m, <a class="code" href="class_data.html">Data</a> d, <a class="code" href="class_hora.html">Hora</a> i, <span class="keywordtype">char</span> g);</div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;    <a class="code" href="class_atleta.html">Atleta</a>* getPrimeiro() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;    <a class="code" href="class_atleta.html">Atleta</a>* getSegundo() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;    <a class="code" href="class_atleta.html">Atleta</a>* getTerceiro() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;    vector &lt; float&gt; getPontuacoes() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;    <span class="keywordtype">void</span> setAtletas(vector&lt;Atleta*&gt; a);</div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;    <span class="keywordtype">void</span> setPontuacoes(vector&lt;float&gt; pont);</div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;    <span class="keywordtype">void</span> setPontuacoesAtletas(vector&lt;pair &lt;Atleta*, float&gt; &gt;);</div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;    <span class="keywordtype">void</span> setPontuacoesAtletasRev(vector&lt;pair &lt;Atleta*, float&gt; &gt;);</div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;    <span class="keywordtype">bool</span> operator &lt; (<span class="keyword">const</span> <a class="code" href="class_prova_terminada.html">ProvaTerminada</a> &amp;p) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;};</div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;</div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;</div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* SRC_PROVA_H_ */</span><span class="preprocessor"></span></div>
+<div class="ttc" id="class_equipa_html"><div class="ttname"><a href="class_equipa.html">Equipa</a></div><div class="ttdef"><b>Definition:</b> Equipa.h:31</div></div>
+<div class="ttc" id="class_load_provas_fail_html"><div class="ttname"><a href="class_load_provas_fail.html">LoadProvasFail</a></div><div class="ttdef"><b>Definition:</b> Lists.h:267</div></div>
+<div class="ttc" id="class_prova_terminada_html"><div class="ttname"><a href="class_prova_terminada.html">ProvaTerminada</a></div><div class="ttdef"><b>Definition:</b> Prova.h:208</div></div>
 <div class="ttc" id="class_data_html"><div class="ttname"><a href="class_data.html">Data</a></div><div class="ttdef"><b>Definition:</b> Data.h:23</div></div>
-<div class="ttc" id="class_hora_html"><div class="ttname"><a href="class_hora.html">Hora</a></div><div class="ttdef"><b>Definition:</b> Data.h:121</div></div>
+<div class="ttc" id="class_prova_1_1_prova_inexistente_html_a0eb25cc50e6f0663efb5c0bec4a0b69c"><div class="ttname"><a href="class_prova_1_1_prova_inexistente.html#a0eb25cc50e6f0663efb5c0bec4a0b69c">Prova::ProvaInexistente::getMessage</a></div><div class="ttdeci">string getMessage() const </div><div class="ttdef"><b>Definition:</b> Prova.h:189</div></div>
+<div class="ttc" id="class_hora_html"><div class="ttname"><a href="class_hora.html">Hora</a></div><div class="ttdef"><b>Definition:</b> Data.h:122</div></div>
+<div class="ttc" id="class_hora_html_aa7fa11ebe86089fbb43d90e7ed432cb6"><div class="ttname"><a href="class_hora.html#aa7fa11ebe86089fbb43d90e7ed432cb6">Hora::getHoras</a></div><div class="ttdeci">int getHoras() const </div><div class="ttdef"><b>Definition:</b> Data.cpp:155</div></div>
 <div class="ttc" id="namespacestd_html"><div class="ttname"><a href="namespacestd.html">std</a></div></div>
+<div class="ttc" id="class_data_html_a56e5ac1591af52df4bc391d3c840cb07"><div class="ttname"><a href="class_data.html#a56e5ac1591af52df4bc391d3c840cb07">Data::getDia</a></div><div class="ttdeci">int getDia() const </div><div class="ttdef"><b>Definition:</b> Data.cpp:63</div></div>
+<div class="ttc" id="class_data_html_af73ca438bf53a0f386a6b1c03a6c0d3e"><div class="ttname"><a href="class_data.html#af73ca438bf53a0f386a6b1c03a6c0d3e">Data::getMes</a></div><div class="ttdeci">int getMes() const </div><div class="ttdef"><b>Definition:</b> Data.cpp:61</div></div>
 <div class="ttc" id="class_prova_html"><div class="ttname"><a href="class_prova.html">Prova</a></div><div class="ttdef"><b>Definition:</b> Prova.h:28</div></div>
-<div class="ttc" id="class_prova_1_1_provas_simultaneas_html_a57bf315de1374fd819951fea3fcd129b"><div class="ttname"><a href="class_prova_1_1_provas_simultaneas.html#a57bf315de1374fd819951fea3fcd129b">Prova::ProvasSimultaneas::getMessage</a></div><div class="ttdeci">string getMessage() const </div><div class="ttdef"><b>Definition:</b> Prova.h:158</div></div>
-<div class="ttc" id="class_atleta_html"><div class="ttname"><a href="class_atleta.html">Atleta</a></div><div class="ttdef"><b>Definition:</b> Equipa.h:188</div></div>
-<div class="ttc" id="class_prova_1_1_provas_simultaneas_html"><div class="ttname"><a href="class_prova_1_1_provas_simultaneas.html">Prova::ProvasSimultaneas</a></div><div class="ttdef"><b>Definition:</b> Prova.h:144</div></div>
-<div class="ttc" id="class_prova_1_1_provas_simultaneas_html_a4cee5b7ff5cfcee9db81e5075b1d9070"><div class="ttname"><a href="class_prova_1_1_provas_simultaneas.html#a4cee5b7ff5cfcee9db81e5075b1d9070">Prova::ProvasSimultaneas::ProvasSimultaneas</a></div><div class="ttdeci">ProvasSimultaneas(string m1, string m2)</div><div class="ttdef"><b>Definition:</b> Prova.h:153</div></div>
+<div class="ttc" id="class_prova_html_a27a6579ac4f103e53cbdd65d1f7994d1"><div class="ttname"><a href="class_prova.html#a27a6579ac4f103e53cbdd65d1f7994d1">Prova::getInicio</a></div><div class="ttdeci">Hora getInicio() const </div><div class="ttdef"><b>Definition:</b> Prova.cpp:16</div></div>
+<div class="ttc" id="class_prova_1_1_provas_simultaneas_html_a57bf315de1374fd819951fea3fcd129b"><div class="ttname"><a href="class_prova_1_1_provas_simultaneas.html#a57bf315de1374fd819951fea3fcd129b">Prova::ProvasSimultaneas::getMessage</a></div><div class="ttdeci">string getMessage() const </div><div class="ttdef"><b>Definition:</b> Prova.h:173</div></div>
+<div class="ttc" id="class_prova_1_1_prova_inexistente_html"><div class="ttname"><a href="class_prova_1_1_prova_inexistente.html">Prova::ProvaInexistente</a></div><div class="ttdef"><b>Definition:</b> Prova.h:179</div></div>
+<div class="ttc" id="class_atleta_html"><div class="ttname"><a href="class_atleta.html">Atleta</a></div><div class="ttdef"><b>Definition:</b> Equipa.h:210</div></div>
+<div class="ttc" id="class_data_html_ad3981013cc47680fc4619063b7df4375"><div class="ttname"><a href="class_data.html#ad3981013cc47680fc4619063b7df4375">Data::getAno</a></div><div class="ttdeci">int getAno() const </div><div class="ttdef"><b>Definition:</b> Data.cpp:59</div></div>
+<div class="ttc" id="class_prova_1_1_provas_simultaneas_html"><div class="ttname"><a href="class_prova_1_1_provas_simultaneas.html">Prova::ProvasSimultaneas</a></div><div class="ttdef"><b>Definition:</b> Prova.h:159</div></div>
+<div class="ttc" id="class_prova_1_1_provas_simultaneas_html_a4cee5b7ff5cfcee9db81e5075b1d9070"><div class="ttname"><a href="class_prova_1_1_provas_simultaneas.html#a4cee5b7ff5cfcee9db81e5075b1d9070">Prova::ProvasSimultaneas::ProvasSimultaneas</a></div><div class="ttdeci">ProvasSimultaneas(string m1, string m2)</div><div class="ttdef"><b>Definition:</b> Prova.h:168</div></div>
 <div class="ttc" id="class_modalidade_html"><div class="ttname"><a href="class_modalidade.html">Modalidade</a></div><div class="ttdef"><b>Definition:</b> Modalidade.h:25</div></div>
+<div class="ttc" id="class_modalidade_html_a46003f6a0dceac894f92971a6df9e4a7"><div class="ttname"><a href="class_modalidade.html#a46003f6a0dceac894f92971a6df9e4a7">Modalidade::getNome</a></div><div class="ttdeci">string getNome() const </div><div class="ttdef"><b>Definition:</b> Modalidade.cpp:32</div></div>
+<div class="ttc" id="class_hora_html_afd7735ef6f6222904a77f22a8bbb80fd"><div class="ttname"><a href="class_hora.html#afd7735ef6f6222904a77f22a8bbb80fd">Hora::getMinutos</a></div><div class="ttdeci">int getMinutos() const </div><div class="ttdef"><b>Definition:</b> Data.cpp:160</div></div>
+<div class="ttc" id="class_prova_html_afbf918fbf8ddfd7a2b3785af51536e25"><div class="ttname"><a href="class_prova.html#afbf918fbf8ddfd7a2b3785af51536e25">Prova::getModalidade</a></div><div class="ttdeci">Modalidade * getModalidade() const </div><div class="ttdef"><b>Definition:</b> Prova.cpp:31</div></div>
+<div class="ttc" id="class_prova_html_a2dbc83f56f67433d62246d9f69629b11"><div class="ttname"><a href="class_prova.html#a2dbc83f56f67433d62246d9f69629b11">Prova::getData</a></div><div class="ttdeci">Data getData() const </div><div class="ttdef"><b>Definition:</b> Prova.cpp:26</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

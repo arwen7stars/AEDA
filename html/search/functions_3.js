@@ -1,6 +1,10 @@
 var searchData=
 [
-  ['equipa',['Equipa',['../class_equipa.html#aa318e7b925bfed173bb90d20c63d8a43',1,'Equipa']]],
-  ['equipaexiste',['EquipaExiste',['../class_campeonato_1_1_equipa_existe.html#a66255ab300e77646a298dc96b7c07d4b',1,'Campeonato::EquipaExiste::EquipaExiste()'],['../class_campeonato_1_1_equipa_existe.html#aea10f4410d04ca0a3c0c880b435312fb',1,'Campeonato::EquipaExiste::EquipaExiste(string n)']]],
-  ['equipainexistente',['EquipaInexistente',['../class_equipa_1_1_equipa_inexistente.html#a2f7d6f2f65f6fb1ba619a0128630e841',1,'Equipa::EquipaInexistente']]]
+  ['data',['Data',['../class_data.html#af070d89007b1c6f4d80564b41f76716e',1,'Data']]],
+  ['datainvalida',['DataInvalida',['../class_campeonato_1_1_data_invalida.html#afc48064c2fd3d438bc18d8c4287f0757',1,'Campeonato::DataInvalida::DataInvalida()'],['../class_campeonato_1_1_data_invalida.html#ae153bc364097fa2f5d6936056a09650f',1,'Campeonato::DataInvalida::DataInvalida(Data d)'],['../class_data_1_1_data_invalida.html#afa06e582c3a7125852388d16f97ebc97',1,'Data::DataInvalida::DataInvalida()']]],
+  ['desclassificarequipa',['desclassificarEquipa',['../class_campeonato.html#a9b5d6cd5004bf7b4f19f9cb412242c96',1,'Campeonato']]],
+  ['desporto',['Desporto',['../class_desporto.html#af6abc41a2b8a416e475afb9409226ef6',1,'Desporto::Desporto()'],['../class_desporto.html#a8f285da75c79fbbc353535296cd5f492',1,'Desporto::Desporto(string n, string pont, bool cresc)']]],
+  ['desportoexiste',['DesportoExiste',['../class_campeonato_1_1_desporto_existe.html#a9a99e1ac4d2b7d6f431d368e7f5544f9',1,'Campeonato::DesportoExiste::DesportoExiste()'],['../class_campeonato_1_1_desporto_existe.html#a63f16592678722c636761e5a1020050b',1,'Campeonato::DesportoExiste::DesportoExiste(string n)']]],
+  ['desportoinexistente',['DesportoInexistente',['../class_desporto_1_1_desporto_inexistente.html#af927c111ca1ff3f0501b6b5d21089c76',1,'Desporto::DesportoInexistente::DesportoInexistente()'],['../class_desporto_1_1_desporto_inexistente.html#a3d0e3632fd1bacb8ad9063dccf8694f6',1,'Desporto::DesportoInexistente::DesportoInexistente(string n)']]],
+  ['diasmes',['diasMes',['../class_data.html#a5c51ebb6bc3bef948910ee9c4211fa7c',1,'Data']]]
 ];

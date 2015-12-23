@@ -1,7 +1,29 @@
 var searchData=
 [
-  ['hora',['Hora',['../class_hora.html',1,'Hora'],['../class_hora.html#acba1e481b72cf9af44cc3418b2db5d84',1,'Hora::Hora()']]],
-  ['horainvalida',['HoraInvalida',['../class_campeonato_1_1_hora_invalida.html#a86c055a083548dcdd91200c129f4c455',1,'Campeonato::HoraInvalida::HoraInvalida()'],['../class_campeonato_1_1_hora_invalida.html#a8165c716bfae962843209e5cc9559f41',1,'Campeonato::HoraInvalida::HoraInvalida(Hora h)'],['../class_hora_1_1_hora_invalida.html#a6d41a0a7cd476300a4f02c79b3d1651f',1,'Hora::HoraInvalida::HoraInvalida()']]],
-  ['horainvalida',['HoraInvalida',['../class_campeonato_1_1_hora_invalida.html',1,'Campeonato']]],
-  ['horainvalida',['HoraInvalida',['../class_hora_1_1_hora_invalida.html',1,'Hora']]]
+  ['generoerrado',['generoErrado',['../classgenero_errado.html',1,'']]],
+  ['getano',['getAno',['../class_data.html#ad3981013cc47680fc4619063b7df4375',1,'Data']]],
+  ['getatletas',['getAtletas',['../class_equipa.html#a24c4de83cc1171ce42f442ef7be8a7c4',1,'Equipa::getAtletas()'],['../class_prova.html#a293abf27bb26c97f150be37c3a3e3636',1,'Prova::getAtletas()']]],
+  ['getdata',['getData',['../class_prova.html#a2dbc83f56f67433d62246d9f69629b11',1,'Prova']]],
+  ['getdesporto',['getDesporto',['../class_modalidade.html#ad128148792b93ca028b9cbcf73989bdd',1,'Modalidade']]],
+  ['getdesportos',['getDesportos',['../class_equipa.html#a6b6996a193cea733caafb99d0ddebbcc',1,'Equipa']]],
+  ['getdia',['getDia',['../class_data.html#a56e5ac1591af52df4bc391d3c840cb07',1,'Data']]],
+  ['getduracao',['getDuracao',['../class_modalidade.html#a7328b4411500160244ca64183478a5c1',1,'Modalidade']]],
+  ['getequipa',['getEquipa',['../class_atleta.html#a5abede47b955764c546dcd78683d4c1e',1,'Atleta']]],
+  ['getfim',['getFim',['../class_prova.html#aef874ac6cf95b34bd3b1574158cddc5f',1,'Prova']]],
+  ['getgenero',['getGenero',['../class_atleta.html#a85f10fa37fcc45860745893c95dc0b34',1,'Atleta::getGenero()'],['../class_prova.html#a5ebde6f5552c4459c0b5b7c677085a9e',1,'Prova::getGenero()']]],
+  ['gethoras',['getHoras',['../class_hora.html#aa7fa11ebe86089fbb43d90e7ed432cb6',1,'Hora']]],
+  ['getinicio',['getInicio',['../class_prova.html#a27a6579ac4f103e53cbdd65d1f7994d1',1,'Prova']]],
+  ['getmes',['getMes',['../class_data.html#af73ca438bf53a0f386a6b1c03a6c0d3e',1,'Data']]],
+  ['getmessage',['getMessage',['../class_data_1_1_data_invalida.html#abd5d99a7c864cc55b69424e4241aaf20',1,'Data::DataInvalida::getMessage()'],['../class_hora_1_1_hora_invalida.html#ab214f94d7f1d40487b79584ff5b8b3cd',1,'Hora::HoraInvalida::getMessage()'],['../class_desporto_1_1_desporto_inexistente.html#a258748916d7450e58399a63207b6ebfa',1,'Desporto::DesportoInexistente::getMessage()'],['../class_modalidade_1_1_modalidade_inexistente.html#a79c5f308a9654ca8c08fdaac9fb6680f',1,'Modalidade::ModalidadeInexistente::getMessage()'],['../class_prova_1_1_provas_simultaneas.html#a57bf315de1374fd819951fea3fcd129b',1,'Prova::ProvasSimultaneas::getMessage()'],['../class_prova_1_1_prova_inexistente.html#a0eb25cc50e6f0663efb5c0bec4a0b69c',1,'Prova::ProvaInexistente::getMessage()']]],
+  ['getminutos',['getMinutos',['../class_hora.html#afd7735ef6f6222904a77f22a8bbb80fd',1,'Hora']]],
+  ['getmodalidade',['getModalidade',['../class_prova.html#afbf918fbf8ddfd7a2b3785af51536e25',1,'Prova']]],
+  ['getmodalidades',['getModalidades',['../class_atleta.html#a4e4a08618d388c914705e4552bee3f00',1,'Atleta']]],
+  ['getnome',['getNome',['../class_desporto_1_1_modalidade_existe.html#aa0a6e98f34e7427a6606a5bb6b09ec48',1,'Desporto::ModalidadeExiste::getNome()'],['../class_equipa.html#a9d20d0c8daa94e7562c5ea173337a224',1,'Equipa::getNome()'],['../class_equipa_1_1_atleta_existe.html#ae271d234fd0fed484ad40bae87462db1',1,'Equipa::AtletaExiste::getNome()'],['../class_equipa_1_1_equipa_inexistente.html#acbc2d7590e7e1e6ed616908934ed0361',1,'Equipa::EquipaInexistente::getNome()'],['../class_atleta.html#a0f5be5cd0b18f224a7a5281216fc1bfd',1,'Atleta::getNome()'],['../class_modalidade.html#a46003f6a0dceac894f92971a6df9e4a7',1,'Modalidade::getNome()']]],
+  ['getpontos',['getPontos',['../class_atleta.html#ad10e9d537836304fbe44ce3e23533e2d',1,'Atleta']]],
+  ['getpontuacoes',['getPontuacoes',['../class_prova_terminada.html#a449d07fa099785eda45301303792b6b0',1,'ProvaTerminada']]],
+  ['getprimeiro',['getPrimeiro',['../class_prova_terminada.html#aa66bb50f4a969d6a4795bb39595705d8',1,'ProvaTerminada']]],
+  ['getprovas',['getProvas',['../class_atleta.html#a4d87755e5d458d4a2c5d53015669ad21',1,'Atleta']]],
+  ['getrealizada',['getRealizada',['../class_prova.html#abec8bb56f6e6e903b38aad4cc3f50e67',1,'Prova']]],
+  ['getsegundo',['getSegundo',['../class_prova_terminada.html#a3117799dd3ddb513442376203f0ea035',1,'ProvaTerminada']]],
+  ['getterceiro',['getTerceiro',['../class_prova_terminada.html#a332c8f4466c18f153a3ebf7347ab944a',1,'ProvaTerminada']]]
 ];

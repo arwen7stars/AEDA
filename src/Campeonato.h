@@ -101,7 +101,7 @@ void loadDesportos(string nome_ficheiro);
  * O ficheiro .txt deve estar na pasta Debug do projeto e ter o seguinte formato:
  *
  * "nome da equipa
- * - nome do jogador / genero", em que genero é M ou F consoante o atleta e do genero masculino ou do genero feminino
+ * - nome do jogador / genero", em que genero e M ou F consoante o atleta e do genero masculino ou do genero feminino
  *
  * @param nome_ficheiro - Nome do ficheiro de equipas na pasta Debug
  * @return false se o ficheiro nao estiver formatado corretamente
@@ -414,29 +414,96 @@ void loadBilhetes(string nome_ficheiro);
 		 */
 	void listaEquipasColocacao() ; //tb vai organizar
 
+	/**
+	 * Menu na interface para as opcoes de calendario
+	 *
+	 * O utilizador pode escolher se quer alterar data das provas, ver as provas ou cancelar uma prova
+	 *
+	 */
 	void menuCalendario();
+	/**
+	 * Preenche a BST datas com a informacao proviniente do vetor provas
+	 */
 	void criaCalendario();
+	/**
+	 *
+	 * @return o numero maximo de provas que ocorrem em simultaneo
+	 */
 	int maxProvasSimul();
+	/**
+	 * Permite alterar a data e hora de inicio de uma prova
+	 */
 	void alterarData();
+	/**
+	 * Permite alterar a data e hora de inicio das provas, ate que haja menos de tres em simultaneo.
+	 */
 	void alterarDataInicio();
+	/**
+	 * Apresenta uma lista de provas, permitindo escolher uma para cancelar.
+	 */
 	void cancelarProva();
+	/**
+	 * Apresenta uma lista de provas
+	 */
 	void verCalendario();
 
+
+	/**
+	 * Menu na interface para as opcoes de controlo de Bilhetes
+	 *
+	 * O utilizador pode escolher se quer comprar, vender, ou alterar bilhetes
+	 */
 	void menuBilhetes();
+
+	/**
+	 * Cria um novo bilhete e adiciona-o a TabHBilhetes Bilhetes
+	 */
 	void novoBilhete();
+	/**
+	 *
+	 */
 	void venderBilhete();
 	void comprarBilhete();
+	/**
+	 * Mostra uma lista de provas, permitindo a escolha de uma, que e adicionada ao bilhete.
+	 */
 	void addProvaBilhete();
+	/**
+	* Mostra uma lista de provas, permitindo a escolha de uma, que e retirada do bilhete.
+	* Mostra uma lista de provas, permitindo a escolha de uma, que e adicionada ao bilhete.
+	*/
 	void trocaProvaBilhete();
+	/**
+	 * Mostra uma lista de provas, em que cada prova tem as informacoes dos adeptos que possuem entrada para a mesma.
+	 */
 	void listaProvasAdepto();
+	/**
+	 * Pede um endereco, e procura por todos os bilhetes, por um que tenha o mesmo endereco, mostrando a sua informacao
+	 */
 	void pesquisaAdepto();
 
+	/**
+	 * Mostra um menu permitindo escolher entre ver o ranking das equipas ou desclassificar um equipa.
+	 */
 	void menuRanking();
+	/**
+	 * Atualiza a fila de prioridade com o vetor de equipas
+	 */
 	void atualizarFila();
+	/**
+	 * Mostra uma lista des equipas com as respectivas medalhas
+	 */
 	void verRanking();
+	/**
+	 * Permite escolher uma equipa e uma prova, e desclassifica os atletas dessa equipa que participam nessa prova.
+	 */
 	void desclassificarEquipa();
-	void organizaMedalhas();
-
+	/**
+	 * Desclassifica os atletas de eq, se tiveram entres os tres primeiros em p;
+	 * @param eq - uma equipa
+	 * @param p - uma prova
+	 * @return true se for desclassificado algum atleta, false se nao
+	 */
 	bool retiraEquipa(Equipa &eq, ProvaTerminada &p);
 };
 

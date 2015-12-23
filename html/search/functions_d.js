@@ -1,8 +1,15 @@
 var searchData=
 [
-  ['update',['update',['../class_campeonato.html#a5275bcacc59fce709dbf4882d9c1cb29',1,'Campeonato']]],
-  ['updatedesportos',['updateDesportos',['../class_campeonato.html#a788cad8d5826398c4c7d32fb69503799',1,'Campeonato']]],
-  ['updateequipas',['updateEquipas',['../class_campeonato.html#a83cadf1caa248b964b340e9f630b09b2',1,'Campeonato']]],
-  ['updatemodalidades',['updateModalidades',['../class_campeonato.html#a522ea131df67ed791de4f6750746b806',1,'Campeonato']]],
-  ['updateprovas',['updateProvas',['../class_campeonato.html#a29e52272fd3274a0f6dc1047e7417064',1,'Campeonato']]]
+  ['salvar',['Salvar',['../class_campeonato.html#a136f541594756136f2007a1ab7e5e741',1,'Campeonato']]],
+  ['scananobissexto',['scanAnoBissexto',['../class_data.html#a841974ad49226c9404572ba74f9e0e0b',1,'Data']]],
+  ['setatletas',['setAtletas',['../class_equipa.html#a3269b5a8f6c3ebc9370c4cdf004c0b31',1,'Equipa::setAtletas()'],['../class_prova_terminada.html#a189ef4830e8e6dbe3e50153bdc28b1ed',1,'ProvaTerminada::setAtletas()']]],
+  ['setdesportos',['setDesportos',['../class_equipa.html#ae94bfeafedcf21a1d85db42a7f60b4ea',1,'Equipa']]],
+  ['setequipa',['setEquipa',['../class_atleta.html#a410bd5f21959b99444ed4c0f736cdacc',1,'Atleta']]],
+  ['setgenero',['setGenero',['../class_atleta.html#a8556e86a2cae3eeafb3d97e6c283241f',1,'Atleta']]],
+  ['setinicio',['setInicio',['../class_prova.html#a1c4b3d8b3b035c063c505797cd0e058b',1,'Prova']]],
+  ['setmodalidades',['setModalidades',['../class_atleta.html#adbaffac5f1bf0eedf090cb0a91734bd5',1,'Atleta']]],
+  ['setnome',['setNome',['../class_equipa.html#a0e9f300d552f0c4de6fc28d555141eb5',1,'Equipa::setNome()'],['../class_atleta.html#a35fcdb190f9b6b5100fba23cc98e5304',1,'Atleta::setNome()']]],
+  ['setpontos',['setpontos',['../class_atleta.html#a9af09149a6b3c22ca514154b4a29b7f3',1,'Atleta']]],
+  ['setprovas',['setProvas',['../class_atleta.html#ae70dd68db249f3828ee53c15df67a201',1,'Atleta']]],
+  ['simultaneo',['Simultaneo',['../class_prova.html#a0d9a660b9543ba8c8f9fb4509ff507d6',1,'Prova']]]
 ];

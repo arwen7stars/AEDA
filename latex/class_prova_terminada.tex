@@ -25,6 +25,15 @@ vector$<$ float $>$ \hyperlink{class_prova_terminada_a449d07fa099785eda453013037
 \item 
 void \hyperlink{class_prova_terminada_a189ef4830e8e6dbe3e50153bdc28b1ed}{set\+Atletas} (vector$<$ \hyperlink{class_atleta}{Atleta} $\ast$ $>$ a)
 \item 
+\hypertarget{class_prova_terminada_a8b02034c7190ad01ee7674d166595c97}{}void {\bfseries set\+Pontuacoes} (vector$<$ float $>$ pont)\label{class_prova_terminada_a8b02034c7190ad01ee7674d166595c97}
+
+\item 
+\hypertarget{class_prova_terminada_afcff2f98ae33bf903ee3bee4c2a47f37}{}void {\bfseries set\+Pontuacoes\+Atletas} (vector$<$ pair$<$ \hyperlink{class_atleta}{Atleta} $\ast$, float $>$ $>$)\label{class_prova_terminada_afcff2f98ae33bf903ee3bee4c2a47f37}
+
+\item 
+\hypertarget{class_prova_terminada_a9a5ce1362cea1c8aba698c1b7a71d2e2}{}void {\bfseries set\+Pontuacoes\+Atletas\+Rev} (vector$<$ pair$<$ \hyperlink{class_atleta}{Atleta} $\ast$, float $>$ $>$)\label{class_prova_terminada_a9a5ce1362cea1c8aba698c1b7a71d2e2}
+
+\item 
 bool \hyperlink{class_prova_terminada_afe024233747b571f92080b6fc325b6a5}{operator$<$} (const \hyperlink{class_prova_terminada}{Prova\+Terminada} \&p) const 
 \end{DoxyCompactItemize}
 \subsection*{Additional Inherited Members}
@@ -76,10 +85,14 @@ pontuacoes
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
-) const}\label{class_prova_terminada_aa66bb50f4a969d6a4795bb39595705d8}
+) const\hspace{0.3cm}{\ttfamily [virtual]}}\label{class_prova_terminada_aa66bb50f4a969d6a4795bb39595705d8}
 \begin{DoxyReturn}{Returns}
 o atleta em primeiro lugar 
 \end{DoxyReturn}
+
+
+Reimplemented from \hyperlink{class_prova}{Prova}.
+
 \hypertarget{class_prova_terminada_a3117799dd3ddb513442376203f0ea035}{}\index{Prova\+Terminada@{Prova\+Terminada}!get\+Segundo@{get\+Segundo}}
 \index{get\+Segundo@{get\+Segundo}!Prova\+Terminada@{Prova\+Terminada}}
 \subsubsection[{get\+Segundo() const }]{\setlength{\rightskip}{0pt plus 5cm}{\bf Atleta} $\ast$ Prova\+Terminada\+::get\+Segundo (
@@ -96,10 +109,14 @@ o atleta em segundo lugar
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
-) const}\label{class_prova_terminada_a332c8f4466c18f153a3ebf7347ab944a}
+) const\hspace{0.3cm}{\ttfamily [virtual]}}\label{class_prova_terminada_a332c8f4466c18f153a3ebf7347ab944a}
 \begin{DoxyReturn}{Returns}
 o atleta em terceiro lugar 
 \end{DoxyReturn}
+
+
+Reimplemented from \hyperlink{class_prova}{Prova}.
+
 \hypertarget{class_prova_terminada_afe024233747b571f92080b6fc325b6a5}{}\index{Prova\+Terminada@{Prova\+Terminada}!operator$<$@{operator$<$}}
 \index{operator$<$@{operator$<$}!Prova\+Terminada@{Prova\+Terminada}}
 \subsubsection[{operator$<$(const Prova\+Terminada \&p) const }]{\setlength{\rightskip}{0pt plus 5cm}bool Prova\+Terminada\+::operator$<$ (

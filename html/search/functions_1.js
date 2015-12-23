@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['campeonato',['Campeonato',['../class_campeonato.html#a1768952d93666c042f3548b1dd88969d',1,'Campeonato']]]
+  ['bilhete',['Bilhete',['../class_bilhete.html#a70953a5ccec95a6e5fd94c960718f517',1,'Bilhete']]]
 ];
