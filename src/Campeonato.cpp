@@ -1770,7 +1770,7 @@ void atribuiPontuacao(ProvaTerminada &pro, vector<float> pontos) {//ordena o vet
 		pro.setAtletas(final);
 	}
 
-
+/*
 		ProvaTerminada * nova = new ProvaTerminada(pro.getModalidade(), pro.getData(), pro.getInicio(), pro.getGenero());
 		nova->setAtletas(final);
 
@@ -1790,7 +1790,7 @@ void atribuiPontuacao(ProvaTerminada &pro, vector<float> pontos) {//ordena o vet
 					}
 
 			}
-		}
+		}*/
 }
 
 
@@ -2974,7 +2974,7 @@ void Campeonato::desclassificarEquipa(){
 						exit1 = true;
 						return;
 					} else{
-						retiraEquipa(*equipas[ch], *vprova[ch1]);
+						//retiraEquipa(*equipas[ch], *vprova[ch1]);
 					}
 				}
 			}
